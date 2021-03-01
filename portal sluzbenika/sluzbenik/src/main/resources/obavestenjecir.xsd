@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.ftn.uns.ac.rs/obavestenjecir"
+    xmlns:oba="http://www.ftn.uns.ac.rs/obavestenjecir">
+    <xs:element name="obavestenje">
+        <xs:complexType mixed="false">
+            <xs:sequence>
+                <xs:element name="naziv_organa" type="xs:string"/>
+                <xs:element name="sediste_organa" type="xs:string"/>
+                <xs:element name="broj_predmeta" type="xs:int" nillable="true"/>
+                <xs:element name="datum" type="xs:date" nillable="true"/>
+                <xs:element name="ime" type="xs:string"/>
+                <xs:element name="prezime" type="xs:string"/>
+                <xs:element name="naziv" type="xs:string"/>
+                <xs:element name="adresa_podnosioca_zahteva" type="xs:string"/>
+                <xs:element name="naslov" type="xs:string"/>
+                <xs:element name="uvid" type="oba:tipUvid"/>
+                <xs:element maxOccurs="2" name="paragraf">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="broj" type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="iznos_troskova" type="oba:tipIznosTroskova"/>
+                <xs:element name="dostavljeno" type="oba:tipDostavljeno"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType mixed="true" name="tipUvid">
+        <xs:sequence>
+            <xs:element name="godina" type="xs:gYear" nillable="true"/>
+            <xs:element name="opis_trazene_informacije" type="xs:string"/>
+            <xs:element name="ime_dana" nillable="true">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Ponedeljak"/>
+                        <xs:enumeration value="Utorak"/>
+                        <xs:enumeration value="Sreda"/>
+                        <xs:enumeration value="Četvrtak"/>
+                        <xs:enumeration value="Petak"/>
+                        <xs:enumeration value="Subota"/>
+                        <xs:enumeration value="Nedelja"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="broj_sati" nillable="true">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="8"/>
+                        <xs:maxInclusive value="21"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="pocetak_akcije" nillable="true">
+                <xs:simpleType>
+                    <xs:restriction base="xs:time">
+                        <xs:minInclusive value="08:00:00"/>
+                        <xs:maxInclusive value="20:00:00"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="kraj_akcije" nillable="true">
+                <xs:simpleType>
+                    <xs:restriction base="xs:time">
+                        <xs:minInclusive value="09:00:00"/>
+                        <xs:maxInclusive value="21:00:00"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="naziv_zgrade" type="xs:string"/>
+            <xs:element name="naziv_ulice" type="xs:string"/>
+            <xs:element name="broj_ulice" type="xs:int" nillable="true"/>
+            <xs:element name="broj_kancelarije" type="xs:int" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType mixed="true" name="tipIznosTroskova">
+        <xs:sequence>
+            <xs:element name="kolicina_novca" type="xs:int" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tipDostavljeno">
+        <xs:sequence>
+            <xs:element name="kojem_M._P._dostavlja" type="xs:string"/>
+            <xs:element name="arhiva" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
