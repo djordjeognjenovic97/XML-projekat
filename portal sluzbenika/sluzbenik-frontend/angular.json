@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "sluzbenik-frontend"
+  "defaultProject": "sluzbenik-frontend",
+  "cli": {
+    "analytics": false
+  }
 }
