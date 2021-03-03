@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Korisnici xmlns="http://www.ftn.uns.ac.rs/korisnici"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.ftn.uns.ac.rs/korisnici file:/C:/Users/TehnoCentar/Desktop/XML-projekat/portal%20sluzbenika/sluzbenik/src/main/resources/korisnici.xsd">
+    <Korisnik>
+        <Ime>Ime0</Ime>
+        <Prezime>Prezime0</Prezime>
+        <Email>Email0@gmail.com</Email>
+        <Lozinka>Lozinka0</Lozinka>
+        <Uloga>SLUZBENIK</Uloga>
+    </Korisnik>
+    <Korisnik>
+        <Ime>Ime0</Ime>
+        <Prezime>Prezime0</Prezime>
+        <Email>Email1gmail.com</Email>
+        <Lozinka>Lozinka0</Lozinka>
+        <Uloga>SLUZBENIK</Uloga>
+    </Korisnik>
+</Korisnici>

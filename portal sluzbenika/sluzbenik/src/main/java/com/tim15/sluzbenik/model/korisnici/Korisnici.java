@@ -9,6 +9,7 @@
 package com.tim15.sluzbenik.model.korisnici;
 
 import javax.xml.bind.annotation.*;
+import java.util.List;
 
 
 /**
@@ -38,7 +39,7 @@ import javax.xml.bind.annotation.*;
 public class Korisnici {
 
     @XmlElement(name = "Korisnik", required = true)
-    protected Korisnik korisnik;
+    protected List<Korisnik> korisnik;
 
     /**
      * Gets the value of the korisnik property.
@@ -48,7 +49,7 @@ public class Korisnici {
      *     {@link Korisnik }
      *     
      */
-    public Korisnik getKorisnik() {
+    public List<Korisnik> getKorisnik() {
         return korisnik;
     }
 
@@ -60,8 +61,8 @@ public class Korisnici {
      *     {@link Korisnik }
      *     
      */
-    public void setKorisnik(Korisnik value) {
-        this.korisnik = value;
-    }
+    /**public void setKorisnik(Korisnik value) {
+     *   this.korisnik = value;
+    }*/
 
 }

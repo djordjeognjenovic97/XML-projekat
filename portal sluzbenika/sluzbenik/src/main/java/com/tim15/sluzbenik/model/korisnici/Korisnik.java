@@ -8,7 +8,13 @@
 
 package com.tim15.sluzbenik.model.korisnici;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -50,7 +56,7 @@ import javax.xml.bind.annotation.*;
     "uloga"
 })
 @XmlRootElement(name = "Korisnik")
-public class Korisnik {
+public class Korisnik implements UserDetails {
 
     @XmlElement(name = "Ime", required = true)
     protected String ime;
@@ -183,4 +189,57 @@ public class Korisnik {
         this.uloga = value;
     }
 
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<Uloga> uloge = new ArrayList<Uloga>();
+        uloge.add(new Uloga(this.uloga));
+        return uloge;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.lozinka;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        //return this.getEnabled();
+        return true;
+    }
+    /*
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public boolean getEnabled() {
+        return this.enabled;
+    }*/
+
+    @Override
+    public boolean equals(Object obj) {
+        Korisnik o = (Korisnik) obj;
+        return this.getEmail().equals((o.getEmail()))
+                && this.getUsername().equals((o.getUsername()));
+    }
 }

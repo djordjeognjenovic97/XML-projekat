@@ -172,11 +172,16 @@ public class ExistManager {
             }
         }
         try {
+            System.out.println("ajde");
             col = DatabaseManager.getCollection(authManager.getUri() + collectionUri, authManager.getUser(),
                     authManager.getPassword());
+            System.out.println("ajde");
             XUpdateQueryService service = (XUpdateQueryService) col.getService("XUpdateQueryService", "1.0");
+            System.out.println("ajde");
             service.setProperty("indent", "yes");
+            System.out.println("ajde");
             service.updateResource(document, String.format(chosenTemplate, contextXPath, patch));
+            System.out.println("ajde");
         } finally {
             if (col != null) {
                 col.close();
