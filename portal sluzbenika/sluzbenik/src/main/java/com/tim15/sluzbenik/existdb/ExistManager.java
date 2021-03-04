@@ -20,7 +20,7 @@ import java.io.File;
 @Service
 public class ExistManager {
 
-    private final static String TARGET_NAMESPACE = "http://nekiSajt.com";
+    private final static String TARGET_NAMESPACE = "https://github.com/djordjeognjenovic97/XML-projekat";
 
     public static final String UPDATE = "<xu:modifications version=\"1.0\" xmlns:xu=\"" + XUpdateProcessor.XUPDATE_NS
             + "\" xmlns=\"" + TARGET_NAMESPACE + "\">" + "<xu:update select=\"%1$s\">%2$s</xu:update>"
@@ -172,16 +172,12 @@ public class ExistManager {
             }
         }
         try {
-            System.out.println("ajde");
             col = DatabaseManager.getCollection(authManager.getUri() + collectionUri, authManager.getUser(),
                     authManager.getPassword());
-            System.out.println("ajde");
+            col.setProperty("indent", "yes");
             XUpdateQueryService service = (XUpdateQueryService) col.getService("XUpdateQueryService", "1.0");
-            System.out.println("ajde");
             service.setProperty("indent", "yes");
-            System.out.println("ajde");
             service.updateResource(document, String.format(chosenTemplate, contextXPath, patch));
-            System.out.println("ajde");
         } finally {
             if (col != null) {
                 col.close();

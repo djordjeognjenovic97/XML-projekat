@@ -15,7 +15,7 @@ public class KorisnikRepository {
     @Autowired
     ExistManager existManager;
 
-    private String collectionId = "/db/sluzbenik";
+    private String collectionId = "/db/sluzbenik/korisnici";
 
     //TREBA PRONACI KORISNIKA IZ /db/sluzbenik/korisnici kolekcije iz fajla korisnici.xml I VRATI TI GA
     public Korisnik findByEmail(String id) throws Exception {
@@ -25,13 +25,16 @@ public class KorisnikRepository {
         //return k;
         return null;
     }
+
     //TREBA SACUVATI KORISNIKA U FAJL KORISNICI.XML KOJI BI SE TREBAO NALAZITI U DB/SLUZBENIK/KORISNICI
     public void save(Korisnik k) throws Exception {
-        JaxbParser jaxbParser=new JaxbParser();
-        String xmlKorisnik=jaxbParser.marshallString(Korisnik.class,k);
-        this.existManager.update(1,collectionId,"korisnici.xml","/korisnici",xmlKorisnik);
-        System.out.println("Korisnik je sacuvan");
+        JaxbParser jaxbParser = new JaxbParser();
+        String xmlKorisnik = jaxbParser.marshallString(Korisnik.class,k);
+        System.out.println(xmlKorisnik);
+        existManager.update(1, collectionId,"korisnici.xml","/Korisnici", xmlKorisnik);
     }
 
-
+    public void initialize(String path, String id) throws Exception {
+        existManager.store(collectionId, id, path);
+    }
 }

@@ -34,6 +34,7 @@ public class JaxbParser {
     public <T> String marshallString(Class genericClass,T objecToMarshall) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(genericClass);
         Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
         StringWriter sw = new StringWriter();
         marshaller.marshal(objecToMarshall, sw);
         return sw.toString();

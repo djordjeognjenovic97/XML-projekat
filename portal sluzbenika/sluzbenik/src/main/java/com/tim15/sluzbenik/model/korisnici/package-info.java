@@ -5,5 +5,5 @@
 // Generated on: 2021.03.03 at 08:19:11 AM CET 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.ftn.uns.ac.rs/korisnici", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(namespace = "https://github.com/djordjeognjenovic97/XML-projekat", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package com.tim15.sluzbenik.model.korisnici;
