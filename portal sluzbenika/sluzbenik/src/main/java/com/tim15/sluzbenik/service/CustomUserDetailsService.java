@@ -70,11 +70,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     public Korisnik create(Korisnik userRequest) throws Exception {
-        /*Korisnik user=userRepository.findByEmail(userRequest.getEmail());
+        Korisnik user=userRepository.findByEmail(userRequest.getEmail());
         if(user!=null){
             throw new Exception("Ne moze ovaj email.");
-        }*/
-        //userRequest.setLozinka(passwordEncoder.encode(userRequest.getLozinka()));
+        }
+        userRequest.setLozinka(passwordEncoder.encode(userRequest.getLozinka()));
         userRepository.save(userRequest);
         return  userRequest;
     }

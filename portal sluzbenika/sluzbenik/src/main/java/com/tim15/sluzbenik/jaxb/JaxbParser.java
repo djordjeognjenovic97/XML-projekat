@@ -1,6 +1,8 @@
 package com.tim15.sluzbenik.jaxb;
 
 import org.springframework.stereotype.Component;
+import org.xmldb.api.base.XMLDBException;
+import org.xmldb.api.modules.XMLResource;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -21,6 +23,13 @@ public class JaxbParser {
         JAXBContext context = JAXBContext.newInstance(genericClass);
         Unmarshaller unmarshaller = context.createUnmarshaller();
         T createdObject = (T) unmarshaller.unmarshal(new File(path));
+        return createdObject;
+    }
+
+    public <T> T unmarshallXMLResource(Class genericClass, XMLResource resource) throws XMLDBException, JAXBException {
+        JAXBContext context = JAXBContext.newInstance(genericClass);
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        T createdObject = (T) unmarshaller.unmarshal(resource.getContentAsDOM());
         return createdObject;
     }
 

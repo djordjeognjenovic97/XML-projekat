@@ -3,10 +3,12 @@ package com.tim15.sluzbenik.repository;
 import com.tim15.sluzbenik.existdb.ExistManager;
 import com.tim15.sluzbenik.jaxb.JaxbParser;
 import com.tim15.sluzbenik.model.korisnici.Korisnik;
-import org.checkerframework.checker.units.qual.K;
+import org.exist.xmldb.EXistResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.w3c.dom.Document;
+import org.xmldb.api.base.ResourceIterator;
+import org.xmldb.api.base.ResourceSet;
+import org.xmldb.api.base.XMLDBException;
 import org.xmldb.api.modules.XMLResource;
 
 @Repository
@@ -17,16 +19,36 @@ public class KorisnikRepository {
 
     private String collectionId = "/db/sluzbenik/korisnici";
 
-    //TREBA PRONACI KORISNIKA IZ /db/sluzbenik/korisnici kolekcije iz fajla korisnici.xml I VRATI TI GA
-    public Korisnik findByEmail(String id) throws Exception {
-        //XMLResource xmlResource = existManager.load(collectionId, id);
-        //Document document = (Document) xmlResource.getContentAsDOM();
-        //Korisnik k = new Korisnik();
-        //return k;
-        return null;
+    public Korisnik findByEmail(String email) throws Exception {
+        String xPathExpression = String.format("/Korisnici/Korisnik[Email='%s']", email);
+        Korisnik pronadjeniKorisnik = null;
+        try {
+            ResourceSet result = existManager.retrieve(collectionId, xPathExpression);
+            if (result == null) {
+                return null;
+            }
+            ResourceIterator i = result.getIterator();
+            XMLResource resource = null;
+            JaxbParser jaxbParser = new JaxbParser();
+            while (i.hasMoreResources()) {
+                try {
+                    resource = (XMLResource) i.nextResource();
+                    pronadjeniKorisnik = jaxbParser.unmarshallXMLResource(Korisnik.class, resource);
+
+                } finally {
+                    try {
+                        ((EXistResource) resource).freeResources();
+                    } catch (XMLDBException xe) {
+                        xe.printStackTrace();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return pronadjeniKorisnik;
     }
 
-    //TREBA SACUVATI KORISNIKA U FAJL KORISNICI.XML KOJI BI SE TREBAO NALAZITI U DB/SLUZBENIK/KORISNICI
     public void save(Korisnik k) throws Exception {
         JaxbParser jaxbParser = new JaxbParser();
         String xmlKorisnik = jaxbParser.marshallString(Korisnik.class,k);

@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "api/korisnici", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -34,5 +31,14 @@ public class KorisnikController {
         k.setUloga("GRADJANIN");
         customUserDetailsService.create(k);
         return new ResponseEntity<String>("Done", HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/getKorisnikByEmail/{email}")
+    public ResponseEntity<Korisnik> getKorisnikByEmail(@PathVariable String email) throws Exception {
+        Korisnik korisnik = customUserDetailsService.findByEmail(email);
+        if(korisnik == null) {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(korisnik, HttpStatus.OK);
     }
 }
