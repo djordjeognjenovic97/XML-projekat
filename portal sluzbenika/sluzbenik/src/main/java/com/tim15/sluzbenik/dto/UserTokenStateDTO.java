@@ -1,9 +1,7 @@
 package com.tim15.sluzbenik.dto;
 
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
@@ -11,14 +9,15 @@ import javax.xml.bind.annotation.XmlType;
         "expiresIn"
 })
 // DTO koji enkapsulira generisani JWT i njegovo trajanje koji se vracaju klijentu
+@XmlRootElement(name = "UserToken")
 public class UserTokenStateDTO {
 
+    @XmlElement(required = true,name = "accessToken")
     private String accessToken;
+    @XmlElement(required = true,name = "expiresIn")
     private Long expiresIn;
 
     public UserTokenStateDTO() {
-        this.accessToken = null;
-        this.expiresIn = null;
     }
 
     public UserTokenStateDTO(String accessToken, long expiresIn) {

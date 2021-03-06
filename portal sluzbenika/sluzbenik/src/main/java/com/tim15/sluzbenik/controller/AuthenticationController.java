@@ -45,7 +45,6 @@ public class AuthenticationController {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
         }*/
-
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),
                         authenticationRequest.getPassword()));
@@ -62,7 +61,6 @@ public class AuthenticationController {
         Korisnik user = (Korisnik) authentication.getPrincipal();
         String jwt = tokenUtils.generateToken(user.getEmail(),user.getUloga()); // prijavljujemo se na sistem sa email adresom
         int expiresIn = tokenUtils.getExpiredIn();
-
         // Vrati token kao odgovor na uspesnu autentifikaciju
         return ResponseEntity.ok(new UserTokenStateDTO(jwt, expiresIn));
     }
