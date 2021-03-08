@@ -34,4 +34,13 @@ public class ObavestenjecirController {
         }
         return new ResponseEntity<>(document, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/html/{id}", produces = MediaType.TEXT_HTML_VALUE)
+    public ResponseEntity<String> getObavestenjeAsHTML(@PathVariable String id) throws Exception {
+        String document = obavestenjecirService.convertXMLtoHTML(id);
+        if(document == null) {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(document, HttpStatus.OK);
+    }
 }

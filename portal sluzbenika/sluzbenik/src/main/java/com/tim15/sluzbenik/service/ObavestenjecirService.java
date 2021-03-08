@@ -17,6 +17,11 @@ public class ObavestenjecirService {
     @Autowired
     private ObavestenjecirRepository obavestenjecirRepository;
 
+    @Autowired
+    private XSLTransformer xslTransformer;
+
+    private final String obavestenjeXSLPath = "src/main/resources/xsl/obavestenjecir.xsl";
+
     private JaxbParser jaxbParser;
     private MetadataExtractor metadataExtractor;
 
@@ -46,4 +51,11 @@ public class ObavestenjecirService {
         Document doc = obavestenjecirRepository.findObavestenjeById(docId);
         return doc;
     }
+
+    public String convertXMLtoHTML(String id) throws Exception {
+        Document xml = obavestenjecirRepository.findObavestenjeById(id);
+        return xslTransformer.convertXMLtoHTML(obavestenjeXSLPath, xml);
+    }
+
+
 }
