@@ -18,8 +18,8 @@
                 <xs:element name="Uloga">
                     <xs:simpleType>
                         <xs:restriction base="xs:string">
-                            <xs:enumeration value="SLUZBENIK"/>
-                            <xs:enumeration value="GRADJANIN"/>
+                            <xs:enumeration value="ROLE_SLUZBENIK"/>
+                            <xs:enumeration value="ROLE_GRADJANIN"/>
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:element>

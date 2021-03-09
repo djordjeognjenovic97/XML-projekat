@@ -1,6 +1,7 @@
 package com.tim15.sluzbenik.security.auth;
 
 import com.tim15.sluzbenik.security.TokenUtils;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -43,6 +44,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
                 // proveri da li je prosledjeni token validan
                 if (tokenUtils.validateToken(authToken, userDetails)) {
                     // kreiraj autentifikaciju
+
                     TokenBasedAuthentication authentication = new TokenBasedAuthentication(userDetails);
                     authentication.setToken(authToken);
                     SecurityContextHolder.getContext().setAuthentication(authentication);

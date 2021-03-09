@@ -11,6 +11,7 @@ public class Uloga implements GrantedAuthority {
     }
 
     public Uloga(String ime) {
+        this.ime=ime;
     }
 
 
