@@ -6,7 +6,7 @@
 //
 
 
-package com.tim15.sluzbenik.model.zalbacutanjecir;
+package com.tim15.sluzbenik.model.zahtevcir;
 
 import javax.xml.bind.annotation.*;
 

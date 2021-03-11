@@ -6,7 +6,7 @@
 //
 
 
-package com.tim15.sluzbenik.model.zalbacutanjecir;
+package com.tim15.sluzbenik.model.zahtevcir;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -15,17 +15,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TPrimalac_Zalbe complex type.
+ * <p>Java class for TOrgan complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="TPrimalac_Zalbe"&gt;
+ * &lt;complexType name="TOrgan"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="naziv" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element ref="{http://www.ftn.uns.ac.rs/zalbacutanjecir}adresa"/&gt;
+ *         &lt;element name="sediste" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -35,16 +35,16 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TPrimalac_Zalbe", propOrder = {
+@XmlType(name = "TOrgan", propOrder = {
     "naziv",
-    "adresa"
+    "sediste"
 })
-public class TPrimalacZalbe {
+public class TOrgan {
 
     @XmlElement(required = true)
     protected String naziv;
     @XmlElement(required = true)
-    protected Adresa adresa;
+    protected String sediste;
 
     /**
      * Gets the value of the naziv property.
@@ -71,27 +71,27 @@ public class TPrimalacZalbe {
     }
 
     /**
-     * Gets the value of the adresa property.
+     * Gets the value of the sediste property.
      * 
      * @return
      *     possible object is
-     *     {@link Adresa }
+     *     {@link String }
      *     
      */
-    public Adresa getAdresa() {
-        return adresa;
+    public String getSediste() {
+        return sediste;
     }
 
     /**
-     * Sets the value of the adresa property.
+     * Sets the value of the sediste property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Adresa }
+     *     {@link String }
      *     
      */
-    public void setAdresa(Adresa value) {
-        this.adresa = value;
+    public void setSediste(String value) {
+        this.sediste = value;
     }
 
 }
