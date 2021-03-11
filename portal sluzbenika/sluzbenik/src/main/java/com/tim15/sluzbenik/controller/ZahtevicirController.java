@@ -21,6 +21,8 @@ public class ZahtevicirController {
     private ZahtevicirService zahtevicirService;
 
     @PreAuthorize("hasRole('ROLE_GRADJANIN')")
+
+
     @PostMapping(value = "/addText", consumes = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> addZahtevText(@RequestBody String text) throws Exception {
         zahtevicirService.addZahtevFromText(text);

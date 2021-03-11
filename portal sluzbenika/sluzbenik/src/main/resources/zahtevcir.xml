@@ -1,93 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <zahtev xmlns="http://www.ftn.uns.ac.rs/zahtevcir"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.ftn.uns.ac.rs/zahtevcir file:zahtevcir.xsd">
-    <Header>
-        <naziv_i_sediste></naziv_i_sediste>
-    </Header>
-
-    
+    xsi:schemaLocation="http://www.ftn.uns.ac.rs/zahtevcir file:zahtevcir.xsd" id="" datum="" mesto="">
+    <organ>
+        <naziv></naziv>
+        <sediste></sediste>
+    </organ>   
     <naslov>
-        Z A H T E V
-        za pristup informaciji od javnog značaja
+        Z A H T E V za pristup informaciji od javnog značaja
     </naslov>
-    
-    
-    
-    <telo>
-        <uvod>
-            Na osnovu člana 15. st. 1. Zakona o slobodnom pristupu informacijama od javnog značaja („Službeni glasnik RS“, br. 120/04, 54/07, 104/09 i 36/10), od gore navedenog organa zahtevam:*
-            <obrazlozenje>
-                obaveštenje da li poseduje traženu informaciju;
-                ⁫uvid u dokument koji sadrži traženu informaciju;
-                ⁫kopiju dokumenta koji sadrži traženu informaciju;
-                ⁫dostavljanje kopije dokumenta koji sadrži traženu informaciju:**
-                <dostava>
-                    poštom
-                    ⁫elektronskom poštom
-                    ⁫faksom
-                    ⁫na drugi način:***
-                    <nacin></nacin>
-                </dostava>
-                
-                Ovaj zahtev se odnosi na sledeće informacije:
-                <informacije_o_dostavi></informacije_o_dostavi>
-            </obrazlozenje>
-        </uvod>
-        
-        <levo>
-            <p_gde>
-                U
-                <gde></gde>
-                .
-            </p_gde>
-            <p_kada>
-                dana
-                <dana></dana>
-                201
-                <godine></godine>
-                godine
-            </p_kada>
-        </levo>
-        
-        <desno>
-            <p_info>
-                <informacije></informacije>
-                <i_malim_slovima>
-                    Tražilac informacije/Ime i prezime
-                </i_malim_slovima>
-            </p_info>
-            <p_adresa>
-                <adresa></adresa>
-                <a_malim_slovima>
-                    adresa
-                </a_malim_slovima>
-            </p_adresa>
-            <p_kontakt>
-                <kontakt></kontakt>
-                <k_malim_slovima>
-                    drugi podaci za kontakt
-                </k_malim_slovima>
-            </p_kontakt>
-            <p_potpis>
-                <potpis></potpis>
-                <p_malim_slovima>
-                    Potpis
-                </p_malim_slovima>
-            </p_potpis>
-        </desno>
-    </telo>
-    
-    <fusnote>
-        <fusnota br_zvezda="1">
-            U kućici označiti koja zakonska prava na pristup informacijama želite da ostvarite.
-        </fusnota>
-        <fusnota br_zvezda="2">
-            U kućici označiti način dostavljanja kopije dokumenata.
-        </fusnota>
-        <fusnota br_zvezda="3">
-            Kada zahtevate drugi način dostavljanja obavezno upisati koji način dostavljanja zahtevate.
-        </fusnota>
-    </fusnote>
+    <sadrzaj>
+        <tipovi_zahteva>
+            <tip_zahteva>obaveštenje da li poseduje traženu informaciju</tip_zahteva>
+            <tip_zahteva>uvid u dokument koji sadrži traženu informaciju</tip_zahteva>
+            <tip_zahteva>kopiju dokumenta koji sadrži traženu informaciju</tip_zahteva>
+            <tip_zahteva>dostavljanje kopije dokumenta koji sadrži traženu informaciju
+                <dostave>
+                    <tip_dostave>poštom</tip_dostave>
+                    <tip_dostave>elektronskom poštom</tip_dostave>
+                    <tip_dostave>faksom</tip_dostave>
+                    <tip_dostave> ⁫na drugi način
+                        <nacin_dostave></nacin_dostave>
+                    </tip_dostave>
+                </dostave>
+            </tip_zahteva>    
+        </tipovi_zahteva>
+        <informacije_zahtev></informacije_zahtev>
+    </sadrzaj>
+    <trazilac_informacije>
+        <ime></ime>
+        <prezime></prezime>
+        <adresa>
+            <mesto></mesto>
+            <ulica></ulica>
+            <br_ulice></br_ulice>
+        </adresa>
+        <drugi_kontakt_podaci></drugi_kontakt_podaci>
+    </trazilac_informacije>
 </zahtev>

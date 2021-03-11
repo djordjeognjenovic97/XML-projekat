@@ -2,110 +2,90 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="http://www.ftn.uns.ac.rs/zahtevcir"
     xmlns:ftn="http://www.ftn.uns.ac.rs/zahtevcir">
-
     <xs:element name="zahtev">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="Header" type="ftn:tipHeader"/>
-                <xs:element name="naslov" type="xs:string"/>
-                <xs:element name="telo" type="ftn:tipTelo"/>
-                <xs:element name="fusnote">
+                <xs:element fixed="Z A H T E V za pristup informaciji od javnog značaja"
+                    name="naziv" type="xs:string"/>
+                <xs:element name="organ" type="ftn:TOrgan"/>
+                <xs:element name="sadrzaj">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="fusnota" maxOccurs="unbounded" minOccurs="0">
+                            <xs:element name="tipovi_zahteva">
                                 <xs:complexType>
-                                    <xs:simpleContent>
-                                        <xs:extension base="xs:string">
-                                            <xs:attribute name="br_zvezda"/>
-                                        </xs:extension>
-                                    </xs:simpleContent>
+                                    <xs:sequence>
+                                        <xs:element
+                                            fixed="obaveštenje da li poseduje traženu informaciju"
+                                            minOccurs="0" name="obavestenje_posedovanje"
+                                            type="xs:string"/>
+                                        <xs:element
+                                            fixed="uvid u dokument koji sadrži traženu informaciju"
+                                            minOccurs="0" name="uvid_dokument" type="xs:string"/>
+                                        <xs:element
+                                            fixed="kopiju dokumenta koji sadrži traženu informaciju"
+                                            minOccurs="0" name="kopija_dokument" type="xs:string"/>
+                                        <xs:element name="dostavljanje_kopije">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element fixed="Poštom" minOccurs="0"
+                                                  name="posta" type="xs:string"/>
+                                                  <xs:element fixed="Elektronskom poštom"
+                                                  minOccurs="0" name="elektronska_posta"
+                                                  type="xs:string"/>
+                                                  <xs:element fixed="Faksom" minOccurs="0"
+                                                  name="faks" type="xs:string"/>
+                                                  <xs:element minOccurs="0" name="drugi_nacin">
+                                                  <xs:simpleType>
+                                                  <xs:restriction base="xs:string">
+                                                  <xs:minLength value="1"/>
+                                                  <xs:maxLength value="100"/>
+                                                  </xs:restriction>
+                                                  </xs:simpleType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
+                            <xs:element name="informacije_zahtev" type="xs:string"/>
                         </xs:sequence>
                     </xs:complexType>
+                </xs:element>
+                <xs:element name="trazilac_informacije" type="ftn:TTrazilac_informacije"/>
+            </xs:sequence>
+            <xs:attribute name="mesto" type="xs:string"/>
+            <xs:attribute name="datum" type="xs:date"/>
+            <xs:attribute name="id" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="adresa">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mesto" type="xs:string"/>
+                <xs:element name="ulica" type="xs:string"/>
+                <xs:element name="br_ulice">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:int">
+                            <xs:minInclusive value="1"/>
+                        </xs:restriction>
+                    </xs:simpleType>
                 </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:complexType name="tipHeader">
+    <xs:complexType name="TTrazilac_informacije">
         <xs:sequence>
-            <xs:element name="naziv_i_sediste" type="xs:string"/>
+            <xs:element name="ime" type="xs:string"/>
+            <xs:element name="prezime" type="xs:string"/>
+            <xs:element ref="ftn:adresa"/>
+            <xs:element name="drugi_kontakt_podaci" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType name="tipTelo" mixed="true">
+    <xs:complexType name="TOrgan">
         <xs:sequence>
-            <xs:element name="uvod" type="ftn:tipUvod"> </xs:element>
-            <xs:element name="levo" type="ftn:tipLevo"/>
-            <xs:element name="desno" type="ftn:tipDesno"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="tipUvod">
-        <xs:sequence>
-            <xs:element name="obrazlozenje" type="ftn:tipObrazlozenje"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="tipObrazlozenje" mixed="true">
-        <xs:sequence>
-            <xs:element name="dostava" type="ftn:tipDostava"> </xs:element>
-            <xs:element name="informacije_o_dostavi" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="tipDostava">
-        <xs:sequence>
-            <xs:element name="nacin"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="tipLevo" mixed="true">
-        <xs:sequence>
-            <xs:element name="p_gde" type="ftn:tipGde"> </xs:element>
-            <xs:element name="p_kada" type="ftn:tipKada"> </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="tipGde">
-        <xs:sequence>
-            <xs:element name="gde" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="tipKada">
-        <xs:sequence>
-            <xs:element name="dana" type="xs:string"/>
-            <xs:element name="godine" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="tipDesno" mixed="true">
-        <xs:sequence>
-            <xs:element name="p_info">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="informacije" type="xs:string"/>
-                        <xs:element name="i_malim_slovima" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="p_adresa">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="adresa" type="xs:string"/>
-                        <xs:element name="a_malim_slovima" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="p_kontakt">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="kontakt" type="xs:string"/>
-                        <xs:element name="k_malim_slovima" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="p_potpis">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="potpis" type="xs:string"/>
-                        <xs:element name="p_malim_slovima" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
+            <xs:element name="naziv" type="xs:string"/>
+            <xs:element name="sediste" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

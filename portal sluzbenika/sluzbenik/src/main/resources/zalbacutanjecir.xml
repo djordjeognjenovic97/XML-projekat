@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zalbacutanje xmlns="http://www.ftn.uns.ac.rs/zalbacutanjecir"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.ftn.uns.ac.rs/zalbacutanjecir file:zalbacutanjecir.xsd" datum="" mesto="">
-    <naslov>
-        ŽALBA KADA ORGAN VLASTI NIJE POSTUPIO/ nije postupio u celosti/ PO ZAHTEVU
-        TRAŽIOCA U ZAKONSKOM RADU (ĆUTANJE UPRAVE)
-    </naslov>
+    xsi:schemaLocation="http://www.ftn.uns.ac.rs/zalbacutanjecir file:zalbacutanjecir.xsd" br_predmeta="" datum="2020-02-02" mesto="">
+    <naslov>ŽALBA KADA ORGAN VLASTI NIJE POSTUPIO/ nije postupio u celosti/ PO ZAHTEVU TRAŽIOCA U ZAKONSKOM RADU (ĆUTANJE UPRAVE)</naslov>
     <primalac_zalbe>
         <naziv>Povereniku za informacije od javnog značaja i zaštitu podataka o ličnosti</naziv>
         <adresa>
@@ -16,8 +13,8 @@
     </primalac_zalbe>   
     <sadrzaj>
         <naziv_organa></naziv_organa>
-        <razlog_zalbe></razlog_zalbe>
-        <datum_zahteva></datum_zahteva> 
+        <razlog_zalbe>nije postupio</razlog_zalbe>
+        <datum_zahteva>2020-02-02</datum_zahteva> 
         <podaci_o_zahtevu_i_info></podaci_o_zahtevu_i_info>  
     </sadrzaj>
     <podnosilac_zalbe>
@@ -26,7 +23,7 @@
         <adresa>
             <mesto></mesto>
             <ulica></ulica>
-            <br_ulice></br_ulice>
+            <br_ulice>4</br_ulice>
         </adresa>
         <drugi_kontakt_podaci></drugi_kontakt_podaci>
     </podnosilac_zalbe>

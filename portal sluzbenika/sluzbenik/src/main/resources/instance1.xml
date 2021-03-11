@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zahtev xmlns="http://www.ftn.uns.ac.rs/zahtevcir"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.ftn.uns.ac.rs/zahtevcir file:/C:/Users/TehnoCentar/Desktop/XML-projekat/portal%20sluzbenika/sluzbenik/src/main/resources/zahtevcir.xsd">
+    <naziv>Z A H T E V za pristup informaciji od javnog značaja</naziv>
+    <organ>
+        <naziv>naziv0</naziv>
+        <sediste>sediste0</sediste>
+    </organ>
+    <sadrzaj>
+        <tipovi_zahteva>
+            <dostavljanje_kopije>
+            </dostavljanje_kopije>
+        </tipovi_zahteva>
+        <informacije_zahtev>informacije_zahtev0</informacije_zahtev>
+    </sadrzaj>
+    <trazilac_informacije>
+        <ime>ime0</ime>
+        <prezime>prezime0</prezime>
+        <adresa>
+            <mesto>mesto0</mesto>
+            <ulica>ulica0</ulica>
+            <br_ulice>50</br_ulice>
+        </adresa>
+        <drugi_kontakt_podaci>drugi_kontakt_podaci0</drugi_kontakt_podaci>
+    </trazilac_informacije>
+</zahtev>
