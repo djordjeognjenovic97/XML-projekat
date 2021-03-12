@@ -6,7 +6,7 @@
 //
 
 
-package com.tim15.sluzbenik.model.zalbacutanjecir;
+package com.tim15.sluzbenik.model.zahtevcir;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -15,18 +15,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TPodnosilac_Zalbe complex type.
+ * <p>Java class for TTrazilac_informacije complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="TPodnosilac_Zalbe"&gt;
+ * &lt;complexType name="TTrazilac_informacije"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="ime" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="prezime" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element ref="{http://www.ftn.uns.ac.rs/zalbacutanjecir}adresa"/&gt;
+ *         &lt;element ref="{http://www.ftn.uns.ac.rs/zahtevcir}adresa"/&gt;
  *         &lt;element name="drugi_kontakt_podaci" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -37,13 +37,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TPodnosilac_Zalbe", propOrder = {
+@XmlType(name = "TTrazilac_informacije", propOrder = {
     "ime",
     "prezime",
     "adresa",
     "drugiKontaktPodaci"
 })
-public class TPodnosilacZalbe {
+public class TTrazilacInformacije {
 
     @XmlElement(required = true)
     protected String ime;
