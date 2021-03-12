@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<zalbacutanje xmlns="http://www.ftn.uns.ac.rs/zalbacutanjecir"
+<zalbacutanje xmlns="https://github.com/djordjeognjenovic97/XML-projekat"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.ftn.uns.ac.rs/zalbacutanjecir file:zalbacutanjecir.xsd" br_predmeta="" datum="2020-02-02" mesto="">
+    xsi:schemaLocation="https://github.com/djordjeognjenovic97/XML-projekat file:zalbacutanjecir.xsd" br_predmeta="" datum="2020-02-02" mesto="">
     <naslov>ŽALBA KADA ORGAN VLASTI NIJE POSTUPIO/ nije postupio u celosti/ PO ZAHTEVU TRAŽIOCA U ZAKONSKOM RADU (ĆUTANJE UPRAVE)</naslov>
     <primalac_zalbe>
         <naziv>Povereniku za informacije od javnog značaja i zaštitu podataka o ličnosti</naziv>

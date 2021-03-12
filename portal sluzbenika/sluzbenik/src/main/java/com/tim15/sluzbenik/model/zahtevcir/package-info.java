@@ -5,5 +5,5 @@
 // Generated on: 2021.03.01 at 10:47:00 AM CET 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.ftn.uns.ac.rs/zahtevcir", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(namespace = "https://github.com/djordjeognjenovic97/XML-projekat", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package com.tim15.sluzbenik.model.zahtevcir;

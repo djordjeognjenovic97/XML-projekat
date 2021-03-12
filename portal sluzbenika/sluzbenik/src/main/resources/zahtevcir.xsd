@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="http://www.ftn.uns.ac.rs/zahtevcir"
-    xmlns:ftn="http://www.ftn.uns.ac.rs/zahtevcir">
+    targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat"
+    xmlns:ftn="https://github.com/djordjeognjenovic97/XML-projekat">
     <xs:element name="zahtev">
         <xs:complexType>
             <xs:sequence>
