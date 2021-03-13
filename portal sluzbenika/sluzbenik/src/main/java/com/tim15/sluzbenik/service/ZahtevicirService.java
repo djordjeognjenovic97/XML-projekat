@@ -27,7 +27,7 @@ public class ZahtevicirService {
 
     public void addZahtevFromText(String text) throws Exception {
         Zahtev zahtev = jaxbParser.unmarshall(Zahtev.class, text);
-        String docId = zahtev.getNaslov();
+        String docId = zahtev.getId();
         zahtevicirRepository.saveZahtevFromText(text, docId);
         metadataExtractor.extractMetadata(text);
         FusekiWriterExample.saveRDF();
@@ -35,7 +35,7 @@ public class ZahtevicirService {
 
     public void addZahtevFromFile(String path) throws Exception {
         Zahtev zahtev = jaxbParser.unmarshallFile(Zahtev.class, path);
-        String docId = zahtev.getNaslov();
+        String docId = zahtev.getId();
         zahtevicirRepository.saveZahtevFromFile(path, docId);
         String text = jaxbParser.marshallString(Zahtev.class, zahtev);
         metadataExtractor.extractMetadata(text);

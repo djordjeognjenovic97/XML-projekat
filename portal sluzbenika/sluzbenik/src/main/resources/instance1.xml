@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zahtev xmlns="https://github.com/djordjeognjenovic97/XML-projekat"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="https://github.com/djordjeognjenovic97/XML-projekat file:/C:/Users/TehnoCentar/Desktop/XML-projekat/portal%20sluzbenika/sluzbenik/src/main/resources/zahtevcir.xsd">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://github.com/djordjeognjenovic97/XML-projekat file:/C:/Users/TehnoCentar/Desktop/XML-projekat/portal%20sluzbenika/sluzbenik/src/main/resources/zahtevcir.xsd" id="23454" datum="2020-02-02" mesto="Novi Sad">
     <naziv>Z A H T E V za pristup informaciji od javnog značaja</naziv>
     <organ>
         <naziv>naziv0</naziv>
