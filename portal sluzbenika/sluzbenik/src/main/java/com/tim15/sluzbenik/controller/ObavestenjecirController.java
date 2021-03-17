@@ -1,5 +1,8 @@
 package com.tim15.sluzbenik.controller;
 
+import com.tim15.sluzbenik.jaxb.JaxbParser;
+import com.tim15.sluzbenik.model.obavestenjecir.Obavestenje;
+import com.tim15.sluzbenik.model.zahtevcir.Zahtev;
 import com.tim15.sluzbenik.service.ObavestenjecirService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -7,14 +10,26 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Document;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "api/obavestenja", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ObavestenjecirController {
     @Autowired
     private ObavestenjecirService obavestenjecirService;
+
+    @PreAuthorize("hasRole('ROLE_SLUZBENIK')")
+    @PostMapping(value = "/addObavestenje")
+    public ResponseEntity<?> addObavestenje(@Valid @RequestBody Obavestenje obavestenje) throws Exception {
+        JaxbParser jaxbParser = new JaxbParser();
+        String text = jaxbParser.marshallString(Obavestenje.class,obavestenje);
+        obavestenjecirService.addObavestenjeFromText(text);
+        return new ResponseEntity<String>("Obavestenje je dodato u exist bazu", HttpStatus.OK);
+    }
 
     @PostMapping(value = "/addText", consumes = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> addObavestenjeText(@RequestBody String text) throws Exception {
