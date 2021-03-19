@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<obavestenje xmlns="http://www.ftn.uns.ac.rs/obavestenjecir"
+<obavestenje xmlns="https://github.com/djordjeognjenovic97/XML-projekat"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.ftn.uns.ac.rs/obavestenjecir file:obavestenjecir.xsd">
+    xsi:schemaLocation="https://github.com/djordjeognjenovic97/XML-projekat file:obavestenjecir.xsd">
     <naziv_organa></naziv_organa>
     <sediste_organa></sediste_organa>
     <broj_predmeta xsi:nil = "true"></broj_predmeta>   
