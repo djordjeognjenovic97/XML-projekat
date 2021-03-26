@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat" xmlns="https://github.com/djordjeognjenovic97/XML-projekat">
+    <xs:element name="Korisnici">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Korisnik" maxOccurs="unbounded" minOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Korisnik">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Ime" type="xs:string"/>
+                <xs:element name="Prezime" type="xs:string"/>
+                <xs:element name="Email" type="xs:string"/>
+                <xs:element name="Lozinka" type="xs:string"/>
+                <xs:element name="Uloga">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="ROLE_SLUZBENIK"/>
+                            <xs:enumeration value="ROLE_GRADJANIN"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

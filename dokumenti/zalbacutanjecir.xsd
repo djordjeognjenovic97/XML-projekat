@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.ftn.uns.ac.rs/zalbacutanjecir"
+    xmlns:zal="http://www.ftn.uns.ac.rs/zalbacutanjecir">
+
+    <xs:element name="zalbacutanje">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="naslov" type="xs:string"
+                    fixed="ŽALBA KADA ORGAN VLASTI NIJE POSTUPIO/ nije postupio u celosti/ PO ZAHTEVU TRAŽIOCA U ZAKONSKOM RADU (ĆUTANJE UPRAVE)"/>
+                <xs:element name="primalac_zalbe" type="zal:TPrimalac_Zalbe"/>
+                <xs:element name="sadrzaj" type="zal:TSadrzaj"/>
+                <xs:element name="podnosilac_zalbe" type="zal:TPodnosilac_Zalbe"/>
+            </xs:sequence>
+            <xs:attribute name="datum" type="xs:date" use="required"/>
+            <xs:attribute name="mesto" type="xs:string" use="required"/>
+            <xs:attribute name="br_predmeta" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="adresa">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mesto" type="xs:string"/>
+                <xs:element name="ulica" type="xs:string"/>
+                <xs:element name="br_ulice">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:int">
+                            <xs:minInclusive value="1"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="TPrimalac_Zalbe">
+        <xs:sequence>
+            <xs:element name="naziv" type="xs:string"
+                fixed="Povereniku za informacije od javnog značaja i zaštitu podataka o ličnosti"/>
+            <xs:element ref="zal:adresa"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TSadrzaj">
+        <xs:sequence>
+            <xs:element name="naziv_organa" type="xs:string"/>
+            <xs:element name="razlog_zalbe">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="nije postupio"/>
+                        <xs:enumeration value="nije postupio u celosti"/>
+                        <xs:enumeration value="u zakonskom roku"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="datum_zahteva" type="xs:date"/>
+            <xs:element name="podaci_o_zahtevu_i_info" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TPodnosilac_Zalbe">
+        <xs:sequence>
+            <xs:element name="ime" type="xs:string"/>
+            <xs:element name="prezime" type="xs:string"/>
+            <xs:element ref="zal:adresa"/>
+            <xs:element name="drugi_kontakt_podaci" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
