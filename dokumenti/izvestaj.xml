@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<izvestaj xmlns="https://github.com/djordjeognjenovic97/XML-projekat/izvestaji"
+<izvestaj xmlns="https://github.com/djordjeognjenovic97/XML-projekat"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="https://github.com/djordjeognjenovic97/XML-projekat/izvestaji file:izvestaj.xsd" id="id111" datum="2006-05-04">
+    xsi:schemaLocation="https://github.com/djordjeognjenovic97/XML-projekat file:izvestaj.xsd" id="id111" datum="2006-05-04">
     <zahtevi>
         <ukupanBrPodnetihZahteva>50</ukupanBrPodnetihZahteva>
         <brUsvojenihZahteva>50</brUsvojenihZahteva>
