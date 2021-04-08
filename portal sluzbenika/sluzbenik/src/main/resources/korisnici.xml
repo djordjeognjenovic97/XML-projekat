@@ -10,7 +10,7 @@
     <Korisnik xmlns="https://github.com/djordjeognjenovic97/XML-projekat">
         <Ime>Ime0</Ime>
         <Prezime>Prezime0</Prezime>
-        <Email>Email1gmail.com</Email>
+        <Email>Email1@gmail.com</Email>
         <Lozinka>$2a$04$Amda.Gm4Q.ZbXz9wcohDHOhOBaNQAkSS1QO26Eh8Hovu3uzEpQvcq</Lozinka>
         <Uloga>ROLE_GRADJANIN</Uloga>
     </Korisnik>

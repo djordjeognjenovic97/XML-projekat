@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sluzbenik-frontend": {
+    "client": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/sluzbenik-frontend",
+            "outputPath": "dist/client",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,9 +28,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/custom-theme.scss",
+              "src/styles.scss",
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "./node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -65,18 +71,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "sluzbenik-frontend:build"
+            "browserTarget": "client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "sluzbenik-frontend:build:production"
+              "browserTarget": "client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sluzbenik-frontend:build"
+            "browserTarget": "client:build"
           }
         },
         "test": {
@@ -91,7 +97,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.sass"
             ],
             "scripts": []
           }
@@ -113,18 +119,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "sluzbenik-frontend:serve"
+            "devServerTarget": "client:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "sluzbenik-frontend:serve:production"
+              "devServerTarget": "client:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "sluzbenik-frontend",
+  "defaultProject": "client",
   "cli": {
     "analytics": false
   }

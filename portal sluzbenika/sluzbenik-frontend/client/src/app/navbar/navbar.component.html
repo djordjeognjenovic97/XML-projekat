@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+    <button mat-mini-fab  (click)="goToHome()" id="home_btn">
+      <mat-icon>home</mat-icon>
+    </button>
+    <span class="lilspace"></span>
+    <span *ngIf="getRole()!==undefined">Some app</span>
+    <span class="bigspace"></span>
+    <div *ngIf="getRole()===undefined">
+      <button mat-raised-button color="accent" id="signin-button" (click)="goToLogIn()">Login</button>
+      <span class="lilspace"></span>
+      <button mat-raised-button color="accent" id="signup-button" (click)="goToRegistration()">Register</button>
+    </div>
+    <div *ngIf="getRole()!==undefined">
+      <button mat-raised-button color="accent" id="signout-button" (click)="logOut()">Log out</button>
+    </div>
+  
+  </mat-toolbar>

@@ -85,6 +85,6 @@ public class AuthenticationController {
         } catch (Exception e) {
             return new ResponseEntity<>(e, HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
