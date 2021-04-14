@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<izvestaj xmlns="https://github.com/djordjeognjenovic97/XML-projekat/izvestaji"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://github.com/djordjeognjenovic97/XML-projekat/izvestaji file:izvestaj.xsd" id="id111" datum="2006-05-04">
+    <zahtevi>
+        <ukupanBrPodnetihZahteva>50</ukupanBrPodnetihZahteva>
+        <brUsvojenihZahteva>50</brUsvojenihZahteva>
+        <brOdbijenihZahteva>50</brOdbijenihZahteva>
+        <brOdbacenihZahteva>50</brOdbacenihZahteva>
+    </zahtevi>
+    <zalbe>
+        <ukupanBrIzjavljenihZalbi>50</ukupanBrIzjavljenihZalbi>
+        <brZalbiNijePostupio>50</brZalbiNijePostupio>
+        <brZalbiNijePostupioUCelosti>50</brZalbiNijePostupioUCelosti>
+        <brZalbiNijePostupioURoku>50</brZalbiNijePostupioURoku>
+        <brZalbiNaOdluku>50</brZalbiNaOdluku>
+    </zalbe>
+</izvestaj>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resenje xmlns="http://www.ftn.uns.ac.rs/resenja"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.ftn.uns.ac.rs/resenja file:resenja.xsd">
+    Rešenje – poništava se:
+    <levo>
+        <broj_zalbe>071-01-2781/2017-03</broj_zalbe>
+    </levo>
+    <desno>
+        <datum_zalbe>22.01.2019.</datum_zalbe>
+    </desno>
+    <opis_zalbe>
+        Poverenik za informacije od javnog značaja i zaštitu podataka o ličnosti, i to zamenica
+        Poverenika, Stanojla Mandić, po odluci Narodne Skupštine Republike Srbije RS broj 17 od
+        <datum_izbora>08.04.2013.</datum_izbora> godine o izboru zamenika Poverenika, u postupku po žalbi <zrtva>AA</zrtva>, izjavljenoj protiv
+        rešenja Privrednog suda u Leskovcu VIII Su.br. <su.br.>38/2015-9-6 </su.br.>od <datum_pokretanja>31.07.2017.</datum_pokretanja> godine, na osnovu <zakon>člana
+            <clan>35.</clan> stav <stav>1.</stav> tačka <tacka>5.</tacka></zakon> i <zakon>člana <clan>33.</clan> stav <stav>5.</stav> <naziv_zakona>Zakona o slobodnom pristupu informacijama od javnog značaja</naziv_zakona></zakon>
+    </opis_zalbe>`
+    <fusnota>
+        Poverenik za informacije od javnog značaja i zaštitu podataka o ličnosti
+        Informator o radu 31.08.2020.godine
+    </fusnota>
+</resenje>
