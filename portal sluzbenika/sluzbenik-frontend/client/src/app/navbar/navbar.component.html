@@ -3,15 +3,18 @@
       <mat-icon>home</mat-icon>
     </button>
     <span class="lilspace"></span>
-    <span *ngIf="getRole()!==undefined">Some app</span>
+    <span>Sajt organa vlasti</span>
+    <div *ngIf="getRole()==='ROLE_GRADJANIN'">
+      <button mat-raised-button color="accent" id="choose-button" (click)="kreirajZahtev()">Kreiraj zahtev</button>
+    </div>
     <span class="bigspace"></span>
     <div *ngIf="getRole()===undefined">
-      <button mat-raised-button color="accent" id="signin-button" (click)="goToLogIn()">Login</button>
+      <button mat-raised-button color="accent" id="signin-button" (click)="goToLogIn()">Prijava</button>
       <span class="lilspace"></span>
-      <button mat-raised-button color="accent" id="signup-button" (click)="goToRegistration()">Register</button>
+      <button mat-raised-button color="accent" id="signup-button" (click)="goToRegistration()">Registracija</button>
     </div>
     <div *ngIf="getRole()!==undefined">
-      <button mat-raised-button color="accent" id="signout-button" (click)="logOut()">Log out</button>
+      <button mat-raised-button color="accent" id="signout-button" (click)="logOut()">Odjavi se</button>
     </div>
   
   </mat-toolbar>

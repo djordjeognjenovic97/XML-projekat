@@ -16,9 +16,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // localStorage.removeItem('user');
+    // localStorage.removeItem('accessToken');
     const item = localStorage.getItem('user');
     this.loggedIn =  localStorage.getItem('accessToken') ? true : false;
-
 		if (!item) {
 			this.role = undefined;
 			return;

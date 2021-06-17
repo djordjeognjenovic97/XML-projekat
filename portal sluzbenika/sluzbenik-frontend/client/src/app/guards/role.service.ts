@@ -15,16 +15,11 @@ export class RoleGuard implements CanActivate {
 
 	canActivate(route: ActivatedRouteSnapshot): boolean {
 		const expectedRoles: string = route.data.expectedRoles;
-		const item = localStorage.getItem('user');
+		const role = localStorage.getItem('uloga');
 		const jwt: JwtHelperService = new JwtHelperService();
 
 
-		const decodedItem = JSON.parse(item!);
-    	const info = jwt.decodeToken(decodedItem.accessToken);
-    	//this.role=info['uloga'];
-	    const roles: string[] = expectedRoles.split('|', 2);
-
-		if (roles.indexOf(info['uloga']) === -1) {
+		if (expectedRoles !== role) {
 			this.router.navigate(['']);
 			return false;
 		}

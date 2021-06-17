@@ -23,6 +23,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  kreirajZahtev() {
+    this.router.navigateByUrl('/kreirajZahtev');
+  }
 
   getRole(): string {
     let item: string = localStorage.getItem('user');
