@@ -15,6 +15,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { HomeComponent } from './home/home.component';
 import { AddZahtevComponent } from './zahtev/add-zahtev/add-zahtev.component';
+import { ListaZahtevComponent } from './zahtev/lista-zahtev/lista-zahtev.component';
+import { ListaObavestenjaComponent } from './obavestenja/lista-obavestenja/lista-obavestenja.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { AddZahtevComponent } from './zahtev/add-zahtev/add-zahtev.component';
     SignupComponent,
     NavbarComponent,
     HomeComponent,
-    AddZahtevComponent
+    AddZahtevComponent,
+    ListaZahtevComponent,
+    ListaObavestenjaComponent
   ],
   imports: [
     BrowserModule,

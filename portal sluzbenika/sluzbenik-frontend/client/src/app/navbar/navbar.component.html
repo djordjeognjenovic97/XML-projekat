@@ -5,7 +5,9 @@
     <span class="lilspace"></span>
     <span>Sajt organa vlasti</span>
     <div *ngIf="getRole()==='ROLE_GRADJANIN'">
-      <button mat-raised-button color="accent" id="choose-button" (click)="kreirajZahtev()">Kreiraj zahtev</button>
+      <button mat-raised-button color="accent" id="chose-button" (click)="kreirajZahtev()">Kreiraj zahtev</button>
+      <button mat-raised-button color="accent" id="chse-button" (click)="zahtevi()">Zahtevi</button>
+      <button mat-raised-button color="accent" id="choose-button" (click)="obavestenja()">Obavestenja</button>
     </div>
     <span class="bigspace"></span>
     <div *ngIf="getRole()===undefined">

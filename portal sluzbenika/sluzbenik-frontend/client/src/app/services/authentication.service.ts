@@ -17,7 +17,7 @@ export class AuthenticationService {
         return this.http.post<any>("http://localhost:8080/auth/sign-up",user, {headers: this.headers});
     }
 	login(auth: any): Observable<any> {
-		return this.http.post('http://localhost:8080/auth/log-in', auth, {headers: this.headers, responseType: 'text'});
+		return this.http.post('http://localhost:8080/auth/log-in', auth, {headers: this.headers, responseType:'text'});
 	}
 	isLoggedIn(): boolean {
 		if (!localStorage.getItem('user')) {

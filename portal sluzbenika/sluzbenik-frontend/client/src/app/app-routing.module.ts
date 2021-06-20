@@ -5,7 +5,9 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LoginGuard } from './guards/login.service';
 import { RoleGuard } from './guards/role.service';
 import { HomeComponent } from './home/home.component';
+import { ListaObavestenjaComponent } from './obavestenja/lista-obavestenja/lista-obavestenja.component';
 import { AddZahtevComponent } from './zahtev/add-zahtev/add-zahtev.component';
+import { ListaZahtevComponent } from './zahtev/lista-zahtev/lista-zahtev.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,18 @@ const routes: Routes = [
   {
     path : 'kreirajZahtev',
     component : AddZahtevComponent,
+    canActivate: [RoleGuard],
+		data: {expectedRoles: 'ROLE_GRADJANIN'}
+  },
+  {
+    path : 'zahtevi',
+    component : ListaZahtevComponent,
+    canActivate: [RoleGuard],
+		data: {expectedRoles: 'ROLE_GRADJANIN'}
+  },
+  {
+    path : 'obavestenja',
+    component : ListaObavestenjaComponent,
     canActivate: [RoleGuard],
 		data: {expectedRoles: 'ROLE_GRADJANIN'}
   },

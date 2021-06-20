@@ -18,6 +18,21 @@ export class ZahtevService {
 	public createZahtev(zahtev:any):Observable<any> {
         return this.http.post<any>("http://localhost:8080/api/zahtevi/addText",zahtev, {headers: this.headers});
     }
+	public getUsersZahtevi():Observable<any> {
+        return this.http.get("http://localhost:8080/api/zahtevi/getUsersZahtevi", {headers: this.headers, responseType: 'text'});
+    }
+	public skiniXHTML(id:String):Observable<any> {
+        return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniXHTML"+id, {headers: this.headers});
+    }
+	public skiniPDF(id:String):Observable<any> {
+        return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniPDF"+id, {headers: this.headers});
+    }
+	public skiniRDF(id:String):Observable<any> {
+        return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniRDF"+id, {headers: this.headers});
+    }
+	public skiniJSON(id:String):Observable<any> {
+        return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniJSON"+id, {headers: this.headers});
+    }
 	public ZahtevSpecification = {
 		validate: function (jsElement) {
 			let elementSpec = this.elements[jsElement.name];

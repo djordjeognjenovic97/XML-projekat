@@ -1,0 +1,39 @@
+<div class="w-100 h-100 p-3">
+	<h1 style="margin: 0 auto;text-align: center;">Vasi zahtevi</h1>
+	<div class="row">
+		<div class="col">
+            <table class="table table-striped pera">
+                <thead>
+                  <tr>
+                    <th>ID zahteva<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                    <th>XHTML<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                    <th>PDF<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                    <th>RDF<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                    <th>JSON<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <div *ngIf="zahtevi?.length === 0 || zahtevi === undefined" style="float:right;">
+                    <h4><b>Nema zahteva</b></h4>
+                  </div>
+                  <tr *ngFor="let c of zahtevi">
+                    <td class="in_waves">{{c}}</td>
+                    <td>
+                        <button mat-raised-button color="primary"  (click)="XHTML(c)">XHTML</button>
+                     </td>
+                    <td>
+                        <button mat-raised-button color="primary"  (click)="PDF(c)">PDF</button>
+                    </td>
+                    <td>
+                        <button mat-raised-button color="primary"  (click)="RDF(c)">RDF</button>
+                    </td>
+                    <td>
+                        <button mat-raised-button color="primary"  (click)="JSON(c)">JSON</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

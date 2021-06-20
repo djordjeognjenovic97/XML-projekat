@@ -16,6 +16,7 @@ import org.xml.sax.SAXException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -66,5 +67,18 @@ public class ZahtevicirService {
     public Document getZahtevDocument(String docId) throws Exception {
         Document doc = zahtevicirRepository.findZahtevById(docId);
         return doc;
+    }
+
+    public ArrayList<String> getUsersZahtevi() throws Exception {
+        ArrayList<Zahtev> zahtevs= zahtevicirRepository.findAll();
+        ArrayList<String> ids=new ArrayList<>();
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        Korisnik user=(Korisnik) auth.getPrincipal();
+        for(Zahtev z : zahtevs){
+            if(z.getTrazilacInformacije().getEmail()!=null &&z.getTrazilacInformacije().getEmail().equalsIgnoreCase(user.getEmail())){
+                ids.add(z.getId());
+            }
+        }
+        return ids;
     }
 }
