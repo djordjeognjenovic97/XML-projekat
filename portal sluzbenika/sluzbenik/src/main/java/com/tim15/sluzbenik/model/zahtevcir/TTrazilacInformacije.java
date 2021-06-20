@@ -8,10 +8,7 @@
 
 package com.tim15.sluzbenik.model.zahtevcir;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
@@ -53,6 +50,8 @@ public class TTrazilacInformacije {
     protected Adresa adresa;
     @XmlElement(name = "drugi_kontakt_podaci", required = true)
     protected String drugiKontaktPodaci;
+    @XmlAttribute(name = "email")
+    protected String email;
 
     /**
      * Gets the value of the ime property.
@@ -150,4 +149,11 @@ public class TTrazilacInformacije {
         this.drugiKontaktPodaci = value;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

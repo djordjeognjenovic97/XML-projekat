@@ -16,9 +16,24 @@ export class ZahtevService {
 	) { }
 
 	public createZahtev(zahtev:any):Observable<any> {
-        return this.http.post<any>("http://localhost:8080/api/zahtevi/addZahtev",zahtev, {headers: this.headers});
+        return this.http.post<any>("http://localhost:8080/api/zahtevi/addText",zahtev, {headers: this.headers});
     }
 	public ZahtevSpecification = {
+		validate: function (jsElement) {
+			let elementSpec = this.elements[jsElement.name];
+			if (elementSpec.validate) elementSpec.validate(jsElement);
+			for (let i = 0; i < jsElement.attributes.length; i++) {
+			  let jsAttribute = jsElement.attributes[i];
+			  let attributeSpec = elementSpec.attributes[jsAttribute.name];
+			  if (attributeSpec.validate) attributeSpec.validate(jsAttribute);
+			};
+			for (let i = 0; i < jsElement.children.length; i++) {
+			  let jsChild = jsElement.children[i];
+			  if (jsChild.type == "element") { 
+				this.validate(jsChild);
+			  }
+			}
+		},
 		elements: {
 		  'zahtev':{
 			  dislayName:"zahtev",
@@ -32,21 +47,48 @@ export class ZahtevService {
 					// hasText: true,
 					// asker: Xonomy.askCalendar
 				},
+				"stanje":{
+					isInvisible: true
+				},
 				"mesto": {
 					displayName: "mesto",
 					hasText: true,
-					asker: Xonomy.askString
+					validate: function (jsElement) {
+						if (jsElement.value===""){
+						  Xonomy.warnings.push({
+							htmlID: jsElement.htmlID,
+							text: "Morate uneti mesto podnosenja zahteva."
+						  });
+						}
+					},
+					asker: Xonomy.askString,
 				},
 			  },
 			},
 			"naziv": {
 				displayName: "naziv",
 				hasText: true,
+				validate: function (jsElement) {
+					if (jsElement.getText()===""){
+					  Xonomy.warnings.push({
+						htmlID: jsElement.htmlID,
+						text: "Morate uneti naziv."
+					  });
+					}
+				},
 				asker: Xonomy.askString
 			  },
 			"sediste": {
 				displayName: "sediste",
 				hasText: true,
+				validate: function (jsElement) {
+					if (jsElement.getText()===""){
+					  Xonomy.warnings.push({
+						htmlID: jsElement.htmlID,
+						text: "Morate uneti sediste."
+					  });
+					}
+				},
 				asker: Xonomy.askString
 			},
 			'tipovi_zahteva': {
@@ -88,14 +130,14 @@ export class ZahtevService {
 				{
 				  caption: 'dostavljanje kopije dokumenta koji sadrzi trazenu informaciju',
 				  action: Xonomy.newElementChild,
-				  actionParameter: '<dostavljanje_kopije><Nacin_dostave></Nacin_dostave></dostavljanje_kopije>',
+				  actionParameter: '<dostavljanje_kopije></dostavljanje_kopije>',
 				  hideIf: function (jsElement) {
 					return jsElement.hasChildElement("dostavljanje_kopije")
 				  }
 				}
 			  ]
 			},
-			'Nacin_dostave': {
+			'dostavljanje_kopije': {
 				validate: function (jsElement:any) {
 				  if (jsElement.children.length == 0) {
 					Xonomy.warnings.push({
@@ -111,44 +153,52 @@ export class ZahtevService {
 				  {
 					caption: 'Dostava postom',
 					action: Xonomy.newElementChild,
-					actionParameter: '<Dostava_postom><Dostava_postom>',
+					actionParameter: '<posta></posta>',
 					hideIf: function (jsElement) { 
-					  return (jsElement.hasChildElement("Dostava_postom") || jsElement.hasChildElement("Dostava_elektronskom_postom") ||
-					  jsElement.hasChildElement("Dostava_faksom") || jsElement.hasChildElement("Posebna_dostava"))
+					  return (jsElement.hasChildElement("posta") || jsElement.hasChildElement("elektronska_posta") ||
+					  jsElement.hasChildElement("faks") || jsElement.hasChildElement("drugi_nacin"))
 					}
 				  },
 				  {
 					caption: 'Dostava elektronskom postom',
 					action: Xonomy.newElementChild,
-					actionParameter: '<Dostava_elektronskom_postom></Dostava_elektronskom_postom>',
+					actionParameter: '<elektronska_posta></elektronska_posta>',
 					hideIf: function (jsElement) {
-					  return (jsElement.hasChildElement("Dostava_postom") || jsElement.hasChildElement("Dostava_elektronskom_postom") ||
-					  jsElement.hasChildElement("Dostava_faksom") || jsElement.hasChildElement("Posebna_dostava"))
+					  return (jsElement.hasChildElement("posta") || jsElement.hasChildElement("elektronska_posta") ||
+					  jsElement.hasChildElement("faks") || jsElement.hasChildElement("drugi_nacin"))
 					}
 				  },
 				  {
 					caption: 'Dostava faksom',
 					action: Xonomy.newElementChild,
-					actionParameter: '<Dostava_faksom></Dostava_faksom>',
+					actionParameter: '<faks></faks>',
 					hideIf: function (jsElement) {
-					  return (jsElement.hasChildElement("Dostava_postom") || jsElement.hasChildElement("Dostava_elektronskom_postom") ||
-					  jsElement.hasChildElement("Dostava_faksom") || jsElement.hasChildElement("Posebna_dostava"))
+					  return (jsElement.hasChildElement("posta") || jsElement.hasChildElement("elektronska_posta") ||
+					  jsElement.hasChildElement("faks") || jsElement.hasChildElement("drugi_nacin"))
 					}
 				  },
 				  {
 					caption: 'Na drugi nacin',
 					action: Xonomy.newElementChild,
-					actionParameter: '<Posebna_dostava><Nacin_posebne_dostave></Nacin_posebne_dostave></Posebna_dostava>',
+					actionParameter: '<drugi_nacin></drugi_nacin>',
 					hideIf: function (jsElement) {
-					  return (jsElement.hasChildElement("Dostava_postom") || jsElement.hasChildElement("Dostava_elektronskom_postom") ||
-					  jsElement.hasChildElement("Dostava_faksom") || jsElement.hasChildElement("Posebna_dostava"))
+					  return (jsElement.hasChildElement("posta") || jsElement.hasChildElement("elektronska_posta") ||
+					  jsElement.hasChildElement("faks") || jsElement.hasChildElement("drugi_nacin"))
 					}
 				  }
 				]
 			},
-			"Nacin_posebne_dostave": {
-				displayName: "Nacin_posebne_dostave",
+			"drugi_nacin": {
+				displayName: "drugi_nacin",
 				hasText: true,
+				validate: function (jsElement) {
+					if (jsElement.getText()===""){
+					  Xonomy.warnings.push({
+						htmlID: jsElement.htmlID,
+						text: "Morate dodati drugi nacin dostave."
+					  });
+					}
+				},
 				asker: Xonomy.askString
 			},
 			"opis_informacije": {
@@ -159,26 +209,66 @@ export class ZahtevService {
 			"ime": {
 				displayName: "ime",
 				hasText: true,
+				validate: function (jsElement) {
+					if (jsElement.getText()===""){
+					  Xonomy.warnings.push({
+						htmlID: jsElement.htmlID,
+						text: "Morate uneti ime."
+					  });
+					}
+				},
 				asker: Xonomy.askString
 			},
 			"prezime": {
 				displayName: "prezime",
 				hasText: true,
+				validate: function (jsElement) {
+					if (jsElement.getText()===""){
+					  Xonomy.warnings.push({
+						htmlID: jsElement.htmlID,
+						text: "Morate uneti prezime."
+					  });
+					}
+				},
 				asker: Xonomy.askString
 			},
 			"mesto": {
 				displayName: "mesto",
 				hasText: true,
+				validate: function (jsElement) {
+					if (jsElement.getText()===""){
+					  Xonomy.warnings.push({
+						htmlID: jsElement.htmlID,
+						text: "Morate uneti mesto."
+					  });
+					}
+				},
 				asker: Xonomy.askString
 			},
 			"ulica": {
 				displayName: "ulica",
 				hasText: true,
+				validate: function (jsElement) {
+					if (jsElement.getText()===""){
+					  Xonomy.warnings.push({
+						htmlID: jsElement.htmlID,
+						text: "Morate uneti ulicu."
+					  });
+					}
+				},
 				asker: Xonomy.askString
 			},
 			"br_ulice": {
 				displayName: "br_ulice",
 				hasText: true,
+				validate: function (jsElement) {
+					if (jsElement.getText()===""){
+					  Xonomy.warnings.push({
+						htmlID: jsElement.htmlID,
+						text: "Morate uneti broj ulice."
+					  });
+					}
+				},
 				asker: Xonomy.askString
 			},
 			"drugi_kontakt_podaci": {

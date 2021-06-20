@@ -106,6 +106,8 @@ public class Zahtev {
     protected XMLGregorianCalendar datum;
     @XmlAttribute(name = "id")
     protected String id;
+    @XmlAttribute(name = "stanje")
+    protected String stanje;
 
     /**
      * Gets the value of the naziv property.
@@ -275,6 +277,13 @@ public class Zahtev {
         this.id = value;
     }
 
+    public String getStanje() {
+        return stanje;
+    }
+
+    public void setStanje(String stanje) {
+        this.stanje = stanje;
+    }
 
     /**
      * <p>Java class for anonymous complex type.
@@ -447,7 +456,7 @@ public class Zahtev {
             protected String uvidDokument;
             @XmlElement(name = "kopija_dokument")
             protected String kopijaDokument;
-            @XmlElement(name = "dostavljanje_kopije", required = true)
+            @XmlElement(name = "dostavljanje_kopije")
             protected Zahtev.Sadrzaj.TipoviZahteva.DostavljanjeKopije dostavljanjeKopije;
 
             /**

@@ -21,12 +21,10 @@ public class ZahtevicirController {
     private ZahtevicirService zahtevicirService;
 
     @PreAuthorize("hasRole('ROLE_GRADJANIN')")
-
-
-    @PostMapping(value = "/addText", consumes = MediaType.TEXT_PLAIN_VALUE)
-    public ResponseEntity<String> addZahtevText(@RequestBody String text) throws Exception {
+    @PostMapping(value = "/addText", consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<?> addZahtevText(@RequestBody String text) throws Exception {
         zahtevicirService.addZahtevFromText(text);
-        return new ResponseEntity<String>("Done", HttpStatus.OK);
+        return new ResponseEntity<>( HttpStatus.CREATED);
     }
     @PreAuthorize("hasRole('ROLE_GRADJANIN')")
     @PostMapping(value = "/addZahtev")
