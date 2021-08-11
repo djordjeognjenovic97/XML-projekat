@@ -24,8 +24,22 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  kreirajZalbaCutanje() {
+    this.router.navigateByUrl('/kreirajZalbaCutanje');
+  }
+  kreirajZalbaOdbijen() {
+    this.router.navigateByUrl('/kreirajZalbaOdbijen');
+  }
+  zalbeGradjanin() {
+    this.router.navigateByUrl('/zalbe-gradjanin');
+  }
+  resenjaGradjanin() {
+    this.router.navigateByUrl('/resenja-gradjanin');
+  }
   getRole(): string {
+  
     let item: string = localStorage.getItem('user');
+  
 
 		if (!item) {
 			this.role = undefined;

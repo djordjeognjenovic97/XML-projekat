@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { AddZahtevComponent } from './zahtev/add-zahtev/add-zahtev.component';
 import { ListaZahtevComponent } from './zahtev/lista-zahtev/lista-zahtev.component';
 import { ListaObavestenjaComponent } from './obavestenja/lista-obavestenja/lista-obavestenja.component';
+import { ListaZahtevSluzbenikComponent } from './zahtev/lista-zahtev-sluzbenik/lista-zahtev-sluzbenik.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ListaObavestenjaComponent } from './obavestenja/lista-obavestenja/lista
     HomeComponent,
     AddZahtevComponent,
     ListaZahtevComponent,
-    ListaObavestenjaComponent
+    ListaObavestenjaComponent,
+    ListaZahtevSluzbenikComponent
   ],
   imports: [
     BrowserModule,

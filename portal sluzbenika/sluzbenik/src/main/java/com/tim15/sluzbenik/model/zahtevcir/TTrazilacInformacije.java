@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.*;
     "prezime",
     "adresa",
     "drugiKontaktPodaci"
+
 })
 public class TTrazilacInformacije {
 

@@ -15,8 +15,10 @@ import org.xml.sax.SAXException;
 
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.soap.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -74,11 +76,65 @@ public class ZahtevicirService {
         ArrayList<String> ids=new ArrayList<>();
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();
         Korisnik user=(Korisnik) auth.getPrincipal();
-        for(Zahtev z : zahtevs){
-            if(z.getTrazilacInformacije().getEmail()!=null &&z.getTrazilacInformacije().getEmail().equalsIgnoreCase(user.getEmail())){
+        for(Zahtev z : zahtevs) {
+            if (z.getTrazilacInformacije().getEmail() != null && z.getTrazilacInformacije().getEmail().equalsIgnoreCase(user.getEmail())) {
                 ids.add(z.getId());
             }
         }
         return ids;
+    }
+
+    public void odbijZahtev(String id) throws Exception {
+        Zahtev zahtev=zahtevicirRepository.findRealZahtevById(id);
+        zahtev.setStanje("odbijen");
+
+        String text = jaxbParser.marshallString(Zahtev.class,zahtev);
+        zahtevicirRepository.saveZahtevFromText(text, id);
+        //metadataExtractor.extractMetadata(text);
+        //FusekiWriterExample.saveRDF();
+
+        odbijZahtevMailom(id,zahtev.getTrazilacInformacije().getEmail());
+    }
+
+    public ArrayList<String> getAllZahtevi() throws Exception {
+        ArrayList<Zahtev> zahtevs= zahtevicirRepository.findAll();
+        ArrayList<String> ids=new ArrayList<>();
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        Korisnik user=(Korisnik) auth.getPrincipal();
+        for(Zahtev z : zahtevs){
+            ids.add(z.getId());
+        }
+        System.out.println(ids);
+        return ids;
+    }
+
+    private void odbijZahtevMailom(String id,String to) throws SOAPException {
+
+
+        String soapEndpointUrl = "http://localhost:8088/ws/email";
+        SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
+        SOAPConnection soapConnection = soapConnectionFactory.createConnection();
+        MessageFactory messageFactory = MessageFactory.newInstance();
+        SOAPMessage soapMessage = messageFactory.createMessage();
+        SOAPPart soapPart = soapMessage.getSOAPPart();
+
+        SOAPEnvelope envelope = soapPart.getEnvelope();
+        envelope.addNamespaceDeclaration("es", "http://email");
+
+        SOAPBody soapBody = envelope.getBody();
+        envelope.addNamespaceDeclaration("es", "http://email");
+        SOAPElement pismoElem = soapBody.addChildElement("email", "es");
+        pismoElem.setAttribute("attachmentType", "");
+        SOAPElement primalacElem = pismoElem.addChildElement("to", "es");
+        primalacElem.addTextNode(to);
+        SOAPElement naslovElem = pismoElem.addChildElement("subject", "es");
+        naslovElem.addTextNode("Odbijanje zahteva");
+        SOAPElement sadrzajElem = pismoElem.addChildElement("content", "es");
+        sadrzajElem.addTextNode("Vas zahtev sa ID brojem:"+id+" je odbijen.");
+        SOAPElement prilogElem = pismoElem.addChildElement("attachment", "es");
+        prilogElem.addTextNode("");
+
+        soapMessage.saveChanges();
+        SOAPMessage soapResponse = soapConnection.call(soapMessage, soapEndpointUrl);
     }
 }

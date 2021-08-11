@@ -21,6 +21,9 @@ export class ZahtevService {
 	public getUsersZahtevi():Observable<any> {
         return this.http.get("http://localhost:8080/api/zahtevi/getUsersZahtevi", {headers: this.headers, responseType: 'text'});
     }
+	public getAllZahtevi():Observable<any> {
+        return this.http.get("http://localhost:8080/api/zahtevi/getAllZahtevi", {headers: this.headers, responseType: 'text'});
+    }
 	public skiniXHTML(id:String):Observable<any> {
         return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniXHTML"+id, {headers: this.headers});
     }
@@ -32,6 +35,9 @@ export class ZahtevService {
     }
 	public skiniJSON(id:String):Observable<any> {
         return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniJSON"+id, {headers: this.headers});
+    }
+	public odbijZahtev(id:String):Observable<any> {
+        return this.http.put<any>("http://localhost:8080/api/zahtevi/odbijZahtev/"+id, {headers: this.headers});
     }
 	public ZahtevSpecification = {
 		validate: function (jsElement) {

@@ -62,4 +62,21 @@ public class ZahtevicirController {
         }
         return new ResponseEntity<IdList>(idss, HttpStatus.OK);
     }
+
+    @PreAuthorize("hasRole('ROLE_SLUZBENIK')")
+    @GetMapping(value = "/getAllZahtevi",consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<IdList> getZahteviAll() throws Exception {
+        ArrayList<String> ids = zahtevicirService.getAllZahtevi();
+        IdList idss=new IdList(ids);
+        if(ids == null) {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<IdList>(idss, HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/odbijZahtev/{id}")
+    public ResponseEntity<?> odbijZahtev(@PathVariable String id) throws Exception {
+        zahtevicirService.odbijZahtev(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

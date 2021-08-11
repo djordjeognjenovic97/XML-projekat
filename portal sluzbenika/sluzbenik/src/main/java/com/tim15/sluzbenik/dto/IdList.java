@@ -8,7 +8,7 @@ import java.util.List;
 @XmlRootElement(name = "idList")
 public class IdList {
 
-    @XmlElement(required = true, name = "ids")
+    @XmlElement(required = true)
     private List<String> id;
 
     public IdList() {
@@ -22,7 +22,7 @@ public class IdList {
         return id;
     }
 
-    public void setIds(List<String> ids) {
-        this.id= ids;
+    public void setIds(List<String> id) {
+        this.id= id;
     }
 }

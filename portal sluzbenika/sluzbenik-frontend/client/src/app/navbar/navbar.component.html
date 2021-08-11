@@ -9,6 +9,13 @@
       <button mat-raised-button color="accent" id="chse-button" (click)="zahtevi()">Zahtevi</button>
       <button mat-raised-button color="accent" id="choose-button" (click)="obavestenja()">Obavestenja</button>
     </div>
+    <div *ngIf="getRole()==='ROLE_SLUZBENIK'">
+      <button mat-raised-button color="accent" id="chse-button" (click)="zahteviSluzbenik()">Zahtevi</button>
+      <button mat-raised-button color="accent" id="choose-button" (click)="obavestenjaSluzbenik()">Obavestenja</button>
+      <button mat-raised-button color="accent" id="chse-button" (click)="resenja()">Resenja</button>
+      <button mat-raised-button color="accent" id="choooose-button" (click)="zalbe()">Zalbe</button>
+      <button mat-raised-button color="accent" id="chuse-button" (click)="izvestaji()">Izvestaji</button>
+    </div>
     <span class="bigspace"></span>
     <div *ngIf="getRole()===undefined">
       <button mat-raised-button color="accent" id="signin-button" (click)="goToLogIn()">Prijava</button>

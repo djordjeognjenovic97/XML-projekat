@@ -7,6 +7,7 @@ import { RoleGuard } from './guards/role.service';
 import { HomeComponent } from './home/home.component';
 import { ListaObavestenjaComponent } from './obavestenja/lista-obavestenja/lista-obavestenja.component';
 import { AddZahtevComponent } from './zahtev/add-zahtev/add-zahtev.component';
+import { ListaZahtevSluzbenikComponent } from './zahtev/lista-zahtev-sluzbenik/lista-zahtev-sluzbenik.component';
 import { ListaZahtevComponent } from './zahtev/lista-zahtev/lista-zahtev.component';
 
 const routes: Routes = [
@@ -30,6 +31,12 @@ const routes: Routes = [
     component : ListaZahtevComponent,
     canActivate: [RoleGuard],
 		data: {expectedRoles: 'ROLE_GRADJANIN'}
+  },
+  {
+    path : 'zahteviSluzbenik',
+    component : ListaZahtevSluzbenikComponent,
+    canActivate: [RoleGuard],
+		data: {expectedRoles: 'ROLE_SLUZBENIK'}
   },
   {
     path : 'obavestenja',

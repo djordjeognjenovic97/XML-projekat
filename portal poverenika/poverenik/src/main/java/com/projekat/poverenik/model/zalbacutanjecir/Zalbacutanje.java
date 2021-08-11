@@ -62,6 +62,8 @@ public class Zalbacutanje {
     protected String mesto;
     @XmlAttribute(name = "br_predmeta", required = true)
     protected String brPredmeta;
+    @XmlAttribute(name = "id_zalbe", required = true)
+    protected String id;
 
     /**
      * Gets the value of the naslov property.
@@ -231,4 +233,11 @@ public class Zalbacutanje {
         this.brPredmeta = value;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

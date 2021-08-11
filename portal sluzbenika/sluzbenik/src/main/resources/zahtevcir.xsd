@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat"
-    xmlns:ftn="https://github.com/djordjeognjenovic97/XML-projekat">
+    targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat/zahtev"
+    xmlns:ftn="https://github.com/djordjeognjenovic97/XML-projekat/zahtev">
     <xs:element name="zahtev">
         <xs:complexType>
             <xs:sequence>
@@ -86,6 +86,7 @@
             <xs:element ref="ftn:adresa"/>
             <xs:element name="drugi_kontakt_podaci" type="xs:string"/>
         </xs:sequence>
+        <xs:attribute name="email" type="xs:string" use="required"/>
     </xs:complexType>
     <xs:complexType name="TOrgan">
         <xs:sequence>

@@ -32,6 +32,21 @@ export class NavbarComponent implements OnInit {
   obavestenja() {
     this.router.navigateByUrl('/obavestenja');
   }
+  zahteviSluzbenik() {
+    this.router.navigateByUrl('/zahteviSluzbenik');
+  }
+  obavestenjaSluzbenik() {
+    this.router.navigateByUrl('/obavestenjaSluzbenik');
+  }
+  resenja() {
+    this.router.navigateByUrl('/resenja');
+  }
+  zalbe() {
+    this.router.navigateByUrl('/zalbe');
+  }
+  izvestaji() {
+    this.router.navigateByUrl('/izvestaji');
+  }
 
   getRole(): string {
     let item: string = localStorage.getItem('user');

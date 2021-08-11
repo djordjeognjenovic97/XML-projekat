@@ -14,6 +14,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { HomeComponent } from './home/home.component';
+import { ListaZalbeComponent } from './zalbeGradjanin/lista-zalbe/lista-zalbe.component';
+import { AddZalbaCutanjeComponent } from './zalbeGradjanin/add-zalba-cutanje/add-zalba-cutanje.component';
+import { AddZalbaOdbijenComponent } from './zalbeGradjanin/add-zalba-odbijen/add-zalba-odbijen.component';
+import { ListaResenjaComponent } from './resenjaGradjanin/lista-resenja/lista-resenja.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     SignupComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    ListaZalbeComponent,
+    AddZalbaCutanjeComponent,
+    AddZalbaOdbijenComponent,
+    ListaResenjaComponent
   ],
   imports: [
     BrowserModule,

@@ -5,5 +5,5 @@
 // Generated on: 2021.04.14 at 07:29:18 PM CEST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.ftn.uns.ac.rs/zalbacutanjecir", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zc", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package com.projekat.poverenik.model.zalbacutanjecir;

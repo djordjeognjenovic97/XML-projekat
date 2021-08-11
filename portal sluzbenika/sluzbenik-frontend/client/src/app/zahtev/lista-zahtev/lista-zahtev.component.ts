@@ -23,14 +23,15 @@ export class ListaZahtevComponent implements OnInit {
   ngOnInit(): void {
     this.zahtevService.getUsersZahtevi().subscribe(
       res => {
+        console.log(res);
         console.log("ABRAKADABRA");
         var convert = require('xml-js');
         this.zahtevi=[];
         const decodedItem =JSON.parse(convert.xml2json(res,{compact: true, ignoreComment: true}));
-        for(var i  in decodedItem.idList.ids){
+        for(var i  in decodedItem.idList.id){
           console.log("var");
-          console.log(decodedItem.idList.ids[i]._text);
-          this.zahtevi.push(decodedItem.idList.ids[i]._text);
+          console.log(decodedItem.idList.id[i]._text);
+          this.zahtevi.push(decodedItem.idList.id[i]._text);
         }
         console.log(this.zahtevi);
       }

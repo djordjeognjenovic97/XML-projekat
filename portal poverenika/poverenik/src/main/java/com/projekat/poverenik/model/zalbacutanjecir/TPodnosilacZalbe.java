@@ -8,10 +8,7 @@
 
 package com.projekat.poverenik.model.zalbacutanjecir;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
@@ -53,6 +50,8 @@ public class TPodnosilacZalbe {
     protected Adresa adresa;
     @XmlElement(name = "drugi_kontakt_podaci", required = true)
     protected String drugiKontaktPodaci;
+    @XmlAttribute(name = "email", required = true)
+    protected String email;
 
     /**
      * Gets the value of the ime property.
@@ -150,4 +149,11 @@ public class TPodnosilacZalbe {
         this.drugiKontaktPodaci = value;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

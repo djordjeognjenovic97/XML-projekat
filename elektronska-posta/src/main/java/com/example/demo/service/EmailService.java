@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.mail.util.ByteArrayDataSource;
 import java.nio.charset.StandardCharsets;
+import com.example.demo.model.Email;
 
 @Service
 public class EmailService {
@@ -40,13 +42,25 @@ public class EmailService {
         mailSender.send(email);
     }*/
     @Async
-    public void send(EmailDTO emaildto) throws MessagingException {
+    public void send(Email email) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,StandardCharsets.UTF_8.name());
+        helper.setTo(email.getTo());
+        helper.setSubject(email.getSubject());
+        helper.setText(email.getContent());
 
-        helper.setTo(emaildto.getTo());
-        helper.setSubject(emaildto.getSubject());
-        helper.setText(emaildto.getText());
+        if(email.getAttachmentType().equals("PDF")) {
+            ByteArrayDataSource dataSource = new ByteArrayDataSource(email.getAttachment(), "application/pdf");
+            helper.addAttachment("dokument.pdf", dataSource);
+        }else if (email.getAttachmentType().equals("HTML")) {
+            ByteArrayDataSource dataSource = new ByteArrayDataSource(email.getAttachment(), "text/html");
+            helper.addAttachment("dokument.html", dataSource);
+        }else if (email.getAttachmentType().equals("ALL")) {
+            ByteArrayDataSource dataSource1 = new ByteArrayDataSource(email.getAttachment(), "text/html");
+            helper.addAttachment("dokument.html", dataSource1);
+            ByteArrayDataSource dataSource2 = new ByteArrayDataSource(email.getAttachment(), "application/pdf");
+            helper.addAttachment("dokument.pdf", dataSource2);
+        }
         mailSender.send(message);
     }
 }

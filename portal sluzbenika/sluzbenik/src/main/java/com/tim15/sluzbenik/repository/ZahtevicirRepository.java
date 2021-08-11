@@ -33,6 +33,13 @@ public class ZahtevicirRepository {
         return document;
     }
 
+    public Zahtev findRealZahtevById(String id) throws Exception {
+        XMLResource xmlResource = existManager.load(collectionId, id);
+        JaxbParser jaxbParser = new JaxbParser();
+        Zahtev zahtev = (Zahtev) jaxbParser.unmarshallXMLResource(Zahtev.class,xmlResource);
+        return zahtev;
+    }
+
     public ArrayList<Zahtev> findAll() throws Exception {
         Collection kolekcijaZahteva = existManager.getOrCreateCollection(collectionId,0);
         ArrayList<Zahtev> zahtevi = new ArrayList<Zahtev>();
