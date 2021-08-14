@@ -7,37 +7,36 @@
 
 
 package com.tim15.sluzbenik.model.zahtevcir;
-
 import javax.xml.bind.annotation.XmlRegistry;
 
 
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the rs.ac.uns.ftn.zahtevcir package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
+ * This object contains factory methods for each
+ * Java content interface and Java element interface
+ * generated in the mypackage package.
+ * <p>An ObjectFactory allows you to programatically
+ * construct new instances of the Java representation
+ * for XML content. The Java representation of XML
+ * content can consist of schema derived interfaces
+ * and classes representing the binding of schema
+ * type definitions, element declarations and model
+ * groups.  Factory methods for each of these are
  * provided in this class.
- * 
+ *
  */
 @XmlRegistry
 public class ObjectFactory {
 
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: rs.ac.uns.ftn.zahtevcir
-     * 
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: mypackage
+     *
      */
     public ObjectFactory() {
     }
 
     /**
-     * Create an instance of {@link Zahtev }
+     * Create an instance of {@linkZahtev }
      *
      */
     public Zahtev createZahtev() {
@@ -69,6 +68,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Zahtev.Id }
+     *
+     */
+    public Zahtev.Id createZahtevId() {
+        return new Zahtev.Id();
+    }
+
+    /**
+     * Create an instance of {@link Zahtev.Mesto }
+     *
+     */
+    public Zahtev.Mesto createZahtevMesto() {
+        return new Zahtev.Mesto();
+    }
+
+    /**
+     * Create an instance of {@link Zahtev.Datum }
+     *
+     */
+    public Zahtev.Datum createZahtevDatum() {
+        return new Zahtev.Datum();
+    }
+
+    /**
      * Create an instance of {@link TTrazilacInformacije }
      *
      */
@@ -77,7 +100,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Adresa }
+     * Create an instance of {@linkAdresa }
      *
      */
     public Adresa createAdresa() {
@@ -85,11 +108,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Zahtev.Sadrzaj.TipoviZahteva.DostavljanjeKopije }
+     * Create an instance of {@linkZahtev.Sadrzaj.TipoviZahteva.DostavljanjeKopije }
      *
      */
     public Zahtev.Sadrzaj.TipoviZahteva.DostavljanjeKopije createZahtevSadrzajTipoviZahtevaDostavljanjeKopije() {
         return new Zahtev.Sadrzaj.TipoviZahteva.DostavljanjeKopije();
+    }
+
+    /**
+     * Create an instance of {@linkTOrgan.Naziv }
+     *
+     */
+    public TOrgan.Naziv createTOrganNaziv() {
+        return new TOrgan.Naziv();
     }
 
 }

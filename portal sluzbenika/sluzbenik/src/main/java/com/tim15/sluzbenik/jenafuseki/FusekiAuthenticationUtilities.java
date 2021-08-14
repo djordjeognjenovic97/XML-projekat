@@ -39,7 +39,7 @@ public class FusekiAuthenticationUtilities {
      *
      * @return the configuration object
      */
-    public static ConnectionProperties loadProperties() throws IOException {
+    public static ConnectionProperties loadProperties(String metadataGraphUri) throws IOException {
         String propsName = "fuseki.properties";
 
         InputStream propsStream = openStream(propsName);
@@ -48,7 +48,7 @@ public class FusekiAuthenticationUtilities {
 
         Properties props = new Properties();
         props.load(propsStream);
-
+        props.setProperty("conn.dataset", metadataGraphUri.substring(1));
         return new ConnectionProperties(props);
     }
 

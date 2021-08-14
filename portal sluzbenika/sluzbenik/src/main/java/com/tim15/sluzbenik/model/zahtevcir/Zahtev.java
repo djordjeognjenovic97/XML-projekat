@@ -8,106 +8,176 @@
 
 package com.tim15.sluzbenik.model.zahtevcir;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
- * &lt;complexType&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="naziv" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="organ" type="{http://www.ftn.uns.ac.rs/zahtevcir}TOrgan"/&gt;
- *         &lt;element name="sadrzaj"&gt;
- *           &lt;complexType&gt;
- *             &lt;complexContent&gt;
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                 &lt;sequence&gt;
- *                   &lt;element name="tipovi_zahteva"&gt;
- *                     &lt;complexType&gt;
- *                       &lt;complexContent&gt;
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                           &lt;sequence&gt;
- *                             &lt;element name="obavestenje_posedovanje" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *                             &lt;element name="uvid_dokument" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *                             &lt;element name="kopija_dokument" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *                             &lt;element name="dostavljanje_kopije"&gt;
- *                               &lt;complexType&gt;
- *                                 &lt;complexContent&gt;
- *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *                                     &lt;sequence&gt;
- *                                       &lt;element name="posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *                                       &lt;element name="elektronska_posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *                                       &lt;element name="faks" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *                                       &lt;element name="drugi_nacin" minOccurs="0"&gt;
- *                                         &lt;simpleType&gt;
- *                                           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *                                             &lt;minLength value="1"/&gt;
- *                                             &lt;maxLength value="100"/&gt;
- *                                           &lt;/restriction&gt;
- *                                         &lt;/simpleType&gt;
- *                                       &lt;/element&gt;
- *                                     &lt;/sequence&gt;
- *                                   &lt;/restriction&gt;
- *                                 &lt;/complexContent&gt;
- *                               &lt;/complexType&gt;
- *                             &lt;/element&gt;
- *                           &lt;/sequence&gt;
- *                         &lt;/restriction&gt;
- *                       &lt;/complexContent&gt;
- *                     &lt;/complexType&gt;
- *                   &lt;/element&gt;
- *                   &lt;element name="informacije_zahtev" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *                 &lt;/sequence&gt;
- *               &lt;/restriction&gt;
- *             &lt;/complexContent&gt;
- *           &lt;/complexType&gt;
- *         &lt;/element&gt;
- *         &lt;element name="trazilac_informacije" type="{http://www.ftn.uns.ac.rs/zahtevcir}TTrazilac_informacije"/&gt;
- *       &lt;/sequence&gt;
- *       &lt;attribute name="mesto" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *       &lt;attribute name="datum" type="{http://www.w3.org/2001/XMLSchema}date" /&gt;
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType>
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="id">
+ *           &lt;complexType>
+ *             &lt;simpleContent>
+ *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                 &lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                 &lt;attribute name="datatype" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *               &lt;/extension>
+ *             &lt;/simpleContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="naziv" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="organ" type="{https://github.com/djordjeognjenovic97/XML-projekat/zahtev}TOrgan"/>
+ *         &lt;element name="sadrzaj">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="tipovi_zahteva">
+ *                     &lt;complexType>
+ *                       &lt;complexContent>
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                           &lt;sequence>
+ *                             &lt;element name="obavestenje_posedovanje" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *                             &lt;element name="uvid_dokument" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *                             &lt;element name="kopija_dokument" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *                             &lt;element name="dostavljanje_kopije">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;choice>
+ *                                       &lt;element name="posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *                                       &lt;element name="elektronska_posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *                                       &lt;element name="faks" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *                                       &lt;element name="drugi_nacin" minOccurs="0">
+ *                                         &lt;simpleType>
+ *                                           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *                                             &lt;minLength value="1"/>
+ *                                             &lt;maxLength value="100"/>
+ *                                           &lt;/restriction>
+ *                                         &lt;/simpleType>
+ *                                       &lt;/element>
+ *                                     &lt;/choice>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                           &lt;/sequence>
+ *                         &lt;/restriction>
+ *                       &lt;/complexContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                   &lt;element name="opis_informacije" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="mesto">
+ *           &lt;complexType>
+ *             &lt;simpleContent>
+ *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                 &lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                 &lt;attribute name="datatype" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *               &lt;/extension>
+ *             &lt;/simpleContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="datum">
+ *           &lt;complexType>
+ *             &lt;simpleContent>
+ *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>date">
+ *                 &lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                 &lt;attribute name="datatype" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *               &lt;/extension>
+ *             &lt;/simpleContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="trazilac_informacije" type="{https://github.com/djordjeognjenovic97/XML-projekat/zahtev}TTrazilac_informacije"/>
+ *       &lt;/sequence>
+ *       &lt;attribute name="stanje" use="required">
+ *         &lt;simpleType>
+ *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *             &lt;enumeration value="podnet"/>
+ *             &lt;enumeration value="usvojen"/>
+ *             &lt;enumeration value="odbijen"/>
+ *             &lt;enumeration value="odbacen"/>
+ *           &lt;/restriction>
+ *         &lt;/simpleType>
+ *       &lt;/attribute>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "naziv",
-    "organ",
-    "sadrzaj",
-    "trazilacInformacije"
+        "id",
+        "naziv",
+        "organ",
+        "sadrzaj",
+        "mesto",
+        "datum",
+        "trazilacInformacije"
 })
-@XmlRootElement(name = "zahtev")
+@XmlRootElement(name = "zahtev", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev")
 public class Zahtev {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
+    protected Zahtev.Id id;
+    @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
     protected String naziv;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
     protected TOrgan organ;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
     protected Zahtev.Sadrzaj sadrzaj;
-    @XmlElement(name = "trazilac_informacije", required = true)
+    @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
+    protected Zahtev.Mesto mesto;
+    @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
+    protected Zahtev.Datum datum;
+    @XmlElement(name = "trazilac_informacije", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
     protected TTrazilacInformacije trazilacInformacije;
-    @XmlAttribute(name = "mesto")
-    protected String mesto;
-    @XmlAttribute(name = "datum")
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar datum;
-    @XmlAttribute(name = "id")
-    protected String id;
-    @XmlAttribute(name = "stanje")
+    @XmlAttribute(name = "stanje", required = true)
     protected String stanje;
+
+    /**
+     * Gets the value of the id property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Zahtev.Id }
+     *
+     */
+    public Zahtev.Id getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Zahtev.Id }
+     *
+     */
+    public void setId(Zahtev.Id value) {
+        this.id = value;
+    }
 
     /**
      * Gets the value of the naziv property.
@@ -182,6 +252,54 @@ public class Zahtev {
     }
 
     /**
+     * Gets the value of the mesto property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Zahtev.Mesto }
+     *
+     */
+    public Zahtev.Mesto getMesto() {
+        return mesto;
+    }
+
+    /**
+     * Sets the value of the mesto property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Zahtev.Mesto }
+     *
+     */
+    public void setMesto(Zahtev.Mesto value) {
+        this.mesto = value;
+    }
+
+    /**
+     * Gets the value of the datum property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Zahtev.Datum }
+     *
+     */
+    public Zahtev.Datum getDatum() {
+        return datum;
+    }
+
+    /**
+     * Sets the value of the datum property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Zahtev.Datum }
+     *
+     */
+    public void setDatum(Zahtev.Datum value) {
+        this.datum = value;
+    }
+
+    /**
      * Gets the value of the trazilacInformacije property.
      *
      * @return
@@ -206,84 +324,29 @@ public class Zahtev {
     }
 
     /**
-     * Gets the value of the mesto property.
+     * Gets the value of the stanje property.
      *
      * @return
      *     possible object is
      *     {@link String }
      *
      */
-    public String getMesto() {
-        return mesto;
-    }
-
-    /**
-     * Sets the value of the mesto property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *
-     */
-    public void setMesto(String value) {
-        this.mesto = value;
-    }
-
-    /**
-     * Gets the value of the datum property.
-     *
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *
-     */
-    public XMLGregorianCalendar getDatum() {
-        return datum;
-    }
-
-    /**
-     * Sets the value of the datum property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *
-     */
-    public void setDatum(XMLGregorianCalendar value) {
-        this.datum = value;
-    }
-
-    /**
-     * Gets the value of the id property.
-     *
-     * @return
-     *     possible object is
-     *     {@link String }
-     *
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * Sets the value of the id property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
-
     public String getStanje() {
         return stanje;
     }
 
-    public void setStanje(String stanje) {
-        this.stanje = stanje;
+    /**
+     * Sets the value of the stanje property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setStanje(String value) {
+        this.stanje = value;
     }
+
 
     /**
      * <p>Java class for anonymous complex type.
@@ -291,64 +354,383 @@ public class Zahtev {
      * <p>The following schema fragment specifies the expected content contained within this class.
      *
      * <pre>
-     * &lt;complexType&gt;
-     *   &lt;complexContent&gt;
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *       &lt;sequence&gt;
-     *         &lt;element name="tipovi_zahteva"&gt;
-     *           &lt;complexType&gt;
-     *             &lt;complexContent&gt;
-     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *                 &lt;sequence&gt;
-     *                   &lt;element name="obavestenje_posedovanje" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-     *                   &lt;element name="uvid_dokument" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-     *                   &lt;element name="kopija_dokument" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-     *                   &lt;element name="dostavljanje_kopije"&gt;
-     *                     &lt;complexType&gt;
-     *                       &lt;complexContent&gt;
-     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-     *                           &lt;sequence&gt;
-     *                             &lt;element name="posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-     *                             &lt;element name="elektronska_posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-     *                             &lt;element name="faks" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-     *                             &lt;element name="drugi_nacin" minOccurs="0"&gt;
-     *                               &lt;simpleType&gt;
-     *                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-     *                                   &lt;minLength value="1"/&gt;
-     *                                   &lt;maxLength value="100"/&gt;
-     *                                 &lt;/restriction&gt;
-     *                               &lt;/simpleType&gt;
-     *                             &lt;/element&gt;
-     *                           &lt;/sequence&gt;
-     *                         &lt;/restriction&gt;
-     *                       &lt;/complexContent&gt;
-     *                     &lt;/complexType&gt;
-     *                   &lt;/element&gt;
-     *                 &lt;/sequence&gt;
-     *               &lt;/restriction&gt;
-     *             &lt;/complexContent&gt;
-     *           &lt;/complexType&gt;
-     *         &lt;/element&gt;
-     *         &lt;element name="informacije_zahtev" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
-     *       &lt;/sequence&gt;
-     *     &lt;/restriction&gt;
-     *   &lt;/complexContent&gt;
-     * &lt;/complexType&gt;
+     * &lt;complexType>
+     *   &lt;simpleContent>
+     *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>date">
+     *       &lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *       &lt;attribute name="datatype" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *     &lt;/extension>
+     *   &lt;/simpleContent>
+     * &lt;/complexType>
      * </pre>
      *
      *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "tipoviZahteva",
-        "informacijeZahtev"
+            "value"
+    })
+    public static class Datum {
+
+        @XmlValue
+        @XmlSchemaType(name = "date")
+        protected XMLGregorianCalendar value;
+        @XmlAttribute(name = "property")
+        protected String property;
+        @XmlAttribute(name = "datatype")
+        protected String datatype;
+
+        /**
+         * Gets the value of the value property.
+         *
+         * @return
+         *     possible object is
+         *     {@link XMLGregorianCalendar }
+         *
+         */
+        public XMLGregorianCalendar getValue() {
+            return value;
+        }
+
+        /**
+         * Sets the value of the value property.
+         *
+         * @param value
+         *     allowed object is
+         *     {@link XMLGregorianCalendar }
+         *
+         */
+        public void setValue(XMLGregorianCalendar value) {
+            this.value = value;
+        }
+
+        /**
+         * Gets the value of the property property.
+         *
+         * @return
+         *     possible object is
+         *     {@link String }
+         *
+         */
+        public String getProperty() {
+            return property;
+        }
+
+        /**
+         * Sets the value of the property property.
+         *
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *
+         */
+        public void setProperty(String value) {
+            this.property = value;
+        }
+
+        /**
+         * Gets the value of the datatype property.
+         *
+         * @return
+         *     possible object is
+         *     {@link String }
+         *
+         */
+        public String getDatatype() {
+            return datatype;
+        }
+
+        /**
+         * Sets the value of the datatype property.
+         *
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *
+         */
+        public void setDatatype(String value) {
+            this.datatype = value;
+        }
+
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     *
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     *
+     * <pre>
+     * &lt;complexType>
+     *   &lt;simpleContent>
+     *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *       &lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *       &lt;attribute name="datatype" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *     &lt;/extension>
+     *   &lt;/simpleContent>
+     * &lt;/complexType>
+     * </pre>
+     *
+     *
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+            "value"
+    })
+    public static class Id {
+
+        @XmlValue
+        protected String value;
+        @XmlAttribute(name = "property")
+        protected String property;
+        @XmlAttribute(name = "datatype")
+        protected String datatype;
+
+        /**
+         * Gets the value of the value property.
+         *
+         * @return
+         *     possible object is
+         *     {@link String }
+         *
+         */
+        public String getValue() {
+            return value;
+        }
+
+        /**
+         * Sets the value of the value property.
+         *
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *
+         */
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        /**
+         * Gets the value of the property property.
+         *
+         * @return
+         *     possible object is
+         *     {@link String }
+         *
+         */
+        public String getProperty() {
+            return property;
+        }
+
+        /**
+         * Sets the value of the property property.
+         *
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *
+         */
+        public void setProperty(String value) {
+            this.property = value;
+        }
+
+        /**
+         * Gets the value of the datatype property.
+         *
+         * @return
+         *     possible object is
+         *     {@link String }
+         *
+         */
+        public String getDatatype() {
+            return datatype;
+        }
+
+        /**
+         * Sets the value of the datatype property.
+         *
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *
+         */
+        public void setDatatype(String value) {
+            this.datatype = value;
+        }
+
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     *
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     *
+     * <pre>
+     * &lt;complexType>
+     *   &lt;simpleContent>
+     *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *       &lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *       &lt;attribute name="datatype" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *     &lt;/extension>
+     *   &lt;/simpleContent>
+     * &lt;/complexType>
+     * </pre>
+     *
+     *
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+            "value"
+    })
+    public static class Mesto {
+
+        @XmlValue
+        protected String value;
+        @XmlAttribute(name = "property")
+        protected String property;
+        @XmlAttribute(name = "datatype")
+        protected String datatype;
+
+        /**
+         * Gets the value of the value property.
+         *
+         * @return
+         *     possible object is
+         *     {@link String }
+         *
+         */
+        public String getValue() {
+            return value;
+        }
+
+        /**
+         * Sets the value of the value property.
+         *
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *
+         */
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        /**
+         * Gets the value of the property property.
+         *
+         * @return
+         *     possible object is
+         *     {@link String }
+         *
+         */
+        public String getProperty() {
+            return property;
+        }
+
+        /**
+         * Sets the value of the property property.
+         *
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *
+         */
+        public void setProperty(String value) {
+            this.property = value;
+        }
+
+        /**
+         * Gets the value of the datatype property.
+         *
+         * @return
+         *     possible object is
+         *     {@link String }
+         *
+         */
+        public String getDatatype() {
+            return datatype;
+        }
+
+        /**
+         * Sets the value of the datatype property.
+         *
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *
+         */
+        public void setDatatype(String value) {
+            this.datatype = value;
+        }
+
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     *
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     *
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="tipovi_zahteva">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;sequence>
+     *                   &lt;element name="obavestenje_posedovanje" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *                   &lt;element name="uvid_dokument" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *                   &lt;element name="kopija_dokument" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *                   &lt;element name="dostavljanje_kopije">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;choice>
+     *                             &lt;element name="posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *                             &lt;element name="elektronska_posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *                             &lt;element name="faks" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *                             &lt;element name="drugi_nacin" minOccurs="0">
+     *                               &lt;simpleType>
+     *                                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+     *                                   &lt;minLength value="1"/>
+     *                                   &lt;maxLength value="100"/>
+     *                                 &lt;/restriction>
+     *                               &lt;/simpleType>
+     *                             &lt;/element>
+     *                           &lt;/choice>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                 &lt;/sequence>
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *         &lt;element name="opis_informacije" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     *
+     *
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+            "tipoviZahteva",
+            "opisInformacije"
     })
     public static class Sadrzaj {
 
-        @XmlElement(name = "tipovi_zahteva", required = true)
+        @XmlElement(name = "tipovi_zahteva", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
         protected Zahtev.Sadrzaj.TipoviZahteva tipoviZahteva;
-        @XmlElement(name = "informacije_zahtev", required = true)
-        protected String informacijeZahtev;
+        @XmlElement(name = "opis_informacije", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
+        protected String opisInformacije;
 
         /**
          * Gets the value of the tipoviZahteva property.
@@ -375,27 +757,27 @@ public class Zahtev {
         }
 
         /**
-         * Gets the value of the informacijeZahtev property.
+         * Gets the value of the opisInformacije property.
          *
          * @return
          *     possible object is
          *     {@link String }
          *
          */
-        public String getInformacijeZahtev() {
-            return informacijeZahtev;
+        public String getOpisInformacije() {
+            return opisInformacije;
         }
 
         /**
-         * Sets the value of the informacijeZahtev property.
+         * Sets the value of the opisInformacije property.
          *
          * @param value
          *     allowed object is
          *     {@link String }
          *
          */
-        public void setInformacijeZahtev(String value) {
-            this.informacijeZahtev = value;
+        public void setOpisInformacije(String value) {
+            this.opisInformacije = value;
         }
 
 
@@ -405,58 +787,58 @@ public class Zahtev {
          * <p>The following schema fragment specifies the expected content contained within this class.
          *
          * <pre>
-         * &lt;complexType&gt;
-         *   &lt;complexContent&gt;
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-         *       &lt;sequence&gt;
-         *         &lt;element name="obavestenje_posedovanje" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-         *         &lt;element name="uvid_dokument" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-         *         &lt;element name="kopija_dokument" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-         *         &lt;element name="dostavljanje_kopije"&gt;
-         *           &lt;complexType&gt;
-         *             &lt;complexContent&gt;
-         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-         *                 &lt;sequence&gt;
-         *                   &lt;element name="posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-         *                   &lt;element name="elektronska_posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-         *                   &lt;element name="faks" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-         *                   &lt;element name="drugi_nacin" minOccurs="0"&gt;
-         *                     &lt;simpleType&gt;
-         *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-         *                         &lt;minLength value="1"/&gt;
-         *                         &lt;maxLength value="100"/&gt;
-         *                       &lt;/restriction&gt;
-         *                     &lt;/simpleType&gt;
-         *                   &lt;/element&gt;
-         *                 &lt;/sequence&gt;
-         *               &lt;/restriction&gt;
-         *             &lt;/complexContent&gt;
-         *           &lt;/complexType&gt;
-         *         &lt;/element&gt;
-         *       &lt;/sequence&gt;
-         *     &lt;/restriction&gt;
-         *   &lt;/complexContent&gt;
-         * &lt;/complexType&gt;
+         * &lt;complexType>
+         *   &lt;complexContent>
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;sequence>
+         *         &lt;element name="obavestenje_posedovanje" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         *         &lt;element name="uvid_dokument" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         *         &lt;element name="kopija_dokument" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         *         &lt;element name="dostavljanje_kopije">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;choice>
+         *                   &lt;element name="posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         *                   &lt;element name="elektronska_posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         *                   &lt;element name="faks" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+         *                   &lt;element name="drugi_nacin" minOccurs="0">
+         *                     &lt;simpleType>
+         *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+         *                         &lt;minLength value="1"/>
+         *                         &lt;maxLength value="100"/>
+         *                       &lt;/restriction>
+         *                     &lt;/simpleType>
+         *                   &lt;/element>
+         *                 &lt;/choice>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *       &lt;/sequence>
+         *     &lt;/restriction>
+         *   &lt;/complexContent>
+         * &lt;/complexType>
          * </pre>
          *
          *
          */
         @XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "", propOrder = {
-            "obavestenjePosedovanje",
-            "uvidDokument",
-            "kopijaDokument",
-            "dostavljanjeKopije"
+                "obavestenjePosedovanje",
+                "uvidDokument",
+                "kopijaDokument",
+                "dostavljanjeKopije"
         })
         public static class TipoviZahteva {
 
-            @XmlElement(name = "obavestenje_posedovanje")
+            @XmlElement(name = "obavestenje_posedovanje", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev")
             protected String obavestenjePosedovanje;
-            @XmlElement(name = "uvid_dokument")
+            @XmlElement(name = "uvid_dokument", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev")
             protected String uvidDokument;
-            @XmlElement(name = "kopija_dokument")
+            @XmlElement(name = "kopija_dokument", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev")
             protected String kopijaDokument;
-            @XmlElement(name = "dostavljanje_kopije")
+            @XmlElement(name = "dostavljanje_kopije", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
             protected Zahtev.Sadrzaj.TipoviZahteva.DostavljanjeKopije dostavljanjeKopije;
 
             /**
@@ -558,56 +940,58 @@ public class Zahtev {
 
             /**
              * <p>Java class for anonymous complex type.
-             * 
+             *
              * <p>The following schema fragment specifies the expected content contained within this class.
-             * 
+             *
              * <pre>
-             * &lt;complexType&gt;
-             *   &lt;complexContent&gt;
-             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
-             *       &lt;sequence&gt;
-             *         &lt;element name="posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-             *         &lt;element name="elektronska_posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-             *         &lt;element name="faks" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
-             *         &lt;element name="drugi_nacin" minOccurs="0"&gt;
-             *           &lt;simpleType&gt;
-             *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
-             *               &lt;minLength value="1"/&gt;
-             *               &lt;maxLength value="100"/&gt;
-             *             &lt;/restriction&gt;
-             *           &lt;/simpleType&gt;
-             *         &lt;/element&gt;
-             *       &lt;/sequence&gt;
-             *     &lt;/restriction&gt;
-             *   &lt;/complexContent&gt;
-             * &lt;/complexType&gt;
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;choice>
+             *         &lt;element name="posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+             *         &lt;element name="elektronska_posta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+             *         &lt;element name="faks" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+             *         &lt;element name="drugi_nacin" minOccurs="0">
+             *           &lt;simpleType>
+             *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+             *               &lt;minLength value="1"/>
+             *               &lt;maxLength value="100"/>
+             *             &lt;/restriction>
+             *           &lt;/simpleType>
+             *         &lt;/element>
+             *       &lt;/choice>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
              * </pre>
-             * 
-             * 
+             *
+             *
              */
             @XmlAccessorType(XmlAccessType.FIELD)
             @XmlType(name = "", propOrder = {
-                "posta",
-                "elektronskaPosta",
-                "faks",
-                "drugiNacin"
+                    "posta",
+                    "elektronskaPosta",
+                    "faks",
+                    "drugiNacin"
             })
             public static class DostavljanjeKopije {
 
+                @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev")
                 protected String posta;
-                @XmlElement(name = "elektronska_posta")
+                @XmlElement(name = "elektronska_posta", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev")
                 protected String elektronskaPosta;
+                @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev")
                 protected String faks;
-                @XmlElement(name = "drugi_nacin")
+                @XmlElement(name = "drugi_nacin", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev")
                 protected String drugiNacin;
 
                 /**
                  * Gets the value of the posta property.
-                 * 
+                 *
                  * @return
                  *     possible object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public String getPosta() {
                     return posta;
@@ -615,11 +999,11 @@ public class Zahtev {
 
                 /**
                  * Sets the value of the posta property.
-                 * 
+                 *
                  * @param value
                  *     allowed object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public void setPosta(String value) {
                     this.posta = value;
@@ -627,11 +1011,11 @@ public class Zahtev {
 
                 /**
                  * Gets the value of the elektronskaPosta property.
-                 * 
+                 *
                  * @return
                  *     possible object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public String getElektronskaPosta() {
                     return elektronskaPosta;
@@ -639,11 +1023,11 @@ public class Zahtev {
 
                 /**
                  * Sets the value of the elektronskaPosta property.
-                 * 
+                 *
                  * @param value
                  *     allowed object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public void setElektronskaPosta(String value) {
                     this.elektronskaPosta = value;
@@ -651,11 +1035,11 @@ public class Zahtev {
 
                 /**
                  * Gets the value of the faks property.
-                 * 
+                 *
                  * @return
                  *     possible object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public String getFaks() {
                     return faks;
@@ -663,11 +1047,11 @@ public class Zahtev {
 
                 /**
                  * Sets the value of the faks property.
-                 * 
+                 *
                  * @param value
                  *     allowed object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public void setFaks(String value) {
                     this.faks = value;
@@ -675,11 +1059,11 @@ public class Zahtev {
 
                 /**
                  * Gets the value of the drugiNacin property.
-                 * 
+                 *
                  * @return
                  *     possible object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public String getDrugiNacin() {
                     return drugiNacin;
@@ -687,11 +1071,11 @@ public class Zahtev {
 
                 /**
                  * Sets the value of the drugiNacin property.
-                 * 
+                 *
                  * @param value
                  *     allowed object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public void setDrugiNacin(String value) {
                     this.drugiNacin = value;
@@ -704,3 +1088,5 @@ public class Zahtev {
     }
 
 }
+
+

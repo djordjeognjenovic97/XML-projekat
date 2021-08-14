@@ -24,6 +24,12 @@ export class ZahtevService {
 	public getAllZahtevi():Observable<any> {
         return this.http.get("http://localhost:8080/api/zahtevi/getAllZahtevi", {headers: this.headers, responseType: 'text'});
     }
+	public getSearchZahtevi(content:String):Observable<any> {
+        return this.http.get("http://localhost:8080/api/zahtevi/getSearchZahtevi/"+content, {headers: this.headers, responseType: 'text'});
+    }
+	public getSearchMetadataZahtevi(content:any):Observable<any> {
+        return this.http.post("http://localhost:8080/api/zahtevi/getSearchMetadataZahtevi",content,{headers: this.headers, responseType: 'text'});
+    }
 	public skiniXHTML(id:String):Observable<any> {
         return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniXHTML"+id, {headers: this.headers});
     }
@@ -62,29 +68,13 @@ export class ZahtevService {
 				"xsi:schemaLocation": {
 					isInvisible: true,
 				  },
-				"datum":{
-					isInvisible: true
-					// displayName: "datum",
-					// hasText: true,
-					// asker: Xonomy.askCalendar
-				},
 				"stanje":{
 					isInvisible: true
-				},
-				"mesto": {
-					displayName: "mesto",
-					hasText: true,
-					validate: function (jsElement) {
-						if (jsElement.value===""){
-						  Xonomy.warnings.push({
-							htmlID: jsElement.htmlID,
-							text: "Morate uneti mesto podnosenja zahteva."
-						  });
-						}
-					},
-					asker: Xonomy.askString,
-				},
+				}
 			  },
+			},
+			"id":{
+				isInvisible: true
 			},
 			"naziv": {
 				displayName: "naziv",
@@ -226,6 +216,12 @@ export class ZahtevService {
 				displayName: "opis_informacije",
 				hasText: true,
 				asker: Xonomy.askString
+			},
+			"datum":{
+				isInvisible: true
+				// displayName: "datum",
+				// hasText: true,
+				// asker: Xonomy.askCalendar
 			},
 			"ime": {
 				displayName: "ime",

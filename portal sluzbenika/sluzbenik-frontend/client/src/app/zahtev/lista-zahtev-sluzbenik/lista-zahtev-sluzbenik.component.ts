@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Zahtev } from 'src/app/models/zahtev';
 import { ZahtevService } from 'src/app/services/zahtev.service';
 
 declare var require: any
@@ -12,15 +14,30 @@ declare var require: any
 })
 export class ListaZahtevSluzbenikComponent implements OnInit {
 
-  zahtevi: String[] |undefined;
+  zahtevi: Zahtev[] |undefined;
+  regForm1:FormGroup;
+  regForm2:FormGroup;
 
   constructor(
     private toastr: ToastrService,
     private router:Router,
-    private zahtevService: ZahtevService
-  ) { }
+    private zahtevService: ZahtevService,
+  	private fBuilder: FormBuilder,
+  ) {
+    this.regForm1 = this.fBuilder.group({
+			podatak: [""]
+      });
+    this.regForm2 = this.fBuilder.group({
+			idDokumenta: [""],
+      mesto: [""],
+      datum: [""],
+      nazivOrgana: [""],
+      });
+   }
 
   ngOnInit(): void {
+    this.regForm1.reset();
+    this.regForm2.reset();
     this.zahtevService.getAllZahtevi().subscribe(
       res => {
         console.log(res);
@@ -28,10 +45,16 @@ export class ListaZahtevSluzbenikComponent implements OnInit {
         var convert = require('xml-js');
         this.zahtevi=[];
         const decodedItem =JSON.parse(convert.xml2json(res,{compact: true, ignoreComment: true}));
-        for(var i  in decodedItem.idList.id){
-          console.log("var");
-          console.log(decodedItem.idList.id[i]._text);
-          this.zahtevi.push(decodedItem.idList.id[i]._text);
+        if(decodedItem.listaZahtevaDTO.lista.constructor==[].constructor){
+          for(var i  in decodedItem.listaZahtevaDTO.lista){
+            this.zahtevi.push(new Zahtev(decodedItem.listaZahtevaDTO.lista[i].id._text,
+              decodedItem.listaZahtevaDTO.lista[i].mesto._text,decodedItem.listaZahtevaDTO.lista[i].datum._text,
+              decodedItem.listaZahtevaDTO.lista[i].nazivOrgana._text));
+          }
+        }else{
+          this.zahtevi.push(new Zahtev(decodedItem.listaZahtevaDTO.lista.id._text,
+            decodedItem.listaZahtevaDTO.lista.mesto._text,decodedItem.listaZahtevaDTO.lista.datum._text,
+            decodedItem.listaZahtevaDTO.lista.nazivOrgana._text));
         }
         console.log(this.zahtevi);
       }
@@ -97,5 +120,56 @@ export class ListaZahtevSluzbenikComponent implements OnInit {
       }
     );
   }
+	regIn1(){
+    this.zahtevService.getSearchZahtevi(this.regForm1.value.podatak).subscribe(
+      res => {
+        var convert = require('xml-js');
+        this.zahtevi=[];
+        const decodedItem =JSON.parse(convert.xml2json(res,{compact: true, ignoreComment: true}));
+        if(decodedItem.listaZahtevaDTO.lista.constructor==[].constructor){
+          for(var i  in decodedItem.listaZahtevaDTO.lista){
+            this.zahtevi.push(new Zahtev(decodedItem.listaZahtevaDTO.lista[i].id._text,
+              decodedItem.listaZahtevaDTO.lista[i].mesto._text,decodedItem.listaZahtevaDTO.lista[i].datum._text,
+              decodedItem.listaZahtevaDTO.lista[i].nazivOrgana._text));
+          }
+        }else{
+          this.zahtevi.push(new Zahtev(decodedItem.listaZahtevaDTO.lista.id._text,
+            decodedItem.listaZahtevaDTO.lista.mesto._text,decodedItem.listaZahtevaDTO.lista.datum._text,
+            decodedItem.listaZahtevaDTO.lista.nazivOrgana._text));
+        }
+      }
+      );
+  }
+  regIn2(){
+        const search: any = { 
+    Query: { 
+      IdDokumenta: { _text: '' }, Mesto: { _text: '' }, Datum: { _text: '' }, NazivOrgana: { _text: '' } } };
+    search.Query.IdDokumenta = this.regForm2.value.idDokumenta;
+    search.Query.Mesto = this.regForm2.value.mesto;
+    search.Query.Datum = this.regForm2.value.datum;
+    search.Query.NazivOrgana = this.regForm2.value.nazivOrgana;
 
+    var convert = require('xml-js');
+    var searchXML = convert.js2xml(search, {compact: true, ignoreComment: true});
+
+    this.zahtevService.getSearchMetadataZahtevi(searchXML).subscribe(
+      res => {
+        //console.log(res);
+        var convert = require('xml-js');
+        this.zahtevi=[];
+        const decodedItem =JSON.parse(convert.xml2json(res,{compact: true, ignoreComment: true}));
+        if(decodedItem.listaZahtevaDTO.lista.constructor==[].constructor){
+          for(var i  in decodedItem.listaZahtevaDTO.lista){
+            this.zahtevi.push(new Zahtev(decodedItem.listaZahtevaDTO.lista[i].id._text,
+              decodedItem.listaZahtevaDTO.lista[i].mesto._text,decodedItem.listaZahtevaDTO.lista[i].datum._text,
+              decodedItem.listaZahtevaDTO.lista[i].nazivOrgana._text));
+          }
+        }else{
+          this.zahtevi.push(new Zahtev(decodedItem.listaZahtevaDTO.lista.id._text,
+            decodedItem.listaZahtevaDTO.lista.mesto._text,decodedItem.listaZahtevaDTO.lista.datum._text,
+            decodedItem.listaZahtevaDTO.lista.nazivOrgana._text));
+        }
+      }
+      );
+  }
 }

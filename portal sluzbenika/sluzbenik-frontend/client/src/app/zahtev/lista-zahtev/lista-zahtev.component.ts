@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Zahtev } from 'src/app/models/zahtev';
 import { ZahtevService } from 'src/app/services/zahtev.service';
 
 declare var require: any
@@ -12,7 +13,7 @@ declare var require: any
 })
 export class ListaZahtevComponent implements OnInit {
 
-  zahtevi: String[] |undefined;
+  zahtevi: Zahtev[] |undefined;
 
   constructor(
     private toastr: ToastrService,
@@ -28,10 +29,16 @@ export class ListaZahtevComponent implements OnInit {
         var convert = require('xml-js');
         this.zahtevi=[];
         const decodedItem =JSON.parse(convert.xml2json(res,{compact: true, ignoreComment: true}));
-        for(var i  in decodedItem.idList.id){
-          console.log("var");
-          console.log(decodedItem.idList.id[i]._text);
-          this.zahtevi.push(decodedItem.idList.id[i]._text);
+        if(decodedItem.listaZahtevaDTO.lista.constructor==[].constructor){
+          for(var i  in decodedItem.listaZahtevaDTO.lista){
+            this.zahtevi.push(new Zahtev(decodedItem.listaZahtevaDTO.lista[i].id._text,
+              decodedItem.listaZahtevaDTO.lista[i].mesto._text,decodedItem.listaZahtevaDTO.lista[i].datum._text,
+              decodedItem.listaZahtevaDTO.lista[i].nazivOrgana._text));
+          }
+        }else{
+          this.zahtevi.push(new Zahtev(decodedItem.listaZahtevaDTO.lista.id._text,
+            decodedItem.listaZahtevaDTO.lista.mesto._text,decodedItem.listaZahtevaDTO.lista.datum._text,
+            decodedItem.listaZahtevaDTO.lista.nazivOrgana._text));
         }
         console.log(this.zahtevi);
       }

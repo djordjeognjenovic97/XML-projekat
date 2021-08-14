@@ -1,6 +1,8 @@
 package com.tim15.sluzbenik.controller;
 
-import com.tim15.sluzbenik.dto.IdList;
+import com.tim15.sluzbenik.dto.ListaZahtevaDTO;
+import com.tim15.sluzbenik.dto.QueryZahtevDTO;
+import com.tim15.sluzbenik.dto.ZahtevDTO;
 import com.tim15.sluzbenik.jaxb.JaxbParser;
 import com.tim15.sluzbenik.model.korisnici.Korisnik;
 import com.tim15.sluzbenik.model.zahtevcir.Zahtev;
@@ -53,25 +55,41 @@ public class ZahtevicirController {
         return new ResponseEntity<>(document, HttpStatus.OK);
     }
     @PreAuthorize("hasRole('ROLE_GRADJANIN')")
-    @GetMapping(value = "/getUsersZahtevi",consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<IdList> getZahteviUsers() throws Exception {
-        ArrayList<String> ids = zahtevicirService.getUsersZahtevi();
-        IdList idss=new IdList(ids);
+    @GetMapping(value = "/getUsersZahtevi",consumes = MediaType.APPLICATION_XML_VALUE,produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<ListaZahtevaDTO> getZahteviUsers() throws Exception {
+        List<ZahtevDTO> ids = zahtevicirService.getUsersZahtevi();
         if(ids == null) {
             return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<IdList>(idss, HttpStatus.OK);
+        return new ResponseEntity<ListaZahtevaDTO>(new ListaZahtevaDTO(ids), HttpStatus.OK);
     }
 
     @PreAuthorize("hasRole('ROLE_SLUZBENIK')")
     @GetMapping(value = "/getAllZahtevi",consumes = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<IdList> getZahteviAll() throws Exception {
-        ArrayList<String> ids = zahtevicirService.getAllZahtevi();
-        IdList idss=new IdList(ids);
+    public ResponseEntity<ListaZahtevaDTO> getZahteviAll() throws Exception {
+        List<ZahtevDTO> ids = zahtevicirService.getAllZahtevi();
         if(ids == null) {
             return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<IdList>(idss, HttpStatus.OK);
+        return new ResponseEntity<ListaZahtevaDTO>(new ListaZahtevaDTO(ids), HttpStatus.OK);
+    }
+    @PreAuthorize("hasRole('ROLE_SLUZBENIK')")
+    @GetMapping(value = "/getSearchZahtevi/{content}",consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<ListaZahtevaDTO> getZahteviSearch(@PathVariable String content) throws Exception {
+        List<ZahtevDTO> ids = zahtevicirService.getSearchZahtevi(content);
+        if(ids == null) {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<ListaZahtevaDTO>(new ListaZahtevaDTO(ids), HttpStatus.OK);
+    }
+    @PreAuthorize("hasRole('ROLE_SLUZBENIK')")
+    @PostMapping(value = "/getSearchMetadataZahtevi",consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<ListaZahtevaDTO> getZahteviMeatadataSearch(@RequestBody QueryZahtevDTO dto) throws Exception {
+        List<ZahtevDTO> ids = zahtevicirService.getSearchMetadataZahtevi(dto);
+        if(ids == null) {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<ListaZahtevaDTO>(new ListaZahtevaDTO(ids), HttpStatus.OK);
     }
 
     @PutMapping(value = "/odbijZahtev/{id}")

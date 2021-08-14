@@ -10,73 +10,84 @@ package com.tim15.sluzbenik.model.zahtevcir;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 
 
 /**
  * <p>Java class for TOrgan complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
- * &lt;complexType name="TOrgan"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="naziv" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="sediste" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType name="TOrgan">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="naziv">
+ *           &lt;complexType>
+ *             &lt;simpleContent>
+ *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                 &lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *                 &lt;attribute name="datatype" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *               &lt;/extension>
+ *             &lt;/simpleContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="sediste" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TOrgan", propOrder = {
-    "naziv",
-    "sediste"
+@XmlType(name = "TOrgan", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", propOrder = {
+        "naziv",
+        "sediste"
 })
 public class TOrgan {
 
-    @XmlElement(required = true)
-    protected String naziv;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
+    protected TOrgan.Naziv naziv;
+    @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
     protected String sediste;
 
     /**
      * Gets the value of the naziv property.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link String }
-     *     
+     *     {@link TOrgan.Naziv }
+     *
      */
-    public String getNaziv() {
+    public TOrgan.Naziv getNaziv() {
         return naziv;
     }
 
     /**
      * Sets the value of the naziv property.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link String }
-     *     
+     *     {@link TOrgan.Naziv }
+     *
      */
-    public void setNaziv(String value) {
+    public void setNaziv(TOrgan.Naziv value) {
         this.naziv = value;
     }
 
     /**
      * Gets the value of the sediste property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getSediste() {
         return sediste;
@@ -84,14 +95,120 @@ public class TOrgan {
 
     /**
      * Sets the value of the sediste property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setSediste(String value) {
         this.sediste = value;
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     *
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     *
+     * <pre>
+     * &lt;complexType>
+     *   &lt;simpleContent>
+     *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *       &lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *       &lt;attribute name="datatype" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *     &lt;/extension>
+     *   &lt;/simpleContent>
+     * &lt;/complexType>
+     * </pre>
+     *
+     *
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+            "value"
+    })
+    public static class Naziv {
+
+        @XmlValue
+        protected String value;
+        @XmlAttribute(name = "property")
+        protected String property;
+        @XmlAttribute(name = "datatype")
+        protected String datatype;
+
+        /**
+         * Gets the value of the value property.
+         *
+         * @return
+         *     possible object is
+         *     {@link String }
+         *
+         */
+        public String getValue() {
+            return value;
+        }
+
+        /**
+         * Sets the value of the value property.
+         *
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *
+         */
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        /**
+         * Gets the value of the property property.
+         *
+         * @return
+         *     possible object is
+         *     {@link String }
+         *
+         */
+        public String getProperty() {
+            return property;
+        }
+
+        /**
+         * Sets the value of the property property.
+         *
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *
+         */
+        public void setProperty(String value) {
+            this.property = value;
+        }
+
+        /**
+         * Gets the value of the datatype property.
+         *
+         * @return
+         *     possible object is
+         *     {@link String }
+         *
+         */
+        public String getDatatype() {
+            return datatype;
+        }
+
+        /**
+         * Sets the value of the datatype property.
+         *
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *
+         */
+        public void setDatatype(String value) {
+            this.datatype = value;
+        }
+
     }
 
 }

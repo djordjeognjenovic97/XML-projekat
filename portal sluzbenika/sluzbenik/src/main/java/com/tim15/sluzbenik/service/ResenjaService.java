@@ -10,6 +10,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 @Service
@@ -30,8 +32,8 @@ public class ResenjaService {
         NodeList ndBroj = document.getElementsByTagName("broj_zalbe");
         String docId = ndBroj.item(0).getTextContent();
         resenjaRepository.saveResenjeFromText(text, docId);
-        metadataExtractor.extractMetadata(text);
-        FusekiWriterExample.saveRDF();
+        metadataExtractor.extractMetadata(text,new FileOutputStream(new File("src/main/resources/rdf/"+docId)));
+        FusekiWriterExample.saveRDF(docId,"/resenja");
     }
 
     public void addResenjeFromFile(String path) throws Exception {
@@ -40,8 +42,8 @@ public class ResenjaService {
         String docId = ndBroj.item(0).getTextContent();
         resenjaRepository.saveResenjeFromFile(path, docId);
         String text = domParser.getDocumentAsString(document);
-        metadataExtractor.extractMetadata(text);
-        FusekiWriterExample.saveRDF();
+        metadataExtractor.extractMetadata(text,new FileOutputStream(new File("src/main/resources/rdf/"+docId)));
+        FusekiWriterExample.saveRDF(docId,"/resenja");
     }
 
     public Document getResenjeDocument(String docId) throws Exception {
