@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat"
-    xmlns:ftn="https://github.com/djordjeognjenovic97/XML-projekat">
+    targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat/zahtevcir"
+    xmlns:ftn="https://github.com/djordjeognjenovic97/XML-projekat/zahtevcir">
     <xs:element name="zahtev">
         <xs:complexType>
             <xs:sequence>
-                <xs:element fixed="Z A H T E V za pristup informaciji od javnog značaja"
-                    name="naziv" type="xs:string"/>
+                <xs:element name="naziv" type="xs:string"/>
                 <xs:element name="organ" type="ftn:TOrgan"/>
                 <xs:element name="sadrzaj">
                     <xs:complexType>
@@ -14,21 +13,57 @@
                             <xs:element name="tipovi_zahteva">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element minOccurs="0" name="obavestenje_posedovanje"
-                                            type="xs:string"/>
-                                        <xs:element minOccurs="0" name="uvid_dokument"
-                                            type="xs:string"/>
-                                        <xs:element minOccurs="0" name="kopija_dokument"
-                                            type="xs:string"/>
+                                        <xs:element minOccurs="0" name="obavestenje_posedovanje">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:enumeration value="da"/>
+                                                  <xs:enumeration value="ne"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element minOccurs="0" name="uvid_dokument">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:enumeration value="da"/>
+                                                  <xs:enumeration value="ne"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element minOccurs="0" name="kopija_dokument">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:enumeration value="da"/>
+                                                  <xs:enumeration value="ne"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
                                         <xs:element name="dostavljanje_kopije">
                                             <xs:complexType>
                                                 <xs:choice>
-                                                  <xs:element minOccurs="0" name="posta"
-                                                  type="xs:string"/>
-                                                  <xs:element minOccurs="0" name="elektronska_posta"
-                                                  type="xs:string"/>
-                                                  <xs:element minOccurs="0" name="faks"
-                                                  type="xs:string"/>
+                                                  <xs:element minOccurs="0" name="posta">
+                                                  <xs:simpleType>
+                                                  <xs:restriction base="xs:string">
+                                                  <xs:enumeration value="da"/>
+                                                  <xs:enumeration value="ne"/>
+                                                  </xs:restriction>
+                                                  </xs:simpleType>
+                                                  </xs:element>
+                                                  <xs:element minOccurs="0" name="elektronska_posta">
+                                                  <xs:simpleType>
+                                                  <xs:restriction base="xs:string">
+                                                  <xs:enumeration value="da"/>
+                                                  <xs:enumeration value="ne"/>
+                                                  </xs:restriction>
+                                                  </xs:simpleType>
+                                                  </xs:element>
+                                                  <xs:element minOccurs="0" name="faks">
+                                                  <xs:simpleType>
+                                                  <xs:restriction base="xs:string">
+                                                  <xs:enumeration value="da"/>
+                                                  <xs:enumeration value="ne"/>
+                                                  </xs:restriction>
+                                                  </xs:simpleType>
+                                                  </xs:element>
                                                   <xs:element minOccurs="0" name="drugi_nacin">
                                                   <xs:simpleType>
                                                   <xs:restriction base="xs:string">
@@ -81,8 +116,30 @@
     </xs:element>
     <xs:complexType name="TTrazilac_informacije">
         <xs:sequence>
-            <xs:element name="ime" type="xs:string"/>
-            <xs:element name="prezime" type="xs:string"/>
+            <xs:choice>
+                <xs:element minOccurs="1" name="pravno_lice">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="naziv">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:minLength value="1"/>
+                                        <xs:maxLength value="100"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="1" name="fizicko_lice">
+                    <xs:complexType>
+                        <xs:sequence maxOccurs="1">
+                            <xs:element name="ime" type="xs:string"/>
+                            <xs:element name="prezime" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
             <xs:element ref="ftn:adresa"/>
             <xs:element name="drugi_kontakt_podaci" type="xs:string"/>
         </xs:sequence>

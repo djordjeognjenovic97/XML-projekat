@@ -1,157 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="http://www.ftn.uns.ac.rs/resenja" xmlns:res="http://www.ftn.uns.ac.rs/resenja">
+    targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat/resenja" xmlns:res="https://github.com/djordjeognjenovic97/XML-projekat/resenja">
 
     <xs:element name="resenje">
         <xs:complexType mixed="true">
             <xs:sequence>
-                <xs:element name="levo" type="res:TipLevo"/>
-                <xs:element name="desno" type="res:TipDesno"/>
+                <xs:element name="pokretac_zalbe">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="ime" type="xs:string"/>
+                            <xs:element name="adresa" type="xs:string"/>
+                            <xs:element name="email" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="optuzeni" type="res:TipOptuzeni" minOccurs="0"/>
+                <xs:element minOccurs="0" name="datum_podnosenja" type="xs:date"> </xs:element>
+                <xs:element minOccurs="0" name="datum_izjasnjenja" type="xs:date"> </xs:element>
+                <xs:element name="datum_trazenja_informacija" type="xs:date"/>
                 <xs:element name="opis_zalbe" type="res:TipOpis_zalbe"/>
-                <xs:element name="naslov" type="xs:string" minOccurs="0"/>
                 <xs:element name="resenje_zalbe" type="res:TipResenjeZalbe" minOccurs="0"/>
-                <xs:element name="podnaslov" type="xs:string" minOccurs="0"/>
                 <xs:element name="obrazlozenja_zalbe" type="res:TipObrazlozenja_zalbe" minOccurs="0"/>
-                <xs:element name="fusnota" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
-                <xs:element name="poverenik" type="res:TipPoverenik" minOccurs="0"/>
+                <xs:element name="poverenik" type="xs:string" minOccurs="0"/>
             </xs:sequence>
+            <xs:attribute name="datum" type="xs:date"/>
+            <xs:attribute name="broj_resenja" type="xs:string"/>
+            <xs:attribute name="datumInformatora" type="xs:date"/>
         </xs:complexType>
     </xs:element>
-    <xs:complexType name="TipLevo">
-        <xs:sequence>
-            <xs:element name="broj_zalbe">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{3}-\d{2}-\d{4}/\d{4}-\d{2}"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="TipDesno">
-        <xs:sequence>
-            <xs:element name="datum_zalbe">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
     <xs:complexType mixed="true" name="TipOpis_zalbe">
         <xs:sequence>
-            <xs:element minOccurs="0" name="datum_izbora">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="zrtva" type="xs:string"/>
-            <xs:element minOccurs="0" name="su.br." type="xs:string"/>
-            <xs:element minOccurs="0" name="datum_pokretanja">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="optuzeni" type="res:TipOptuzeni" minOccurs="0"/>
-            <xs:element minOccurs="0" name="datum_obavestenja">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="datum_zahteva" minOccurs="0">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
+            <xs:element name="razlog" type="xs:string"/>
+            <xs:element name="na_osnovu" type="xs:string"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="zakon" type="res:TipZakon"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType mixed="true" name="TipResenjeZalbe">
+    <xs:complexType mixed="false" name="TipResenjeZalbe">
         <xs:sequence>
-            <xs:element maxOccurs="1" minOccurs="0" name="optuzeni" type="res:TipOptuzeni"/>
+            <xs:element name="status">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Prihvaceno"/>
+                        <xs:enumeration value="Odbijeno"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
             <xs:element minOccurs="0" name="rok_trajanja_mora_izvrsi_resenje" type="xs:string"/>
-            <xs:element name="zrtva" type="xs:string"/>
             <xs:element minOccurs="0" name="dokument_koji_se_trazi" type="xs:string"/>
-            <xs:element minOccurs="0" name="operacije_koje_optuzeni_mora_da_izvrsi"
-                type="res:TipOperacijeKojeOptuzeniMoraDaIzvrsi"/>
-            <xs:element minOccurs="0" name="datum_podnetog_zahteva">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="optuzeni" type="res:TipOptuzeni"/>
-            <xs:element minOccurs="0" name="datum_obavestenja">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
+            <xs:element minOccurs="0" name="datum_podnete_zalbe" type="xs:date"> </xs:element>
             <xs:element minOccurs="0" name="rok_trajanja_provera" type="xs:string"/>
-            <xs:element minOccurs="0" name="datum_zahteva">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="TipObrazlozenja_zalbe">
         <xs:sequence>
-            <xs:element name="razlog_podnosenja_zalbe" type="res:TipRazlogPodnosenjaZalbe"/>
-            <xs:element name="trazenje_odgovora_od_strane_optuzenog"
-                type="res:TipTrazenjeOdgovoraOdStraneOptuzenog"/>
-            <xs:element name="odluka" type="xs:string"/>
-            <xs:element name="dogadjaj" type="res:TipDogadjaj"/>
-            <xs:element name="odgovor_na_dogadjaj" type="res:TipOdgovorNaDogadjaj"/>
-            <xs:element name="prekrsaj" type="res:TipPrekrsaj" minOccurs="0"/>
-            <xs:element name="sta_optuzeni_mora_da_uradi" type="res:TipStaOptuzeniMoraDaUradi"
-                minOccurs="0"/>
-            <xs:element name="upustvo" type="res:TipUpustvo" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="TipPrekrsaj">
-        <xs:sequence>
-            <xs:element name="datum_izvrsenja" minOccurs="0">
+            <xs:element name="dobio_odgovor">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
+                        <xs:enumeration value="DA"/>
+                        <xs:enumeration value="NE"/>
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
-            <xs:element minOccurs="0" name="broj_obavestenja" type="xs:string"/>
-            <xs:element minOccurs="0" name="datum_obavestenja">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
+            <xs:element name="datum_odgovora" type="xs:date"/>
+            <xs:element name="razlozi_odluke">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="1" name="pasus"
+                            type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
             </xs:element>
-            <xs:element minOccurs="0" name="datum_izlaska_inspektora">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element maxOccurs="unbounded" name="zakon" type="res:TipZakon"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="TipPoverenik">
-        <xs:sequence>
-            <xs:element name="ime_poverenika" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType mixed="true" name="TipZakon">
@@ -161,14 +79,7 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" name="tacka" type="xs:string"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="naziv_zakona" type="xs:string"/>
             <xs:element maxOccurs="1" minOccurs="0" name="naziv_sluzbenog_glasnika" type="xs:string"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="broj_sl.">
-                <xs:complexType>
-                    <xs:simpleContent>
-                        <xs:extension base="xs:string">
-                            <xs:attribute name="broj" type="xs:string"/>
-                        </xs:extension>
-                    </xs:simpleContent>
-                </xs:complexType>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="broj_sl." type="xs:string">
             </xs:element>
         </xs:sequence>
     </xs:complexType>
@@ -176,189 +87,6 @@
         <xs:sequence>
             <xs:element name="naziv_optuzenog" type="xs:string"/>
             <xs:element name="sediste_optuzenog" type="xs:string"/>
-            <xs:element minOccurs="0" name="broj_obavestenja" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="TipOperacijeKojeOptuzeniMoraDaIzvrsi">
-        <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="1"
-                name="privatne_informacije_koje_optuzeni_mora_da_zastiti">
-                <xs:complexType>
-                    <xs:simpleContent>
-                        <xs:extension base="xs:string">
-                            <xs:attribute name="broj" type="xs:string"/>
-                        </xs:extension>
-                    </xs:simpleContent>
-                </xs:complexType>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="TipRazlogPodnosenjaZalbe">
-        <xs:sequence>
-            <xs:element name="zrtva" type="xs:string"/>
-            <xs:element name="datum_zalbe">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="optuzeni" type="res:TipOptuzeni"/>
-            <xs:element minOccurs="0" name="datum_do_kada_mora_da_se_izvrsi">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element minOccurs="0" name="datum_obavestenja">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element minOccurs="0" name="datum_zahteva">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="TipTrazenjeOdgovoraOdStraneOptuzenog">
-        <xs:sequence>
-            <xs:element name="datum_akcije_poverenika">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="optuzeni" type="res:TipOptuzeni"/>
-            <xs:element name="zakon" type="res:TipZakon" maxOccurs="unbounded"/>
-            <xs:element minOccurs="0" name="sta_se_trazilo" type="res:TipStaSeTrazilo"/>
-            <xs:element minOccurs="0" name="datum_odgovora_na_zalbu">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="TipStaSeTrazilo">
-        <xs:sequence>
-            <xs:element name="zakon" type="res:TipZakon"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="TipDogadjaj">
-        <xs:sequence>
-            <xs:element minOccurs="0" name="datum_podnetog_zahteva">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="zrtva" type="xs:string" minOccurs="0"/>
-            <xs:element minOccurs="0" name="datum_izvrsenja">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element name="optuzeni" type="res:TipOptuzeni"/>
-            <xs:element minOccurs="0" name="izvrsenje_resenja" type="xs:string"/>
-            <xs:element minOccurs="0" name="datum_zahteva">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element minOccurs="0" name="razlog_zahteva_za_informacije_od_javnog_znacaja"
-                type="res:TipRazlogZahtevaZaInformacijeOdJavnogZnacaja"/>
-            <xs:element minOccurs="0" name="datum_obavestenja">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="TipOdgovorNaDogadjaj">
-        <xs:sequence>
-            <xs:element minOccurs="0" name="datum_izvrsenja">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element minOccurs="0" name="rok_od_prijema_zahteva" type="xs:string"/>
-            <xs:element minOccurs="0" name="broj_obavestenja" type="xs:string"/>
-            <xs:element minOccurs="0" name="datum_obavestenja">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element minOccurs="0" name="datum_smrti">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element minOccurs="0" name="lokacija_smrti" type="xs:string"/>
-            <xs:element minOccurs="0" name="datum_smrti_policija">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element minOccurs="0" name="datum_izlaska_inspektora">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:pattern value="\d{2}[.]\d{2}[.]\d{4}."/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
-            <xs:element maxOccurs="unbounded" name="zakon" type="res:TipZakon"/>
-            <xs:element minOccurs="0" name="rok_o_obavestenju_da_li_poseduje_informacije"
-                type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="TipStaOptuzeniMoraDaUradi">
-        <xs:sequence>
-            <xs:element name="optuzeni" type="res:TipOptuzeni" minOccurs="0"/>
-            <xs:element name="zakon" type="res:TipZakon" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="TipUpustvo">
-        <xs:sequence>
-            <xs:element name="zakon" type="res:TipZakon"/>
-            <xs:element name="rok_za_pokretanje_upravnog_spora" type="xs:string"/>
-            <xs:element name="taksa_tuzbe" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType mixed="true" name="TipRazlogZahtevaZaInformacijeOdJavnogZnacaja">
-        <xs:sequence>
-            <xs:element maxOccurs="unbounded" name="informacija">
-                <xs:complexType>
-                    <xs:simpleContent>
-                        <xs:extension base="xs:string">
-                            <xs:attribute name="broj" type="xs:string"/>
-                        </xs:extension>
-                    </xs:simpleContent>
-                </xs:complexType>
-            </xs:element>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

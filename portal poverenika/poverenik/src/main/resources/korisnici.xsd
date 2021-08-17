@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat" xmlns="https://github.com/djordjeognjenovic97/XML-projekat">
+    targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat/korisnici" xmlns="https://github.com/djordjeognjenovic97/XML-projekat/korisnici">
     <xs:element name="Korisnici">
         <xs:complexType>
             <xs:sequence>
