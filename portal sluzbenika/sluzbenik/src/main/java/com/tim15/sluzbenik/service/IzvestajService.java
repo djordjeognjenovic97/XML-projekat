@@ -36,7 +36,7 @@ public class IzvestajService {
 
     public void addObavestenjeFromText(String text) throws Exception {
         Obavestenje obavestenje = jaxbParser.unmarshall(Obavestenje.class, text);
-        String docId = obavestenje.getNaziv();
+        String docId = obavestenje.getBrojPredmeta().toString();
         //obavestenjecirRepository.saveObavestenjeFromText(text, docId);
         metadataExtractor.extractMetadata(text,new FileOutputStream(new File("src/main/resources/rdf/"+docId)));
         FusekiWriterExample.saveRDF(docId,"/izvestaji");

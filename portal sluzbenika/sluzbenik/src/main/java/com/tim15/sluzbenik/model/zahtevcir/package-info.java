@@ -5,5 +5,11 @@
 // Generated on: 2021.08.17 at 11:22:07 AM CEST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtevcir", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(
+        namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev",
+        elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED,
+        xmlns = {
+                @XmlNs(prefix = "pred", namespaceURI = "http://www.ftn.uns.ac.rs/rdf/examples/predicate/")
+        })
 package com.tim15.sluzbenik.model.zahtevcir;
+import javax.xml.bind.annotation.XmlNs;

@@ -1,5 +1,5 @@
 
-package com.tim15.sluzbenik.model.zahtevcir;
+package mypackage;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlValue;
 
 /**
  * <p>Java class for TOrgan complex type.
- *
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- *
+ * 
  * <pre>
  * &lt;complexType name="TOrgan">
  *   &lt;complexContent>
@@ -34,13 +34,13 @@ import javax.xml.bind.annotation.XmlValue;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- *
- *
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TOrgan", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", propOrder = {
-        "naziv",
-        "sediste"
+    "naziv",
+    "sediste"
 })
 public class TOrgan {
 
@@ -51,11 +51,11 @@ public class TOrgan {
 
     /**
      * Gets the value of the naziv property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link TOrgan.Naziv }
-     *
+     *     
      */
     public TOrgan.Naziv getNaziv() {
         return naziv;
@@ -63,11 +63,11 @@ public class TOrgan {
 
     /**
      * Sets the value of the naziv property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link TOrgan.Naziv }
-     *
+     *     
      */
     public void setNaziv(TOrgan.Naziv value) {
         this.naziv = value;
@@ -75,11 +75,11 @@ public class TOrgan {
 
     /**
      * Gets the value of the sediste property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link String }
-     *
+     *     
      */
     public String getSediste() {
         return sediste;
@@ -87,11 +87,11 @@ public class TOrgan {
 
     /**
      * Sets the value of the sediste property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link String }
-     *
+     *     
      */
     public void setSediste(String value) {
         this.sediste = value;
@@ -100,9 +100,9 @@ public class TOrgan {
 
     /**
      * <p>Java class for anonymous complex type.
-     *
+     * 
      * <p>The following schema fragment specifies the expected content contained within this class.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;simpleContent>
@@ -112,12 +112,12 @@ public class TOrgan {
      *   &lt;/simpleContent>
      * &lt;/complexType>
      * </pre>
-     *
-     *
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-            "value"
+        "value"
     })
     public static class Naziv {
 
@@ -128,11 +128,11 @@ public class TOrgan {
 
         /**
          * Gets the value of the value property.
-         *
+         * 
          * @return
          *     possible object is
          *     {@link String }
-         *
+         *     
          */
         public String getValue() {
             return value;
@@ -140,11 +140,11 @@ public class TOrgan {
 
         /**
          * Sets the value of the value property.
-         *
+         * 
          * @param value
          *     allowed object is
          *     {@link String }
-         *
+         *     
          */
         public void setValue(String value) {
             this.value = value;
@@ -152,11 +152,11 @@ public class TOrgan {
 
         /**
          * Gets the value of the property property.
-         *
+         * 
          * @return
          *     possible object is
          *     {@link String }
-         *
+         *     
          */
         public String getProperty() {
             return property;
@@ -164,11 +164,11 @@ public class TOrgan {
 
         /**
          * Sets the value of the property property.
-         *
+         * 
          * @param value
          *     allowed object is
          *     {@link String }
-         *
+         *     
          */
         public void setProperty(String value) {
             this.property = value;

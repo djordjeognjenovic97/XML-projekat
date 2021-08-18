@@ -217,7 +217,7 @@ export class ZahtevService {
 				hasText: true,
 				asker: Xonomy.askString
 			},
-			"datum":{
+			"datum_podnosenja_zahteva":{
 				isInvisible: true
 				// displayName: "datum",
 				// hasText: true,
@@ -257,6 +257,19 @@ export class ZahtevService {
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
 						text: "Morate uneti mesto."
+					  });
+					}
+				},
+				asker: Xonomy.askString
+			},
+			"mesto_podnosenja_zahteva": {
+				displayName: "mesto_podnosenja_zahteva",
+				hasText: true,
+				validate: function (jsElement) {
+					if (jsElement.getText()===""){
+					  Xonomy.warnings.push({
+						htmlID: jsElement.htmlID,
+						text: "Morate uneti mesto podnosenja zahteva."
 					  });
 					}
 				},
