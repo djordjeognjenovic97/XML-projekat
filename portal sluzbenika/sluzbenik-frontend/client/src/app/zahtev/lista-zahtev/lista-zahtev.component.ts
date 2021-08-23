@@ -33,12 +33,14 @@ export class ListaZahtevComponent implements OnInit {
           for(var i  in decodedItem.listaZahtevaDTO.lista){
             this.zahtevi.push(new Zahtev(decodedItem.listaZahtevaDTO.lista[i].id._text,
               decodedItem.listaZahtevaDTO.lista[i].mesto._text,decodedItem.listaZahtevaDTO.lista[i].datum._text,
-              decodedItem.listaZahtevaDTO.lista[i].nazivOrgana._text));
+              decodedItem.listaZahtevaDTO.lista[i].nazivOrgana._text,
+              decodedItem.listaZahtevaDTO.lista[i].stanje._text));
           }
         }else{
           this.zahtevi.push(new Zahtev(decodedItem.listaZahtevaDTO.lista.id._text,
             decodedItem.listaZahtevaDTO.lista.mesto._text,decodedItem.listaZahtevaDTO.lista.datum._text,
-            decodedItem.listaZahtevaDTO.lista.nazivOrgana._text));
+            decodedItem.listaZahtevaDTO.lista.nazivOrgana._text,
+              decodedItem.listaZahtevaDTO.lista.stanje._text));
         }
         console.log(this.zahtevi);
       }

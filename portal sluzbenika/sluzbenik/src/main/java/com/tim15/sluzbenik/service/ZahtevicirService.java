@@ -84,7 +84,7 @@ public class ZahtevicirService {
         Korisnik user=(Korisnik) auth.getPrincipal();
         for(Zahtev z : zahtevs) {
             if (z.getTrazilacInformacije().getEmail() != null && z.getTrazilacInformacije().getEmail().equalsIgnoreCase(user.getEmail())) {
-                ids.add(new ZahtevDTO(z.getId().getValue(),z.getOrgan().getNaziv().getValue(),z.getDatumPodnosenjaZahteva().getValue().toString(),z.getMestoPodnosenjaZahteva().getValue()));
+                ids.add(new ZahtevDTO(z.getId().getValue(),z.getOrgan().getNaziv().getValue(),z.getDatumPodnosenjaZahteva().getValue().toString(),z.getMestoPodnosenjaZahteva().getValue(), z.getStanje()));
             }
         }
         return ids;
@@ -108,7 +108,7 @@ public class ZahtevicirService {
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();
         Korisnik user=(Korisnik) auth.getPrincipal();
         for(Zahtev z : zahtevs){
-            ids.add(new ZahtevDTO(z.getId().getValue(),z.getOrgan().getNaziv().getValue(),z.getDatumPodnosenjaZahteva().getValue().toString(),z.getMestoPodnosenjaZahteva().getValue()));
+            ids.add(new ZahtevDTO(z.getId().getValue(),z.getOrgan().getNaziv().getValue(),z.getDatumPodnosenjaZahteva().getValue().toString(),z.getMestoPodnosenjaZahteva().getValue(),z.getStanje()));
         }
         return ids;
     }
@@ -149,7 +149,7 @@ public class ZahtevicirService {
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();
         Korisnik user=(Korisnik) auth.getPrincipal();
         for(Zahtev z : zahtevs){
-            ids.add(new ZahtevDTO(z.getId().getValue(),z.getOrgan().getNaziv().getValue(),z.getDatumPodnosenjaZahteva().getValue().toString(),z.getMestoPodnosenjaZahteva().getValue()));
+            ids.add(new ZahtevDTO(z.getId().getValue(),z.getOrgan().getNaziv().getValue(),z.getDatumPodnosenjaZahteva().getValue().toString(),z.getMestoPodnosenjaZahteva().getValue(),z.getStanje()));
         }
         return ids;
     }
@@ -164,7 +164,7 @@ public class ZahtevicirService {
         List<ZahtevDTO> zahtevi=new ArrayList<ZahtevDTO>();
         for(String id :ids){
             Zahtev z=zahtevicirRepository.findRealZahtevById(id.split("\\^")[0]);
-            zahtevi.add(new ZahtevDTO(z.getId().getValue(),z.getOrgan().getNaziv().getValue(),z.getDatumPodnosenjaZahteva().getValue().toString(),z.getMestoPodnosenjaZahteva().getValue()));
+            zahtevi.add(new ZahtevDTO(z.getId().getValue(),z.getOrgan().getNaziv().getValue(),z.getDatumPodnosenjaZahteva().getValue().toString(),z.getMestoPodnosenjaZahteva().getValue(),z.getStanje()));
         }
         System.out.println(ids+"   "+zahtevi.size());
         return zahtevi;

@@ -15,11 +15,14 @@ public class ZahtevDTO {
 
     private String mesto;
 
-    public ZahtevDTO(String id, String nazivOrgana, String datum, String mesto) {
+    private String stanje;
+
+    public ZahtevDTO(String id, String nazivOrgana, String datum, String mesto,String stanje) {
         this.id = id;
         this.nazivOrgana = nazivOrgana;
         this.datum = datum;
         this.mesto = mesto;
+        this.stanje=stanje;
     }
 
     public ZahtevDTO() {
@@ -55,5 +58,13 @@ public class ZahtevDTO {
 
     public void setMesto(String mesto) {
         this.mesto = mesto;
+    }
+
+    public String getStanje() {
+        return stanje;
+    }
+
+    public void setStanje(String stanje) {
+        this.stanje = stanje;
     }
 }

@@ -1,22 +1,15 @@
 
-package mypackage;
+package com.projekat.poverenik.model.zahtevcir;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
+import javax.xml.bind.annotation.*;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -112,34 +105,34 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id",
-    "naziv",
-    "organ",
-    "sadrzaj",
-    "mestoPodnosenjaZahteva",
-    "datumPodnosenjaZahteva",
-    "trazilacInformacije"
+        "id",
+        "naziv",
+        "organ",
+        "sadrzaj",
+        "mestoPodnosenjaZahteva",
+        "datumPodnosenjaZahteva",
+        "trazilacInformacije"
 })
 @XmlRootElement(name = "zahtev", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev")
 public class Zahtev {
 
     @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
-    protected Zahtev.Id id;
+    protected Id id;
     @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
     protected String naziv;
     @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
     protected TOrgan organ;
     @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
-    protected Zahtev.Sadrzaj sadrzaj;
+    protected Sadrzaj sadrzaj;
     @XmlElement(name = "mesto_podnosenja_zahteva", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
-    protected Zahtev.MestoPodnosenjaZahteva mestoPodnosenjaZahteva;
+    protected MestoPodnosenjaZahteva mestoPodnosenjaZahteva;
     @XmlElement(name = "datum_podnosenja_zahteva", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
-    protected Zahtev.DatumPodnosenjaZahteva datumPodnosenjaZahteva;
+    protected DatumPodnosenjaZahteva datumPodnosenjaZahteva;
     @XmlElement(name = "trazilac_informacije", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
     protected TTrazilacInformacije trazilacInformacije;
     @XmlAttribute(name = "stanje", required = true)
@@ -147,35 +140,35 @@ public class Zahtev {
 
     /**
      * Gets the value of the id property.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link Zahtev.Id }
-     *     
+     *     {@link Id }
+     *
      */
-    public Zahtev.Id getId() {
+    public Id getId() {
         return id;
     }
 
     /**
      * Sets the value of the id property.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link Zahtev.Id }
-     *     
+     *     {@link Id }
+     *
      */
-    public void setId(Zahtev.Id value) {
+    public void setId(Id value) {
         this.id = value;
     }
 
     /**
      * Gets the value of the naziv property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getNaziv() {
         return naziv;
@@ -183,11 +176,11 @@ public class Zahtev {
 
     /**
      * Sets the value of the naziv property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setNaziv(String value) {
         this.naziv = value;
@@ -195,11 +188,11 @@ public class Zahtev {
 
     /**
      * Gets the value of the organ property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TOrgan }
-     *     
+     *
      */
     public TOrgan getOrgan() {
         return organ;
@@ -207,11 +200,11 @@ public class Zahtev {
 
     /**
      * Sets the value of the organ property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TOrgan }
-     *     
+     *
      */
     public void setOrgan(TOrgan value) {
         this.organ = value;
@@ -219,83 +212,83 @@ public class Zahtev {
 
     /**
      * Gets the value of the sadrzaj property.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link Zahtev.Sadrzaj }
-     *     
+     *     {@link Sadrzaj }
+     *
      */
-    public Zahtev.Sadrzaj getSadrzaj() {
+    public Sadrzaj getSadrzaj() {
         return sadrzaj;
     }
 
     /**
      * Sets the value of the sadrzaj property.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link Zahtev.Sadrzaj }
-     *     
+     *     {@link Sadrzaj }
+     *
      */
-    public void setSadrzaj(Zahtev.Sadrzaj value) {
+    public void setSadrzaj(Sadrzaj value) {
         this.sadrzaj = value;
     }
 
     /**
      * Gets the value of the mestoPodnosenjaZahteva property.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link Zahtev.MestoPodnosenjaZahteva }
-     *     
+     *     {@link MestoPodnosenjaZahteva }
+     *
      */
-    public Zahtev.MestoPodnosenjaZahteva getMestoPodnosenjaZahteva() {
+    public MestoPodnosenjaZahteva getMestoPodnosenjaZahteva() {
         return mestoPodnosenjaZahteva;
     }
 
     /**
      * Sets the value of the mestoPodnosenjaZahteva property.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link Zahtev.MestoPodnosenjaZahteva }
-     *     
+     *     {@link MestoPodnosenjaZahteva }
+     *
      */
-    public void setMestoPodnosenjaZahteva(Zahtev.MestoPodnosenjaZahteva value) {
+    public void setMestoPodnosenjaZahteva(MestoPodnosenjaZahteva value) {
         this.mestoPodnosenjaZahteva = value;
     }
 
     /**
      * Gets the value of the datumPodnosenjaZahteva property.
-     * 
+     *
      * @return
      *     possible object is
-     *     {@link Zahtev.DatumPodnosenjaZahteva }
-     *     
+     *     {@link DatumPodnosenjaZahteva }
+     *
      */
-    public Zahtev.DatumPodnosenjaZahteva getDatumPodnosenjaZahteva() {
+    public DatumPodnosenjaZahteva getDatumPodnosenjaZahteva() {
         return datumPodnosenjaZahteva;
     }
 
     /**
      * Sets the value of the datumPodnosenjaZahteva property.
-     * 
+     *
      * @param value
      *     allowed object is
-     *     {@link Zahtev.DatumPodnosenjaZahteva }
-     *     
+     *     {@link DatumPodnosenjaZahteva }
+     *
      */
-    public void setDatumPodnosenjaZahteva(Zahtev.DatumPodnosenjaZahteva value) {
+    public void setDatumPodnosenjaZahteva(DatumPodnosenjaZahteva value) {
         this.datumPodnosenjaZahteva = value;
     }
 
     /**
      * Gets the value of the trazilacInformacije property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link TTrazilacInformacije }
-     *     
+     *
      */
     public TTrazilacInformacije getTrazilacInformacije() {
         return trazilacInformacije;
@@ -303,11 +296,11 @@ public class Zahtev {
 
     /**
      * Sets the value of the trazilacInformacije property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link TTrazilacInformacije }
-     *     
+     *
      */
     public void setTrazilacInformacije(TTrazilacInformacije value) {
         this.trazilacInformacije = value;
@@ -315,11 +308,11 @@ public class Zahtev {
 
     /**
      * Gets the value of the stanje property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getStanje() {
         return stanje;
@@ -327,11 +320,11 @@ public class Zahtev {
 
     /**
      * Sets the value of the stanje property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setStanje(String value) {
         this.stanje = value;
@@ -340,9 +333,9 @@ public class Zahtev {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;simpleContent>
@@ -352,12 +345,12 @@ public class Zahtev {
      *   &lt;/simpleContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "value"
+            "value"
     })
     public static class DatumPodnosenjaZahteva {
 
@@ -369,11 +362,11 @@ public class Zahtev {
 
         /**
          * Gets the value of the value property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link XMLGregorianCalendar }
-         *     
+         *
          */
         public XMLGregorianCalendar getValue() {
             return value;
@@ -381,11 +374,11 @@ public class Zahtev {
 
         /**
          * Sets the value of the value property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link XMLGregorianCalendar }
-         *     
+         *
          */
         public void setValue(XMLGregorianCalendar value) {
             this.value = value;
@@ -393,11 +386,11 @@ public class Zahtev {
 
         /**
          * Gets the value of the property property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link String }
-         *     
+         *
          */
         public String getProperty() {
             return property;
@@ -405,11 +398,11 @@ public class Zahtev {
 
         /**
          * Sets the value of the property property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link String }
-         *     
+         *
          */
         public void setProperty(String value) {
             this.property = value;
@@ -420,9 +413,9 @@ public class Zahtev {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;simpleContent>
@@ -432,12 +425,12 @@ public class Zahtev {
      *   &lt;/simpleContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "value"
+            "value"
     })
     public static class Id {
 
@@ -448,11 +441,11 @@ public class Zahtev {
 
         /**
          * Gets the value of the value property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link String }
-         *     
+         *
          */
         public String getValue() {
             return value;
@@ -460,11 +453,11 @@ public class Zahtev {
 
         /**
          * Sets the value of the value property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link String }
-         *     
+         *
          */
         public void setValue(String value) {
             this.value = value;
@@ -472,11 +465,11 @@ public class Zahtev {
 
         /**
          * Gets the value of the property property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link String }
-         *     
+         *
          */
         public String getProperty() {
             return property;
@@ -484,11 +477,11 @@ public class Zahtev {
 
         /**
          * Sets the value of the property property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link String }
-         *     
+         *
          */
         public void setProperty(String value) {
             this.property = value;
@@ -499,9 +492,9 @@ public class Zahtev {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;simpleContent>
@@ -511,12 +504,12 @@ public class Zahtev {
      *   &lt;/simpleContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "value"
+            "value"
     })
     public static class MestoPodnosenjaZahteva {
 
@@ -527,11 +520,11 @@ public class Zahtev {
 
         /**
          * Gets the value of the value property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link String }
-         *     
+         *
          */
         public String getValue() {
             return value;
@@ -539,11 +532,11 @@ public class Zahtev {
 
         /**
          * Sets the value of the value property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link String }
-         *     
+         *
          */
         public void setValue(String value) {
             this.value = value;
@@ -551,11 +544,11 @@ public class Zahtev {
 
         /**
          * Gets the value of the property property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link String }
-         *     
+         *
          */
         public String getProperty() {
             return property;
@@ -563,11 +556,11 @@ public class Zahtev {
 
         /**
          * Sets the value of the property property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link String }
-         *     
+         *
          */
         public void setProperty(String value) {
             this.property = value;
@@ -578,9 +571,9 @@ public class Zahtev {
 
     /**
      * <p>Java class for anonymous complex type.
-     * 
+     *
      * <p>The following schema fragment specifies the expected content contained within this class.
-     * 
+     *
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -626,52 +619,52 @@ public class Zahtev {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     * 
-     * 
+     *
+     *
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "tipoviZahteva",
-        "opisInformacije"
+            "tipoviZahteva",
+            "opisInformacije"
     })
     public static class Sadrzaj {
 
         @XmlElement(name = "tipovi_zahteva", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
-        protected Zahtev.Sadrzaj.TipoviZahteva tipoviZahteva;
+        protected TipoviZahteva tipoviZahteva;
         @XmlElement(name = "opis_informacije", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
         protected String opisInformacije;
 
         /**
          * Gets the value of the tipoviZahteva property.
-         * 
+         *
          * @return
          *     possible object is
-         *     {@link Zahtev.Sadrzaj.TipoviZahteva }
-         *     
+         *     {@link TipoviZahteva }
+         *
          */
-        public Zahtev.Sadrzaj.TipoviZahteva getTipoviZahteva() {
+        public TipoviZahteva getTipoviZahteva() {
             return tipoviZahteva;
         }
 
         /**
          * Sets the value of the tipoviZahteva property.
-         * 
+         *
          * @param value
          *     allowed object is
-         *     {@link Zahtev.Sadrzaj.TipoviZahteva }
-         *     
+         *     {@link TipoviZahteva }
+         *
          */
-        public void setTipoviZahteva(Zahtev.Sadrzaj.TipoviZahteva value) {
+        public void setTipoviZahteva(TipoviZahteva value) {
             this.tipoviZahteva = value;
         }
 
         /**
          * Gets the value of the opisInformacije property.
-         * 
+         *
          * @return
          *     possible object is
          *     {@link String }
-         *     
+         *
          */
         public String getOpisInformacije() {
             return opisInformacije;
@@ -679,11 +672,11 @@ public class Zahtev {
 
         /**
          * Sets the value of the opisInformacije property.
-         * 
+         *
          * @param value
          *     allowed object is
          *     {@link String }
-         *     
+         *
          */
         public void setOpisInformacije(String value) {
             this.opisInformacije = value;
@@ -692,9 +685,9 @@ public class Zahtev {
 
         /**
          * <p>Java class for anonymous complex type.
-         * 
+         *
          * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
+         *
          * <pre>
          * &lt;complexType>
          *   &lt;complexContent>
@@ -729,15 +722,15 @@ public class Zahtev {
          *   &lt;/complexContent>
          * &lt;/complexType>
          * </pre>
-         * 
-         * 
+         *
+         *
          */
         @XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "", propOrder = {
-            "obavestenjePosedovanje",
-            "uvidDokument",
-            "kopijaDokument",
-            "dostavljanjeKopije"
+                "obavestenjePosedovanje",
+                "uvidDokument",
+                "kopijaDokument",
+                "dostavljanjeKopije"
         })
         public static class TipoviZahteva {
 
@@ -748,15 +741,15 @@ public class Zahtev {
             @XmlElement(name = "kopija_dokument", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev")
             protected String kopijaDokument;
             @XmlElement(name = "dostavljanje_kopije", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", required = true)
-            protected Zahtev.Sadrzaj.TipoviZahteva.DostavljanjeKopije dostavljanjeKopije;
+            protected DostavljanjeKopije dostavljanjeKopije;
 
             /**
              * Gets the value of the obavestenjePosedovanje property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link String }
-             *     
+             *
              */
             public String getObavestenjePosedovanje() {
                 return obavestenjePosedovanje;
@@ -764,11 +757,11 @@ public class Zahtev {
 
             /**
              * Sets the value of the obavestenjePosedovanje property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link String }
-             *     
+             *
              */
             public void setObavestenjePosedovanje(String value) {
                 this.obavestenjePosedovanje = value;
@@ -776,11 +769,11 @@ public class Zahtev {
 
             /**
              * Gets the value of the uvidDokument property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link String }
-             *     
+             *
              */
             public String getUvidDokument() {
                 return uvidDokument;
@@ -788,11 +781,11 @@ public class Zahtev {
 
             /**
              * Sets the value of the uvidDokument property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link String }
-             *     
+             *
              */
             public void setUvidDokument(String value) {
                 this.uvidDokument = value;
@@ -800,11 +793,11 @@ public class Zahtev {
 
             /**
              * Gets the value of the kopijaDokument property.
-             * 
+             *
              * @return
              *     possible object is
              *     {@link String }
-             *     
+             *
              */
             public String getKopijaDokument() {
                 return kopijaDokument;
@@ -812,11 +805,11 @@ public class Zahtev {
 
             /**
              * Sets the value of the kopijaDokument property.
-             * 
+             *
              * @param value
              *     allowed object is
              *     {@link String }
-             *     
+             *
              */
             public void setKopijaDokument(String value) {
                 this.kopijaDokument = value;
@@ -824,34 +817,34 @@ public class Zahtev {
 
             /**
              * Gets the value of the dostavljanjeKopije property.
-             * 
+             *
              * @return
              *     possible object is
-             *     {@link Zahtev.Sadrzaj.TipoviZahteva.DostavljanjeKopije }
-             *     
+             *     {@link DostavljanjeKopije }
+             *
              */
-            public Zahtev.Sadrzaj.TipoviZahteva.DostavljanjeKopije getDostavljanjeKopije() {
+            public DostavljanjeKopije getDostavljanjeKopije() {
                 return dostavljanjeKopije;
             }
 
             /**
              * Sets the value of the dostavljanjeKopije property.
-             * 
+             *
              * @param value
              *     allowed object is
-             *     {@link Zahtev.Sadrzaj.TipoviZahteva.DostavljanjeKopije }
-             *     
+             *     {@link DostavljanjeKopije }
+             *
              */
-            public void setDostavljanjeKopije(Zahtev.Sadrzaj.TipoviZahteva.DostavljanjeKopije value) {
+            public void setDostavljanjeKopije(DostavljanjeKopije value) {
                 this.dostavljanjeKopije = value;
             }
 
 
             /**
              * <p>Java class for anonymous complex type.
-             * 
+             *
              * <p>The following schema fragment specifies the expected content contained within this class.
-             * 
+             *
              * <pre>
              * &lt;complexType>
              *   &lt;complexContent>
@@ -873,15 +866,15 @@ public class Zahtev {
              *   &lt;/complexContent>
              * &lt;/complexType>
              * </pre>
-             * 
-             * 
+             *
+             *
              */
             @XmlAccessorType(XmlAccessType.FIELD)
             @XmlType(name = "", propOrder = {
-                "posta",
-                "elektronskaPosta",
-                "faks",
-                "drugiNacin"
+                    "posta",
+                    "elektronskaPosta",
+                    "faks",
+                    "drugiNacin"
             })
             public static class DostavljanjeKopije {
 
@@ -896,11 +889,11 @@ public class Zahtev {
 
                 /**
                  * Gets the value of the posta property.
-                 * 
+                 *
                  * @return
                  *     possible object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public String getPosta() {
                     return posta;
@@ -908,11 +901,11 @@ public class Zahtev {
 
                 /**
                  * Sets the value of the posta property.
-                 * 
+                 *
                  * @param value
                  *     allowed object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public void setPosta(String value) {
                     this.posta = value;
@@ -920,11 +913,11 @@ public class Zahtev {
 
                 /**
                  * Gets the value of the elektronskaPosta property.
-                 * 
+                 *
                  * @return
                  *     possible object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public String getElektronskaPosta() {
                     return elektronskaPosta;
@@ -932,11 +925,11 @@ public class Zahtev {
 
                 /**
                  * Sets the value of the elektronskaPosta property.
-                 * 
+                 *
                  * @param value
                  *     allowed object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public void setElektronskaPosta(String value) {
                     this.elektronskaPosta = value;
@@ -944,11 +937,11 @@ public class Zahtev {
 
                 /**
                  * Gets the value of the faks property.
-                 * 
+                 *
                  * @return
                  *     possible object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public String getFaks() {
                     return faks;
@@ -956,11 +949,11 @@ public class Zahtev {
 
                 /**
                  * Sets the value of the faks property.
-                 * 
+                 *
                  * @param value
                  *     allowed object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public void setFaks(String value) {
                     this.faks = value;
@@ -968,11 +961,11 @@ public class Zahtev {
 
                 /**
                  * Gets the value of the drugiNacin property.
-                 * 
+                 *
                  * @return
                  *     possible object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public String getDrugiNacin() {
                     return drugiNacin;
@@ -980,11 +973,11 @@ public class Zahtev {
 
                 /**
                  * Sets the value of the drugiNacin property.
-                 * 
+                 *
                  * @param value
                  *     allowed object is
                  *     {@link String }
-                 *     
+                 *
                  */
                 public void setDrugiNacin(String value) {
                     this.drugiNacin = value;

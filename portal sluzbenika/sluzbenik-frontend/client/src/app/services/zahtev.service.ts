@@ -96,7 +96,7 @@ export class ZahtevService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti sediste."
+						text: "Morate uneti sediste organa."
 					  });
 					}
 				},
@@ -107,7 +107,7 @@ export class ZahtevService {
 				  if (jsElement.children.length == 0) {
 					Xonomy.warnings.push({
 					  htmlID: jsElement.htmlID,
-					  text: "Morate dodati zahtev"
+					  text: "Morate dodati tip zahteva"
 					}
 					);
 				  }
@@ -230,7 +230,7 @@ export class ZahtevService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti ime."
+						text: "Morate uneti ime podnosioca zahteva."
 					  });
 					}
 				},
@@ -243,7 +243,7 @@ export class ZahtevService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti prezime."
+						text: "Morate uneti prezime podnosioca zahteva."
 					  });
 					}
 				},
@@ -256,7 +256,7 @@ export class ZahtevService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti mesto."
+						text: "Morate uneti mesto podnosioca zahteva."
 					  });
 					}
 				},
@@ -282,7 +282,7 @@ export class ZahtevService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti ulicu."
+						text: "Morate uneti ulicu podnosioca zahteva."
 					  });
 					}
 				},
@@ -295,7 +295,7 @@ export class ZahtevService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti broj ulice."
+						text: "Morate uneti broj ulice podnosioca zahteva."
 					  });
 					}
 				},

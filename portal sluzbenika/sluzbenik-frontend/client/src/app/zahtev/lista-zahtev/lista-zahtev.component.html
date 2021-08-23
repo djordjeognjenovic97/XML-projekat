@@ -7,7 +7,7 @@
                   <tr>
                     <th>ID zahteva<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
                     <th>Datum<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
-                    <th>Naziv organa<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                    <th>Stanje<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
                     <th>XHTML<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
                     <th>PDF<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
                     <th>RDF<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
@@ -20,9 +20,11 @@
                     <h4><b>Nema zahteva</b></h4>
                   </div>
                   <tr *ngFor="let c of zahtevi">
-                    <td class="in_waves">{{c.id}}</td>
+                    <td class="in_waves">
+                      <a href="http://www.google.com">{{c.id}}</a>
+                    </td>
                     <td class="in_waves">{{c.datum.split("+")[0]}}</td>
-                    <td class="in_waves">{{c.nazivOrgana}}</td>
+                    <td class="in_waves">{{c.stanje}}</td>
                     <td>
                         <button mat-raised-button color="primary"  (click)="XHTML(c)">XHTML</button>
                      </td>

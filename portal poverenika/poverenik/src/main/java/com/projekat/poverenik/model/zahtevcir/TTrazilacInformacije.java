@@ -1,18 +1,13 @@
+package com.projekat.poverenik.model.zahtevcir;
 
-package mypackage;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 
 /**
  * <p>Java class for TTrazilac_informacije complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="TTrazilac_informacije">
  *   &lt;complexContent>
@@ -28,15 +23,15 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TTrazilac_informacije", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zahtev", propOrder = {
-    "ime",
-    "prezime",
-    "adresa",
-    "drugiKontaktPodaci"
+        "ime",
+        "prezime",
+        "adresa",
+        "drugiKontaktPodaci"
 })
 public class TTrazilacInformacije {
 
@@ -53,11 +48,11 @@ public class TTrazilacInformacije {
 
     /**
      * Gets the value of the ime property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getIme() {
         return ime;
@@ -65,11 +60,11 @@ public class TTrazilacInformacije {
 
     /**
      * Sets the value of the ime property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setIme(String value) {
         this.ime = value;
@@ -77,11 +72,11 @@ public class TTrazilacInformacije {
 
     /**
      * Gets the value of the prezime property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getPrezime() {
         return prezime;
@@ -89,11 +84,11 @@ public class TTrazilacInformacije {
 
     /**
      * Sets the value of the prezime property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setPrezime(String value) {
         this.prezime = value;
@@ -101,11 +96,11 @@ public class TTrazilacInformacije {
 
     /**
      * Gets the value of the adresa property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Adresa }
-     *     
+     *
      */
     public Adresa getAdresa() {
         return adresa;
@@ -113,11 +108,11 @@ public class TTrazilacInformacije {
 
     /**
      * Sets the value of the adresa property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Adresa }
-     *     
+     *
      */
     public void setAdresa(Adresa value) {
         this.adresa = value;
@@ -125,11 +120,11 @@ public class TTrazilacInformacije {
 
     /**
      * Gets the value of the drugiKontaktPodaci property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getDrugiKontaktPodaci() {
         return drugiKontaktPodaci;
@@ -137,11 +132,11 @@ public class TTrazilacInformacije {
 
     /**
      * Sets the value of the drugiKontaktPodaci property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setDrugiKontaktPodaci(String value) {
         this.drugiKontaktPodaci = value;
@@ -149,11 +144,11 @@ public class TTrazilacInformacije {
 
     /**
      * Gets the value of the email property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getEmail() {
         return email;
@@ -161,11 +156,11 @@ public class TTrazilacInformacije {
 
     /**
      * Sets the value of the email property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setEmail(String value) {
         this.email = value;

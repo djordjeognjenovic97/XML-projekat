@@ -15,7 +15,7 @@
         </div>
         <div class="form-group mx-sm-0 mb-2">
             <input type="text" class="form-control" id="datum" formControlName="datum"
-                placeholder="unesite datum(01.01.2001.)...">
+                placeholder="datum(YYYY-MM-DD)...">
         </div>
         <div class="form-group mx-sm-0 mb-2">
             <input type="text" class="form-control" id="mesto" formControlName="mesto" 
@@ -41,7 +41,6 @@
                         <th>JSON<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
                         <th>PRIHVATANJE<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
                         <th>ODBIJANJE<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,7 +48,9 @@
                         <h4><b>Nema zahteva</b></h4>
                     </div>
                     <tr *ngFor="let c of zahtevi">
-                        <td class="in_waves">{{c.id}}</td>
+                        <td class="in_waves">
+                            <a href="http://www.google.com">{{c.id}}</a>
+                        </td>
                         <td class="in_waves">{{c.datum.split("+")[0]}}</td>
                         <td>
                             <button mat-raised-button color="primary" (click)="XHTML(c)">XHTML</button>
@@ -63,12 +64,16 @@
                         <td>
                             <button mat-raised-button color="primary" (click)="JSON(c)">JSON</button>
                         </td>
-                        <td>
+                        <td *ngIf="c.stanje==='podnet'">
                             <button mat-raised-button color="success" (click)="prihvatiZahtev(c)">Prihvati</button>
                         </td>
-                        <td>
+                        <td *ngIf="c.stanje==='podnet'">
                             <button mat-raised-button color="danger" (click)="odbijZahtev(c.id)">Odbij</button>
                         </td>
+                        <td *ngIf="c.stanje==='usvojen'">PRIHVACEN</td>
+                        <td>/</td>
+                        <td *ngIf="c.stanje==='odbijen'">ODBIJEN</td>
+                        <td *ngIf="c.stanje==='odbacen'">ODBACEN</td>
                     </tr>
                 </tbody>
             </table>
