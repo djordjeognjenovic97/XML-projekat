@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Document;
@@ -96,5 +97,9 @@ public class ZahtevicirController {
     public ResponseEntity<?> odbijZahtev(@PathVariable String id) throws Exception {
         zahtevicirService.odbijZahtev(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @Scheduled(cron = "${greeting.cron}")
+    public void cronJob() throws Exception {
+        zahtevicirService.odbaciZahtev();
     }
 }

@@ -17,6 +17,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.soap.*;
 import java.io.File;
@@ -168,5 +169,21 @@ public class ZahtevicirService {
         }
         System.out.println(ids+"   "+zahtevi.size());
         return zahtevi;
+    }
+
+    public void odbaciZahtev() throws Exception {
+        ArrayList<Zahtev> zahtevs= zahtevicirRepository.findAll();
+        for(Zahtev z : zahtevs){
+            GregorianCalendar gregorianCalendar = new GregorianCalendar();
+            gregorianCalendar.add(Calendar.MINUTE,-5);
+            DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
+            XMLGregorianCalendar now = datatypeFactory.newXMLGregorianCalendar(gregorianCalendar);
+            if(now.compare(z.getDatumPodnosenjaZahteva().getValue())>0 && z.getStanje().equalsIgnoreCase("podnet")){
+                z.setStanje("odbacen");
+                System.out.println(z.getId().getValue()+" zahtev je odbacen.");
+                String text = jaxbParser.marshallString(Zahtev.class,z);
+                zahtevicirRepository.saveZahtevFromText(text, z.getId().getValue());
+            }
+        }
     }
 }

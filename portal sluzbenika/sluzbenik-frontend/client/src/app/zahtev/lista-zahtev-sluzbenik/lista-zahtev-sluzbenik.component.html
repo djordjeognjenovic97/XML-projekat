@@ -65,7 +65,7 @@
                             <button mat-raised-button color="primary" (click)="JSON(c)">JSON</button>
                         </td>
                         <td *ngIf="c.stanje==='podnet'">
-                            <button mat-raised-button color="success" (click)="prihvatiZahtev(c)">Prihvati</button>
+                            <button mat-raised-button color="success" (click)="prihvatiZahtev(c.id)">Prihvati</button>
                         </td>
                         <td *ngIf="c.stanje==='podnet'">
                             <button mat-raised-button color="danger" (click)="odbijZahtev(c.id)">Odbij</button>
