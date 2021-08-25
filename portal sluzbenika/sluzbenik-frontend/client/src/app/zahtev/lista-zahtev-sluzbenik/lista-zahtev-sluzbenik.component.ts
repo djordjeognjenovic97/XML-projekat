@@ -122,6 +122,9 @@ export class ListaZahtevSluzbenikComponent implements OnInit {
       }
     );
   }
+  prihvatiZahtev(c:String) {
+    this.router.navigateByUrl(('/kreirajObavestenje/'+c));
+  }
 	regIn1(){
     this.zahtevService.getSearchZahtevi(this.regForm1.value.podatak).subscribe(
       res => {

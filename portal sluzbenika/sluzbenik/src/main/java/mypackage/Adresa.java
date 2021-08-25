@@ -1,5 +1,5 @@
 
-package com.tim15.sluzbenik.model.obavestenjecir;
+package mypackage;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- *
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- *
+ * 
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -32,14 +32,14 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- *
- *
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-        "mesto",
-        "ulica",
-        "brUlice"
+    "mesto",
+    "ulica",
+    "brUlice"
 })
 @XmlRootElement(name = "adresa", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/obavestenjecir")
 public class Adresa {
@@ -53,11 +53,11 @@ public class Adresa {
 
     /**
      * Gets the value of the mesto property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link String }
-     *
+     *     
      */
     public String getMesto() {
         return mesto;
@@ -65,11 +65,11 @@ public class Adresa {
 
     /**
      * Sets the value of the mesto property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link String }
-     *
+     *     
      */
     public void setMesto(String value) {
         this.mesto = value;
@@ -77,11 +77,11 @@ public class Adresa {
 
     /**
      * Gets the value of the ulica property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link String }
-     *
+     *     
      */
     public String getUlica() {
         return ulica;
@@ -89,11 +89,11 @@ public class Adresa {
 
     /**
      * Sets the value of the ulica property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link String }
-     *
+     *     
      */
     public void setUlica(String value) {
         this.ulica = value;
@@ -101,7 +101,7 @@ public class Adresa {
 
     /**
      * Gets the value of the brUlice property.
-     *
+     * 
      */
     public int getBrUlice() {
         return brUlice;
@@ -109,7 +109,7 @@ public class Adresa {
 
     /**
      * Sets the value of the brUlice property.
-     *
+     * 
      */
     public void setBrUlice(int value) {
         this.brUlice = value;

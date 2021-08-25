@@ -18,6 +18,8 @@ import { AddZahtevComponent } from './zahtev/add-zahtev/add-zahtev.component';
 import { ListaZahtevComponent } from './zahtev/lista-zahtev/lista-zahtev.component';
 import { ListaObavestenjaComponent } from './obavestenja/lista-obavestenja/lista-obavestenja.component';
 import { ListaZahtevSluzbenikComponent } from './zahtev/lista-zahtev-sluzbenik/lista-zahtev-sluzbenik.component';
+import { AddObavestenjaComponent } from './obavestenja/add-obavestenja/add-obavestenja.component';
+import { ListaObavestenjaSluzbenikComponent } from './obavestenja/lista-obavestenja-sluzbenik/lista-obavestenja-sluzbenik.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ListaZahtevSluzbenikComponent } from './zahtev/lista-zahtev-sluzbenik/l
     AddZahtevComponent,
     ListaZahtevComponent,
     ListaObavestenjaComponent,
-    ListaZahtevSluzbenikComponent
+    ListaZahtevSluzbenikComponent,
+    AddObavestenjaComponent,
+    ListaObavestenjaSluzbenikComponent
   ],
   imports: [
     BrowserModule,

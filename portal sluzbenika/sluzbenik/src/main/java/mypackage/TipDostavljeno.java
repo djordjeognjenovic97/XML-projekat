@@ -1,5 +1,5 @@
 
-package com.tim15.sluzbenik.model.obavestenjecir;
+package mypackage;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for tipDostavljeno complex type.
- *
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- *
+ * 
  * <pre>
  * &lt;complexType name="tipDostavljeno">
  *   &lt;complexContent>
@@ -48,12 +48,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- *
- *
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "tipDostavljeno", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/obavestenjecir", propOrder = {
-        "opcijaDostave"
+    "opcijaDostave"
 })
 public class TipDostavljeno {
 
@@ -62,11 +62,11 @@ public class TipDostavljeno {
 
     /**
      * Gets the value of the opcijaDostave property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link TipDostavljeno.OpcijaDostave }
-     *
+     *     
      */
     public TipDostavljeno.OpcijaDostave getOpcijaDostave() {
         return opcijaDostave;
@@ -74,11 +74,11 @@ public class TipDostavljeno {
 
     /**
      * Sets the value of the opcijaDostave property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link TipDostavljeno.OpcijaDostave }
-     *
+     *     
      */
     public void setOpcijaDostave(TipDostavljeno.OpcijaDostave value) {
         this.opcijaDostave = value;
@@ -87,9 +87,9 @@ public class TipDostavljeno {
 
     /**
      * <p>Java class for anonymous complex type.
-     *
+     * 
      * <p>The following schema fragment specifies the expected content contained within this class.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -116,13 +116,13 @@ public class TipDostavljeno {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     *
-     *
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-            "izabrano",
-            "naziv"
+        "izabrano",
+        "naziv"
     })
     public static class OpcijaDostave {
 
@@ -133,11 +133,11 @@ public class TipDostavljeno {
 
         /**
          * Gets the value of the izabrano property.
-         *
+         * 
          * @return
          *     possible object is
          *     {@link String }
-         *
+         *     
          */
         public String getIzabrano() {
             return izabrano;
@@ -145,11 +145,11 @@ public class TipDostavljeno {
 
         /**
          * Sets the value of the izabrano property.
-         *
+         * 
          * @param value
          *     allowed object is
          *     {@link String }
-         *
+         *     
          */
         public void setIzabrano(String value) {
             this.izabrano = value;
@@ -157,11 +157,11 @@ public class TipDostavljeno {
 
         /**
          * Gets the value of the naziv property.
-         *
+         * 
          * @return
          *     possible object is
          *     {@link String }
-         *
+         *     
          */
         public String getNaziv() {
             return naziv;
@@ -169,11 +169,11 @@ public class TipDostavljeno {
 
         /**
          * Sets the value of the naziv property.
-         *
+         * 
          * @param value
          *     allowed object is
          *     {@link String }
-         *
+         *     
          */
         public void setNaziv(String value) {
             this.naziv = value;

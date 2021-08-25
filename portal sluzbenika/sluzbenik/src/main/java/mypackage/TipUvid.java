@@ -1,5 +1,5 @@
 
-package com.tim15.sluzbenik.model.obavestenjecir;
+package mypackage;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -11,9 +11,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * <p>Java class for tipUvid complex type.
- *
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- *
+ * 
  * <pre>
  * &lt;complexType name="tipUvid">
  *   &lt;complexContent>
@@ -52,18 +52,18 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- *
- *
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "tipUvid", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/obavestenjecir", propOrder = {
-        "opisTrazeneInformacije",
-        "datumUvida",
-        "brojSati",
-        "pocetakAkcije",
-        "krajAkcije",
-        "adresa",
-        "brojKancelarije"
+    "opisTrazeneInformacije",
+    "datumUvida",
+    "brojSati",
+    "pocetakAkcije",
+    "krajAkcije",
+    "adresa",
+    "brojKancelarije"
 })
 public class TipUvid {
 
@@ -85,11 +85,11 @@ public class TipUvid {
 
     /**
      * Gets the value of the opisTrazeneInformacije property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link String }
-     *
+     *     
      */
     public String getOpisTrazeneInformacije() {
         return opisTrazeneInformacije;
@@ -97,11 +97,11 @@ public class TipUvid {
 
     /**
      * Sets the value of the opisTrazeneInformacije property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link String }
-     *
+     *     
      */
     public void setOpisTrazeneInformacije(String value) {
         this.opisTrazeneInformacije = value;
@@ -109,11 +109,11 @@ public class TipUvid {
 
     /**
      * Gets the value of the datumUvida property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link XMLGregorianCalendar }
-     *
+     *     
      */
     public XMLGregorianCalendar getDatumUvida() {
         return datumUvida;
@@ -121,11 +121,11 @@ public class TipUvid {
 
     /**
      * Sets the value of the datumUvida property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link XMLGregorianCalendar }
-     *
+     *     
      */
     public void setDatumUvida(XMLGregorianCalendar value) {
         this.datumUvida = value;
@@ -133,11 +133,11 @@ public class TipUvid {
 
     /**
      * Gets the value of the brojSati property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link Integer }
-     *
+     *     
      */
     public Integer getBrojSati() {
         return brojSati;
@@ -145,11 +145,11 @@ public class TipUvid {
 
     /**
      * Sets the value of the brojSati property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link Integer }
-     *
+     *     
      */
     public void setBrojSati(Integer value) {
         this.brojSati = value;
@@ -157,11 +157,11 @@ public class TipUvid {
 
     /**
      * Gets the value of the pocetakAkcije property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link XMLGregorianCalendar }
-     *
+     *     
      */
     public XMLGregorianCalendar getPocetakAkcije() {
         return pocetakAkcije;
@@ -169,11 +169,11 @@ public class TipUvid {
 
     /**
      * Sets the value of the pocetakAkcije property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link XMLGregorianCalendar }
-     *
+     *     
      */
     public void setPocetakAkcije(XMLGregorianCalendar value) {
         this.pocetakAkcije = value;
@@ -181,11 +181,11 @@ public class TipUvid {
 
     /**
      * Gets the value of the krajAkcije property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link XMLGregorianCalendar }
-     *
+     *     
      */
     public XMLGregorianCalendar getKrajAkcije() {
         return krajAkcije;
@@ -193,11 +193,11 @@ public class TipUvid {
 
     /**
      * Sets the value of the krajAkcije property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link XMLGregorianCalendar }
-     *
+     *     
      */
     public void setKrajAkcije(XMLGregorianCalendar value) {
         this.krajAkcije = value;
@@ -205,11 +205,11 @@ public class TipUvid {
 
     /**
      * Gets the value of the adresa property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link Adresa }
-     *
+     *     
      */
     public Adresa getAdresa() {
         return adresa;
@@ -217,11 +217,11 @@ public class TipUvid {
 
     /**
      * Sets the value of the adresa property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link Adresa }
-     *
+     *     
      */
     public void setAdresa(Adresa value) {
         this.adresa = value;
@@ -229,11 +229,11 @@ public class TipUvid {
 
     /**
      * Gets the value of the brojKancelarije property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link String }
-     *
+     *     
      */
     public String getBrojKancelarije() {
         return brojKancelarije;
@@ -241,11 +241,11 @@ public class TipUvid {
 
     /**
      * Sets the value of the brojKancelarije property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link String }
-     *
+     *     
      */
     public void setBrojKancelarije(String value) {
         this.brojKancelarije = value;

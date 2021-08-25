@@ -17,7 +17,7 @@ import org.w3c.dom.Document;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "api/obavestenja", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "api/obavestenja", produces = MediaType.APPLICATION_XML_VALUE)
 public class ObavestenjecirController {
     @Autowired
     private ObavestenjecirService obavestenjecirService;
@@ -31,10 +31,11 @@ public class ObavestenjecirController {
         return new ResponseEntity<String>("Obavestenje je dodato u exist bazu", HttpStatus.OK);
     }
 
-    @PostMapping(value = "/addText", consumes = MediaType.TEXT_PLAIN_VALUE)
-    public ResponseEntity<String> addObavestenjeText(@RequestBody String text) throws Exception {
+    @PostMapping(value = "/addText",consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<?> addObavestenjeText(@RequestBody String text) throws Exception {
+        //TREBA IZMENITI ZAHTEV-PRIHVACEN, POSLATI MAIL GRADJANINU ISTO
         obavestenjecirService.addObavestenjeFromText(text);
-        return new ResponseEntity<String>("Done", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PostMapping(value = "/addFile", consumes = MediaType.TEXT_PLAIN_VALUE)
