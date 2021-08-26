@@ -18,17 +18,17 @@ export class ObavestenjaService {
 	public createObavestenje(obavestenje:any):Observable<any> {
         return this.http.post<any>("http://localhost:8080/api/obavestenja/addText",obavestenje, {headers: this.headers});
     }
-	public getUsersZahtevi():Observable<any> {
-        return this.http.get("http://localhost:8080/api/zahtevi/getUsersZahtevi", {headers: this.headers, responseType: 'text'});
+	public getUsersObavestenja():Observable<any> {
+        return this.http.get("http://localhost:8080/api/obavestenja/getUsersObavestenja", {headers: this.headers, responseType: 'text'});
     }
-	public getAllZahtevi():Observable<any> {
-        return this.http.get("http://localhost:8080/api/zahtevi/getAllZahtevi", {headers: this.headers, responseType: 'text'});
+	public getAllObavestenja():Observable<any> {
+        return this.http.get("http://localhost:8080/api/obavestenja/getAllObavestenja", {headers: this.headers, responseType: 'text'});
     }
-	public getSearchZahtevi(content:String):Observable<any> {
-        return this.http.get("http://localhost:8080/api/zahtevi/getSearchZahtevi/"+content, {headers: this.headers, responseType: 'text'});
+	public getSearchObavestenja(content:String):Observable<any> {
+        return this.http.get("http://localhost:8080/api/obavestenja/getSearchObavestenja/"+content, {headers: this.headers, responseType: 'text'});
     }
-	public getSearchMetadataZahtevi(content:any):Observable<any> {
-        return this.http.post("http://localhost:8080/api/zahtevi/getSearchMetadataZahtevi",content,{headers: this.headers, responseType: 'text'});
+	public getSearchMetadataObavestenja(content:any):Observable<any> {
+        return this.http.post("http://localhost:8080/api/obavestenja/getSearchMetadataObavestenja",content,{headers: this.headers, responseType: 'text'});
     }
 	public skiniXHTML(id:String):Observable<any> {
         return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniXHTML"+id, {headers: this.headers});
@@ -83,7 +83,7 @@ export class ObavestenjaService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti naziv."
+						text: "Morate uneti naziv organa."
 					  });
 					}
 				},
@@ -109,7 +109,7 @@ export class ObavestenjaService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti sediste organa."
+						text: "Morate uneti naslov."
 					  });
 					}
 				},
@@ -127,11 +127,11 @@ export class ObavestenjaService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti datum uvida."
+						text: "Morate uneti datum uvida u formatu YYYY-MM-DD"
 					  });
 					}
 				},
-				asker: Xonomy.askCalendar
+				asker: Xonomy.askString
 			},
 			"broj_sati": {
 				displayName: "broj_sati",
@@ -140,11 +140,11 @@ export class ObavestenjaService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate broj sati."
+						text: "Morate uneti broj sati koliko ce trajati mogucnost uvida."
 					  });
 					}
 				},
-				asker: Xonomy.askNumber
+				asker: Xonomy.askString
 			},
 			"pocetak_akcije": {
 				displayName: "pocetak_akcije",
@@ -153,11 +153,11 @@ export class ObavestenjaService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti pocetak uvida."
+						text: "Morate uneti pocetak uvida u formatu HH:MM"
 					  });
 					}
 				},
-				asker: Xonomy.askCalendar
+				asker: Xonomy.askString
 			},
 			"kraj_akcije": {
 				displayName: "kraj_akcije",
@@ -166,7 +166,7 @@ export class ObavestenjaService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti kraj_akcije."
+						text: "Morate uneti kraj_akcije uvida u formatu HH:MM"
 					  });
 					}
 				},

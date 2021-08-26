@@ -19,7 +19,13 @@ public class FusekiReaderExample {
 
     public static ArrayList<String> executeQuery(Map<String,String> params,String metadataUri) throws IOException {
         FusekiAuthenticationUtilities.ConnectionProperties conn = FusekiAuthenticationUtilities.loadProperties(metadataUri);
-        String sparqlQueryTemplate = readFile(QUERY_FILEPATH, StandardCharsets.UTF_8);
+        String query_filepath="src/main/resources/rdf/";
+        if(metadataUri.contains("zahtevi")){
+            query_filepath=query_filepath+"sparqlZahtev.rq";
+        }else if(metadataUri.contains("obavestenja")){
+            query_filepath=query_filepath+"sparqlObavestenje.rq";
+        }
+        String sparqlQueryTemplate = readFile(query_filepath, StandardCharsets.UTF_8);
         System.out.println("Query: " + sparqlQueryTemplate);
         String sparqlQuery = StringSubstitutor.replace(sparqlQueryTemplate,params,"{{","}}");
         System.out.println("Query: " + sparqlQuery);
@@ -38,7 +44,7 @@ public class FusekiReaderExample {
                 varName = variableBindings.next();
                 varValue = querySolution.get(varName);
                 System.out.println(varName + ": " + varValue);
-                if(varName.contains("id")){
+                if(varName.contains("id") || varName.contains("broj_predmeta")){
                     String value = varValue.toString();
                     foundFakultete.add(value);
                 }

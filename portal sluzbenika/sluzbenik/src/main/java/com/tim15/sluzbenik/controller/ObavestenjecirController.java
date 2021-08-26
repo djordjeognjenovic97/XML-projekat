@@ -1,5 +1,6 @@
 package com.tim15.sluzbenik.controller;
 
+import com.tim15.sluzbenik.dto.*;
 import com.tim15.sluzbenik.jaxb.JaxbParser;
 import com.tim15.sluzbenik.model.obavestenjecir.Obavestenje;
 import com.tim15.sluzbenik.model.zahtevcir.Zahtev;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Document;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/obavestenja", produces = MediaType.APPLICATION_XML_VALUE)
@@ -68,5 +70,42 @@ public class ObavestenjecirController {
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_OCTET_STREAM)
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);
+    }
+    @PreAuthorize("hasRole('ROLE_GRADJANIN')")
+    @GetMapping(value = "/getUsersObavestenja",consumes = MediaType.APPLICATION_XML_VALUE,produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<ListaObavestenjaDTO> getObavestenjaUsers() throws Exception {
+        List<ObavestenjeDTO> ids = obavestenjecirService.getUsersObavestenja();
+        if(ids == null) {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<ListaObavestenjaDTO>(new ListaObavestenjaDTO(ids), HttpStatus.OK);
+    }
+    @PreAuthorize("hasRole('ROLE_SLUZBENIK')")
+    @GetMapping(value = "/getAllObavestenja",consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<ListaObavestenjaDTO> getObavestenjaAll() throws Exception {
+        List<ObavestenjeDTO> ids = obavestenjecirService.getAllObavestenja();
+        if(ids == null) {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<ListaObavestenjaDTO>(new ListaObavestenjaDTO(ids), HttpStatus.OK);
+    }
+    @PreAuthorize("hasRole('ROLE_SLUZBENIK')")
+    @GetMapping(value = "/getSearchObavestenja/{content}",consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<ListaObavestenjaDTO> getObavestenjaSearch(@PathVariable String content) throws Exception {
+        List<ObavestenjeDTO> ids = obavestenjecirService.getSearchObavestenja(content);
+        if(ids == null) {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<ListaObavestenjaDTO>(new ListaObavestenjaDTO(ids), HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ROLE_SLUZBENIK')")
+    @PostMapping(value = "/getSearchMetadataObavestenja",consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<ListaObavestenjaDTO> getObavestenjaMeatadataSearch(@RequestBody QueryObavestenjeDTO dto) throws Exception {
+        List<ObavestenjeDTO> ids = obavestenjecirService.getSearchMetadataObavestenja(dto);
+        if(ids == null) {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<ListaObavestenjaDTO>(new ListaObavestenjaDTO(ids), HttpStatus.OK);
     }
 }

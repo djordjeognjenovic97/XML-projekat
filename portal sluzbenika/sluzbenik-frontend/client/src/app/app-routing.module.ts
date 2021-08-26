@@ -6,6 +6,7 @@ import { LoginGuard } from './guards/login.service';
 import { RoleGuard } from './guards/role.service';
 import { HomeComponent } from './home/home.component';
 import { AddObavestenjaComponent } from './obavestenja/add-obavestenja/add-obavestenja.component';
+import { ListaObavestenjaSluzbenikComponent } from './obavestenja/lista-obavestenja-sluzbenik/lista-obavestenja-sluzbenik.component';
 import { ListaObavestenjaComponent } from './obavestenja/lista-obavestenja/lista-obavestenja.component';
 import { AddZahtevComponent } from './zahtev/add-zahtev/add-zahtev.component';
 import { ListaZahtevSluzbenikComponent } from './zahtev/lista-zahtev-sluzbenik/lista-zahtev-sluzbenik.component';
@@ -53,7 +54,7 @@ const routes: Routes = [
   },
   {
     path : 'obavestenjaSluzbenik',
-    component : ListaObavestenjaComponent,
+    component : ListaObavestenjaSluzbenikComponent,
     canActivate: [RoleGuard],
 		data: {expectedRoles: 'ROLE_SLUZBENIK'}
   },
