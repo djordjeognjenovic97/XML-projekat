@@ -19,8 +19,17 @@ export class ZalbaCutanjeService {
         return this.http.post<any>("http://localhost:8082/api/zalbecutanje/addText",zahtev, {headers: this.headers});
     }
 	public getUsersZalbe():Observable<any> {
-        return this.http.get("http://localhost:8082/api/zalbe/getUsersZalbe", {headers: this.headers, responseType: 'text'});
+        return this.http.get("http://localhost:8082/api/zalbecutanje/getUsersZalbe", {headers: this.headers, responseType: 'text'});
     }
+  public getAllZalbaCutanje():Observable<any> {
+      return this.http.get("http://localhost:8082/api/zalbecutanje/getAllZalbaCutanje", {headers: this.headers, responseType: 'text'});
+  }
+  public getSearchZalbaCutanje(content:String):Observable<any> {
+      return this.http.get("http://localhost:8082/api/zalbecutanje/getSearchZalbaCutanje/"+content, {headers: this.headers, responseType: 'text'});
+  }
+  public getSearchMetadataZalbaCutanje(content:any):Observable<any> {
+      return this.http.post("http://localhost:8082/api/zalbecutanje/getSearchMetadataZalbaCutanje",content,{headers: this.headers, responseType: 'text'});
+  }
 	public skiniXHTML(id:String):Observable<any> {
         return this.http.post<any>("http://localhost:8082/api/zalbe/skiniXHTML"+id, {headers: this.headers});
     }
@@ -33,206 +42,177 @@ export class ZalbaCutanjeService {
 	public skiniJSON(id:String):Observable<any> {
         return this.http.post<any>("http://localhost:8082/api/zalbe/skiniJSON"+id, {headers: this.headers});
     }
-	public ZahtevSpecification = {
-		validate: function (jsElement) {
-			let elementSpec = this.elements[jsElement.name];
-			if (elementSpec.validate) elementSpec.validate(jsElement);
-			for (let i = 0; i < jsElement.attributes.length; i++) {
-			  let jsAttribute = jsElement.attributes[i];
-			  let attributeSpec = elementSpec.attributes[jsAttribute.name];
-			  if (attributeSpec.validate) attributeSpec.validate(jsAttribute);
-			};
-			for (let i = 0; i < jsElement.children.length; i++) {
-			  let jsChild = jsElement.children[i];
-			  if (jsChild.type == "element") { 
-				this.validate(jsChild);
-			  }
-			}
-		},
-		elements: {
-		  'zalbacutanje':{
-			  dislayName:"zahtev",
-			  attributes: {
-				"xsi:schemaLocation": {
-					isInvisible: true,
-				  },
-				"datum":{
-					isInvisible: true
-					// displayName: "datum",
-					// hasText: true,
-					// asker: Xonomy.askCalendar
-				},
-				"mesto": {
-					displayName: "mesto",
-					hasText: true,
-					validate: function (jsElement) {
-						if (jsElement.value===""){
-						  Xonomy.warnings.push({
-							htmlID: jsElement.htmlID,
-							text: "Morate uneti mesto podnosenja zahteva."
-						  });
-						}
-					},
-					asker: Xonomy.askString,
-				},
-				"br_predmeta": {
-					displayName: "br_predmeta",
-					hasText: true,
-					validate: function (jsElement) {
-						if (jsElement.value===""){
-						  Xonomy.warnings.push({
-							htmlID: jsElement.htmlID,
-							text: "Morate uneti id zahteva za koji podnosite zalbu."
-						  });
-						}
-					},
-					asker: Xonomy.askString,
-				},
-			  },
-			},
-			"naslov": {
-				displayName: "naslov",
-				hasText: true,
-				validate: function (jsElement) {
-					if (jsElement.getText()===""){
-					  Xonomy.warnings.push({
-						htmlID: jsElement.htmlID,
-						text: "Morate uneti naslov."
-					  });
-					}
-				},
-				asker: Xonomy.askString
-			},
-			"naziv": {
-				displayName: "naziv",
-				hasText: true,
-				validate: function (jsElement) {
-					if (jsElement.getText()===""){
-					  Xonomy.warnings.push({
-						htmlID: jsElement.htmlID,
-						text: "Morate uneti naziv."
-					  });
-					}
-				},
-				asker: Xonomy.askString
-			},
-			"mesto": {
-				displayName: "mesto",
-				hasText: true,
-				validate: function (jsElement) {
-					if (jsElement.getText()===""){
-					  Xonomy.warnings.push({
-						htmlID: jsElement.htmlID,
-						text: "Morate uneti mesto."
-					  });
-					}
-				},
-				asker: Xonomy.askString
-			},
-			"ulica": {
-				displayName: "ulica",
-				hasText: true,
-				validate: function (jsElement) {
-					if (jsElement.getText()===""){
-					  Xonomy.warnings.push({
-						htmlID: jsElement.htmlID,
-						text: "Morate uneti ulicu."
-					  });
-					}
-				},
-				asker: Xonomy.askString
-			},
-			"br_ulice": {
-				displayName: "br_ulice",
-				hasText: true,
-				validate: function (jsElement) {
-					if (jsElement.getText()===""){
-					  Xonomy.warnings.push({
-						htmlID: jsElement.htmlID,
-						text: "Morate uneti broj ulice."
-					  });
-					}
-				},
-				asker: Xonomy.askString
-			},
-			"naziv_organa": {
-				displayName: "naziv_organa",
-				hasText: true,
-				validate: function (jsElement) {
-					if (jsElement.getText()===""){
-					  Xonomy.warnings.push({
-						htmlID: jsElement.htmlID,
-						text: "Morate uneti naziv organa."
-					  });
-					}
-				},
-				asker: Xonomy.askString
-			},
-			"razlog_zalbe": {
-				displayName: "razlog_zlabe",
-				hasText: true,
-				validate: function (jsElement) {
-					if (jsElement.getText()===""){
-					  Xonomy.warnings.push({
-						htmlID: jsElement.htmlID,
-						text: "Morate uneti razlog zalbe ('nije postupio', 'nije postupio u celosti', 'u zakonskom roku')."
-					  });
-					}
-				},
-				asker: Xonomy.askString
-				// validate: function (jsElement) {
-				// 	if (jsElement.getText()===""){
-				// 	  Xonomy.warnings.push({
-				// 		htmlID: jsElement.htmlID,
-				// 		text: "Morate uneti razlog zalbe."
-				// 	  });
-				// 	}
-				// },
-				// asker: Xonomy.askPickerList,
-				// askerParameter: ["nije postupio", "nije postupio u celosti", "u zakonskom roku"],
-			},	
-			"datum_zahteva":{
-				isInvisible: true
-				// displayName: "datum",
-				// hasText: true,
-				// asker: Xonomy.askCalendar
-			},
-			"podaci_o_zahtevu_i_info": {
-				displayName: "podaci_o_zahtevu_i_info",
-				hasText: true,
-				asker: Xonomy.askString
-			},
-			"ime": {
-				displayName: "ime",
-				hasText: true,
-				validate: function (jsElement) {
-					if (jsElement.getText()===""){
-					  Xonomy.warnings.push({
-						htmlID: jsElement.htmlID,
-						text: "Morate uneti ime."
-					  });
-					}
-				},
-				asker: Xonomy.askString
-			},
-			"prezime": {
-				displayName: "prezime",
-				hasText: true,
-				validate: function (jsElement) {
-					if (jsElement.getText()===""){
-					  Xonomy.warnings.push({
-						htmlID: jsElement.htmlID,
-						text: "Morate uneti prezime."
-					  });
-					}
-				},
-				asker: Xonomy.askString
-			},
-			"drugi_kontakt_podaci": {
-				displayName: "drugi_kontakt_podaci",
-				hasText: true,
-				asker: Xonomy.askString
-			},
-		}
-	}
+    public ZalbaCutanjeSpecification = {
+      validate: function (jsElement) {
+        let elementSpec = this.elements[jsElement.name];
+        if (elementSpec.validate) elementSpec.validate(jsElement);
+        for (let i = 0; i < jsElement.attributes.length; i++) {
+          let jsAttribute = jsElement.attributes[i];
+          let attributeSpec = elementSpec.attributes[jsAttribute.name];
+          if (attributeSpec.validate) attributeSpec.validate(jsAttribute);
+        };
+        for (let i = 0; i < jsElement.children.length; i++) {
+          let jsChild = jsElement.children[i];
+          if (jsChild.type == "element") {
+          this.validate(jsChild);
+          }
+        }
+      },
+      elements: {
+        'zalbaCutanje':{
+          dislayName:"zalbaCutanje",
+          attributes: {
+          "xsi:schemaLocation": {
+            isInvisible: true,
+            },
+          "stanje":{
+            isInvisible: true
+          }
+          },
+        },
+        "naziv_organa": {
+          displayName: "naziv_organa",
+          hasText: true,
+          validate: function (jsElement) {
+            if (jsElement.getText()===""){
+              Xonomy.warnings.push({
+              htmlID: jsElement.htmlID,
+              text: "Morate uneti naziv organa."
+              });
+            }
+          },
+          asker: Xonomy.askString
+          },
+        "razlog_zalbe": {
+          displayName: "razlog_zalbe",
+          hasText: true,
+          validate: function (jsElement) {
+            if (jsElement.getText()===""){
+              Xonomy.warnings.push({
+              htmlID: jsElement.htmlID,
+              text: "Morate uneti razlog zalbe."
+              });
+            }
+          },
+          asker: Xonomy.askString
+          },
+          "datum_orginalnog_zahteva": {
+            displayName: "datum_orginalnog_zahteva",
+            hasText: true,
+            validate: function (jsElement) {
+              if (jsElement.getText()===""){
+                Xonomy.warnings.push({
+                htmlID: jsElement.htmlID,
+                text: "Morate uneti datum originalnog zahteva u formatu YYYY-MM-DD"
+                });
+              }
+            },
+            asker: Xonomy.askString
+          },
+          "podaci_o_zahtevu": {
+            displayName: "podaci_o_zahtevu",
+            hasText: true,
+            validate: function (jsElement) {
+              if (jsElement.getText()===""){
+                Xonomy.warnings.push({
+                htmlID: jsElement.htmlID,
+                text: "Morate uneti podatke o zahtevu"
+                });
+              }
+            },
+            asker: Xonomy.askString
+          },
+        "ime": {
+          displayName: "ime",
+          hasText: true,
+          validate: function (jsElement) {
+            if (jsElement.getText()===""){
+              Xonomy.warnings.push({
+              htmlID: jsElement.htmlID,
+              text: "Morate uneti ime podnosioca zalbe."
+              });
+            }
+          },
+          asker: Xonomy.askString
+        },
+        "prezime": {
+          displayName: "prezime",
+          hasText: true,
+          validate: function (jsElement) {
+            if (jsElement.getText()===""){
+              Xonomy.warnings.push({
+              htmlID: jsElement.htmlID,
+              text: "Morate uneti prezime podnosioca zalbe."
+              });
+            }
+          },
+          asker: Xonomy.askString
+        },
+        "mesto": {
+          displayName: "mesto",
+          hasText: true,
+          validate: function (jsElement) {
+            if (jsElement.getText()===""){
+              Xonomy.warnings.push({
+              htmlID: jsElement.htmlID,
+              text: "Morate uneti mesto."
+              });
+            }
+          },
+          asker: Xonomy.askString
+        },
+        "ulica": {
+          displayName: "ulica",
+          hasText: true,
+          validate: function (jsElement) {
+            if (jsElement.getText()===""){
+              Xonomy.warnings.push({
+              htmlID: jsElement.htmlID,
+              text: "Morate uneti ulicu podnosioca zalbe."
+              });
+            }
+          },
+          asker: Xonomy.askString
+        },
+        "br_ulice": {
+          displayName: "br_ulice",
+          hasText: true,
+          validate: function (jsElement) {
+            if (jsElement.getText()===""){
+              Xonomy.warnings.push({
+              htmlID: jsElement.htmlID,
+              text: "Morate uneti broj ulice podnosioca zalbe."
+              });
+            }
+          },
+          asker: Xonomy.askString
+        },
+        "datum": {
+          displayName: "datum",
+          hasText: true,
+          validate: function (jsElement) {
+            if (jsElement.getText()===""){
+              Xonomy.warnings.push({
+              htmlID: jsElement.htmlID,
+              text: "Morate uneti datum u formatu YYYY-MM-DD"
+              });
+            }
+          },
+          asker: Xonomy.askString
+        },
+        "broj_predmeta": {
+          displayName: "broj_predmeta",
+          hasText: true,
+          validate: function (jsElement) {
+            if (jsElement.getText()===""){
+              Xonomy.warnings.push({
+              htmlID: jsElement.htmlID,
+              text: "Morate uneti broj predmeta zahteva zbog kojeg podnosite zalbu"
+              });
+            }
+          },
+          asker: Xonomy.askString
+        },
+      }
+    }
 }

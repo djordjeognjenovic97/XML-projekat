@@ -1,37 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ZalbaService } from 'src/app/services/zalba.service';
+import { ZalbaCutanje } from 'src/app/models/zalbaCutanje';
+import { ZalbaCutanjeService } from 'src/app/services/zalbaCutanje.service';
 
 declare var require: any
 
 @Component({
-  selector: 'app-lista-zalbe',
-  templateUrl: './lista-zalbe.component.html',
-  styleUrls: ['./lista-zalbe.component.scss']
+  selector: 'app-lista-zalba-cutanje',
+  templateUrl: './lista-zalba-cutanje.component.html',
+  styleUrls: ['./lista-zalba-cutanje.component.scss']
 })
-export class ListaZalbeComponent implements OnInit {
+export class ListaZalbaCutanjeComponent implements OnInit {
 
-
-  zalbe: String[] |undefined;
+  zalbe: ZalbaCutanje[] |undefined;
 
   constructor(
     private toastr: ToastrService,
     private router:Router,
-    private zalbaService: ZalbaService
+    private zalbaService: ZalbaCutanjeService
   ) { }
 
   ngOnInit(): void {
     this.zalbaService.getUsersZalbe().subscribe(
       res => {
+        console.log(res);
         console.log("ABRAKADABRA");
         var convert = require('xml-js');
         this.zalbe=[];
         const decodedItem =JSON.parse(convert.xml2json(res,{compact: true, ignoreComment: true}));
-        for(var i  in decodedItem.idList.ids){
-          console.log("var");
-          console.log(decodedItem.idList.ids[i]._text);
-          this.zalbe.push(decodedItem.idList.ids[i]._text);
+        if(decodedItem.listaZalbiDTO.lista.constructor==[].constructor){
+          for(var i  in decodedItem.listaZalbiDTO.lista){
+            this.zalbe.push(new ZalbaCutanje(decodedItem.listaZalbiDTO.lista[i].id._text,
+              decodedItem.listaZalbiDTO.lista[i].mesto._text,decodedItem.listaZalbiDTO.lista[i].datum._text));
+          }
+        }else{
+          this.zalbe.push(new ZalbaCutanje(decodedItem.listaZalbiDTO.lista.id._text,
+            decodedItem.listaZalbiDTO.lista.mesto._text,decodedItem.listaZalbiDTO.lista.datum._text));
         }
         console.log(this.zalbe);
       }
@@ -85,4 +90,5 @@ export class ListaZalbeComponent implements OnInit {
       }
     );
   }
+
 }

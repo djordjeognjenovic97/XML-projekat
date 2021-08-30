@@ -1,11 +1,12 @@
 <div class="w-100 h-100 p-3">
-	<h1 style="margin: 0 auto;text-align: center;">Vase zalbe</h1>
+	<h1 style="margin: 0 auto;text-align: center;">Vase zalbe (cutanje)</h1>
 	<div class="row">
 		<div class="col">
             <table class="table table-striped pera">
                 <thead>
                   <tr>
                     <th>ID zalbe<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                    <th>Datum<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
                     <th>XHTML<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
                     <th>PDF<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
                     <th>RDF<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
@@ -18,7 +19,10 @@
                     <h4><b>Nema zalbi</b></h4>
                   </div>
                   <tr *ngFor="let c of zalbe">
-                    <td class="in_waves">{{c}}</td>
+                    <td class="in_waves">
+                      <a href="http://www.google.com">{{c.id}}</a>
+                    </td>
+                    <td class="in_waves">{{c.datum.split("+")[0]}}</td>
                     <td>
                         <button mat-raised-button color="primary"  (click)="XHTML(c)">XHTML</button>
                      </td>
@@ -37,3 +41,4 @@
         </div>
     </div>
 </div>
+

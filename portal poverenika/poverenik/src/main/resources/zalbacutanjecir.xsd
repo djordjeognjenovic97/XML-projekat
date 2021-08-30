@@ -1,17 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat/zalbacutanjecir"
-    xmlns:zal="https://github.com/djordjeognjenovic97/XML-projekat/zalbacutanjecir">
-
+    xmlns:zal="https://github.com/djordjeognjenovic97/XML-projekat/zalbacutanjecir"
+    xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/">
     <xs:element name="zalbacutanje">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="sadrzaj" type="zal:TSadrzaj"/>
                 <xs:element name="podnosilac_zalbe" type="zal:TPodnosilac_Zalbe"/>
+                <xs:element name="broj_predmeta">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="property" type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="datum">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="property" type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="mesto">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="property" type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
-            <xs:attribute name="datum" type="xs:date" use="required"/>
-            <xs:attribute name="mesto" type="xs:string" use="required"/>
-            <xs:attribute name="br_predmeta" type="xs:string" use="required"/>
+            <xs:attribute name="stanje" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="kreirano"/>
+                        <xs:enumeration value="izjasnjavanje"/>
+                        <xs:enumeration value="reseno"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
     <xs:complexType name="adresa">
@@ -40,33 +73,31 @@
                 </xs:simpleType>
             </xs:element>
             <xs:element name="datum_orginalnog_zahteva" type="xs:date"/>
+            <xs:element name="podaci_o_zahtevu" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="TPodnosilac_Zalbe">
         <xs:sequence>
-            <xs:element name="vrsta_podnosioca">
+            <xs:element name="ime">
                 <xs:complexType>
-                    <xs:choice>
-                        <xs:element name="fizicko_lice">
-                            <xs:complexType>
-                                <xs:sequence>
-                                    <xs:element name="Ime" type="xs:string"/>
-                                    <xs:element name="Prezime" type="xs:string"/>
-                                </xs:sequence>
-                            </xs:complexType>
-                        </xs:element>
-                        <xs:element name="pravno_lice">
-                            <xs:complexType>
-                                <xs:sequence>
-                                    <xs:element name="naziv" type="xs:string"/>
-                                </xs:sequence>
-                            </xs:complexType>
-                        </xs:element>
-                    </xs:choice>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="property" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="drugi_kontakt_podaci" type="xs:string"/>
+            <xs:element name="prezime">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="property" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="adresa" type="zal:adresa"/>
         </xs:sequence>
+        <xs:attribute name="email" type="xs:string" use="required"/>
     </xs:complexType>
 </xs:schema>

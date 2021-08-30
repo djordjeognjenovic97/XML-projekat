@@ -18,6 +18,13 @@ import { ListaZalbeComponent } from './zalbeGradjanin/lista-zalbe/lista-zalbe.co
 import { AddZalbaCutanjeComponent } from './zalbeGradjanin/add-zalba-cutanje/add-zalba-cutanje.component';
 import { AddZalbaOdbijenComponent } from './zalbeGradjanin/add-zalba-odbijen/add-zalba-odbijen.component';
 import { ListaResenjaComponent } from './resenjaGradjanin/lista-resenja/lista-resenja.component';
+import { ListaZalbaCutanjeComponent } from './zalbeGradjanin/lista-zalba-cutanje/lista-zalba-cutanje.component';
+import { ListaZalbaOdbijenComponent } from './zalbeGradjanin/lista-zalba-odbijen/lista-zalba-odbijen.component';
+import { ListaZalbaOdbijenPoverenikComponent } from './zalbePoverenik/lista-zalba-odbijen-poverenik/lista-zalba-odbijen-poverenik.component';
+import { ListaZalbaCutanjePoverenikComponent } from './zalbePoverenik/lista-zalba-cutanje-poverenik/lista-zalba-cutanje-poverenik.component';
+import { ListaResenjaPoverenikComponent } from './resenjaPoverenik/lista-resenja-poverenik/lista-resenja-poverenik.component';
+import { AddResenjaPoverenikComponent } from './resenjaPoverenik/add-resenja-poverenik/add-resenja-poverenik.component';
+import { ListaIzvestajaPoverenikComponent } from './izvestajiPoverenik/lista-izvestaja-poverenik/lista-izvestaja-poverenik.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +36,14 @@ import { ListaResenjaComponent } from './resenjaGradjanin/lista-resenja/lista-re
     ListaZalbeComponent,
     AddZalbaCutanjeComponent,
     AddZalbaOdbijenComponent,
-    ListaResenjaComponent
+    ListaResenjaComponent,
+    ListaZalbaCutanjeComponent,
+    ListaZalbaOdbijenComponent,
+    ListaZalbaOdbijenPoverenikComponent,
+    ListaZalbaCutanjePoverenikComponent,
+    ListaResenjaPoverenikComponent,
+    AddResenjaPoverenikComponent,
+    ListaIzvestajaPoverenikComponent
   ],
   imports: [
     BrowserModule,

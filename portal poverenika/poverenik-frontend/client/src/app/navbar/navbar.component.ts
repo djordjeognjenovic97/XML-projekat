@@ -1,4 +1,4 @@
-  
+
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -30,16 +30,31 @@ export class NavbarComponent implements OnInit {
   kreirajZalbaOdbijen() {
     this.router.navigateByUrl('/kreirajZalbaOdbijen');
   }
-  zalbeGradjanin() {
-    this.router.navigateByUrl('/zalbe-gradjanin');
+  zalbeCutanjeGradjanin() {
+    this.router.navigateByUrl('/zalbec-gradjanin');
+  }
+  zalbeOdbijeniceGradjanin() {
+    this.router.navigateByUrl('/zalbeo-gradjanin');
   }
   resenjaGradjanin() {
     this.router.navigateByUrl('/resenja-gradjanin');
   }
+  zalbeCutanjePoverenik() {
+    this.router.navigateByUrl('/zalbec-poverenik');
+  }
+  zalbeOdbijenicePoverenik() {
+    this.router.navigateByUrl('/zalbeo-poverenik');
+  }
+  resenjaPoverenik() {
+    this.router.navigateByUrl('/resenja-poverenik');
+  }
+  izvestajiPoverenik() {
+    this.router.navigateByUrl('/izvestaji-poverenik');
+  }
   getRole(): string {
-  
+
     let item: string = localStorage.getItem('user');
-  
+
 
 		if (!item) {
 			this.role = undefined;
@@ -50,7 +65,7 @@ export class NavbarComponent implements OnInit {
     const decodedItem =JSON.parse(convert.xml2json(item,{compact: true, ignoreComment: true}));
     const info = jwt.decodeToken(decodedItem.UserToken.accessToken._text);
     this.role=info['uloga'];
-    //console.log(localStorage.getItem('uloga'));      
+    //console.log(localStorage.getItem('uloga'));
     return this.role;
   }
 

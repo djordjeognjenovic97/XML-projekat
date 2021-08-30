@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zal:zalbacutanje xmlns:zal="https://github.com/djordjeognjenovic97/XML-projekat/zalbacutanjecir"
+ xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="https://github.com/djordjeognjenovic97/XML-projekat/zalbacutanjecir file:/C:/Users/Win10/Documents/GitHub/XML-projekat/portal%20poverenika/poverenik/src/main/resources/zalbacutanjecir.xsd" stanje="kreirano">
+    <zal:sadrzaj>
+        <zal:naziv_organa>naziv_organa0</zal:naziv_organa>
+        <zal:razlog_zalbe>nije postupio</zal:razlog_zalbe>
+        <zal:datum_orginalnog_zahteva>2006-05-04</zal:datum_orginalnog_zahteva>
+    </zal:sadrzaj>
+    <zal:podnosilac_zalbe email="email0">
+        <zal:ime property="property0">ime0</zal:ime>
+        <zal:prezime property="property1">prezime0</zal:prezime>
+        <zal:adresa>
+            <zal:mesto>mesto0</zal:mesto>
+            <zal:ulica>ulica0</zal:ulica>
+            <zal:br_ulice>50</zal:br_ulice>
+        </zal:adresa>
+    </zal:podnosilac_zalbe>
+    <zal:broj_predmeta property="property2">broj_predmeta0</zal:broj_predmeta>
+    <zal:datum property="property3">2006-05-04</zal:datum>
+    <zal:mesto property="property4">mesto1</zal:mesto>
+</zal:zalbacutanje>
