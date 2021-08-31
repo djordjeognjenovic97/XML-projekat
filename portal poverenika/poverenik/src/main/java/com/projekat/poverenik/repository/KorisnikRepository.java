@@ -18,12 +18,13 @@ public class KorisnikRepository {
     ExistManager existManager;
 
     private String collectionId = "/db/sluzbenik/korisnici";
+    private final static String TARGET_NAMESPACE = "https://github.com/djordjeognjenovic97/XML-projekat";
 
     public Korisnik findByEmail(String email) throws Exception {
         String xPathExpression = String.format("/Korisnici/Korisnik[Email='%s']", email);
         Korisnik pronadjeniKorisnik = null;
         try {
-            ResourceSet result = existManager.retrieve(collectionId, xPathExpression);
+            ResourceSet result = existManager.retrieve(collectionId, xPathExpression, TARGET_NAMESPACE);
             if (result == null) {
                 return null;
             }

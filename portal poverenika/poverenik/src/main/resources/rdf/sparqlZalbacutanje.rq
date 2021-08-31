@@ -1,11 +1,11 @@
-SELECT * FROM <http://localhost:8081/fuseki/obavestenja/data/obavestenja> WHERE {
+SELECT * FROM <http://localhost:8081/fuseki/zalbacutanje/data/zalbacutanje> WHERE {
  ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/broj_predmeta> ?broj_predmeta .
   ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/datum> ?datum .
   ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/ime> ?ime .
   ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/prezime> ?prezime .
   ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/mesto> ?mesto .
   FILTER( CONTAINS(UCASE(str(?broj_predmeta)), UCASE("{{broj_predmeta}}"))
-    && CONTAINS(UCASE(str(?datum)), UCASE("{{datum}}"))s
+    && CONTAINS(UCASE(str(?datum)), UCASE("{{datum}}"))
     && CONTAINS(UCASE(str(?prezime)), UCASE("{{prezime}}"))
     && CONTAINS(UCASE(str(?ime)), UCASE("{{ime}}"))
     && CONTAINS(UCASE(str(?mesto)), UCASE("{{mesto}}"))

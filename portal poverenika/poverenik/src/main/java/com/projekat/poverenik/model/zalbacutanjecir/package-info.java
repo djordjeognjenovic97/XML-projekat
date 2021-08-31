@@ -5,5 +5,10 @@
 // Generated on: 2021.08.31 at 02:03:23 PM CEST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zalbacutanjecir", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zalbacutanjecir",elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED,
+        xmlns = {
+                @XmlNs(prefix = "pred", namespaceURI = "http://www.ftn.uns.ac.rs/rdf/examples/predicate/")
+        })
 package com.projekat.poverenik.model.zalbacutanjecir;
+import javax.xml.bind.annotation.XmlNs;
+

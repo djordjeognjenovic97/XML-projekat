@@ -29,14 +29,14 @@ export class ListaZalbaCutanjeComponent implements OnInit {
         var convert = require('xml-js');
         this.zalbe=[];
         const decodedItem =JSON.parse(convert.xml2json(res,{compact: true, ignoreComment: true}));
-        if(decodedItem.listaZalbiDTO.lista.constructor==[].constructor){
-          for(var i  in decodedItem.listaZalbiDTO.lista){
-            this.zalbe.push(new ZalbaCutanje(decodedItem.listaZalbiDTO.lista[i].id._text,
-              decodedItem.listaZalbiDTO.lista[i].mesto._text,decodedItem.listaZalbiDTO.lista[i].datum._text));
+        if(decodedItem.listaZalbacutanjeDTO.lista.constructor==[].constructor){
+          for(var i  in decodedItem.listaZalbacutanjeDTO.lista){
+            this.zalbe.push(new ZalbaCutanje(decodedItem.listaZalbacutanjeDTO.lista[i].id._text,
+              decodedItem.listaZalbacutanjeDTO.lista[i].mesto._text,decodedItem.listaZalbacutanjeDTO.lista[i].datum._text));
           }
         }else{
-          this.zalbe.push(new ZalbaCutanje(decodedItem.listaZalbiDTO.lista.id._text,
-            decodedItem.listaZalbiDTO.lista.mesto._text,decodedItem.listaZalbiDTO.lista.datum._text));
+          this.zalbe.push(new ZalbaCutanje(decodedItem.listaZalbacutanjeDTO.lista.id._text,
+            decodedItem.listaZalbacutanjeDTO.lista.mesto._text,decodedItem.listaZalbacutanjeDTO.lista.datum._text));
         }
         console.log(this.zalbe);
       }

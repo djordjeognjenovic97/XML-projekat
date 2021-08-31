@@ -7,6 +7,7 @@
         <zal:naziv_organa>naziv_organa0</zal:naziv_organa>
         <zal:razlog_zalbe>nije postupio</zal:razlog_zalbe>
         <zal:datum_orginalnog_zahteva>2006-05-04</zal:datum_orginalnog_zahteva>
+        <zal:podaci_o_zahtevu>podaci_o_zahtevu0</zal:podaci_o_zahtevu>
     </zal:sadrzaj>
     <zal:podnosilac_zalbe email="email0">
         <zal:ime property="property0">ime0</zal:ime>

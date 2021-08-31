@@ -35,8 +35,8 @@ public class IzvestajService {
         Obavestenje obavestenje = jaxbParser.unmarshall(Obavestenje.class, text);
         String docId = obavestenje.getNaziv();
         //obavestenjecirRepository.saveObavestenjeFromText(text, docId);
-        metadataExtractor.extractMetadata(text);
-        FusekiWriterExample.saveRDF();
+//        metadataExtractor.extractMetadata(text);
+//        FusekiWriterExample.saveRDF();
     }
 
     public Izvestaj generateIzvestaj() {

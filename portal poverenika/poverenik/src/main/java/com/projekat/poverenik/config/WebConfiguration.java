@@ -11,8 +11,8 @@ public class WebConfiguration implements WebMvcConfigurer {
     // Za svrhe razvoja konfigurisemo dozvolu za CORS kako ne bismo morali @CrossOrigin anotaciju da koristimo nad svakim kontrolerom
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedOrigins("http://localhost:4201");
-             //   .allowedMethods("*")
+        registry.addMapping("/**").allowedOrigins("http://localhost:4201")
+                .allowedMethods("*");
            //     .allowCredentials(true)
          //       .allowedOrigins("*")
        //         .allowedHeaders("*");

@@ -19,16 +19,16 @@ export class ZalbaCutanjeService {
         return this.http.post<any>("http://localhost:8082/api/zalbecutanje/addText",zahtev, {headers: this.headers});
     }
 	public getUsersZalbe():Observable<any> {
-        return this.http.get("http://localhost:8082/api/zalbecutanje/getUsersZalbe", {headers: this.headers, responseType: 'text'});
+        return this.http.get("http://localhost:8082/api/zalbecutanje/getUsersZalbecutanje", {headers: this.headers, responseType: 'text'});
     }
   public getAllZalbaCutanje():Observable<any> {
-      return this.http.get("http://localhost:8082/api/zalbecutanje/getAllZalbaCutanje", {headers: this.headers, responseType: 'text'});
+      return this.http.get("http://localhost:8082/api/zalbecutanje/getAllZalbecutanje", {headers: this.headers, responseType: 'text'});
   }
   public getSearchZalbaCutanje(content:String):Observable<any> {
-      return this.http.get("http://localhost:8082/api/zalbecutanje/getSearchZalbaCutanje/"+content, {headers: this.headers, responseType: 'text'});
+      return this.http.get("http://localhost:8082/api/zalbecutanje/getSearchZalbecutanje/"+content, {headers: this.headers, responseType: 'text'});
   }
   public getSearchMetadataZalbaCutanje(content:any):Observable<any> {
-      return this.http.post("http://localhost:8082/api/zalbecutanje/getSearchMetadataZalbaCutanje",content,{headers: this.headers, responseType: 'text'});
+      return this.http.post("http://localhost:8082/api/zalbecutanje/getSearchMetadataZalbecutanje",content,{headers: this.headers, responseType: 'text'});
   }
 	public skiniXHTML(id:String):Observable<any> {
         return this.http.post<any>("http://localhost:8082/api/zalbe/skiniXHTML"+id, {headers: this.headers});

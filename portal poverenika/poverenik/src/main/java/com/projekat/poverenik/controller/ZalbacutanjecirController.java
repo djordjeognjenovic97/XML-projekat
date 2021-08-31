@@ -1,5 +1,8 @@
 package com.projekat.poverenik.controller;
 
+import com.projekat.poverenik.dto.ListaZalbacutanjeDTO;
+import com.projekat.poverenik.dto.QueryZalbacutanjeDTO;
+import com.projekat.poverenik.dto.ZalbacutanjeDTO;
 import com.projekat.poverenik.service.ZalbacutanjecirService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Document;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/zalbecutanje", produces = MediaType.APPLICATION_XML_VALUE)
@@ -35,5 +40,45 @@ public class ZalbacutanjecirController {
             return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(document, HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ROLE_GRADJANIN')")
+    @GetMapping(value = "/getUsersZalbecutanje",consumes = MediaType.APPLICATION_XML_VALUE,produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<ListaZalbacutanjeDTO> getZalbecutanjeUsers() throws Exception {
+        List<ZalbacutanjeDTO> ids = zalbacutanjecirService.getUsersZalbecutanje();
+        if(ids == null) {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<ListaZalbacutanjeDTO>(new ListaZalbacutanjeDTO(ids), HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ROLE_POVERENIK')")
+    @GetMapping(value = "/getAllZalbecutanje",consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<ListaZalbacutanjeDTO> getZalbecutanjeAll() throws Exception {
+        List<ZalbacutanjeDTO> ids = zalbacutanjecirService.getAllZalbecutanje();
+        if(ids == null) {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<ListaZalbacutanjeDTO>(new ListaZalbacutanjeDTO(ids), HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ROLE_POVERENIK')")
+    @GetMapping(value = "/getSearchZalbecutanje/{content}",consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<ListaZalbacutanjeDTO> getZalbecutanjeSearch(@PathVariable String content) throws Exception {
+        List<ZalbacutanjeDTO> ids = zalbacutanjecirService.getSearchZalbecutanje(content);
+        if(ids == null) {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<ListaZalbacutanjeDTO>(new ListaZalbacutanjeDTO(ids), HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ROLE_POVERENIK')")
+    @PostMapping(value = "/getSearchMetadataZalbecutanje",consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<ListaZalbacutanjeDTO> getZalbecutanjeMeatadataSearch(@RequestBody QueryZalbacutanjeDTO dto) throws Exception {
+        List<ZalbacutanjeDTO> ids = zalbacutanjecirService.getSearchMetadataZalbecutanje(dto);
+        if(ids == null) {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<ListaZalbacutanjeDTO>(new ListaZalbacutanjeDTO(ids), HttpStatus.OK);
     }
 }

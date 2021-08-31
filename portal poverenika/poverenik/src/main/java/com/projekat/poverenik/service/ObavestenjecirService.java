@@ -41,8 +41,8 @@ public class ObavestenjecirService {
         Obavestenje obavestenje = jaxbParser.unmarshall(Obavestenje.class, text);
         String docId = obavestenje.getNaziv();
         obavestenjecirRepository.saveObavestenjeFromText(text, docId);
-        metadataExtractor.extractMetadata(text);
-        FusekiWriterExample.saveRDF();
+//        metadataExtractor.extractMetadata(text);
+//        FusekiWriterExample.saveRDF();
     }
 
     public void addObavestenjeFromFile(String path) throws Exception {
@@ -50,8 +50,8 @@ public class ObavestenjecirService {
         String docId = obavestenje.getNaziv();
         obavestenjecirRepository.saveObavestenjeFromFile(path, docId);
         String text = jaxbParser.marshallString(Obavestenje.class, obavestenje);
-        metadataExtractor.extractMetadata(text);
-        FusekiWriterExample.saveRDF();
+//        metadataExtractor.extractMetadata(text);
+//        FusekiWriterExample.saveRDF();
     }
 
     public Document getObavestenjeDocument(String docId) throws Exception {

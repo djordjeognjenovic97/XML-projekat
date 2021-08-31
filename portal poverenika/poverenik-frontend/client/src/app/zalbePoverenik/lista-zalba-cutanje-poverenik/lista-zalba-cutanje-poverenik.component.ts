@@ -46,14 +46,14 @@ export class ListaZalbaCutanjePoverenikComponent implements OnInit {
         var convert = require('xml-js');
         this.zalba=[];
         const decodedItem =JSON.parse(convert.xml2json(res,{compact: true, ignoreComment: true}));
-        if(decodedItem.listazalbaDTO.lista.constructor==[].constructor){
-          for(var i  in decodedItem.listazalbaDTO.lista){
-            this.zalba.push(new ZalbaCutanje(decodedItem.listazalbaDTO.lista[i].id._text,decodedItem.listazalbaDTO.lista[i].datum._text,
-              decodedItem.listazalbaDTO.lista[i].mesto._text));
+        if(decodedItem.listaZalbacutanjeDTO.lista.constructor==[].constructor){
+          for(var i  in decodedItem.listaZalbacutanjeDTO.lista){
+            this.zalba.push(new ZalbaCutanje(decodedItem.listaZalbacutanjeDTO.lista[i].id._text,
+              decodedItem.listaZalbacutanjeDTO.lista[i].mesto._text, decodedItem.listaZalbacutanjeDTO.lista[i].datum._text));
           }
         }else{
-          this.zalba.push(new ZalbaCutanje(decodedItem.listazalbaDTO.lista.id._text,decodedItem.listazalbaDTO.lista.datum._text,
-            decodedItem.listazalbaDTO.lista.mesto._text));
+          this.zalba.push(new ZalbaCutanje(decodedItem.listaZalbacutanjeDTO.lista.id._text,
+            decodedItem.listaZalbacutanjeDTO.lista.mesto._text, decodedItem.listaZalbacutanjeDTO.lista.datum._text));
         }
         console.log(this.zalba);
       }
@@ -113,14 +113,14 @@ export class ListaZalbaCutanjePoverenikComponent implements OnInit {
         var convert = require('xml-js');
         this.zalba=[];
         const decodedItem =JSON.parse(convert.xml2json(res,{compact: true, ignoreComment: true}));
-        if(decodedItem.listazalbaDTO.lista.constructor==[].constructor){
-          for(var i  in decodedItem.listazalbaDTO.lista){
-            this.zalba.push(new ZalbaCutanje(decodedItem.listazalbaDTO.lista[i].id._text,decodedItem.listazalbaDTO.lista[i].datum._text,
-              decodedItem.listazalbaDTO.lista[i].mesto._text));
+        if(decodedItem.listaZalbacutanjeDTO.lista.constructor==[].constructor){
+          for(var i  in decodedItem.listaZalbacutanjeDTO.lista){
+            this.zalba.push(new ZalbaCutanje(decodedItem.listaZalbacutanjeDTO.lista[i].id._text,
+              decodedItem.listaZalbacutanjeDTO.lista[i].mesto._text,decodedItem.listaZalbacutanjeDTO.lista[i].datum._text));
           }
         }else{
-          this.zalba.push(new ZalbaCutanje(decodedItem.listazalbaDTO.lista.id._text,decodedItem.listazalbaDTO.lista.datum._text,
-            decodedItem.listazalbaDTO.lista.mesto._text));
+          this.zalba.push(new ZalbaCutanje(decodedItem.listaZalbacutanjeDTO.lista.id._text,
+            decodedItem.listaZalbacutanjeDTO.lista.mesto._text, decodedItem.listaZalbacutanjeDTO.lista.datum._text));
         }
       }
       );
@@ -144,14 +144,14 @@ export class ListaZalbaCutanjePoverenikComponent implements OnInit {
         var convert = require('xml-js');
         this.zalba=[];
         const decodedItem =JSON.parse(convert.xml2json(res,{compact: true, ignoreComment: true}));
-        if(decodedItem.listazalbaDTO.lista.constructor==[].constructor){
-          for(var i  in decodedItem.listazalbaDTO.lista){
-            this.zalba.push(new ZalbaCutanje(decodedItem.listazalbaDTO.lista[i].id._text,decodedItem.listazalbaDTO.lista[i].datum._text,
-              decodedItem.listazalbaDTO.lista[i].mesto._text));
+        if(decodedItem.listaZalbacutanjeDTO.lista.constructor==[].constructor){
+          for(var i  in decodedItem.listaZalbacutanjeDTO.lista){
+            this.zalba.push(new ZalbaCutanje(decodedItem.listaZalbacutanjeDTO.lista[i].id._text,
+              decodedItem.listaZalbacutanjeDTO.lista[i].mesto._text, decodedItem.listaZalbacutanjeDTO.lista[i].datum._text));
           }
         }else{
-          this.zalba.push(new ZalbaCutanje(decodedItem.listazalbaDTO.lista.id._text,decodedItem.listazalbaDTO.lista.datum._text,
-            decodedItem.listazalbaDTO.lista.mesto._text));
+          this.zalba.push(new ZalbaCutanje(decodedItem.listaZalbacutanjeDTO.lista.id._text,
+            decodedItem.listaZalbacutanjeDTO.lista.mesto._text, decodedItem.listaZalbacutanjeDTO.lista.datum._text));
         }
       }
       );

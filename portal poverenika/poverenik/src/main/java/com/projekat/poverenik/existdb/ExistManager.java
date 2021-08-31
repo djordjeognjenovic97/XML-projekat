@@ -134,7 +134,7 @@ public class ExistManager {
         }
     }
 
-    public ResourceSet retrieve(String collectionUri, String xpathExp) throws Exception  {
+    public ResourceSet retrieve(String collectionUri, String xpathExp, String tns) throws Exception  {
         createConnection();
         Collection col = null;
         ResourceSet result = null;
@@ -143,7 +143,7 @@ public class ExistManager {
                     authManager.getPassword());
             XPathQueryService xpathService = (XPathQueryService) col.getService("XPathQueryService", "1.0");
             xpathService.setProperty("indent", "yes");
-            xpathService.setNamespace("", TARGET_NAMESPACE);
+            xpathService.setNamespace("", tns);
             result = xpathService.query(xpathExp);
         } finally {
             if (col != null) {
