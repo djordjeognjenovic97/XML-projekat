@@ -21,6 +21,10 @@ export class AppComponent {
 
 	checkRole() {
     //alert("dsds");
+    // localStorage.removeItem('email');
+    // localStorage.removeItem('user');
+    // localStorage.removeItem('accessToken');
+    // localStorage.removeItem('uloga');
 		const item = localStorage.getItem('user');
 
 		if (!item) {

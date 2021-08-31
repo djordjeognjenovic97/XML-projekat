@@ -38,13 +38,13 @@ public class ZalbacutanjecirService {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
         DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
         XMLGregorianCalendar now = datatypeFactory.newXMLGregorianCalendar(gregorianCalendar);
-        zalba.setDatum(now);
+        zalba.getDatum().setValue(now);
         long sada=(new Date()).getTime();
-        zalba.setId(Long.toString(sada));
+        zalba.getBrojPredmeta().setValue(Long.toString(sada));
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();
         Korisnik user=(Korisnik) auth.getPrincipal();
         zalba.getPodnosilacZalbe().setEmail(user.getEmail());
-        String docId = zalba.getId();
+        String docId = zalba.getBrojPredmeta().getValue();
 
         text = jaxbParser.marshallString(Zalbacutanje.class,zalba);
 
@@ -55,7 +55,7 @@ public class ZalbacutanjecirService {
 
     public void addZalbacutanjeFromFile(String path) throws Exception {
         Zalbacutanje zalba = jaxbParser.unmarshallFile(Zalbacutanje.class, path);
-        String docId = zalba.getNaslov();
+        String docId = zalba.getBrojPredmeta().getValue();
         zalbacutanjecirRepository.saveZalbacutanjecirFromFile(path, docId);
         String text = jaxbParser.marshallString(Zalbacutanje.class, zalba);
         metadataExtractor.extractMetadata(text);
@@ -66,4 +66,6 @@ public class ZalbacutanjecirService {
         Document doc = zalbacutanjecirRepository.findZalbacutanjecirById(docId);
         return doc;
     }
+
+
 }

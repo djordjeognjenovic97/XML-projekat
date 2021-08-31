@@ -28,13 +28,18 @@ export class LoginComponent implements OnInit {
     });
    }
 
-  ngOnInit():void {}
+  ngOnInit():void {
+    // localStorage.removeItem('email');
+    // localStorage.removeItem('user');
+    // localStorage.removeItem('accessToken');
+    // localStorage.removeItem('uloga');
+  }
 
   logIn(){
     //_declaration:
       //{ _attributes: { version: '1.0', encoding: 'utf-8' } },
-    const auth: any = { 
-    User: { 
+    const auth: any = {
+    User: {
       Email: { _text: '' }, Lozinka: { _text: '' } } };
     auth.User.Email = this.logForm.value.email;
     auth.User.Lozinka = this.logForm.value.password;
