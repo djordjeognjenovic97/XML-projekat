@@ -47,6 +47,9 @@ export class NavbarComponent implements OnInit {
   izvestaji() {
     this.router.navigateByUrl('/izvestaji');
   }
+  izjasnjenja() {
+    this.router.navigateByUrl('/izjasnjenja');
+  }
 
   getRole(): string {
     let item: string = localStorage.getItem('user');

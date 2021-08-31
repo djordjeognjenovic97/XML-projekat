@@ -1,5 +1,5 @@
 
-package com.tim15.sluzbenik.model.izvestaji;
+package mypackage;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -14,9 +14,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * <p>Java class for anonymous complex type.
- *
+ * 
  * <p>The following schema fragment specifies the expected content contained within this class.
- *
+ * 
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -72,14 +72,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- *
- *
+ * 
+ * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-        "zahtevi",
-        "zalbe",
-        "datum"
+    "zahtevi",
+    "zalbe",
+    "datum"
 })
 @XmlRootElement(name = "izvestaj", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/izvestaj")
 public class Izvestaj {
@@ -95,11 +95,11 @@ public class Izvestaj {
 
     /**
      * Gets the value of the zahtevi property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link Izvestaj.Zahtevi }
-     *
+     *     
      */
     public Izvestaj.Zahtevi getZahtevi() {
         return zahtevi;
@@ -107,11 +107,11 @@ public class Izvestaj {
 
     /**
      * Sets the value of the zahtevi property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link Izvestaj.Zahtevi }
-     *
+     *     
      */
     public void setZahtevi(Izvestaj.Zahtevi value) {
         this.zahtevi = value;
@@ -119,11 +119,11 @@ public class Izvestaj {
 
     /**
      * Gets the value of the zalbe property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link Izvestaj.Zalbe }
-     *
+     *     
      */
     public Izvestaj.Zalbe getZalbe() {
         return zalbe;
@@ -131,11 +131,11 @@ public class Izvestaj {
 
     /**
      * Sets the value of the zalbe property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link Izvestaj.Zalbe }
-     *
+     *     
      */
     public void setZalbe(Izvestaj.Zalbe value) {
         this.zalbe = value;
@@ -143,11 +143,11 @@ public class Izvestaj {
 
     /**
      * Gets the value of the datum property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link Izvestaj.Datum }
-     *
+     *     
      */
     public Izvestaj.Datum getDatum() {
         return datum;
@@ -155,11 +155,11 @@ public class Izvestaj {
 
     /**
      * Sets the value of the datum property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link Izvestaj.Datum }
-     *
+     *     
      */
     public void setDatum(Izvestaj.Datum value) {
         this.datum = value;
@@ -167,11 +167,11 @@ public class Izvestaj {
 
     /**
      * Gets the value of the id property.
-     *
+     * 
      * @return
      *     possible object is
      *     {@link String }
-     *
+     *     
      */
     public String getId() {
         return id;
@@ -179,11 +179,11 @@ public class Izvestaj {
 
     /**
      * Sets the value of the id property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link String }
-     *
+     *     
      */
     public void setId(String value) {
         this.id = value;
@@ -192,9 +192,9 @@ public class Izvestaj {
 
     /**
      * <p>Java class for anonymous complex type.
-     *
+     * 
      * <p>The following schema fragment specifies the expected content contained within this class.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;simpleContent>
@@ -204,12 +204,12 @@ public class Izvestaj {
      *   &lt;/simpleContent>
      * &lt;/complexType>
      * </pre>
-     *
-     *
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-            "value"
+        "value"
     })
     public static class Datum {
 
@@ -221,11 +221,11 @@ public class Izvestaj {
 
         /**
          * Gets the value of the value property.
-         *
+         * 
          * @return
          *     possible object is
          *     {@link XMLGregorianCalendar }
-         *
+         *     
          */
         public XMLGregorianCalendar getValue() {
             return value;
@@ -233,11 +233,11 @@ public class Izvestaj {
 
         /**
          * Sets the value of the value property.
-         *
+         * 
          * @param value
          *     allowed object is
          *     {@link XMLGregorianCalendar }
-         *
+         *     
          */
         public void setValue(XMLGregorianCalendar value) {
             this.value = value;
@@ -245,11 +245,11 @@ public class Izvestaj {
 
         /**
          * Gets the value of the property property.
-         *
+         * 
          * @return
          *     possible object is
          *     {@link String }
-         *
+         *     
          */
         public String getProperty() {
             return property;
@@ -257,11 +257,11 @@ public class Izvestaj {
 
         /**
          * Sets the value of the property property.
-         *
+         * 
          * @param value
          *     allowed object is
          *     {@link String }
-         *
+         *     
          */
         public void setProperty(String value) {
             this.property = value;
@@ -272,9 +272,9 @@ public class Izvestaj {
 
     /**
      * <p>Java class for anonymous complex type.
-     *
+     * 
      * <p>The following schema fragment specifies the expected content contained within this class.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -289,15 +289,15 @@ public class Izvestaj {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     *
-     *
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-            "ukupanBrPodnetihZahteva",
-            "brUsvojenihZahteva",
-            "brOdbijenihZahteva",
-            "brOdbacenihZahteva"
+        "ukupanBrPodnetihZahteva",
+        "brUsvojenihZahteva",
+        "brOdbijenihZahteva",
+        "brOdbacenihZahteva"
     })
     public static class Zahtevi {
 
@@ -312,7 +312,7 @@ public class Izvestaj {
 
         /**
          * Gets the value of the ukupanBrPodnetihZahteva property.
-         *
+         * 
          */
         public int getUkupanBrPodnetihZahteva() {
             return ukupanBrPodnetihZahteva;
@@ -320,7 +320,7 @@ public class Izvestaj {
 
         /**
          * Sets the value of the ukupanBrPodnetihZahteva property.
-         *
+         * 
          */
         public void setUkupanBrPodnetihZahteva(int value) {
             this.ukupanBrPodnetihZahteva = value;
@@ -328,7 +328,7 @@ public class Izvestaj {
 
         /**
          * Gets the value of the brUsvojenihZahteva property.
-         *
+         * 
          */
         public int getBrUsvojenihZahteva() {
             return brUsvojenihZahteva;
@@ -336,7 +336,7 @@ public class Izvestaj {
 
         /**
          * Sets the value of the brUsvojenihZahteva property.
-         *
+         * 
          */
         public void setBrUsvojenihZahteva(int value) {
             this.brUsvojenihZahteva = value;
@@ -344,7 +344,7 @@ public class Izvestaj {
 
         /**
          * Gets the value of the brOdbijenihZahteva property.
-         *
+         * 
          */
         public int getBrOdbijenihZahteva() {
             return brOdbijenihZahteva;
@@ -352,7 +352,7 @@ public class Izvestaj {
 
         /**
          * Sets the value of the brOdbijenihZahteva property.
-         *
+         * 
          */
         public void setBrOdbijenihZahteva(int value) {
             this.brOdbijenihZahteva = value;
@@ -360,7 +360,7 @@ public class Izvestaj {
 
         /**
          * Gets the value of the brOdbacenihZahteva property.
-         *
+         * 
          */
         public int getBrOdbacenihZahteva() {
             return brOdbacenihZahteva;
@@ -368,7 +368,7 @@ public class Izvestaj {
 
         /**
          * Sets the value of the brOdbacenihZahteva property.
-         *
+         * 
          */
         public void setBrOdbacenihZahteva(int value) {
             this.brOdbacenihZahteva = value;
@@ -379,9 +379,9 @@ public class Izvestaj {
 
     /**
      * <p>Java class for anonymous complex type.
-     *
+     * 
      * <p>The following schema fragment specifies the expected content contained within this class.
-     *
+     * 
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
@@ -397,16 +397,16 @@ public class Izvestaj {
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
-     *
-     *
+     * 
+     * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-            "ukupanBrIzjavljenihZalbi",
-            "brZalbiNijePostupio",
-            "brZalbiNijePostupioUCelosti",
-            "brZalbiNijePostupioURoku",
-            "brZalbiNaOdluku"
+        "ukupanBrIzjavljenihZalbi",
+        "brZalbiNijePostupio",
+        "brZalbiNijePostupioUCelosti",
+        "brZalbiNijePostupioURoku",
+        "brZalbiNaOdluku"
     })
     public static class Zalbe {
 
@@ -423,7 +423,7 @@ public class Izvestaj {
 
         /**
          * Gets the value of the ukupanBrIzjavljenihZalbi property.
-         *
+         * 
          */
         public int getUkupanBrIzjavljenihZalbi() {
             return ukupanBrIzjavljenihZalbi;
@@ -431,7 +431,7 @@ public class Izvestaj {
 
         /**
          * Sets the value of the ukupanBrIzjavljenihZalbi property.
-         *
+         * 
          */
         public void setUkupanBrIzjavljenihZalbi(int value) {
             this.ukupanBrIzjavljenihZalbi = value;
@@ -439,7 +439,7 @@ public class Izvestaj {
 
         /**
          * Gets the value of the brZalbiNijePostupio property.
-         *
+         * 
          */
         public int getBrZalbiNijePostupio() {
             return brZalbiNijePostupio;
@@ -447,7 +447,7 @@ public class Izvestaj {
 
         /**
          * Sets the value of the brZalbiNijePostupio property.
-         *
+         * 
          */
         public void setBrZalbiNijePostupio(int value) {
             this.brZalbiNijePostupio = value;
@@ -455,7 +455,7 @@ public class Izvestaj {
 
         /**
          * Gets the value of the brZalbiNijePostupioUCelosti property.
-         *
+         * 
          */
         public int getBrZalbiNijePostupioUCelosti() {
             return brZalbiNijePostupioUCelosti;
@@ -463,7 +463,7 @@ public class Izvestaj {
 
         /**
          * Sets the value of the brZalbiNijePostupioUCelosti property.
-         *
+         * 
          */
         public void setBrZalbiNijePostupioUCelosti(int value) {
             this.brZalbiNijePostupioUCelosti = value;
@@ -471,7 +471,7 @@ public class Izvestaj {
 
         /**
          * Gets the value of the brZalbiNijePostupioURoku property.
-         *
+         * 
          */
         public int getBrZalbiNijePostupioURoku() {
             return brZalbiNijePostupioURoku;
@@ -479,7 +479,7 @@ public class Izvestaj {
 
         /**
          * Sets the value of the brZalbiNijePostupioURoku property.
-         *
+         * 
          */
         public void setBrZalbiNijePostupioURoku(int value) {
             this.brZalbiNijePostupioURoku = value;
@@ -487,7 +487,7 @@ public class Izvestaj {
 
         /**
          * Gets the value of the brZalbiNaOdluku property.
-         *
+         * 
          */
         public int getBrZalbiNaOdluku() {
             return brZalbiNaOdluku;
@@ -495,7 +495,7 @@ public class Izvestaj {
 
         /**
          * Sets the value of the brZalbiNaOdluku property.
-         *
+         * 
          */
         public void setBrZalbiNaOdluku(int value) {
             this.brZalbiNaOdluku = value;

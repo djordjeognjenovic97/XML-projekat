@@ -1,0 +1,39 @@
+<div class="w-100 h-100 p-3">
+    <h1 style="margin: 0 auto;text-align: center;">Izjasnjenja</h1>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped pera">
+                <thead>
+                    <tr>
+                        <th>Zalba na zahtev sa ID-jem<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                        <th>Izjasnite se<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                        <th>Potvrda<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <div *ngIf="izjasnjenja?.length === 0 || izjasnjenja === undefined" style="float:right;">
+                        <h4><b>Nema upita za izjasnjenje</b></h4>
+                    </div>
+                    <tr *ngFor="let c of izjasnjenja">
+                        <td class="in_waves">
+                            <a href="http://www.google.com">{{c.id}}</a>
+                        </td>
+                        <form [formGroup]="regForm1" (ngSubmit)="regIn1(c.id)" class="form-inline">
+                            <td class="in_waves">
+                            <div class="form-group mx-sm-0 mb-2">
+                                <input type="text" class="form-control" id="podatak" formControlName="podatak"
+                                    placeholder="izjasnite se...">
+                            </div>
+                            </td>
+                            <td class="in_waves">
+                                <button type="submit" class="btn btn-secondary mb-2" id="filter_content">Posalji</button>
+                            </td>
+                        </form>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

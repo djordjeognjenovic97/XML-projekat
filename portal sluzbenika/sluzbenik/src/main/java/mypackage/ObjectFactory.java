@@ -30,99 +30,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Obavestenje }
+     * Create an instance of {@link Izvestaj }
      * 
      */
-    public Obavestenje createObavestenje() {
-        return new Obavestenje();
+    public Izvestaj createIzvestaj() {
+        return new Izvestaj();
     }
 
     /**
-     * Create an instance of {@link TipDostavljeno }
+     * Create an instance of {@link Izvestaj.Zahtevi }
      * 
      */
-    public TipDostavljeno createTipDostavljeno() {
-        return new TipDostavljeno();
+    public Izvestaj.Zahtevi createIzvestajZahtevi() {
+        return new Izvestaj.Zahtevi();
     }
 
     /**
-     * Create an instance of {@link TPodnosilacZahteva }
+     * Create an instance of {@link Izvestaj.Zalbe }
      * 
      */
-    public TPodnosilacZahteva createTPodnosilacZahteva() {
-        return new TPodnosilacZahteva();
+    public Izvestaj.Zalbe createIzvestajZalbe() {
+        return new Izvestaj.Zalbe();
     }
 
     /**
-     * Create an instance of {@link Obavestenje.Organ }
+     * Create an instance of {@link Izvestaj.Datum }
      * 
      */
-    public Obavestenje.Organ createObavestenjeOrgan() {
-        return new Obavestenje.Organ();
-    }
-
-    /**
-     * Create an instance of {@link Obavestenje.BrojPredmeta }
-     * 
-     */
-    public Obavestenje.BrojPredmeta createObavestenjeBrojPredmeta() {
-        return new Obavestenje.BrojPredmeta();
-    }
-
-    /**
-     * Create an instance of {@link Obavestenje.Datum }
-     * 
-     */
-    public Obavestenje.Datum createObavestenjeDatum() {
-        return new Obavestenje.Datum();
-    }
-
-    /**
-     * Create an instance of {@link TipUvid }
-     * 
-     */
-    public TipUvid createTipUvid() {
-        return new TipUvid();
-    }
-
-    /**
-     * Create an instance of {@link Adresa }
-     * 
-     */
-    public Adresa createAdresa() {
-        return new Adresa();
-    }
-
-    /**
-     * Create an instance of {@link TipDostavljeno.OpcijaDostave }
-     * 
-     */
-    public TipDostavljeno.OpcijaDostave createTipDostavljenoOpcijaDostave() {
-        return new TipDostavljeno.OpcijaDostave();
-    }
-
-    /**
-     * Create an instance of {@link TPodnosilacZahteva.Ime }
-     * 
-     */
-    public TPodnosilacZahteva.Ime createTPodnosilacZahtevaIme() {
-        return new TPodnosilacZahteva.Ime();
-    }
-
-    /**
-     * Create an instance of {@link TPodnosilacZahteva.Prezime }
-     * 
-     */
-    public TPodnosilacZahteva.Prezime createTPodnosilacZahtevaPrezime() {
-        return new TPodnosilacZahteva.Prezime();
-    }
-
-    /**
-     * Create an instance of {@link Obavestenje.Organ.NazivOrgana }
-     * 
-     */
-    public Obavestenje.Organ.NazivOrgana createObavestenjeOrganNazivOrgana() {
-        return new Obavestenje.Organ.NazivOrgana();
+    public Izvestaj.Datum createIzvestajDatum() {
+        return new Izvestaj.Datum();
     }
 
 }

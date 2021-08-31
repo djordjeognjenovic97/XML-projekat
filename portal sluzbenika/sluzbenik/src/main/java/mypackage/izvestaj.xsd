@@ -2,7 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat/izvestaj"
     xmlns:izv="https://github.com/djordjeognjenovic97/XML-projekat/izvestaj"
-           xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/">
+           xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/">>
 
     <xs:element name="izvestaj">
         <xs:complexType>

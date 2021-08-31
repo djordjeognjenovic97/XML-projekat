@@ -20,6 +20,8 @@ import { ListaObavestenjaComponent } from './obavestenja/lista-obavestenja/lista
 import { ListaZahtevSluzbenikComponent } from './zahtev/lista-zahtev-sluzbenik/lista-zahtev-sluzbenik.component';
 import { AddObavestenjaComponent } from './obavestenja/add-obavestenja/add-obavestenja.component';
 import { ListaObavestenjaSluzbenikComponent } from './obavestenja/lista-obavestenja-sluzbenik/lista-obavestenja-sluzbenik.component';
+import { IzvestajComponent } from './izvestaj/izvestaj.component';
+import { IzjasnjenjeComponent } from './izjasnjenje/izjasnjenje.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ListaObavestenjaSluzbenikComponent } from './obavestenja/lista-obaveste
     ListaObavestenjaComponent,
     ListaZahtevSluzbenikComponent,
     AddObavestenjaComponent,
-    ListaObavestenjaSluzbenikComponent
+    ListaObavestenjaSluzbenikComponent,
+    IzvestajComponent,
+    IzjasnjenjeComponent
   ],
   imports: [
     BrowserModule,

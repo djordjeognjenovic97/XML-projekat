@@ -5,5 +5,10 @@
 // Generated on: 2021.03.19 at 05:52:25 PM CET 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/izvestaji", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/izvestaj",
+        elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED,
+        xmlns = {
+                @XmlNs(prefix = "pred", namespaceURI = "http://www.ftn.uns.ac.rs/rdf/examples/predicate/")
+        })
 package com.tim15.sluzbenik.model.izvestaji;
+import javax.xml.bind.annotation.XmlNs;
