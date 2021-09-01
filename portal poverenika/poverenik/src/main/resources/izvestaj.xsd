@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat/izvestaji"
-    xmlns="https://github.com/djordjeognjenovic97/XML-projekat/izvestaji">
+           targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat/izvestaj"
+           xmlns:izv="https://github.com/djordjeognjenovic97/XML-projekat/izvestaj">
 
     <xs:element name="izvestaj">
         <xs:complexType>
@@ -9,23 +9,32 @@
                 <xs:element name="zahtevi">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="ukupanBrPodnetihZahteva" type="xs:nonNegativeInteger"/>
-                            <xs:element name="brUsvojenihZahteva" type="xs:nonNegativeInteger"/>
-                            <xs:element name="brOdbijenihZahteva" type="xs:nonNegativeInteger"/>
-                            <xs:element name="brOdbacenihZahteva" type="xs:nonNegativeInteger"/>
+                            <xs:element name="ukupanBrPodnetihZahteva" type="xs:int"/>
+                            <xs:element name="brUsvojenihZahteva" type="xs:int"/>
+                            <xs:element name="brOdbijenihZahteva" type="xs:int"/>
+                            <xs:element name="brOdbacenihZahteva" type="xs:int"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="zalbe">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="ukupanBrIzjavljenihZalbi" type="xs:nonNegativeInteger"/>
-                            <xs:element name="brZalbiNijePostupio" type="xs:nonNegativeInteger"/>
+                            <xs:element name="ukupanBrIzjavljenihZalbi" type="xs:int"/>
+                            <xs:element name="brZalbiNijePostupio" type="xs:int"/>
                             <xs:element name="brZalbiNijePostupioUCelosti"
-                                type="xs:nonNegativeInteger"/>
-                            <xs:element name="brZalbiNijePostupioURoku" type="xs:nonNegativeInteger"/>
-                            <xs:element name="brZalbiNaOdluku" type="xs:nonNegativeInteger"/>
+                                        type="xs:int"/>
+                            <xs:element name="brZalbiNijePostupioURoku" type="xs:int"/>
+                            <xs:element name="brZalbiNaOdluku" type="xs:int"/>
                         </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="datum">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="property" type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
@@ -36,7 +45,6 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
-            <xs:attribute name="datum" type="xs:date" use="required"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>

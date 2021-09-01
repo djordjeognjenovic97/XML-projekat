@@ -22,6 +22,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.soap.*;
 import javax.xml.transform.TransformerException;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -90,8 +91,53 @@ public class IzvestajService {
         FusekiWriterExample.saveRDF(docId,"/izvestaji");
         return izvestaj;
     }
-    private void posaljiIzvestaj(Izvestaj izvestaj) {
-        System.out.println("TREBA POSLATI IZVESTAJ POVERENIKU PREKO SOAPA");
+    private void posaljiIzvestaj(Izvestaj izvestaj) throws SOAPException {
+        String soapEndpointUrl = "http://localhost:8082/ws/izvestaj";
+
+        SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
+        SOAPConnection soapConnection = soapConnectionFactory.createConnection();
+        MessageFactory messageFactory = MessageFactory.newInstance();
+        SOAPMessage soapMessage = messageFactory.createMessage();
+        SOAPPart soapPart = soapMessage.getSOAPPart();
+
+        SOAPEnvelope envelope = soapPart.getEnvelope();
+        envelope.addNamespaceDeclaration("izv", "https://github.com/djordjeognjenovic97/XML-projekat/izvestaj");
+
+        SOAPBody soapBody = envelope.getBody();
+        envelope.addNamespaceDeclaration("izv", "https://github.com/djordjeognjenovic97/XML-projekat/izvestaj");
+        SOAPElement izvElem = soapBody.addChildElement("izvestaj", "izv");
+        izvElem.setAttribute("id", izvestaj.getId());
+
+        SOAPElement zahteviElem = izvElem.addChildElement("zahtevi", "izv");
+
+        SOAPElement podzah=zahteviElem.addChildElement("ukupanBrPodnetihZahteva","izv");
+        podzah.addTextNode(Integer.toString(izvestaj.getZahtevi().getUkupanBrPodnetihZahteva()));
+        SOAPElement usvzah=zahteviElem.addChildElement("brUsvojenihZahteva","izv");
+        usvzah.addTextNode(Integer.toString(izvestaj.getZahtevi().getBrUsvojenihZahteva()));
+        SOAPElement odbzah=zahteviElem.addChildElement("brOdbijenihZahteva","izv");
+        odbzah.addTextNode(Integer.toString(izvestaj.getZahtevi().getBrOdbijenihZahteva()));
+        SOAPElement odczah=zahteviElem.addChildElement("brOdbacenihZahteva","izv");
+        odczah.addTextNode(Integer.toString(izvestaj.getZahtevi().getBrOdbacenihZahteva()));
+
+        SOAPElement zalbeElem = izvElem.addChildElement("zalbe", "izv");
+
+        SOAPElement izjzal=zalbeElem.addChildElement("ukupanBrIzjavljenihZalbi","izv");
+        izjzal.addTextNode(Integer.toString(izvestaj.getZalbe().getUkupanBrIzjavljenihZalbi()));
+        SOAPElement npozal=zalbeElem.addChildElement("brZalbiNijePostupio","izv");
+        npozal.addTextNode(Integer.toString(izvestaj.getZalbe().getBrZalbiNijePostupio()));
+        SOAPElement npczal=zalbeElem.addChildElement("brZalbiNijePostupioUCelosti","izv");
+        npczal.addTextNode(Integer.toString(izvestaj.getZalbe().getBrZalbiNijePostupioUCelosti()));
+        SOAPElement nprzal=zalbeElem.addChildElement("brZalbiNijePostupioURoku","izv");
+        nprzal.addTextNode(Integer.toString(izvestaj.getZalbe().getBrZalbiNijePostupioURoku()));
+        SOAPElement bznzal=zalbeElem.addChildElement("brZalbiNaOdluku","izv");
+        bznzal.addTextNode(Integer.toString(izvestaj.getZalbe().getBrZalbiNaOdluku()));
+
+        SOAPElement datumElem = izvElem.addChildElement("datum", "izv");
+        datumElem.addTextNode(izvestaj.getDatum().getValue().toString());
+        datumElem.setAttribute("property", "pred:datum");
+
+        soapMessage.saveChanges();
+        SOAPMessage soapResponse = soapConnection.call(soapMessage, soapEndpointUrl);
     }
 
     private Izvestaj izbrojZahteve(Izvestaj izvestaj) throws Exception {
