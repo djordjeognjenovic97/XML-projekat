@@ -1,7 +1,7 @@
 package com.example.demo.soap;
 
 import com.example.demo.model.Email;
-import email.ObjectFactory;
+import com.example.demo.model.ObjectFactory;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
