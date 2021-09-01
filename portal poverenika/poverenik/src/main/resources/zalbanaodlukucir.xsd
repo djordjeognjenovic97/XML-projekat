@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat/zalbacutanjecir"
-    xmlns="https://github.com/djordjeognjenovic97/XML-projekat/zalbacutanjecir"
+    targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat/zalbanaodlukucir"
+    xmlns:zo="https://github.com/djordjeognjenovic97/XML-projekat/zalbanaodlukucir"
     xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/">
 
-    <xs:element name="zalba">
+    <xs:element name="zalbaodluka">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="podnosilac_zalbe" type="TPodnosilac_Zalbe"/>
+                <xs:element name="podnosilac_zalbe" type="zo:TPodnosilac_Zalbe"/>
                 <xs:element name="naziv_organa" type="xs:string"/>
                 <xs:element name="datum_predmeta" type="xs:date"/>
                 <xs:element name="broj_predmeta">
@@ -19,7 +19,7 @@
                         </xs:simpleContent>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="sadrzaj" type="tipSadrzaj"/>
+                <xs:element name="sadrzaj" type="zo:tipSadrzaj"/>
                 <xs:element name="drugi_podaci_za_kontakt" type="xs:string"/>
                 <xs:element name="datum">
                     <xs:complexType>
@@ -57,7 +57,7 @@
     </xs:complexType>
     <xs:complexType name="tipSadrzaj">
         <xs:sequence>
-            <xs:element name="datum" type="xs:date"/>
+            <xs:element name="datum_zahteva" type="xs:date"/>
             <xs:element name="unos" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
@@ -81,7 +81,7 @@
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="adresa" type="adresa"/>
+            <xs:element name="adresa" type="zo:adresa"/>
         </xs:sequence>
         <xs:attribute name="email" type="xs:string" use="required"/>
     </xs:complexType>
