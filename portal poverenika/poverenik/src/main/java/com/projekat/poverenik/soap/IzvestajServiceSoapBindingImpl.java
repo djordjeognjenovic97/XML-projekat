@@ -6,6 +6,7 @@
 
 package com.projekat.poverenik.soap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.jws.WebService;
@@ -29,6 +30,9 @@ public class IzvestajServiceSoapBindingImpl implements IzvestajServicePortType {
 
     private static final Logger LOG = Logger.getLogger(IzvestajServiceSoapBindingImpl.class.getName());
 
+    @Autowired
+    private com.projekat.poverenik.service.IzvestajService izvestajService;
+
     /* (non-Javadoc)
      * @see https.github_com.djordjeognjenovic97.xml_projekat.izvestaj.IzvestajServicePortType#sendIzvestaj(https.github_com.djordjeognjenovic97.xml_projekat.izvestaj.Izvestaj izvestaj)*
      */
@@ -37,6 +41,7 @@ public class IzvestajServiceSoapBindingImpl implements IzvestajServicePortType {
         System.out.println(izvestaj.getDatum().getValue());
         System.out.println(izvestaj.getId());
         try {
+            izvestajService.sacuvajIzvestaj(izvestaj);
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new RuntimeException(ex);

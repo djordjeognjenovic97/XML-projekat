@@ -1,1 +1,50 @@
-<p>lista-izvestaja-poverenik works!</p>
+<div class="w-100 h-100 p-3">
+    <h1 style="margin: 0 auto;text-align: center;">Izvestaji</h1>
+    <form [formGroup]="regForm1" (ngSubmit)="regIn1()" class="form-inline">
+        <div class="form-group mx-sm-0 mb-2">
+            <input type="text" class="form-control" id="datum" formControlName="datum"
+                placeholder="datum(YYYY-MM-DD)...">
+        </div>
+        <button type="submit" class="btn btn-secondary mb-2" id="filter_content">Pretraži</button>
+        <button class="btn btn-primary mb-2" id="reset-button" (click)="ngOnInit()">Resetuj</button>
+    </form>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped pera">
+                <thead>
+                    <tr>
+                        <th>ID<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                        <th>Datum<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                        <th>XHTML<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                        <th>PDF<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                        <th>RDF<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                        <th>JSON<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <div *ngIf="izvestaji?.length === 0 || izvestaji === undefined" style="float:right;">
+                        <h4><b>Nema izvestaja</b></h4>
+                    </div>
+                    <tr *ngFor="let c of izvestaji">
+                        <td class="in_waves">
+                            <a href="http://www.google.com">{{c.id}}</a>
+                        </td>
+                        <td class="in_waves">{{c.datum.split("+")[0]}}</td>
+                        <td>
+                            <button mat-raised-button color="primary" (click)="XHTML(c)">XHTML</button>
+                        </td>
+                        <td>
+                            <button mat-raised-button color="primary" (click)="PDF(c)">PDF</button>
+                        </td>
+                        <td>
+                            <button mat-raised-button color="primary" (click)="RDF(c)">RDF</button>
+                        </td>
+                        <td>
+                            <button mat-raised-button color="primary" (click)="JSON(c)">JSON</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
