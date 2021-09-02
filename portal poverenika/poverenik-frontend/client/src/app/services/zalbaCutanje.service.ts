@@ -27,6 +27,12 @@ export class ZalbaCutanjeService {
   public getSearchZalbaCutanje(content:String):Observable<any> {
       return this.http.get("http://localhost:8082/api/zalbecutanje/getSearchZalbecutanje/"+content, {headers: this.headers, responseType: 'text'});
   }
+  public pogledajIzjasnjenje(id:String):Observable<any> {
+      return this.http.get("http://localhost:8082/api/zalbecutanje/pogledajIzjasnjenje/"+id, {headers: this.headers, responseType: 'text'});
+  }
+  public traziIzjasnjenje(id:String):Observable<any> {
+      return this.http.get("http://localhost:8082/api/zalbecutanje/traziIzjasnjenje/"+id, {headers: this.headers, responseType: 'text'});
+  }
   public getSearchMetadataZalbaCutanje(content:any):Observable<any> {
       return this.http.post("http://localhost:8082/api/zalbecutanje/getSearchMetadataZalbecutanje",content,{headers: this.headers, responseType: 'text'});
   }

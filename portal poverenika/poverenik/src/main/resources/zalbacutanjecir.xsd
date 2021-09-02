@@ -41,6 +41,7 @@
                     <xs:restriction base="xs:string">
                         <xs:enumeration value="kreirano"/>
                         <xs:enumeration value="izjasnjavanje"/>
+                        <xs:enumeration value="izjasnjeno"/>
                         <xs:enumeration value="reseno"/>
                     </xs:restriction>
                 </xs:simpleType>

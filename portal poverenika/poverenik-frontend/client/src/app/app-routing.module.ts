@@ -82,7 +82,7 @@ const routes: Routes = [
 		data: {expectedRoles: 'ROLE_POVERENIK'}
   },
   {
-    path : 'add-resenje',
+    path : 'add-resenje/:id',
     component : AddResenjaPoverenikComponent,
     canActivate: [RoleGuard],
 		data: {expectedRoles: 'ROLE_POVERENIK'}

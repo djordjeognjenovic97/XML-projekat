@@ -49,11 +49,13 @@ export class ListaZalbaCutanjePoverenikComponent implements OnInit {
         if(decodedItem.listaZalbacutanjeDTO.lista.constructor==[].constructor){
           for(var i  in decodedItem.listaZalbacutanjeDTO.lista){
             this.zalba.push(new ZalbaCutanje(decodedItem.listaZalbacutanjeDTO.lista[i].id._text,
-              decodedItem.listaZalbacutanjeDTO.lista[i].mesto._text, decodedItem.listaZalbacutanjeDTO.lista[i].datum._text));
+              decodedItem.listaZalbacutanjeDTO.lista[i].mesto._text, decodedItem.listaZalbacutanjeDTO.lista[i].datum._text,
+              decodedItem.listaZalbacutanjeDTO.lista[i].stanje._text));
           }
         }else{
           this.zalba.push(new ZalbaCutanje(decodedItem.listaZalbacutanjeDTO.lista.id._text,
-            decodedItem.listaZalbacutanjeDTO.lista.mesto._text, decodedItem.listaZalbacutanjeDTO.lista.datum._text));
+            decodedItem.listaZalbacutanjeDTO.lista.mesto._text, decodedItem.listaZalbacutanjeDTO.lista.datum._text,
+            decodedItem.listaZalbacutanjeDTO.lista.stanje._text));
         }
         console.log(this.zalba);
       }
@@ -116,11 +118,13 @@ export class ListaZalbaCutanjePoverenikComponent implements OnInit {
         if(decodedItem.listaZalbacutanjeDTO.lista.constructor==[].constructor){
           for(var i  in decodedItem.listaZalbacutanjeDTO.lista){
             this.zalba.push(new ZalbaCutanje(decodedItem.listaZalbacutanjeDTO.lista[i].id._text,
-              decodedItem.listaZalbacutanjeDTO.lista[i].mesto._text,decodedItem.listaZalbacutanjeDTO.lista[i].datum._text));
+              decodedItem.listaZalbacutanjeDTO.lista[i].mesto._text,decodedItem.listaZalbacutanjeDTO.lista[i].datum._text,
+              decodedItem.listaZalbacutanjeDTO.lista[i].stanje._text));
           }
         }else{
           this.zalba.push(new ZalbaCutanje(decodedItem.listaZalbacutanjeDTO.lista.id._text,
-            decodedItem.listaZalbacutanjeDTO.lista.mesto._text, decodedItem.listaZalbacutanjeDTO.lista.datum._text));
+            decodedItem.listaZalbacutanjeDTO.lista.mesto._text, decodedItem.listaZalbacutanjeDTO.lista.datum._text,
+            decodedItem.listaZalbacutanjeDTO.lista.stanje._text));
         }
       }
       );
@@ -147,14 +151,43 @@ export class ListaZalbaCutanjePoverenikComponent implements OnInit {
         if(decodedItem.listaZalbacutanjeDTO.lista.constructor==[].constructor){
           for(var i  in decodedItem.listaZalbacutanjeDTO.lista){
             this.zalba.push(new ZalbaCutanje(decodedItem.listaZalbacutanjeDTO.lista[i].id._text,
-              decodedItem.listaZalbacutanjeDTO.lista[i].mesto._text, decodedItem.listaZalbacutanjeDTO.lista[i].datum._text));
+              decodedItem.listaZalbacutanjeDTO.lista[i].mesto._text, decodedItem.listaZalbacutanjeDTO.lista[i].datum._text,
+              decodedItem.listaZalbacutanjeDTO.lista[i].stanje._text));
           }
         }else{
           this.zalba.push(new ZalbaCutanje(decodedItem.listaZalbacutanjeDTO.lista.id._text,
-            decodedItem.listaZalbacutanjeDTO.lista.mesto._text, decodedItem.listaZalbacutanjeDTO.lista.datum._text));
+            decodedItem.listaZalbacutanjeDTO.lista.mesto._text, decodedItem.listaZalbacutanjeDTO.lista.datum._text,
+            decodedItem.listaZalbacutanjeDTO.lista.stanje._text));
         }
       }
       );
+  }
+  traziIzjasnjenje(id:String) {
+    this.zalbaService.traziIzjasnjenje(id).subscribe(
+      data=>{
+        this.toastr.success('Uspesno poslat upit za izjasnjenjem.');
+        this.router.navigate(['']);
+      },
+      error=>{
+        console.log(error);
+        this.toastr.error("Neuspesno poslat upit za izjasnjenjem.");
+      }
+    );
+  }
+  pogledajIzjasnjenje(id:String) {
+    this.zalbaService.pogledajIzjasnjenje(id).subscribe(
+      data=>{
+        this.toastr.success('Uspesno pogledato izjasnjenje.');
+        this.router.navigate(['']);
+      },
+      error=>{
+        console.log(error);
+        this.toastr.error("Neuspesno pogledato izjasnjenje.");
+      }
+    );
+  }
+  kreirajResenje(id:String) {
+      this.router.navigateByUrl('/add-resenje/'+id);
   }
 
 }

@@ -32,11 +32,13 @@ export class ListaZalbaOdbijenComponent implements OnInit {
         if(decodedItem.listaZalbanaodlukuDTO.lista.constructor==[].constructor){
           for(var i  in decodedItem.listaZalbanaodlukuDTO.lista){
             this.zalbe.push(new ZalbaOdluka(decodedItem.listaZalbanaodlukuDTO.lista[i].id._text,
-              decodedItem.listaZalbanaodlukuDTO.lista[i].mesto._text,decodedItem.listaZalbanaodlukuDTO.lista[i].datum._text));
+              decodedItem.listaZalbanaodlukuDTO.lista[i].mesto._text,decodedItem.listaZalbanaodlukuDTO.lista[i].datum._text,
+              decodedItem.listaZalbanaodlukuDTO.lista[i].stanje._text));
           }
         }else{
           this.zalbe.push(new ZalbaOdluka(decodedItem.listaZalbanaodlukuDTO.lista.id._text,
-            decodedItem.listaZalbanaodlukuDTO.lista.mesto._text,decodedItem.listaZalbanaodlukuDTO.lista.datum._text));
+            decodedItem.listaZalbanaodlukuDTO.lista.mesto._text,decodedItem.listaZalbanaodlukuDTO.lista.datum._text,
+            decodedItem.listaZalbanaodlukuDTO.lista.stanje._text));
         }
         console.log(this.zalbe);
       }

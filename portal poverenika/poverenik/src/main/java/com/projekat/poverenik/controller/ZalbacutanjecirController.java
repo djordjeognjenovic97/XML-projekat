@@ -81,4 +81,16 @@ public class ZalbacutanjecirController {
         }
         return new ResponseEntity<ListaZalbacutanjeDTO>(new ListaZalbacutanjeDTO(ids), HttpStatus.OK);
     }
+    @PreAuthorize("hasRole('ROLE_POVERENIK')")
+    @GetMapping(value = "/traziIzjasnjenje/{id}",consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<?> traziIzjasnjenje(@PathVariable String id) throws Exception {
+        //promjeniti status zalbe i poslati preko soap zahtev za izjasnjnjem
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PreAuthorize("hasRole('ROLE_POVERENIK')")
+    @GetMapping(value = "/pogledajIzjasnjenje/{id}",consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<?> pogledajIzjasnjenje(@PathVariable String id) throws Exception {
+        //pretrazi izjasnjenje iz exist baze poruka
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

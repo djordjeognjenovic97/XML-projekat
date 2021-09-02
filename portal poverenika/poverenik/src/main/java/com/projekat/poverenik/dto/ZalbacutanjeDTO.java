@@ -5,14 +5,16 @@ public class ZalbacutanjeDTO {
     private String id;
     private String mesto;
     private String datum;
+    private String stanje;
 
     public ZalbacutanjeDTO() {
     }
 
-    public ZalbacutanjeDTO(String id, String mesto, String datum) {
+    public ZalbacutanjeDTO(String id, String mesto, String datum, String stanje) {
         this.id = id;
         this.mesto = mesto;
         this.datum = datum;
+        this.stanje= stanje;
     }
 
     public String getId() {
@@ -37,5 +39,13 @@ public class ZalbacutanjeDTO {
 
     public void setDatum(String datum) {
         this.datum = datum;
+    }
+
+    public String getStanje() {
+        return stanje;
+    }
+
+    public void setStanje(String stanje) {
+        this.stanje = stanje;
     }
 }

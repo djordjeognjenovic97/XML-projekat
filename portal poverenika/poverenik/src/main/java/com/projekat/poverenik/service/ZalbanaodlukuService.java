@@ -79,7 +79,7 @@ public class ZalbanaodlukuService {
         Korisnik user=(Korisnik) auth.getPrincipal();
         for(Zalbaodluka z : zos) {
             if (z.getPodnosilacZalbe().getEmail() != null && z.getPodnosilacZalbe().getEmail().equalsIgnoreCase(user.getEmail())) {
-                ids.add(new ZalbanaodlukuDTO(z.getBrojPredmeta().getValue(),z.getMesto().getValue(),z.getDatum().getValue().toString()));
+                ids.add(new ZalbanaodlukuDTO(z.getBrojPredmeta().getValue(),z.getMesto().getValue(),z.getDatum().getValue().toString(),z.getStanje()));
             }
         }
         return ids;
@@ -89,7 +89,7 @@ public class ZalbanaodlukuService {
         ArrayList<Zalbaodluka> zos= zalbanaodlukuRepository.findAll();
         List<ZalbanaodlukuDTO> ids =new ArrayList<ZalbanaodlukuDTO>();
         for(Zalbaodluka z : zos) {
-            ids.add(new ZalbanaodlukuDTO(z.getBrojPredmeta().getValue(),z.getMesto().getValue(),z.getDatum().getValue().toString()));
+            ids.add(new ZalbanaodlukuDTO(z.getBrojPredmeta().getValue(),z.getMesto().getValue(),z.getDatum().getValue().toString(),z.getStanje()));
         }
         return ids;
     }
@@ -98,7 +98,7 @@ public class ZalbanaodlukuService {
         ArrayList<Zalbaodluka> zos= zalbanaodlukuRepository.findByContent(content);
         List<ZalbanaodlukuDTO> ids =new ArrayList<ZalbanaodlukuDTO>();
         for(Zalbaodluka z : zos) {
-            ids.add(new ZalbanaodlukuDTO(z.getBrojPredmeta().getValue(),z.getMesto().getValue(),z.getDatum().getValue().toString()));
+            ids.add(new ZalbanaodlukuDTO(z.getBrojPredmeta().getValue(),z.getMesto().getValue(),z.getDatum().getValue().toString(),z.getStanje()));
         }
         return ids;
     }
@@ -114,7 +114,7 @@ public class ZalbanaodlukuService {
         List<ZalbanaodlukuDTO> zos=new ArrayList<ZalbanaodlukuDTO>();
         for(String id :ids){
             Zalbaodluka z = zalbanaodlukuRepository.findRealZalbaodlukaById(id.split("\\^")[0]);
-            zos.add(new ZalbanaodlukuDTO(z.getBrojPredmeta().getValue(),z.getMesto().getValue(),z.getDatum().getValue().toString()));
+            zos.add(new ZalbanaodlukuDTO(z.getBrojPredmeta().getValue(),z.getMesto().getValue(),z.getDatum().getValue().toString(),z.getStanje()));
         }
         System.out.println(ids + "   " + zos.size());
         return zos;

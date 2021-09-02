@@ -68,6 +68,24 @@
                       <td>
                           <button mat-raised-button color="primary" (click)="JSON(c)">JSON</button>
                       </td>
+                      <td *ngIf="c.stanje==='kreirano'">
+                          <button mat-raised-button color="success" (click)="traziIzjasnjenje(c.id)">Trazi izjasnjenje</button>
+                      </td>
+                      <td *ngIf="c.stanje==='izjasnjavanje'">
+                          Nema jos izjasnjenja
+                      </td>
+                      <td *ngIf="c.stanje==='izjasnjeno'">
+                          <button mat-raised-button color="success" (click)="pogledajIzjasnjenje(c.id)">Pogledaj izjasnjenje</button>
+                      </td>
+                      <td *ngIf="c.stanje!=='reseno' && c.stanje!=='kreirano'">
+                         <button mat-raised-button color="danger" (click)="kreirajResenje(c.id)">Kreiraj resenje</button>
+                      </td>
+                      <td *ngIf="c.stanje=='reseno' || c.stanje==='kreirano'">
+                          /
+                      </td>
+                      <td *ngIf="c.stanje=='reseno'">
+                          RESENO
+                      </td>
                   </tr>
               </tbody>
           </table>

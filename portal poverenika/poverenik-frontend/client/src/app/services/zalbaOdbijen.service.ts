@@ -30,6 +30,12 @@ public getSearchZalbaOdbijen(content:String):Observable<any> {
 public getSearchMetadataZalbaOdbijen(content:any):Observable<any> {
   return this.http.post("http://localhost:8082/api/zalbenaodluku/getSearchMetadataZalbenaodluku",content,{headers: this.headers, responseType: 'text'});
 }
+public pogledajIzjasnjenje(id:String):Observable<any> {
+  return this.http.get("http://localhost:8082/api/zalbenaodluku/pogledajIzjasnjenje/"+id, {headers: this.headers, responseType: 'text'});
+}
+public traziIzjasnjenje(id:String):Observable<any> {
+  return this.http.get("http://localhost:8082/api/zalbenaodluku/traziIzjasnjenje/"+id, {headers: this.headers, responseType: 'text'});
+}
 public skiniXHTML(id:String):Observable<any> {
     return this.http.post<any>("http://localhost:8082/api/zalbe/skiniXHTML"+id, {headers: this.headers});
 }

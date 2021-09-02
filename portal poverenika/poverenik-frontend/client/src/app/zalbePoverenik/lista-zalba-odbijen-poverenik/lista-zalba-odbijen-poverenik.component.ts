@@ -48,11 +48,13 @@ export class ListaZalbaOdbijenPoverenikComponent implements OnInit {
         if(decodedItem.listaZalbanaodlukuDTO.lista.constructor==[].constructor){
           for(var i  in decodedItem.listaZalbanaodlukuDTO.lista){
             this.zalba.push(new ZalbaOdluka(decodedItem.listaZalbanaodlukuDTO.lista[i].id._text,
-              decodedItem.listaZalbanaodlukuDTO.lista[i].mesto._text,decodedItem.listaZalbanaodlukuDTO.lista[i].datum._text));
+              decodedItem.listaZalbanaodlukuDTO.lista[i].mesto._text,decodedItem.listaZalbanaodlukuDTO.lista[i].datum._text,
+              decodedItem.listaZalbanaodlukuDTO.lista[i].stanje._text));
           }
         }else{
           this.zalba.push(new ZalbaOdluka(decodedItem.listaZalbanaodlukuDTO.lista.id._text,
-            decodedItem.listaZalbanaodlukuDTO.lista.mesto._text,decodedItem.listaZalbanaodlukuDTO.lista.datum._text));
+            decodedItem.listaZalbanaodlukuDTO.lista.mesto._text,decodedItem.listaZalbanaodlukuDTO.lista.datum._text,
+            decodedItem.listaZalbanaodlukuDTO.lista.stanje._text));
         }
         console.log(this.zalba);
       }
@@ -116,11 +118,13 @@ export class ListaZalbaOdbijenPoverenikComponent implements OnInit {
         if(decodedItem.listaZalbanaodlukuDTO.lista.constructor==[].constructor){
           for(var i  in decodedItem.listaZalbanaodlukuDTO.lista){
             this.zalba.push(new ZalbaOdluka(decodedItem.listaZalbanaodlukuDTO.lista[i].id._text,
-              decodedItem.listaZalbanaodlukuDTO.lista[i].mesto._text,decodedItem.listaZalbanaodlukuDTO.lista[i].datum._text));
+              decodedItem.listaZalbanaodlukuDTO.lista[i].mesto._text,decodedItem.listaZalbanaodlukuDTO.lista[i].datum._text,
+              decodedItem.listaZalbanaodlukuDTO.lista[i].stanje._text));
           }
         }else{
           this.zalba.push(new ZalbaOdluka(decodedItem.listaZalbanaodlukuDTO.lista.id._text,
-            decodedItem.listaZalbanaodlukuDTO.lista.mesto._text, decodedItem.listaZalbanaodlukuDTO.lista.datum._text));
+            decodedItem.listaZalbanaodlukuDTO.lista.mesto._text, decodedItem.listaZalbanaodlukuDTO.lista.datum._text,
+            decodedItem.listaZalbanaodlukuDTO.lista.stanje._text));
         }
       }
       );
@@ -147,14 +151,43 @@ export class ListaZalbaOdbijenPoverenikComponent implements OnInit {
         if(decodedItem.listaZalbanaodlukuDTO.lista.constructor==[].constructor){
           for(var i  in decodedItem.listaZalbanaodlukuDTO.lista){
             this.zalba.push(new ZalbaOdluka(decodedItem.listaZalbanaodlukuDTO.lista[i].id._text,
-              decodedItem.listaZalbanaodlukuDTO.lista[i].mesto._text, decodedItem.listaZalbanaodlukuDTO.lista[i].datum._text));
+              decodedItem.listaZalbanaodlukuDTO.lista[i].mesto._text, decodedItem.listaZalbanaodlukuDTO.lista[i].datum._text,
+              decodedItem.listaZalbanaodlukuDTO.lista[i].stanje._text));
           }
         }else{
           this.zalba.push(new ZalbaOdluka(decodedItem.listaZalbanaodlukuDTO.lista.id._text,
-            decodedItem.listaZalbanaodlukuDTO.lista.mesto._text, decodedItem.listaZalbanaodlukuDTO.lista.datum._text));
+            decodedItem.listaZalbanaodlukuDTO.lista.mesto._text, decodedItem.listaZalbanaodlukuDTO.lista.datum._text,
+            decodedItem.listaZalbanaodlukuDTO.lista.stanje._text));
         }
       }
       );
+  }
+    traziIzjasnjenje(id:String) {
+    this.zalbaService.traziIzjasnjenje(id).subscribe(
+      data=>{
+        this.toastr.success('Uspesno poslat upit za izjasnjenjem.');
+        this.router.navigate(['']);
+      },
+      error=>{
+        console.log(error);
+        this.toastr.error("Neuspesno poslat upit za izjasnjenjem.");
+      }
+    );
+  }
+  pogledajIzjasnjenje(id:String) {
+    this.zalbaService.pogledajIzjasnjenje(id).subscribe(
+      data=>{
+        this.toastr.success('Uspesno pogledato izjasnjenje.');
+        this.router.navigate(['']);
+      },
+      error=>{
+        console.log(error);
+        this.toastr.error("Neuspesno pogledato izjasnjenje.");
+      }
+    );
+  }
+  kreirajResenje(id:String) {
+      this.router.navigateByUrl('/add-resenje/'+id);
   }
 
 }

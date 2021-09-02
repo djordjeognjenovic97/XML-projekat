@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-resenja-poverenik',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddResenjaPoverenikComponent implements OnInit {
 
-  constructor() { }
+  temp:string | null;
+
+  constructor(private route:ActivatedRoute) { 
+      this.temp=this.route.snapshot.paramMap.get('id');
+    }
 
   ngOnInit(): void {
   }
