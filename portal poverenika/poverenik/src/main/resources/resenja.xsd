@@ -1,66 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-    targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat/resenja" xmlns:res="https://github.com/djordjeognjenovic97/XML-projekat/resenja">
+    targetNamespace="https://github.com/djordjeognjenovic97/XML-projekat/resenja"
+    xmlns:res="https://github.com/djordjeognjenovic97/XML-projekat/resenja">
 
     <xs:element name="resenje">
-        <xs:complexType mixed="true">
+        <xs:complexType>
             <xs:sequence>
-                <xs:element name="pokretac_zalbe">
+                <xs:element name="datum">
                     <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="ime" type="xs:string"/>
-                            <xs:element name="adresa" type="xs:string"/>
-                            <xs:element name="email" type="xs:string"/>
-                        </xs:sequence>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="property" type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="optuzeni" type="res:TipOptuzeni" minOccurs="0"/>
+                <xs:element name="broj_resenja">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="property" type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="status" type="xs:string"> </xs:element>
+                <xs:element name="gradjanin">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="property" type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element minOccurs="0" name="datum_podnosenja" type="xs:date"> </xs:element>
-                <xs:element minOccurs="0" name="datum_izjasnjenja" type="xs:date"> </xs:element>
-                <xs:element name="datum_trazenja_informacija" type="xs:date"/>
+                <xs:element name="optuzeni" type="res:TipOptuzeni" minOccurs="0"/>
                 <xs:element name="opis_zalbe" type="res:TipOpis_zalbe"/>
                 <xs:element name="resenje_zalbe" type="res:TipResenjeZalbe" minOccurs="0"/>
                 <xs:element name="obrazlozenja_zalbe" type="res:TipObrazlozenja_zalbe" minOccurs="0"/>
-                <xs:element name="poverenik" type="xs:string" minOccurs="0"/>
+                <xs:element name="poverenik" type="res:TipPoverenik" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="datum" type="xs:date"/>
-            <xs:attribute name="broj_resenja" type="xs:string"/>
-            <xs:attribute name="datumInformatora" type="xs:date"/>
+            <xs:attribute name="email_gradjanina" type="xs:string"/>
+            <xs:attribute name="id" type="xs:string"/>
         </xs:complexType>
     </xs:element>
-    <xs:complexType mixed="true" name="TipOpis_zalbe">
+    <xs:complexType name="TipOpis_zalbe">
         <xs:sequence>
             <xs:element name="razlog" type="xs:string"/>
             <xs:element name="na_osnovu" type="xs:string"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="zakon" type="res:TipZakon"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType mixed="false" name="TipResenjeZalbe">
+    <xs:complexType name="TipResenjeZalbe">
         <xs:sequence>
-            <xs:element name="status">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:enumeration value="Prihvaceno"/>
-                        <xs:enumeration value="Odbijeno"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
             <xs:element minOccurs="0" name="rok_trajanja_mora_izvrsi_resenje" type="xs:string"/>
             <xs:element minOccurs="0" name="dokument_koji_se_trazi" type="xs:string"/>
-            <xs:element minOccurs="0" name="datum_podnete_zalbe" type="xs:date"> </xs:element>
             <xs:element minOccurs="0" name="rok_trajanja_provera" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="TipObrazlozenja_zalbe">
         <xs:sequence>
-            <xs:element name="dobio_odgovor">
-                <xs:simpleType>
-                    <xs:restriction base="xs:string">
-                        <xs:enumeration value="DA"/>
-                        <xs:enumeration value="NE"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
+            <xs:element minOccurs="0" name="datum_izjasnjenja" type="xs:date"> </xs:element>
+            <xs:element name="datum_trazenja_informacija" type="xs:date"/>
             <xs:element name="datum_odgovora" type="xs:date"/>
             <xs:element name="razlozi_odluke">
                 <xs:complexType>
@@ -72,7 +74,7 @@
             </xs:element>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType mixed="true" name="TipZakon">
+    <xs:complexType name="TipZakon">
         <xs:sequence>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="clan" type="xs:string"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="stav" type="xs:string"/>
@@ -83,9 +85,39 @@
             </xs:element>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType mixed="true" name="TipOptuzeni">
+    <xs:complexType name="TipPoverenik">
         <xs:sequence>
-            <xs:element name="naziv_optuzenog" type="xs:string"/>
+            <xs:element name="ime">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="property" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="prezime">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="property" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TipOptuzeni">
+        <xs:sequence>
+            <xs:element name="naziv_optuzenog">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="property" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="sediste_optuzenog" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
