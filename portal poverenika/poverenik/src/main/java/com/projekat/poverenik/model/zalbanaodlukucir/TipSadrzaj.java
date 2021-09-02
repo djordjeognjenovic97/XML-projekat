@@ -20,7 +20,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="datum_zahteva" type="{http://www.w3.org/2001/XMLSchema}date"/>
- *         &lt;element name="unos" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="razlog_zalbe" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,15 +32,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "tipSadrzaj", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zalbanaodlukucir", propOrder = {
     "datumZahteva",
-    "unos"
+    "razlogZalbe"
 })
 public class TipSadrzaj {
 
     @XmlElement(name = "datum_zahteva", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zalbanaodlukucir", required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumZahteva;
-    @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zalbanaodlukucir", required = true)
-    protected String unos;
+    @XmlElement(name = "razlog_zalbe", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zalbanaodlukucir", required = true)
+    protected String razlogZalbe;
 
     /**
      * Gets the value of the datumZahteva property.
@@ -67,27 +67,27 @@ public class TipSadrzaj {
     }
 
     /**
-     * Gets the value of the unos property.
+     * Gets the value of the razlogZalbe property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getUnos() {
-        return unos;
+    public String getRazlogZalbe() {
+        return razlogZalbe;
     }
 
     /**
-     * Sets the value of the unos property.
+     * Sets the value of the razlogZalbe property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setUnos(String value) {
-        this.unos = value;
+    public void setRazlogZalbe(String value) {
+        this.razlogZalbe = value;
     }
 
 }

@@ -1,4 +1,4 @@
-SELECT * FROM <http://localhost:8081/fusekiPoverenik/zalbacutanje/data/zalbacutanje> WHERE {
+SELECT * FROM <http://localhost:8081/fusekiPoverenik/zalbanaodluku/data/zalbanaodluku> WHERE {
  ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/broj_predmeta> ?broj_predmeta .
   ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/datum> ?datum .
   ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/ime> ?ime .

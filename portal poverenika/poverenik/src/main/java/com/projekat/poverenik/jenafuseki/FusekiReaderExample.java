@@ -22,6 +22,8 @@ public class FusekiReaderExample {
         String queryFilepath = "src/main/resources/rdf/";
         if(metadataUri.contains("zalbacutanje")) {
             queryFilepath = queryFilepath + "sparqlZalbacutanje.rq";
+        } else if(metadataUri.contains("zalbanaodluku")) {
+            queryFilepath = queryFilepath + "sparqlZalbanaodluku.rq";
         }
         String sparqlQueryTemplate = readFile(queryFilepath, StandardCharsets.UTF_8);
         System.out.println("Query: " + sparqlQueryTemplate);

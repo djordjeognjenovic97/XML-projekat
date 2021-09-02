@@ -2,7 +2,7 @@
 <zo:zalbaodluka xmlns:zo="https://github.com/djordjeognjenovic97/XML-projekat/zalbanaodlukucir"
  xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="https://github.com/djordjeognjenovic97/XML-projekat/zalbanaodlukucir file:/C:/Users/Win10/Documents/GitHub/XML-projekat/portal%20poverenika/poverenik/src/main/resources/zalbanaodlukucir.xsd">
+ xsi:schemaLocation="https://github.com/djordjeognjenovic97/XML-projekat/zalbanaodlukucir file:/C:/Users/Win10/Documents/GitHub/XML-projekat/portal%20poverenika/poverenik/src/main/resources/zalbanaodlukucir.xsd" stanje="kreirano">
     <zo:podnosilac_zalbe email="email0">
         <zo:ime property="property0">ime0</zo:ime>
         <zo:prezime property="property1">prezime0</zo:prezime>
@@ -17,7 +17,7 @@
     <zo:broj_predmeta property="property2">broj_predmeta0</zo:broj_predmeta>
     <zo:sadrzaj>
         <zo:datum_zahteva>2006-05-04</zo:datum_zahteva>
-        <zo:unos>unos0</zo:unos>
+        <zo:razlog_zalbe>razlog_zalbe0</zo:razlog_zalbe>
     </zo:sadrzaj>
     <zo:drugi_podaci_za_kontakt>drugi_podaci_za_kontakt0</zo:drugi_podaci_za_kontakt>
     <zo:datum property="property3">2006-05-04</zo:datum>

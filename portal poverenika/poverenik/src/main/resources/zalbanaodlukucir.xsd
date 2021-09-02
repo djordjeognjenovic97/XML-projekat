@@ -40,6 +40,16 @@
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
+            <xs:attribute name="stanje" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="kreirano"/>
+                        <xs:enumeration value="izjasnjavanje"/>
+                        <xs:enumeration value="izjasnjeno"/>
+                        <xs:enumeration value="reseno"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
         </xs:complexType>
     </xs:element>
     <xs:complexType name="adresa">
@@ -58,7 +68,7 @@
     <xs:complexType name="tipSadrzaj">
         <xs:sequence>
             <xs:element name="datum_zahteva" type="xs:date"/>
-            <xs:element name="unos" type="xs:string"/>
+            <xs:element name="razlog_zalbe" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="TPodnosilac_Zalbe">

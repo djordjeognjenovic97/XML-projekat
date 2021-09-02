@@ -28,6 +28,7 @@ export class AddZalbaCutanjeComponent implements OnInit {
     //<organ><naziv></naziv><sediste></sediste></organ><sadrzaj><tipovi_zahteva><dostavljanje_kopije></dostavljanje_kopije></tipovi_zahteva><opis_informacije></opis_informacije></sadrzaj><trazilac_informacije><ime></ime><prezime></prezime><adresa><mesto></mesto><ulica></ulica><br_ulice></br_ulice></adresa><drugi_kontakt_podaci></drugi_kontakt_podaci></trazilac_informacije>
     Xonomy.render(xmlString, element, specification);
   }
+
   send(){
     if (Xonomy.warnings.length) {
       this.toastr.error("Podaci nisu ispravni/uneseni.Molimo vas proverite ih jos jednom.");

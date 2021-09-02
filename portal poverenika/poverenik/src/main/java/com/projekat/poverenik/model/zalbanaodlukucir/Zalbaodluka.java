@@ -55,6 +55,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;/complexType>
  *         &lt;/element>
  *       &lt;/sequence>
+ *       &lt;attribute name="stanje" use="required">
+ *         &lt;simpleType>
+ *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *             &lt;enumeration value="kreirano"/>
+ *             &lt;enumeration value="izjasnjavanje"/>
+ *             &lt;enumeration value="reseno"/>
+ *           &lt;/restriction>
+ *         &lt;/simpleType>
+ *       &lt;/attribute>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -93,6 +102,8 @@ public class Zalbaodluka {
     protected Zalbaodluka.Datum datum;
     @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/zalbanaodlukucir", required = true)
     protected Zalbaodluka.Mesto mesto;
+    @XmlAttribute(name = "stanje", required = true)
+    protected String stanje;
 
     /**
      * Gets the value of the podnosilacZalbe property.
@@ -284,6 +295,30 @@ public class Zalbaodluka {
      */
     public void setMesto(Zalbaodluka.Mesto value) {
         this.mesto = value;
+    }
+
+    /**
+     * Gets the value of the stanje property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getStanje() {
+        return stanje;
+    }
+
+    /**
+     * Sets the value of the stanje property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStanje(String value) {
+        this.stanje = value;
     }
 
 
