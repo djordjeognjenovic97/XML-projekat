@@ -1,0 +1,10 @@
+{
+  "head": {
+    "vars": [ "subject" , "id" , "datum" , "mesto" , "nazivOrgana" ]
+  } ,
+  "results": {
+    "bindings": [
+      
+    ]
+  }
+}

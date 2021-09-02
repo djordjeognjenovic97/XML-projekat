@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Zahtev } from 'src/app/models/zahtev';
 import { ZahtevService } from 'src/app/services/zahtev.service';
+import {saveAs} from 'file-saver';
+import * as FileSaver from 'file-saver';
 
 declare var require: any
 
@@ -73,8 +75,18 @@ export class ListaZahtevComponent implements OnInit {
   RDF(c:String) {
     this.zahtevService.skiniRDF(c).subscribe(
       data=>{
-        this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
+      //   var type = "application/xml";
+      //   console.log("jedan dan");
+      //   var blob = new Blob([data], { type:type});
+         console.log("jedan dan");
+      //   console.log(blob);
+      //  url = window.URL.createObjectURL(blob);
+      //   var link = document.createElement('a');
+      //   link.href = url;
+      //   link.download = "zahtev"+c+".xml";
+      //   link.click();
+      //   this.toastr.success('Uspesno preuzet dokument.');
+      //   this.router.navigate(['']);
       },
       error=>{
         console.log(error);

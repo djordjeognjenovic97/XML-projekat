@@ -89,8 +89,13 @@ export class ListaZahtevSluzbenikComponent implements OnInit {
   RDF(c:String) {
     this.zahtevService.skiniRDF(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/xml"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "zahtev"+c+".xml";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -101,8 +106,13 @@ export class ListaZahtevSluzbenikComponent implements OnInit {
   JSON(c:String) {
     this.zahtevService.skiniJSON(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/json"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "zahtev"+c+".json";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);

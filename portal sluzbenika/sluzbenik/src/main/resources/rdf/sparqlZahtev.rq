@@ -1,4 +1,4 @@
-SELECT * FROM <http://localhost:8081/fuseki/zahtevi/data/zahtevi> WHERE {
+SELECT * FROM <http://localhost:8081/fusekiSluzbenik/zahtevi/data/zahtevi> WHERE {
  ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/id> ?id .
   ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/datum> ?datum .
   ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/mesto> ?mesto .

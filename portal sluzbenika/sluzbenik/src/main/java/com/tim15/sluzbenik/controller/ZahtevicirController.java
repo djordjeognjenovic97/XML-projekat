@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Document;
 
 import javax.validation.Valid;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,6 +100,36 @@ public class ZahtevicirController {
     public ResponseEntity<?> odbijZahtev(@PathVariable String id) throws Exception {
         zahtevicirService.odbijZahtev(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/skiniRDF/{id}")
+    public ResponseEntity<Object> getZahtevRDF(@PathVariable String id) throws Exception {
+
+        try {
+            String fileName = "src/main/resources/rdf/"+id;
+            Path filePath = Paths.get(fileName);
+            byte[] data = Files.readAllBytes(filePath);
+            return new ResponseEntity<Object>(data, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @GetMapping(value = "/skiniJSON/{id}")
+    public ResponseEntity<Object> getZahtevJSON(@PathVariable String id) throws Exception {
+
+        try {
+            zahtevicirService.skiniJSON(id);
+            String fileName = "src/main/resources/json/"+id;
+            Path filePath = Paths.get(fileName);
+            byte[] data = Files.readAllBytes(filePath);
+            return new ResponseEntity<Object>(data, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
     @Scheduled(cron = "${greeting.cron}")
     public void cronJob() throws Exception {

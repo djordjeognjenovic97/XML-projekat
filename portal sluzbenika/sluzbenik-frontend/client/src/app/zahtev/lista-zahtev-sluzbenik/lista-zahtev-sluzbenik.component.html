@@ -59,10 +59,10 @@
                             <button mat-raised-button color="primary" (click)="PDF(c)">PDF</button>
                         </td>
                         <td>
-                            <button mat-raised-button color="primary" (click)="RDF(c)">RDF</button>
+                            <button mat-raised-button color="primary" (click)="RDF(c.id)">RDF</button>
                         </td>
                         <td>
-                            <button mat-raised-button color="primary" (click)="JSON(c)">JSON</button>
+                            <button mat-raised-button color="primary" (click)="JSON(c.id)">JSON</button>
                         </td>
                         <td *ngIf="c.stanje!=='odbijen'&& c.stanje!=='usvojen'">
                             <button mat-raised-button color="success" (click)="prihvatiZahtev(c.id)">Prihvati</button>

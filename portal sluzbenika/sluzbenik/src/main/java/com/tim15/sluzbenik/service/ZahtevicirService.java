@@ -63,7 +63,9 @@ public class ZahtevicirService {
         metadataExtractor.extractMetadata(text,new FileOutputStream(new File("src/main/resources/rdf/"+docId)));
         FusekiWriterExample.saveRDF(docId,"/zahtevi");
     }
-
+    public String getRDFText(String id) throws Exception {
+        return "s";
+    }
     public void addZahtevFromFile(String path) throws Exception {
         Zahtev zahtev = jaxbParser.unmarshallFile(Zahtev.class, path);
         String docId = zahtev.getId().getValue();
@@ -185,5 +187,14 @@ public class ZahtevicirService {
                 zahtevicirRepository.saveZahtevFromText(text, z.getId().getValue());
             }
         }
+    }
+
+    public void skiniJSON(String id) throws IOException {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("id", id);
+        params.put("mesto", "");
+        params.put("datum", "");
+        params.put("nazivOrgana", "");
+        FusekiReaderExample.executeQueryforJSON(params,"/zahtevi",id);
     }
 }
