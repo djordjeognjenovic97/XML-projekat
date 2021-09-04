@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="IzjasnjenjeService"
+                  targetNamespace="http://izjasnjenje"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:tns="http://izjasnjenje"
+                  xmlns:elem="http://izjasnjenje">
+
+    <wsdl:types>
+        <xs:schema>
+            <xs:import namespace="http://izjasnjenje"
+                       schemaLocation= "../izjasnjenje.xsd"/>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="sendIzjasnjenjeRequest">
+        <wsdl:part name="izjasnjenje" element="elem:izjasnjenje" />
+    </wsdl:message>
+    <wsdl:message name="sendIzjasnjenjeResponse" />
+
+    <wsdl:portType name="IzjasnjenjeServicePortType">
+        <wsdl:operation name="sendIzjasnjenje">
+            <wsdl:input message="tns:sendIzjasnjenjeRequest" />
+            <wsdl:output message="tns:sendIzjasnjenjeResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="IzjasnjenjeServiceSoapBinding" type="tns:IzjasnjenjeServicePortType">
+        <soap:binding style="rpc"  transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="sendIzjasnjenje">
+            <soap:operation soapAction="http://izjasnjenje/ws/sendIzjasnjenje" />
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="IzjasnjenjeService">
+        <wsdl:port name="IzjasnjenjeServiceSoapBinding" binding="tns:IzjasnjenjeServiceSoapBinding">
+            <soap:address location="http://localhost:8082/izjasnjenjePort" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

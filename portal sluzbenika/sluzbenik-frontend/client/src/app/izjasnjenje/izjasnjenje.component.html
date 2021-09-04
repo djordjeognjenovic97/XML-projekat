@@ -7,8 +7,6 @@
                     <tr>
                         <th>Zalba na zahtev sa ID-jem<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
                         <th>Izjasnite se<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
-                        <th>Potvrda<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,17 +17,15 @@
                         <td class="in_waves">
                             <a href="http://www.google.com">{{c.id}}</a>
                         </td>
+                        <td class="in_waves">
                         <form [formGroup]="regForm1" (ngSubmit)="regIn1(c.id)" class="form-inline">
-                            <td class="in_waves">
                             <div class="form-group mx-sm-0 mb-2">
                                 <input type="text" class="form-control" id="podatak" formControlName="podatak"
                                     placeholder="izjasnite se...">
                             </div>
-                            </td>
-                            <td class="in_waves">
                                 <button type="submit" class="btn btn-secondary mb-2" id="filter_content">Posalji</button>
-                            </td>
                         </form>
+                        </td>
                     </tr>
                 </tbody>
             </table>

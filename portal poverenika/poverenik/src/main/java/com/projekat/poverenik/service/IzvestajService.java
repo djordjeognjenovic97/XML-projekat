@@ -6,25 +6,15 @@ import com.projekat.poverenik.jenafuseki.FusekiWriterExample;
 import com.projekat.poverenik.jenafuseki.MetadataExtractor;
 import com.projekat.poverenik.model.obavestenjecir.Obavestenje;
 import com.projekat.poverenik.repository.IzvestajRepository;
-import com.projekat.poverenik.soap.Izvestaj;
+import com.projekat.poverenik.soap.izvestaj.Izvestaj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 
-import javax.xml.bind.JAXBException;
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-import javax.xml.soap.*;
-import javax.xml.transform.TransformerException;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 @Service

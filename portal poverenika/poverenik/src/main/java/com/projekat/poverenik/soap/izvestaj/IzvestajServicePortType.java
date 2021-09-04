@@ -1,4 +1,4 @@
-package com.projekat.poverenik.soap;
+package com.projekat.poverenik.soap.izvestaj;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

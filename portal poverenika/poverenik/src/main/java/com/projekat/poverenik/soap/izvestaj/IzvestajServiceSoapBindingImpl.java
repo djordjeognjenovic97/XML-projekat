@@ -4,7 +4,7 @@
  * This class is not complete
  */
 
-package com.projekat.poverenik.soap;
+package com.projekat.poverenik.soap.izvestaj;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ import java.util.logging.Logger;
                       portName = "IzvestajServiceSoapBinding",
                       targetNamespace = "https://github.com/djordjeognjenovic97/XML-projekat/izvestaj",
                       wsdlLocation = "classpath:wsdl/izvestaj.wsdl",
-                      endpointInterface = "com.projekat.poverenik.soap.IzvestajServicePortType")
+                      endpointInterface = "com.projekat.poverenik.soap.izvestaj.IzvestajServicePortType")
 @Service
 public class IzvestajServiceSoapBindingImpl implements IzvestajServicePortType {
 

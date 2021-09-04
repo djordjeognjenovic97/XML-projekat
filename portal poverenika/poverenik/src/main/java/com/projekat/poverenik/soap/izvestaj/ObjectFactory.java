@@ -1,5 +1,5 @@
 
-package com.projekat.poverenik.soap;
+package com.projekat.poverenik.soap.izvestaj;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

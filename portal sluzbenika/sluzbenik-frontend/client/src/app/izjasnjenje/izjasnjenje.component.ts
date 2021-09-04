@@ -37,19 +37,17 @@ export class IzjasnjenjeComponent implements OnInit {
         const decodedItem =JSON.parse(convert.xml2json(res,{compact: true, ignoreComment: true}));
         if(decodedItem.listaIzjasnjenjaDTO.lista.constructor==[].constructor){
           for(var i  in decodedItem.listaIzjasnjenjaDTO.lista){
-            this.izjasnjenja.push(new Izjasnjenje(decodedItem.listaIzjasnjenjaDTO.lista[i].id._text,"",
-              decodedItem.listaIzjasnjenjaDTO.lista[i].mail._text));
+            this.izjasnjenja.push(new Izjasnjenje(decodedItem.listaIzjasnjenjaDTO.lista[i]._text,""));
           }
         }else{
-          this.izjasnjenja.push(new Izjasnjenje(decodedItem.listaIzjasnjenjaDTO.lista.id._text,"",
-            decodedItem.listaIzjasnjenjaDTO.lista.mesto._text));
+          this.izjasnjenja.push(new Izjasnjenje(decodedItem.listaIzjasnjenjaDTO.lista._text,""));
         }
         console.log(this.izjasnjenja);
       }
       );
   }
   regIn1(id){
-    this.izjasnjenjeService.izjasniSe(new Izjasnjenje(id,this.regForm1.value.podatak,"")).subscribe(
+    this.izjasnjenjeService.izjasniSe(id,this.regForm1.value.podatak).subscribe(
       res => {
           this.toastr.success('Uspesno ste se izjasnili!');
           this.router.navigate(['']);

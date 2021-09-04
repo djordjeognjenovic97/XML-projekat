@@ -177,8 +177,9 @@ export class ListaZalbaOdbijenPoverenikComponent implements OnInit {
   pogledajIzjasnjenje(id:String) {
     this.zalbaService.pogledajIzjasnjenje(id).subscribe(
       data=>{
-        this.toastr.success('Uspesno pogledato izjasnjenje.');
-        this.router.navigate(['']);
+        var convert = require('xml-js');
+        const decodedItem =JSON.parse(convert.xml2json(data,{compact: true, ignoreComment: true}));
+        this.toastr.success("IZJASNJENJE: "+decodedItem.izjasnjenjeDTO.sadrzaj._text);
       },
       error=>{
         console.log(error);

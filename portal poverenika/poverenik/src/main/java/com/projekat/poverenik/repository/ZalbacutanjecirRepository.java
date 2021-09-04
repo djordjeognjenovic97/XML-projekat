@@ -75,4 +75,11 @@ public class ZalbacutanjecirRepository {
         }
         return lista;
     }
+
+    public Zalbacutanje findRealZalbaCutanjeById(String id) throws Exception {
+        XMLResource xmlResource = existManager.load(collectionId, id);
+        JaxbParser jaxbParser = new JaxbParser();
+        Zalbacutanje zalbacutanje= jaxbParser.unmarshallXMLResource(Zalbacutanje.class,xmlResource);
+        return zalbacutanje;
+    }
 }

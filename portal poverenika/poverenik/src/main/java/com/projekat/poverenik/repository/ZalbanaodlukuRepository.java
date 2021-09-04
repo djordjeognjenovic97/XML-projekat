@@ -2,6 +2,7 @@ package com.projekat.poverenik.repository;
 
 import com.projekat.poverenik.existdb.ExistManager;
 import com.projekat.poverenik.jaxb.JaxbParser;
+import com.projekat.poverenik.model.zalbacutanjecir.Zalbacutanje;
 import com.projekat.poverenik.model.zalbanaodlukucir.Zalbaodluka;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -73,5 +74,12 @@ public class ZalbanaodlukuRepository {
             }
         }
         return lista;
+    }
+
+    public Zalbaodluka findRealZalbaOdlukaById(String id) throws Exception {
+        XMLResource xmlResource = existManager.load(collectionId, id);
+        JaxbParser jaxbParser = new JaxbParser();
+        Zalbaodluka zalbaodluka= jaxbParser.unmarshallXMLResource(Zalbaodluka.class,xmlResource);
+        return zalbaodluka;
     }
 }

@@ -1,6 +1,7 @@
 package com.projekat.poverenik.endpoint;
 
-import com.projekat.poverenik.soap.IzvestajServiceSoapBindingImpl;
+import com.projekat.poverenik.soap.izjasnjenje.IzjasnjenjeServiceSoapBindingImpl;
+import com.projekat.poverenik.soap.izvestaj.IzvestajServiceSoapBindingImpl;
 import org.apache.cxf.Bus;
 import org.apache.cxf.jaxws.EndpointImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,20 @@ public class IzvestajEndpointConfig {
     @Autowired
     IzvestajServiceSoapBindingImpl izvestajServiceSoapBindingImpl;
 
+    @Autowired
+    IzjasnjenjeServiceSoapBindingImpl izjasnjenjeServiceSoapBindingImpl;
+
     @Bean(name = "izvestajEndpointBean")
     public Endpoint izvestajEndpoint() {
         EndpointImpl endpoint = new EndpointImpl(bus, izvestajServiceSoapBindingImpl);
         endpoint.publish("/izvestaj");
+        return endpoint;
+    }
+
+    @Bean(name = "izjasnjenjeEndpointBean")
+    public Endpoint izjasnjenjeEndpoint() {
+        EndpointImpl endpoint = new EndpointImpl(bus, izjasnjenjeServiceSoapBindingImpl);
+        endpoint.publish("/izjasnjenje");
         return endpoint;
     }
 }

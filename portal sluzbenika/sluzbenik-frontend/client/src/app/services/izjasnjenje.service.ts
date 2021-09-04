@@ -14,10 +14,10 @@ export class IzjasnjenjeService {
 		private http: HttpClient
 	) { }
 
-	public izjasniSe(izjasnjenje:any):Observable<any> {
-        return this.http.post<any>("http://localhost:8080/api/izjasnjenje/izjasniSe",izjasnjenje, {headers: this.headers});
+	public izjasniSe(id:string,sadrzaj:string):Observable<any> {
+        return this.http.get("http://localhost:8080/api/izjasnjenje/izjasniSe/"+sadrzaj+"/"+id, {headers: this.headers});
     }
 	public getAllIzjasnjenja():Observable<any> {
-        return this.http.get("http://localhost:8080/api/izjasnjenja/getAllIzjasnjenja", {headers: this.headers, responseType: 'text'});
+        return this.http.get("http://localhost:8080/api/izjasnjenje/pogledajIzjasnjenja", {headers: this.headers, responseType: 'text'});
     }
 }

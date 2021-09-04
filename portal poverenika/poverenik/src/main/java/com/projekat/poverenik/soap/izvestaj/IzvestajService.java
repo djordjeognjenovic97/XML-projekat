@@ -1,4 +1,4 @@
-package com.projekat.poverenik.soap;
+package com.projekat.poverenik.soap.izvestaj;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;

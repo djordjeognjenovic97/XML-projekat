@@ -2,13 +2,12 @@ package com.projekat.poverenik.repository;
 
 import com.projekat.poverenik.existdb.ExistManager;
 import com.projekat.poverenik.jaxb.JaxbParser;
-import com.projekat.poverenik.soap.Izvestaj;
+import com.projekat.poverenik.soap.izvestaj.Izvestaj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
-import org.xmldb.api.base.XMLDBException;
 import org.xmldb.api.modules.XMLResource;
 
 import java.util.ArrayList;
