@@ -1,5 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?><html xmlns="https://github.com/djordjeognjenovic97/XML-projekat/zahtev"><head><style>
-                    body {text-align: justify; text-justify: inter-word; margin: auto 50px
-                    auto 50px;}
-                    .center {text-align: center;)
-                </style></head><body><h1>Radi zahtev html</h1></body></html>
+<html xmlns:ftn="https://github.com/djordjeognjenovic97/XML-projekat/zahtev">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css"></style>
+</head>
+<body>
+<p style="font-size:12px; text-align:center">,
+                    </p>
+<p style="text-align:center">
+                    ...............................................................................................................
+                </p>
+<p style="font-size:12px; text-align:center">
+                    naziv i sedište organa kome se zahtev upućuje
+                </p>
+<h1 style="text-align:center;padding-top:30px;font-weight: bold">
+                    Z A H T E V
+                </h1>
+<h2 style="font-size:12px; text-align:center">
+                    za pristup informaciji od javnog značaja
+                </h2>
+</body>
+</html>
