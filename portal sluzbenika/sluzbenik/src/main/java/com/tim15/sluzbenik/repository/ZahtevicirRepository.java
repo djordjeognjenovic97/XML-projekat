@@ -35,6 +35,11 @@ public class ZahtevicirRepository {
         Document document = (Document) xmlResource.getContentAsDOM();
         return document;
     }
+    public String findZahtevByIdAndReturnString(String id) throws Exception {
+        XMLResource xmlResource = existManager.load(collectionId, id);
+        String tekst = (String) xmlResource.getContent();
+        return tekst;
+    }
 
     public Zahtev findRealZahtevById(String id) throws Exception {
         XMLResource xmlResource = existManager.load(collectionId, id);

@@ -10,6 +10,7 @@ import { IzvestajComponent } from './izvestaj/izvestaj.component';
 import { AddObavestenjaComponent } from './obavestenja/add-obavestenja/add-obavestenja.component';
 import { ListaObavestenjaSluzbenikComponent } from './obavestenja/lista-obavestenja-sluzbenik/lista-obavestenja-sluzbenik.component';
 import { ListaObavestenjaComponent } from './obavestenja/lista-obavestenja/lista-obavestenja.component';
+import { TemplejtComponent } from './templejt/templejt.component';
 import { AddZahtevComponent } from './zahtev/add-zahtev/add-zahtev.component';
 import { ListaZahtevSluzbenikComponent } from './zahtev/lista-zahtev-sluzbenik/lista-zahtev-sluzbenik.component';
 import { ListaZahtevComponent } from './zahtev/lista-zahtev/lista-zahtev.component';
@@ -47,6 +48,10 @@ const routes: Routes = [
     component : AddObavestenjaComponent,
     canActivate: [RoleGuard],
 		data: {expectedRoles: 'ROLE_SLUZBENIK'}
+  },
+  {
+    path : 'prikaz/:sta/:id',
+    component : TemplejtComponent,
   },
   {
     path : 'obavestenja',

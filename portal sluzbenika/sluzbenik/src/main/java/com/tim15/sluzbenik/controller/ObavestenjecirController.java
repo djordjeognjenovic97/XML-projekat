@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Document;
 
 import javax.validation.Valid;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -54,23 +57,6 @@ public class ObavestenjecirController {
         }
         return new ResponseEntity<>(document, HttpStatus.OK);
     }
-
-    @GetMapping(value = "/html/{id}", produces = MediaType.TEXT_HTML_VALUE)
-    public ResponseEntity<String> getObavestenjeAsHTML(@PathVariable String id) throws Exception {
-        String document = obavestenjecirService.convertXMLtoHTML(id);
-        if(document == null) {
-            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(document, HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/pdf/{id}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public ResponseEntity<Object> getPdf(@PathVariable("id") String id) throws Exception {
-        Resource resource = obavestenjecirService.getPdf(id);
-        return ResponseEntity.ok().contentType(MediaType.APPLICATION_OCTET_STREAM)
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-                .body(resource);
-    }
     @PreAuthorize("hasRole('ROLE_GRADJANIN')")
     @GetMapping(value = "/getUsersObavestenja",consumes = MediaType.APPLICATION_XML_VALUE,produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<ListaObavestenjaDTO> getObavestenjaUsers() throws Exception {
@@ -107,5 +93,76 @@ public class ObavestenjecirController {
             return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<ListaObavestenjaDTO>(new ListaObavestenjaDTO(ids), HttpStatus.OK);
+    }
+    @GetMapping(value = "/skiniRDF/{id}")
+    public ResponseEntity<Object> getZahtevRDF(@PathVariable String id) throws Exception {
+
+        try {
+            String fileName = "src/main/resources/rdf/"+id;
+            Path filePath = Paths.get(fileName);
+            byte[] data = Files.readAllBytes(filePath);
+            return new ResponseEntity<Object>(data, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @GetMapping(value = "/skiniJSON/{id}")
+    public ResponseEntity<Object> getObavestenjeJSON(@PathVariable String id) throws Exception {
+
+        try {
+            obavestenjecirService.skiniJSON(id);
+            String fileName = "src/main/resources/json/"+id;
+            Path filePath = Paths.get(fileName);
+            byte[] data = Files.readAllBytes(filePath);
+            return new ResponseEntity<Object>(data, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @GetMapping(value = "/skiniHTML/{id}")
+    public ResponseEntity<Object> getObavestenjeHTML(@PathVariable String id) throws Exception {
+
+        try {
+            obavestenjecirService.skiniHTML(id);
+            String fileName = "src/main/resources/html/Obavestenje"+id;
+            Path filePath = Paths.get(fileName);
+            byte[] data = Files.readAllBytes(filePath);
+            return new ResponseEntity<Object>(data, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @GetMapping(value = "/skiniPDF/{id}")
+    public ResponseEntity<Object> getObavestenjePDF(@PathVariable String id) throws Exception {
+
+        try {
+            obavestenjecirService.skiniPDF(id);
+            String fileName = "src/main/resources/pdf/Obavestenje"+id;
+            Path filePath = Paths.get(fileName);
+            byte[] data = Files.readAllBytes(filePath);
+            return new ResponseEntity<Object>(data, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @GetMapping(value = "/htmlOblik/{id}")
+    public ResponseEntity<Object> seeObavestenjeHTML(@PathVariable String id) throws Exception {
+
+        try {
+            String tekst=obavestenjecirService.skiniHTML(id);
+            return new ResponseEntity<Object>(tekst, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 }

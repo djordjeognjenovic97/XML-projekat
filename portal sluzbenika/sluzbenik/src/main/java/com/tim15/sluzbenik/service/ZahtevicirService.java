@@ -20,6 +20,7 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.soap.*;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -29,6 +30,9 @@ import java.util.*;
 public class ZahtevicirService {
     @Autowired
     private ZahtevicirRepository zahtevicirRepository;
+
+    @Autowired
+    private XSLTransformer xslTransformer;
 
     private JaxbParser jaxbParser;
     private MetadataExtractor metadataExtractor;
@@ -196,5 +200,16 @@ public class ZahtevicirService {
         params.put("datum", "");
         params.put("nazivOrgana", "");
         FusekiReaderExample.executeQueryforJSON(params,"/zahtevi",id);
+    }
+
+    public String skiniHTML(String id) throws Exception {
+        Document d=zahtevicirRepository.findZahtevById(id);
+        return xslTransformer.convertXMLtoHTML("src/main/resources/xsl/zahtev.xsl",d,"src/main/resources/html/"+id);
+    }
+
+    public void skiniPDF(String id) throws Exception {
+        String str=zahtevicirRepository.findZahtevByIdAndReturnString(id);
+        xslTransformer.generatePDf(str,"src/main/resources/xsl/zahtev_fo.xsl","src/main/resources/pdf/"+id);
+
     }
 }

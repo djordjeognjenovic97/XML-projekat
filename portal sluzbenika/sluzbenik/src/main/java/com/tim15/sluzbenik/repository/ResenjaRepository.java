@@ -26,4 +26,9 @@ public class ResenjaRepository {
         Document document = (Document) xmlResource.getContentAsDOM();
         return document;
     }
+    public String findResenjeByIdAndReturnString(String id) throws Exception {
+        XMLResource xmlResource = existManager.load(collectionId, id);
+        String tekst = (String) xmlResource.getContent();
+        return tekst;
+    }
 }

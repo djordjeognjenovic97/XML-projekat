@@ -12,15 +12,15 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXResult;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.StringReader;
-import java.io.StringWriter;
+import java.io.*;
 
 @Component
 public class XSLTransformer {
+
     private String fopPath = "src/main/resources/conf/fop.xconf";
-    public String convertXMLtoHTML(String xslFilePath, Document xml) {
+
+
+    public String convertXMLtoHTML(String xslFilePath, Document xml,String htmlFile) {
 
         String xmlString = XMLToString(xml);
 
@@ -34,8 +34,14 @@ public class XSLTransformer {
         try {
             Transformer transformer = factory.newTransformer(xslStream);
             transformer.transform(in, out);
+
+            OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(htmlFile));
+            outputStream.write(outStream.toByteArray());
+            System.out.println("[INFO] File \""  + "\" generated successfully.");
+            outputStream.close();
+
             return outStream.toString();
-        } catch (TransformerException e) {
+        } catch (TransformerException | IOException e) {
             e.printStackTrace();
         }
         return "";
@@ -59,7 +65,7 @@ public class XSLTransformer {
         }
     }
 
-    public ByteArrayOutputStream generatePDf(String sourceStr, String xslt_fo_TemplatePath) throws Exception {
+    public void generatePDf(String sourceStr, String xslt_fo_TemplatePath,String pdfFile) throws Exception {
         File xslFile = new File(xslt_fo_TemplatePath);
 
         StreamSource transformSource = new StreamSource(xslFile);
@@ -78,7 +84,11 @@ public class XSLTransformer {
 
         xslFoTransformer.transform(source, res);
 
-        return outStream;
+        OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(pdfFile));
+        outputStream.write(outStream.toByteArray());
+        System.out.println("[INFO] File \""  + "\" generated successfully.");
+        outputStream.close();
+
     }
 
 }

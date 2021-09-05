@@ -1,6 +1,7 @@
 package com.tim15.sluzbenik.service;
 
 import com.tim15.sluzbenik.dom.DOMParser;
+import com.tim15.sluzbenik.jenafuseki.FusekiReaderExample;
 import com.tim15.sluzbenik.jenafuseki.FusekiWriterExample;
 import com.tim15.sluzbenik.jenafuseki.MetadataExtractor;
 import com.tim15.sluzbenik.repository.ResenjaRepository;
@@ -13,11 +14,16 @@ import org.xml.sax.SAXException;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class ResenjaService {
     @Autowired
     private ResenjaRepository resenjaRepository;
+
+    @Autowired
+    private XSLTransformer xslTransformer;
 
     private DOMParser domParser;
     private MetadataExtractor metadataExtractor;
@@ -49,5 +55,24 @@ public class ResenjaService {
     public Document getResenjeDocument(String docId) throws Exception {
         Document doc = resenjaRepository.findResenjeById(docId);
         return doc;
+    }
+    public void skiniJSON(String id) throws IOException {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("id", id);
+        params.put("mesto", "");
+        params.put("datum", "");
+        params.put("nazivOrgana", "");
+        FusekiReaderExample.executeQueryforJSON(params,"/resenja",id);
+    }
+
+    public String skiniHTML(String id) throws Exception {
+        Document d=resenjaRepository.findResenjeById(id);
+        return xslTransformer.convertXMLtoHTML("src/main/resources/xsl/resenje.xsl",d,"src/main/resources/html/Resenje"+id);
+    }
+
+    public void skiniPDF(String id) throws Exception {
+        String str=resenjaRepository.findResenjeByIdAndReturnString(id);
+        xslTransformer.generatePDf(str,"src/main/resources/xsl/resenje_fo.xsl","src/main/resources/pdf/Resenje"+id);
+
     }
 }

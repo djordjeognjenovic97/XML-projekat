@@ -54,8 +54,13 @@ export class IzvestajComponent implements OnInit {
   XHTML(c:String) {
     this.izvestajService.skiniXHTML(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/html"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "izvestaj"+c+".html";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -63,11 +68,19 @@ export class IzvestajComponent implements OnInit {
       }
     );
   }
+  prikazi(c:String){
+     this.router.navigate(['prikaz/izvestaj/'+c]);
+  }
   PDF(c:String) {
     this.izvestajService.skiniPDF(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/pdf"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "izvestaj"+c+".pdf";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -78,8 +91,13 @@ export class IzvestajComponent implements OnInit {
   RDF(c:String) {
     this.izvestajService.skiniRDF(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/xml"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "izvestaj"+c+".xml";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -90,8 +108,13 @@ export class IzvestajComponent implements OnInit {
   JSON(c:String) {
     this.izvestajService.skiniJSON(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/json"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "izvestaj"+c+".json";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);

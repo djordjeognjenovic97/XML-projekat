@@ -31,16 +31,16 @@ export class ObavestenjaService {
         return this.http.post("http://localhost:8080/api/obavestenja/getSearchMetadataObavestenja",content,{headers: this.headers, responseType: 'text'});
     }
 	public skiniXHTML(id:String):Observable<any> {
-        return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniXHTML"+id, {headers: this.headers});
+        return this.http.get("http://localhost:8080/api/obavestenja/skiniHTML/"+id, {headers: this.headers, responseType: 'arraybuffer'});
     }
 	public skiniPDF(id:String):Observable<any> {
-        return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniPDF"+id, {headers: this.headers});
+        return this.http.get("http://localhost:8080/api/obavestenja/skiniPDF/"+id, {headers: this.headers, responseType: 'arraybuffer'});
     }
 	public skiniRDF(id:String):Observable<any> {
-        return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniRDF"+id, {headers: this.headers});
+        return this.http.get("http://localhost:8080/api/obavestenja/skiniRDF/"+id, {headers: this.headers, responseType: 'arraybuffer'});
     }
 	public skiniJSON(id:String):Observable<any> {
-        return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniJSON"+id, {headers: this.headers});
+        return this.http.get("http://localhost:8080/api/obavestenja/skiniJSON/"+id, {headers: this.headers, responseType: 'arraybuffer'});
     }
 	public odbijZahtev(id:String):Observable<any> {
         return this.http.put<any>("http://localhost:8080/api/zahtevi/odbijZahtev/"+id, {headers: this.headers});

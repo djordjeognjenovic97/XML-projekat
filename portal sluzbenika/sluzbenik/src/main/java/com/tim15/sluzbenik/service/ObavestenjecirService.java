@@ -102,22 +102,22 @@ public class ObavestenjecirService {
         return doc;
     }
 
-    public String convertXMLtoHTML(String id) throws Exception {
-        Document xml = obavestenjecirRepository.findObavestenjeById(id);
-        return xslTransformer.convertXMLtoHTML(obavestenjeXSLPath, xml);
-    }
+//    public String convertXMLtoHTML(String id) throws Exception {
+//        Document xml = obavestenjecirRepository.findObavestenjeById(id);
+//        return xslTransformer.convertXMLtoHTML(obavestenjeXSLPath, xml);
+//    }
 
-    public Resource getPdf(String id) throws Exception {
-        Document xml = obavestenjecirRepository.findObavestenjeById(id);
-
-        String xmlString = xslTransformer.XMLToString(xml);
-        ByteArrayOutputStream outputStream = xslTransformer.generatePDf(xmlString, pdfXSLPath);
-
-        Path file = Paths.get(id + ".pdf");
-        Files.write(file, outputStream.toByteArray());
-
-        return new UrlResource(file.toUri());
-    }
+//    public Resource getPdf(String id) throws Exception {
+//        Document xml = obavestenjecirRepository.findObavestenjeById(id);
+//
+//        String xmlString = xslTransformer.XMLToString(xml);
+//        ByteArrayOutputStream outputStream = xslTransformer.generatePDf(xmlString, pdfXSLPath);
+//
+//        Path file = Paths.get(id + ".pdf");
+//        Files.write(file, outputStream.toByteArray());
+//
+//        return new UrlResource(file.toUri());
+//    }
 
 
     public List<ObavestenjeDTO> getUsersObavestenja() throws Exception {
@@ -199,5 +199,26 @@ public class ObavestenjecirService {
 
         soapMessage.saveChanges();
         SOAPMessage soapResponse = soapConnection.call(soapMessage, soapEndpointUrl);
+    }
+
+    public void skiniJSON(String id) throws IOException {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("naziv_organa", "");
+        params.put("broj_predmeta", id);
+        params.put("datum", "");
+        params.put("ime", "");
+        params.put("prezime", "");
+        FusekiReaderExample.executeQueryforJSON(params,"/obavestenja",id);
+    }
+
+    public String skiniHTML(String id) throws Exception {
+        Document d=obavestenjecirRepository.findObavestenjeById(id);
+        return xslTransformer.convertXMLtoHTML("src/main/resources/xsl/obavestenje.xsl",d,"src/main/resources/html/Obavestenje"+id);
+    }
+
+    public void skiniPDF(String id) throws Exception {
+        String str=obavestenjecirRepository.findObavestenjeByIdAndReturnString(id);
+        xslTransformer.generatePDf(str,"src/main/resources/xsl/obavestenje_fo.xsl","src/main/resources/pdf/Obavestenje"+id);
+
     }
 }

@@ -50,7 +50,7 @@ public class IzvestajService {
 
         String text = jaxbParser.marshallString(Izvestaj.class,izvestaj);
 
-        String docId= izvestaj.getId();
+        String docId= izvestaj.getId().getValue();
         izvestajRepository.saveIzvestajFromText(text, docId);
         metadataExtractor.extractMetadata(text,new FileOutputStream(new File("src/main/resources/rdf/"+docId)));
         FusekiWriterExample.saveRDF(docId,"/izvestaji");
@@ -60,7 +60,7 @@ public class IzvestajService {
         ArrayList<Izvestaj> izvestajs= izvestajRepository.findAll();
         List<IzvestajDTO> ids=new ArrayList<IzvestajDTO>();
         for(Izvestaj z : izvestajs){
-            ids.add(new IzvestajDTO(z.getId(),z.getDatum().getValue().toString()));
+            ids.add(new IzvestajDTO(z.getId().getValue(),z.getDatum().getValue().toString()));
         }
         return ids;
     }
@@ -69,7 +69,7 @@ public class IzvestajService {
         ArrayList<Izvestaj> izvestajs= izvestajRepository.findByContent(content);
         List<IzvestajDTO> ids=new ArrayList<IzvestajDTO>();
         for(Izvestaj z : izvestajs){
-            ids.add(new IzvestajDTO(z.getId(),z.getDatum().getValue().toString()));
+            ids.add(new IzvestajDTO(z.getId().getValue(),z.getDatum().getValue().toString()));
         }
         return ids;
     }

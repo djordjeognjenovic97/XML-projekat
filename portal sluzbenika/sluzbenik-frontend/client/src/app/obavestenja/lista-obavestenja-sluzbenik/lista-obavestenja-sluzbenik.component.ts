@@ -58,11 +58,16 @@ export class ListaObavestenjaSluzbenikComponent implements OnInit {
       }
       );
   }
-  XHTML(c:String) {
+    XHTML(c:String) {
     this.obavestenjeService.skiniXHTML(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/html"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "obavestenje"+c+".html";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -70,11 +75,19 @@ export class ListaObavestenjaSluzbenikComponent implements OnInit {
       }
     );
   }
+  prikazi(c:String){
+     this.router.navigate(['prikaz/obavestenje/'+c]);
+  }
   PDF(c:String) {
     this.obavestenjeService.skiniPDF(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/pdf"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "obavestenje"+c+".pdf";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -85,8 +98,13 @@ export class ListaObavestenjaSluzbenikComponent implements OnInit {
   RDF(c:String) {
     this.obavestenjeService.skiniRDF(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/xml"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "obavestenje"+c+".xml";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -97,8 +115,13 @@ export class ListaObavestenjaSluzbenikComponent implements OnInit {
   JSON(c:String) {
     this.obavestenjeService.skiniJSON(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/json"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "obavestenje"+c+".json";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);

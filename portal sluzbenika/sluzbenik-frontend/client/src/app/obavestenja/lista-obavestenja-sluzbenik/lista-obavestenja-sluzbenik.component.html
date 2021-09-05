@@ -51,20 +51,20 @@
                     </div>
                     <tr *ngFor="let c of obavestenja">
                         <td class="in_waves">
-                            <a href="http://www.google.com">{{c.id}}</a>
+                            <a (click)="prikazi(c.id)" href="javascript:;">{{c.id}}</a>
                         </td>
                         <td class="in_waves">{{c.datum.split("+")[0]}}</td>
                         <td>
-                            <button mat-raised-button color="primary" (click)="XHTML(c)">XHTML</button>
+                            <button mat-raised-button color="primary" (click)="XHTML(c.id)">XHTML</button>
                         </td>
                         <td>
-                            <button mat-raised-button color="primary" (click)="PDF(c)">PDF</button>
+                            <button mat-raised-button color="primary" (click)="PDF(c.id)">PDF</button>
                         </td>
                         <td>
-                            <button mat-raised-button color="primary" (click)="RDF(c)">RDF</button>
+                            <button mat-raised-button color="primary" (click)="RDF(c.id)">RDF</button>
                         </td>
                         <td>
-                            <button mat-raised-button color="primary" (click)="JSON(c)">JSON</button>
+                            <button mat-raised-button color="primary" (click)="JSON(c.id)">JSON</button>
                         </td>
                     </tr>
                 </tbody>

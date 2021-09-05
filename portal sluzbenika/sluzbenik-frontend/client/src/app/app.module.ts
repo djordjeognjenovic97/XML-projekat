@@ -22,6 +22,7 @@ import { AddObavestenjaComponent } from './obavestenja/add-obavestenja/add-obave
 import { ListaObavestenjaSluzbenikComponent } from './obavestenja/lista-obavestenja-sluzbenik/lista-obavestenja-sluzbenik.component';
 import { IzvestajComponent } from './izvestaj/izvestaj.component';
 import { IzjasnjenjeComponent } from './izjasnjenje/izjasnjenje.component';
+import { TemplejtComponent } from './templejt/templejt.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { IzjasnjenjeComponent } from './izjasnjenje/izjasnjenje.component';
     AddObavestenjaComponent,
     ListaObavestenjaSluzbenikComponent,
     IzvestajComponent,
-    IzjasnjenjeComponent
+    IzjasnjenjeComponent,
+    TemplejtComponent
   ],
   imports: [
     BrowserModule,

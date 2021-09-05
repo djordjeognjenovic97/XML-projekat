@@ -65,8 +65,13 @@ export class ListaZahtevSluzbenikComponent implements OnInit {
   XHTML(c:String) {
     this.zahtevService.skiniXHTML(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/html"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "zahtev"+c+".html";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -74,11 +79,19 @@ export class ListaZahtevSluzbenikComponent implements OnInit {
       }
     );
   }
+  prikazi(c:String){
+     this.router.navigate(['prikaz/zahtev/'+c]);
+  }
   PDF(c:String) {
     this.zahtevService.skiniPDF(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/pdf"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "zahtev"+c+".pdf";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);

@@ -27,6 +27,9 @@ public class FusekiReaderExample {
         }else if(metadataUri.contains("obavestenja")){
             query_filepath=query_filepath+"sparqlObavestenje.rq";
         }
+        else if(metadataUri.contains("izvestaji")){
+            query_filepath=query_filepath+"sparqlIzvestaj.rq";
+        }
         String sparqlQueryTemplate = readFile(query_filepath, StandardCharsets.UTF_8);
         System.out.println("Query: " + sparqlQueryTemplate);
         String sparqlQuery = StringSubstitutor.replace(sparqlQueryTemplate,params,"{{","}}");
@@ -63,6 +66,9 @@ public class FusekiReaderExample {
             query_filepath=query_filepath+"sparqlZahtev.rq";
         }else if(metadataUri.contains("obavestenja")){
             query_filepath=query_filepath+"sparqlObavestenje.rq";
+        }
+        else if(metadataUri.contains("izvestaji")){
+            query_filepath=query_filepath+"sparqlIzvestaj.rq";
         }
         String sparqlQueryTemplate = readFile(query_filepath, StandardCharsets.UTF_8);
         System.out.println("Query: " + sparqlQueryTemplate);

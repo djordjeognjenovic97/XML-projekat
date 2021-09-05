@@ -131,6 +131,48 @@ public class ZahtevicirController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+    @GetMapping(value = "/skiniHTML/{id}")
+    public ResponseEntity<Object> getZahtevHTML(@PathVariable String id) throws Exception {
+
+        try {
+            zahtevicirService.skiniHTML(id);
+            String fileName = "src/main/resources/html/"+id;
+            Path filePath = Paths.get(fileName);
+            byte[] data = Files.readAllBytes(filePath);
+            return new ResponseEntity<Object>(data, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @GetMapping(value = "/skiniPDF/{id}")
+    public ResponseEntity<Object> getZahtevPDF(@PathVariable String id) throws Exception {
+
+        try {
+            zahtevicirService.skiniPDF(id);
+            String fileName = "src/main/resources/pdf/"+id;
+            Path filePath = Paths.get(fileName);
+            byte[] data = Files.readAllBytes(filePath);
+            return new ResponseEntity<Object>(data, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @GetMapping(value = "/htmlOblik/{id}")
+    public ResponseEntity<Object> seeZahtevHTML(@PathVariable String id) throws Exception {
+
+        try {
+            String tekst=zahtevicirService.skiniHTML(id);
+            return new ResponseEntity<Object>(tekst, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
     @Scheduled(cron = "${greeting.cron}")
     public void cronJob() throws Exception {
         zahtevicirService.odbaciZahtev();

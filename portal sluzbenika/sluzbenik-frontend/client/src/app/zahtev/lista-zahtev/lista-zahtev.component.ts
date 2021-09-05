@@ -51,8 +51,13 @@ export class ListaZahtevComponent implements OnInit {
   XHTML(c:String) {
     this.zahtevService.skiniXHTML(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/html"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "zahtev"+c+".html";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -60,11 +65,19 @@ export class ListaZahtevComponent implements OnInit {
       }
     );
   }
+  prikazi(c:String){
+     this.router.navigate(['prikaz/zahtev/'+c]);
+  }
   PDF(c:String) {
     this.zahtevService.skiniPDF(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/pdf"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "zahtev"+c+".pdf";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -75,18 +88,13 @@ export class ListaZahtevComponent implements OnInit {
   RDF(c:String) {
     this.zahtevService.skiniRDF(c).subscribe(
       data=>{
-      //   var type = "application/xml";
-      //   console.log("jedan dan");
-      //   var blob = new Blob([data], { type:type});
-         console.log("jedan dan");
-      //   console.log(blob);
-      //  url = window.URL.createObjectURL(blob);
-      //   var link = document.createElement('a');
-      //   link.href = url;
-      //   link.download = "zahtev"+c+".xml";
-      //   link.click();
-      //   this.toastr.success('Uspesno preuzet dokument.');
-      //   this.router.navigate(['']);
+        var blob = new Blob([data], { type:"application/xml"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "zahtev"+c+".xml";
+        link.click();
+        this.toastr.success('Uspesno preuzet dokument.');
       },
       error=>{
         console.log(error);
@@ -97,8 +105,13 @@ export class ListaZahtevComponent implements OnInit {
   JSON(c:String) {
     this.zahtevService.skiniJSON(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/json"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "zahtev"+c+".json";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);

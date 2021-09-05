@@ -3,36 +3,26 @@ package com.tim15.sluzbenik.service;
 import com.tim15.sluzbenik.dto.IzvestajDTO;
 import com.tim15.sluzbenik.dto.ZahtevDTO;
 import com.tim15.sluzbenik.jaxb.JaxbParser;
+import com.tim15.sluzbenik.jenafuseki.FusekiReaderExample;
 import com.tim15.sluzbenik.jenafuseki.FusekiWriterExample;
 import com.tim15.sluzbenik.jenafuseki.MetadataExtractor;
 import com.tim15.sluzbenik.model.izvestaji.Izvestaj;
-import com.tim15.sluzbenik.model.korisnici.Korisnik;
 import com.tim15.sluzbenik.model.obavestenjecir.Obavestenje;
 import com.tim15.sluzbenik.model.zahtevcir.Zahtev;
 import com.tim15.sluzbenik.repository.IzvestajRepository;
-import com.tim15.sluzbenik.repository.ObavestenjecirRepository;
 import com.tim15.sluzbenik.repository.ZahtevicirRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-import javax.xml.bind.JAXBException;
-import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.soap.*;
-import javax.xml.transform.TransformerException;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class IzvestajService {
@@ -75,20 +65,23 @@ public class IzvestajService {
         datum.setValue(now);
         izvestaj.setDatum(datum);
         long sada=(new Date()).getTime();
-        izvestaj.setId(String.valueOf(sada));
+        Izvestaj.Id id= new Izvestaj.Id();
+        id.setValue(String.valueOf(sada));
+        izvestaj.setId(id);
 
         izvestaj=izbrojZahteve(izvestaj);
         izvestaj=izbrojZalbe(izvestaj);
 
-        String docId = izvestaj.getId();
+        String docId = izvestaj.getId().getValue();
 
         String text = jaxbParser.marshallString(Izvestaj.class,izvestaj);
 
-        posaljiIzvestaj(izvestaj);
+
 
         izvestajRepository.saveIzvestajFromText(text, docId);
         metadataExtractor.extractMetadata(text,new FileOutputStream(new File("src/main/resources/rdf/"+docId)));
         FusekiWriterExample.saveRDF(docId,"/izvestaji");
+        posaljiIzvestaj(izvestaj);
         return izvestaj;
     }
     private void posaljiIzvestaj(Izvestaj izvestaj) throws SOAPException {
@@ -106,7 +99,10 @@ public class IzvestajService {
         SOAPBody soapBody = envelope.getBody();
         envelope.addNamespaceDeclaration("izv", "https://github.com/djordjeognjenovic97/XML-projekat/izvestaj");
         SOAPElement izvElem = soapBody.addChildElement("izvestaj", "izv");
-        izvElem.setAttribute("id", izvestaj.getId());
+
+        SOAPElement idElem = izvElem.addChildElement("id", "izv");
+        idElem.addTextNode(izvestaj.getId().getValue());
+        idElem.setAttribute("property", "pred:id");
 
         SOAPElement zahteviElem = izvElem.addChildElement("zahtevi", "izv");
 
@@ -189,17 +185,41 @@ public class IzvestajService {
         ArrayList<Izvestaj> izvestajs= izvestajRepository.findAll();
         List<IzvestajDTO> ids=new ArrayList<IzvestajDTO>();
         for(Izvestaj z : izvestajs){
-            ids.add(new IzvestajDTO(z.getId(),z.getDatum().getValue().toString()));
+            ids.add(new IzvestajDTO(z.getId().getValue(),z.getDatum().getValue().toString()));
         }
         return ids;
     }
 
     public List<IzvestajDTO> getSearchIzvestaji(String content) throws Exception {
-        ArrayList<Izvestaj> izvestajs= izvestajRepository.findByContent(content);
-        List<IzvestajDTO> ids=new ArrayList<IzvestajDTO>();
-        for(Izvestaj z : izvestajs){
-            ids.add(new IzvestajDTO(z.getId(),z.getDatum().getValue().toString()));
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("id","");
+        params.put("datum", content);
+        ArrayList<String> ids=FusekiReaderExample.executeQuery(params,"/izvestaji");
+        List<IzvestajDTO> izvestaji=new ArrayList<IzvestajDTO>();
+        for(String id :ids){
+            Izvestaj z=izvestajRepository.findRealIzvestajById(id.split("\\^")[0]);
+            izvestaji.add(new IzvestajDTO(z.getId().getValue(),z.getDatum().getValue().toString()));
         }
-        return ids;
+        System.out.println(ids+"   "+izvestaji.size());
+        return izvestaji;
+    }
+
+    public void skiniJSON(String id) throws IOException {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("datum", "");
+        params.put("id", id);
+        FusekiReaderExample.executeQueryforJSON(params,"/izvestaji",id);
+    }
+
+    public String skiniHTML(String id) throws Exception {
+        Document d=izvestajRepository.findIzvestajById(id);
+        return xslTransformer.convertXMLtoHTML("src/main/resources/xsl/izvestaj.xsl",d,"src/main/resources/html/"+id);
+    }
+
+    public void skiniPDF(String id) throws Exception {
+        String str=izvestajRepository.findIzvestajByIdAndReturnString(id);
+        xslTransformer.generatePDf(str,"src/main/resources/xsl/izvestaj_fo.xsl","src/main/resources/pdf/"+id);
+
     }
 }

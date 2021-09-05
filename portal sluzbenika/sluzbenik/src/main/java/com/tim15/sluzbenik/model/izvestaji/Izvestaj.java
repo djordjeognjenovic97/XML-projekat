@@ -1,6 +1,4 @@
-
 package com.tim15.sluzbenik.model.izvestaji;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -22,6 +20,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="id">
+ *           &lt;complexType>
+ *             &lt;simpleContent>
+ *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                 &lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *               &lt;/extension>
+ *             &lt;/simpleContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
  *         &lt;element name="zahtevi">
  *           &lt;complexType>
  *             &lt;complexContent>
@@ -61,13 +68,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;/complexType>
  *         &lt;/element>
  *       &lt;/sequence>
- *       &lt;attribute name="id" use="required">
- *         &lt;simpleType>
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *             &lt;minLength value="5"/>
- *           &lt;/restriction>
- *         &lt;/simpleType>
- *       &lt;/attribute>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -77,6 +77,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+        "id",
         "zahtevi",
         "zalbe",
         "datum"
@@ -85,13 +86,37 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class Izvestaj {
 
     @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/izvestaj", required = true)
+    protected Izvestaj.Id id;
+    @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/izvestaj", required = true)
     protected Izvestaj.Zahtevi zahtevi;
     @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/izvestaj", required = true)
     protected Izvestaj.Zalbe zalbe;
     @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/izvestaj", required = true)
     protected Izvestaj.Datum datum;
-    @XmlAttribute(name = "id", required = true)
-    protected String id;
+
+    /**
+     * Gets the value of the id property.
+     *
+     * @return
+     *     possible object is
+     *     {@link Izvestaj.Id }
+     *
+     */
+    public Izvestaj.Id getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link Izvestaj.Id }
+     *
+     */
+    public void setId(Izvestaj.Id value) {
+        this.id = value;
+    }
 
     /**
      * Gets the value of the zahtevi property.
@@ -165,30 +190,6 @@ public class Izvestaj {
         this.datum = value;
     }
 
-    /**
-     * Gets the value of the id property.
-     *
-     * @return
-     *     possible object is
-     *     {@link String }
-     *
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * Sets the value of the id property.
-     *
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
-
 
     /**
      * <p>Java class for anonymous complex type.
@@ -240,6 +241,85 @@ public class Izvestaj {
          *
          */
         public void setValue(XMLGregorianCalendar value) {
+            this.value = value;
+        }
+
+        /**
+         * Gets the value of the property property.
+         *
+         * @return
+         *     possible object is
+         *     {@link String }
+         *
+         */
+        public String getProperty() {
+            return property;
+        }
+
+        /**
+         * Sets the value of the property property.
+         *
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *
+         */
+        public void setProperty(String value) {
+            this.property = value;
+        }
+
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     *
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     *
+     * <pre>
+     * &lt;complexType>
+     *   &lt;simpleContent>
+     *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+     *       &lt;attribute name="property" type="{http://www.w3.org/2001/XMLSchema}string" />
+     *     &lt;/extension>
+     *   &lt;/simpleContent>
+     * &lt;/complexType>
+     * </pre>
+     *
+     *
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+            "value"
+    })
+    public static class Id {
+
+        @XmlValue
+        protected String value;
+        @XmlAttribute(name = "property")
+        protected String property;
+
+        /**
+         * Gets the value of the value property.
+         *
+         * @return
+         *     possible object is
+         *     {@link String }
+         *
+         */
+        public String getValue() {
+            return value;
+        }
+
+        /**
+         * Sets the value of the value property.
+         *
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *
+         */
+        public void setValue(String value) {
             this.value = value;
         }
 

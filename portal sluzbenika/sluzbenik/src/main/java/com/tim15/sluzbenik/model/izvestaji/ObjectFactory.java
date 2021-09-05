@@ -1,4 +1,3 @@
-
 package com.tim15.sluzbenik.model.izvestaji;
 
 import javax.xml.bind.annotation.XmlRegistry;
@@ -35,6 +34,14 @@ public class ObjectFactory {
      */
     public Izvestaj createIzvestaj() {
         return new Izvestaj();
+    }
+
+    /**
+     * Create an instance of {@link Izvestaj.Id }
+     *
+     */
+    public Izvestaj.Id createIzvestajId() {
+        return new Izvestaj.Id();
     }
 
     /**

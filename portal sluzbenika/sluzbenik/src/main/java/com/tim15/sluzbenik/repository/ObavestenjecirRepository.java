@@ -31,6 +31,12 @@ public class ObavestenjecirRepository {
         existManager.store(collectionId, id, path);
     }
 
+    public String findObavestenjeByIdAndReturnString(String id) throws Exception {
+        XMLResource xmlResource = existManager.load(collectionId, id);
+        String tekst = (String) xmlResource.getContent();
+        return tekst;
+    }
+
     public Document findObavestenjeById(String id) throws Exception {
         XMLResource xmlResource = existManager.load(collectionId, id);
         Document document = (Document) xmlResource.getContentAsDOM();
