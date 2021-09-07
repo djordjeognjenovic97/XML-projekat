@@ -90,6 +90,73 @@ public class ResenjaService {
         SOAPBody soapBody = envelope.getBody();
         envelope.addNamespaceDeclaration("res", "https://github.com/djordjeognjenovic97/XML-projekat/resenja");
         SOAPElement resElem = soapBody.addChildElement("resenje", "res");
+        resElem.setAttribute("email_gradjanina", resenje.getEmailGradjanina());
+        resElem.setAttribute("id", resenje.getId());
+
+        SOAPElement datumElem = resElem.addChildElement("datum", "res");
+        datumElem.addTextNode(resenje.getDatum().getValue().toString());
+        datumElem.setAttribute("property", "pred:datum");
+
+        SOAPElement brRElem = resElem.addChildElement("broj_resenja", "res");
+        brRElem.addTextNode(resenje.getBrojResenja().getValue());
+        brRElem.setAttribute("property", "pred:broj_resenja");
+
+        SOAPElement stat=resElem.addChildElement("status","res");
+        stat.addTextNode(resenje.getStatus());
+
+        SOAPElement grElem = resElem.addChildElement("gradjanin", "res");
+        grElem.addTextNode(resenje.getGradjanin().getValue());
+        grElem.setAttribute("property", "pred:gradjanin");
+
+        SOAPElement datPod=resElem.addChildElement("datum_podnosenja","res");
+        datPod.addTextNode(resenje.getDatumPodnosenja().toString());
+
+        SOAPElement opisZElem = resElem.addChildElement("opis_zalbe", "res");
+        SOAPElement raz=opisZElem.addChildElement("razlog","res");
+        raz.addTextNode(resenje.getOpisZalbe().getRazlog());
+        SOAPElement nao=opisZElem.addChildElement("na_osnovu","res");
+        nao.addTextNode(resenje.getOpisZalbe().getNaOsnovu());
+
+        SOAPElement zakonElem1 = opisZElem.addChildElement("zakon", "res");
+        SOAPElement cl=zakonElem1.addChildElement("clan","res");
+        cl.addTextNode(resenje.getOpisZalbe().getZakon().get(0).getClan().get(0));
+        SOAPElement stav=zakonElem1.addChildElement("stav","res");
+        stav.addTextNode(resenje.getOpisZalbe().getZakon().get(0).getStav().get(0));
+        SOAPElement tacka=zakonElem1.addChildElement("tacka","res");
+        tacka.addTextNode(resenje.getOpisZalbe().getZakon().get(0).getTacka().get(0));
+        SOAPElement nazz=zakonElem1.addChildElement("naziv_zakona","res");
+        nazz.addTextNode(resenje.getOpisZalbe().getZakon().get(0).getNazivZakona().get(0));
+        SOAPElement nazs=zakonElem1.addChildElement("naziv_sluzbenog_glasnika","res");
+        nazs.addTextNode(resenje.getOpisZalbe().getZakon().get(0).getNazivSluzbenogGlasnika());
+        SOAPElement brsl=zakonElem1.addChildElement("broj_slg","res");
+        brsl.addTextNode(resenje.getOpisZalbe().getZakon().get(0).getBrojSlg().get(0));
+
+        SOAPElement resZElem = resElem.addChildElement("resenje_zalbe", "res");
+        SOAPElement rok=resZElem.addChildElement("rok_trajanja_mora_izvrsi_resenje","res");
+        rok.addTextNode(resenje.getResenjeZalbe().getRokTrajanjaMoraIzvrsiResenje());
+        SOAPElement dokt=resZElem.addChildElement("dokument_koji_se_trazi","res");
+        dokt.addTextNode(resenje.getResenjeZalbe().getDokumentKojiSeTrazi());
+        SOAPElement rtp=resZElem.addChildElement("rok_trajanja_provera","res");
+        rtp.addTextNode(resenje.getResenjeZalbe().getRokTrajanjaProvera());
+
+        SOAPElement obrZElem = resElem.addChildElement("obrazlozenje_zalbe", "res");
+        SOAPElement di=obrZElem.addChildElement("datum_izjasnjenja","res");
+        di.addTextNode(resenje.getObrazlozenjaZalbe().getDatumIzjasnjenja().toString());
+        SOAPElement dti=obrZElem.addChildElement("datum_trazenja_informacija","res");
+        dti.addTextNode(resenje.getObrazlozenjaZalbe().getDatumTrazenjaInformacija().toString());
+        SOAPElement doo=obrZElem.addChildElement("datum_odgovora","res");
+        doo.addTextNode(resenje.getObrazlozenjaZalbe().getDatumOdgovora().toString());
+        SOAPElement rodl=obrZElem.addChildElement("razlozi_odluke","res");
+        SOAPElement pas1=rodl.addChildElement("pasus","res");
+        pas1.addTextNode(resenje.getObrazlozenjaZalbe().getRazloziOdluke().getPasus().get(0));
+
+        SOAPElement povElem = resElem.addChildElement("poverenik", "res");
+        SOAPElement poviElem = povElem.addChildElement("ime", "res");
+        poviElem.addTextNode(resenje.getPoverenik().getPrezime().getValue());
+        poviElem.setAttribute("property", "pred:ime");
+        SOAPElement povpElem = povElem.addChildElement("prezime", "res");
+        povpElem.addTextNode(resenje.getPoverenik().getPrezime().getValue());
+        povpElem.setAttribute("property", "pred:prezime");
 
         soapMessage.saveChanges();
         SOAPMessage soapResponse = soapConnection.call(soapMessage, soapEndpointUrl);
