@@ -32,10 +32,10 @@ public class ResenjaController {
         return new ResponseEntity<>(document, HttpStatus.OK);
     }
     @GetMapping(value = "/skiniRDF/{id}")
-    public ResponseEntity<Object> getZahtevRDF(@PathVariable String id) throws Exception {
+    public ResponseEntity<Object> getResenjeRDF(@PathVariable String id) throws Exception {
 
         try {
-            String fileName = "src/main/resources/rdf/"+id;
+            String fileName = "src/main/resources/rdf/resenje"+id;
             Path filePath = Paths.get(fileName);
             byte[] data = Files.readAllBytes(filePath);
             return new ResponseEntity<Object>(data, HttpStatus.OK);
@@ -46,7 +46,7 @@ public class ResenjaController {
         }
     }
     @GetMapping(value = "/skiniJSON/{id}")
-    public ResponseEntity<Object> getResenjaJSON(@PathVariable String id) throws Exception {
+    public ResponseEntity<Object> getResenjeJSON(@PathVariable String id) throws Exception {
 
         try {
             resenjaService.skiniJSON(id);
@@ -61,11 +61,11 @@ public class ResenjaController {
         }
     }
     @GetMapping(value = "/skiniHTML/{id}")
-    public ResponseEntity<Object> getResenjaHTML(@PathVariable String id) throws Exception {
+    public ResponseEntity<Object> getResenjeHTML(@PathVariable String id) throws Exception {
 
         try {
             resenjaService.skiniHTML(id);
-            String fileName = "src/main/resources/html/Resenja"+id;
+            String fileName = "src/main/resources/html/Resenje"+id;
             Path filePath = Paths.get(fileName);
             byte[] data = Files.readAllBytes(filePath);
             return new ResponseEntity<Object>(data, HttpStatus.OK);
@@ -76,11 +76,11 @@ public class ResenjaController {
         }
     }
     @GetMapping(value = "/skiniPDF/{id}")
-    public ResponseEntity<Object> getResenjaPDF(@PathVariable String id) throws Exception {
+    public ResponseEntity<Object> getResenjePDF(@PathVariable String id) throws Exception {
 
         try {
             resenjaService.skiniPDF(id);
-            String fileName = "src/main/resources/pdf/Resenja"+id;
+            String fileName = "src/main/resources/pdf/Resenje"+id;
             Path filePath = Paths.get(fileName);
             byte[] data = Files.readAllBytes(filePath);
             return new ResponseEntity<Object>(data, HttpStatus.OK);
@@ -91,7 +91,7 @@ public class ResenjaController {
         }
     }
     @GetMapping(value = "/htmlOblik/{id}")
-    public ResponseEntity<Object> seeResenjaHTML(@PathVariable String id) throws Exception {
+    public ResponseEntity<Object> seeResenjeHTML(@PathVariable String id) throws Exception {
 
         try {
             String tekst=resenjaService.skiniHTML(id);

@@ -1,0 +1,15 @@
+SELECT * FROM <http://localhost:8081/fusekiSluzbenik/resenja/data/resenja> WHERE {
+ ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/broj_resenja> ?broj_resenja .
+  ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/datum> ?datum .
+  ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/ime> ?ime .
+  ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/prezime> ?prezime .
+  ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/gradjanin> ?gradjanin .
+  ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/naziv_optuzenog> ?naziv_optuzenog .
+  FILTER( CONTAINS(UCASE(str(?broj_resenja)), UCASE("{{broj_resenja}}"))
+    && CONTAINS(UCASE(str(?datum)), UCASE("{{datum}}"))
+    && CONTAINS(UCASE(str(?prezime)), UCASE("{{prezime}}"))
+    && CONTAINS(UCASE(str(?ime)), UCASE("{{ime}}"))
+    && CONTAINS(UCASE(str(?gradjanin)), UCASE("{{gradjanin}}"))
+    && CONTAINS(UCASE(str(?naziv_optuzenog)), UCASE("{{naziv_optuzenog}}"))
+  ) .
+}

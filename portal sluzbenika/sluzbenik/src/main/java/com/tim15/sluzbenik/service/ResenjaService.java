@@ -52,7 +52,7 @@ public class ResenjaService {
         params.put("prezime", "");
         params.put("gradjanin", "");
         params.put("naziv_optuzenog", "");
-        FusekiReaderExample.executeQueryforJSON(params,"/resenje",id);
+        FusekiReaderExample.executeQueryforJSON(params,"/resenja",id);
     }
 
     public String skiniHTML(String id) throws Exception {
@@ -92,7 +92,7 @@ public class ResenjaService {
         params.put("prezime", dto.getPrezimePoverenika());
         params.put("gradjanin", dto.getGradjanin());
         params.put("naziv_optuzenog", dto.getNazivOptuzenog());
-        ArrayList<String> ids= FusekiReaderExample.executeQuery(params, "/resenje");
+        ArrayList<String> ids= FusekiReaderExample.executeQuery(params, "/resenja");
         List<ResenjeDTO> rs=new ArrayList<ResenjeDTO>();
         for(String id :ids){
             Resenje r = resenjaRepository.findRealResenjeById(id.split("\\^")[0]);
@@ -104,7 +104,7 @@ public class ResenjaService {
 
     public void sacuvajResenje(Resenje resenje) throws Exception {
         String text = jaxbParser.marshallString(Resenje.class,resenje);
-        String docId= resenje.getId();
+        String docId= resenje.getBrojResenja().getValue();
         resenjaRepository.saveResenjeFromText(text, docId);
         metadataExtractor.extractMetadata(text,new FileOutputStream(new File("src/main/resources/rdf/resenje"+docId)));
         FusekiWriterExample.saveRDF("resenje"+docId,"/resenja");

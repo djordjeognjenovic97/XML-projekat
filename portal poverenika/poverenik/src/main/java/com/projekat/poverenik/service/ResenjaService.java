@@ -78,6 +78,28 @@ public class ResenjaService {
         FusekiWriterExample.saveRDF("resenje" + docId, "/resenje");
         posaljiResenje(resenje);
         posaljiMejl(email, resenje);
+        promeniStanjeZalbe(resenje.getId());
+    }
+
+    private void promeniStanjeZalbe(String id) throws Exception {
+        ArrayList<Zalbacutanje> zcs=zalbacutanjecirRepository.findAll();
+        for(Zalbacutanje z:zcs){
+            if(z.getBrojPredmeta().getValue().equalsIgnoreCase(id)){
+                z.setStanje("reseno");
+                String text = jaxbParser.marshallString(Zalbacutanje.class,z);
+                zalbacutanjecirRepository.saveZalbacutanjecirFromText(text, id);
+                break;
+            }
+        }
+        ArrayList<Zalbaodluka> zos=zalbanaodlukuRepository.findAll();
+        for(Zalbaodluka zo:zos){
+            if(zo.getBrojPredmeta().getValue().equalsIgnoreCase(id)){
+                zo.setStanje("reseno");
+                String text = jaxbParser.marshallString(Zalbaodluka.class,zo);
+                zalbanaodlukuRepository.saveZalbanaodlukucirFromText(text, id);
+                break;
+            }
+        }
     }
 
     private void posaljiMejl(String email, Resenje resenje) throws Exception {

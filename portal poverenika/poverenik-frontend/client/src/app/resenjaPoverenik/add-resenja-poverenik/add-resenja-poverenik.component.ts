@@ -43,7 +43,7 @@ export class AddResenjaPoverenikComponent implements OnInit {
           this.router.navigate(['']);
         },
       err=> {
-          this.toastr.error('Neuspesno ste kreirali resenje. Proverite podatke!');
+          this.toastr.error('Neuspesno ste kreirali resenje. Proverite podatke i molimo Vas popunite sva polja!');
           console.log(err);
           console.log("nesto");
       });
