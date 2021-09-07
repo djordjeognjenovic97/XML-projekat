@@ -1,25 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<zo:zalbaodluka xmlns:zo="https://github.com/djordjeognjenovic97/XML-projekat/zalbanaodlukucir"
+<resenje xmlns="https://github.com/djordjeognjenovic97/XML-projekat/resenja"
  xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="https://github.com/djordjeognjenovic97/XML-projekat/zalbanaodlukucir file:/C:/Users/Win10/Documents/GitHub/XML-projekat/portal%20poverenika/poverenik/src/main/resources/zalbanaodlukucir.xsd" stanje="kreirano">
-    <zo:podnosilac_zalbe email="email0">
-        <zo:ime property="property0">ime0</zo:ime>
-        <zo:prezime property="property1">prezime0</zo:prezime>
-        <zo:adresa>
-            <zo:mesto>mesto0</zo:mesto>
-            <zo:ulica>ulica0</zo:ulica>
-            <zo:br_ulice>50</zo:br_ulice>
-        </zo:adresa>
-    </zo:podnosilac_zalbe>
-    <zo:naziv_organa>naziv_organa0</zo:naziv_organa>
-    <zo:datum_predmeta>2006-05-04</zo:datum_predmeta>
-    <zo:broj_predmeta property="property2">broj_predmeta0</zo:broj_predmeta>
-    <zo:sadrzaj>
-        <zo:datum_zahteva>2006-05-04</zo:datum_zahteva>
-        <zo:razlog_zalbe>razlog_zalbe0</zo:razlog_zalbe>
-    </zo:sadrzaj>
-    <zo:drugi_podaci_za_kontakt>drugi_podaci_za_kontakt0</zo:drugi_podaci_za_kontakt>
-    <zo:datum property="property3">2006-05-04</zo:datum>
-    <zo:mesto property="property4">mesto1</zo:mesto>
-</zo:zalbaodluka>
+ xsi:schemaLocation="https://github.com/djordjeognjenovic97/XML-projekat/resenja file:/C:/Users/Win10/Documents/GitHub/XML-projekat/portal%20poverenika/poverenik/src/main/resources/resenja.xsd" email_gradjanina="email_gradjanina1" id="id1">
+    <datum property="property1">2006-05-04</datum>
+    <broj_resenja property="property3">broj_resenja0</broj_resenja>
+    <status>status0</status>
+    <gradjanin property="property5">gradjanin0</gradjanin>
+    <datum_podnosenja>2006-05-04</datum_podnosenja>
+    <optuzeni>
+        <naziv_optuzenog property="property7">naziv_optuzenog0</naziv_optuzenog>
+        <sediste_optuzenog>sediste_optuzenog0</sediste_optuzenog>
+    </optuzeni>
+    <opis_zalbe>
+        <razlog>razlog0</razlog>
+        <na_osnovu>na_osnovu0</na_osnovu>
+        <zakon>
+            <clan>clan0</clan>
+            <clan>clan1</clan>
+            <stav>stav0</stav>
+            <stav>stav1</stav>
+            <tacka>tacka0</tacka>
+            <tacka>tacka1</tacka>
+            <naziv_zakona>naziv_zakona0</naziv_zakona>
+            <naziv_zakona>naziv_zakona1</naziv_zakona>
+            <naziv_sluzbenog_glasnika>naziv_sluzbenog_glasnika0</naziv_sluzbenog_glasnika>
+            <broj_slg>broj_slg0</broj_slg>
+            <broj_slg>broj_slg1</broj_slg>
+        </zakon>
+        <zakon>
+            <clan>clan2</clan>
+            <clan>clan3</clan>
+            <stav>stav2</stav>
+            <stav>stav3</stav>
+            <tacka>tacka2</tacka>
+            <tacka>tacka3</tacka>
+            <naziv_zakona>naziv_zakona2</naziv_zakona>
+            <naziv_zakona>naziv_zakona3</naziv_zakona>
+            <naziv_sluzbenog_glasnika>naziv_sluzbenog_glasnika1</naziv_sluzbenog_glasnika>
+            <broj_slg>broj_slg2</broj_slg>
+            <broj_slg>broj_slg3</broj_slg>
+        </zakon>
+    </opis_zalbe>
+    <resenje_zalbe>
+        <rok_trajanja_mora_izvrsi_resenje>rok_trajanja_mora_izvrsi_resenje0</rok_trajanja_mora_izvrsi_resenje>
+        <dokument_koji_se_trazi>dokument_koji_se_trazi0</dokument_koji_se_trazi>
+        <rok_trajanja_provera>rok_trajanja_provera0</rok_trajanja_provera>
+    </resenje_zalbe>
+    <obrazlozenja_zalbe>
+        <datum_izjasnjenja>2006-05-04</datum_izjasnjenja>
+        <datum_trazenja_informacija>2006-05-04</datum_trazenja_informacija>
+        <datum_odgovora>2006-05-04</datum_odgovora>
+        <razlozi_odluke>
+            <pasus>pasus0</pasus>
+            <pasus>pasus1</pasus>
+        </razlozi_odluke>
+    </obrazlozenja_zalbe>
+    <poverenik>
+        <ime property="property9">ime0</ime>
+        <prezime property="property11">prezime0</prezime>
+    </poverenik>
+</resenje>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Resenje } from 'src/app/models/resenje';
 import { ResenjeService } from 'src/app/services/resenje.service';
 
 declare var require: any
@@ -13,7 +14,7 @@ declare var require: any
 export class ListaResenjaComponent implements OnInit {
 
 
-  resenja: String[] |undefined;
+  resenja: Resenje[] |undefined;
 
   constructor(
     private toastr: ToastrService,
@@ -22,16 +23,23 @@ export class ListaResenjaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.resenjeService.getUsersResenja().subscribe(
+    this.resenjeService.getUsersResenje().subscribe(
       res => {
+        console.log(res);
         console.log("ABRAKADABRA");
         var convert = require('xml-js');
         this.resenja=[];
         const decodedItem =JSON.parse(convert.xml2json(res,{compact: true, ignoreComment: true}));
-        for(var i  in decodedItem.idList.ids){
-          console.log("var");
-          console.log(decodedItem.idList.ids[i]._text);
-          this.resenja.push(decodedItem.idList.ids[i]._text);
+        if(decodedItem.listaResenjeDTO.lista.constructor==[].constructor){
+          for(var i  in decodedItem.listaResenjeDTO.lista){
+            this.resenja.push(new Resenje(decodedItem.listaResenjeDTO.lista[i].id._text,
+              decodedItem.listaResenjeDTO.lista[i].datum._text,decodedItem.listaResenjeDTO.lista[i].email._text,
+              decodedItem.listaResenjeDTO.lista[i].brP._text));
+          }
+        }else{
+          this.resenja.push(new Resenje(decodedItem.listaResenjeDTO.lista[i].id._text,
+            decodedItem.listaResenjeDTO.lista[i].datum._text,decodedItem.listaResenjeDTO.lista[i].email._text,
+            decodedItem.listaResenjeDTO.lista[i].brP._text));
         }
         console.log(this.resenja);
       }

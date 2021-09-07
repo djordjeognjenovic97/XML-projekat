@@ -25,6 +25,9 @@ public class FusekiReaderExample {
         } else if(metadataUri.contains("zalbanaodluku")) {
             queryFilepath = queryFilepath + "sparqlZalbanaodluku.rq";
         }
+        else if(metadataUri.contains("resenje")) {
+            queryFilepath = queryFilepath + "sparqlResenje.rq";
+        }
         String sparqlQueryTemplate = readFile(queryFilepath, StandardCharsets.UTF_8);
         System.out.println("Query: " + sparqlQueryTemplate);
         String sparqlQuery = StringSubstitutor.replace(sparqlQueryTemplate,params,"{{","}}");
@@ -44,7 +47,7 @@ public class FusekiReaderExample {
                 varName = variableBindings.next();
                 varValue = querySolution.get(varName);
                 System.out.println(varName + ": " + varValue);
-                if(varName.contains("broj_predmeta")){
+                if(varName.contains("broj_predmeta") || varName.contains("broj_resenja")){
                     String value = varValue.toString();
                     foundFakultete.add(value);
                 }

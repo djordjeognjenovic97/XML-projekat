@@ -1,1 +1,79 @@
-<p>lista-resenja-poverenik works!</p>
+<div class="w-100 h-100 p-3">
+  <h1 style="margin: 0 auto;text-align: center;">Resenja</h1>
+  <form [formGroup]="regForm1" (ngSubmit)="regIn1()" class="form-inline">
+      <div class="form-group mx-sm-0 mb-2">
+          <input type="text" class="form-control" id="podatak" formControlName="podatak"
+              placeholder="pretraži po sadržaju...">
+      </div>
+      <button type="submit" class="btn btn-secondary mb-2" id="filter_content">Pretraži</button>
+      <button class="btn btn-primary mb-2" id="reset-button" (click)="ngOnInit()">Resetuj</button>
+  </form>
+  <form [formGroup]="regForm2" (ngSubmit)="regIn2()" class="form-inline">
+      <div class="form-group mx-sm-0 mb-2">
+          <input type="text" class="form-control" id="brojPredmeta" formControlName="brojPredmeta"
+              placeholder="broj predmeta zahteva...">
+      </div>
+      <div class="form-group mx-sm-0 mb-2">
+          <input type="text" class="form-control" id="datum" formControlName="datum"
+              placeholder="datum(YYYY-MM-DD)...">
+      </div>
+      <div class="form-group mx-sm-0 mb-2">
+        <input type="text" class="form-control" id="imePoverenika" formControlName="imePoverenika"
+         placeholder="unesite ime Poverenika...">
+      </div>
+      <div class="form-group mx-sm-0 mb-2">
+        <input type="text" class="form-control" id="prezimePoverenika" formControlName="prezimePoverenika"
+        placeholder="prezime Poverenika...">
+      </div>
+      <div class="form-group mx-sm-0 mb-2">
+        <input type="text" class="form-control" id="gradjanin" formControlName="gradjanin"
+        placeholder="unesite gradjanina...">
+      </div>
+      <div class="form-group mx-sm-0 mb-2">
+        <input type="text" class="form-control" id="nazivOptuzenog" formControlName="nazivOptuzenog"
+        placeholder="unesite naziv optuzenog...">
+      </div>
+      <button type="submit" class="btn btn-secondary mb-2" id="filter_content">Pretraži po metapodacima</button>
+      <button class="btn btn-primary mb-2" id="reset-button" (click)="ngOnInit()">Resetuj</button>
+  </form>
+  <div class="row">
+      <div class="col">
+          <table class="table table-striped pera">
+              <thead>
+                  <tr>
+                      <th>Broj predmeta<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                      <th>Datum<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                      <th>XHTML<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                      <th>PDF<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                      <th>RDF<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                      <th>JSON<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <div *ngIf="resenje?.length === 0 || resenje === undefined" style="float:right;">
+                      <h4><b>Nema resenja</b></h4>
+                  </div>
+                  <tr *ngFor="let c of resenje">
+                      <td class="in_waves">
+                          <a href="http://www.google.com">{{c.id}}</a>
+                      </td>
+                      <td class="in_waves">{{c.datum.split("+")[0]}}</td>
+                      <td>
+                          <button mat-raised-button color="primary" (click)="XHTML(c)">XHTML</button>
+                      </td>
+                      <td>
+                          <button mat-raised-button color="primary" (click)="PDF(c)">PDF</button>
+                      </td>
+                      <td>
+                          <button mat-raised-button color="primary" (click)="RDF(c)">RDF</button>
+                      </td>
+                      <td>
+                          <button mat-raised-button color="primary" (click)="JSON(c)">JSON</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
