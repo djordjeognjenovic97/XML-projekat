@@ -132,7 +132,7 @@ public skiniJSON(id:String):Observable<any> {
             if (jsElement.getText()===""){
               Xonomy.warnings.push({
               htmlID: jsElement.htmlID,
-              text: "Morate uneti razlog."
+              text: "Morate uneti razlog zalbe:'nije postupio', 'na odluku', 'nije postupio u celosti', 'nije postupio u roku'."
               });
             }
           },

@@ -124,5 +124,8 @@ export class ListaZalbaOdbijenComponent implements OnInit {
       }
     );
   }
+  prikazi(c:String){
+    this.router.navigate(['prikaz/zalbanaodluku/'+c]);
+ }
 
 }

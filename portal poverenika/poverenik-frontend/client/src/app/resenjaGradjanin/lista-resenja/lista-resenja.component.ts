@@ -113,4 +113,7 @@ export class ListaResenjaComponent implements OnInit {
       }
     );
   }
+  prikazi(c:String){
+    this.router.navigate(['prikaz/resenje/'+c]);
+ }
 }

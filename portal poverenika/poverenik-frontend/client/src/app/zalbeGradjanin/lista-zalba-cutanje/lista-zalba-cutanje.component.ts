@@ -124,4 +124,7 @@ export class ListaZalbaCutanjeComponent implements OnInit {
       }
     );
   }
+  prikazi(c:String){
+    this.router.navigate(['prikaz/zalbacutanje/'+c]);
+ }
 }

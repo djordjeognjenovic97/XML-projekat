@@ -48,9 +48,9 @@ export class ZalbaCutanjeService {
 	public skiniJSON(id:String):Observable<any> {
         return this.http.get("http://localhost:8082/api/zalbecutanje/downloadJSON/"+id, {headers: this.headers, responseType: 'arraybuffer'});
     }
-  public odustani(id:String):Observable<any> {
-      return this.http.put<any>("http://localhost:8082/api/zalbecutanje/stagodtobilo/"+id, {headers: this.headers});
-  }
+    public odustani(id:String):Observable<any> {
+      return this.http.get("http://localhost:8082/api/izjasnjenje/obustaviZalbu/"+id, {headers: this.headers, responseType: 'text'});
+}
     public ZalbaCutanjeSpecification = {
       validate: function (jsElement) {
         let elementSpec = this.elements[jsElement.name];

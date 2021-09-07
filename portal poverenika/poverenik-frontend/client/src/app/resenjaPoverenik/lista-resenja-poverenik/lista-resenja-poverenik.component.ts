@@ -181,5 +181,8 @@ export class ListaResenjaPoverenikComponent implements OnInit {
       }
       );
   }
+  prikazi(c:String){
+    this.router.navigate(['prikaz/resenje/'+c]);
+ }
 
 }

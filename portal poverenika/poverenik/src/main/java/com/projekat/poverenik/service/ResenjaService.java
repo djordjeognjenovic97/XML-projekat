@@ -28,6 +28,9 @@ import javax.xml.soap.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 @Service
@@ -62,13 +65,11 @@ public class ResenjaService {
         DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
         XMLGregorianCalendar now = datatypeFactory.newXMLGregorianCalendar(gregorianCalendar);
         resenje.getDatum().setValue(now);
-        long sada=(new Date()).getTime();
-        resenje.getBrojResenja().setValue(Long.toString(sada));
         String email = "";
         email = pronadjiEmail(resenje.getId());
         resenje.setEmailGradjanina(email);
         System.out.println(email);
-        String docId = resenje.getBrojResenja().getValue();
+        String docId = resenje.getId();
 
         text = jaxbParser.marshallString(Resenje.class,resenje);
 
@@ -76,6 +77,42 @@ public class ResenjaService {
         metadataExtractor.extractMetadata(text, new FileOutputStream(new File("src/main/resources/rdf/resenje"+docId)));
         FusekiWriterExample.saveRDF("resenje" + docId, "/resenje");
         posaljiResenje(resenje);
+        posaljiMejl(email, resenje);
+    }
+
+    private void posaljiMejl(String email, Resenje resenje) throws Exception {
+        String soapEndpointUrl = "http://localhost:8088/ws/email";
+        SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
+        SOAPConnection soapConnection = soapConnectionFactory.createConnection();
+        MessageFactory messageFactory = MessageFactory.newInstance();
+        SOAPMessage soapMessage = messageFactory.createMessage();
+        SOAPPart soapPart = soapMessage.getSOAPPart();
+
+        SOAPEnvelope envelope = soapPart.getEnvelope();
+        envelope.addNamespaceDeclaration("es", "http://email");
+
+        SOAPBody soapBody = envelope.getBody();
+        envelope.addNamespaceDeclaration("es", "http://email");
+        SOAPElement pismoElem = soapBody.addChildElement("email", "es");
+        pismoElem.setAttribute("attachmentType", "PDF");
+        SOAPElement primalacElem = pismoElem.addChildElement("to", "es");
+        primalacElem.addTextNode(email);
+        SOAPElement naslovElem = pismoElem.addChildElement("subject", "es");
+        naslovElem.addTextNode("Rešenje");
+        SOAPElement sadrzajElem = pismoElem.addChildElement("content", "es");
+        String sadr= "Vaš odgovor na žalbu je kreiran. Rešenje" +
+                "možete pogledati na preko linka: http://localhost:4201/prikaz/resenje/"+resenje.getId();
+        sadrzajElem.addTextNode(sadr);
+        SOAPElement prilogElem = pismoElem.addChildElement("attachment", "es");
+        //OVDE UBACITI NEKAKO
+        downloadPDF(resenje.getId());
+        String fileName = "src/main/resources/pdf/Resenje"+resenje.getId();
+        Path filePath = Paths.get(fileName);
+        byte[] data = Files.readAllBytes(filePath);
+        prilogElem.addTextNode(Base64.getEncoder().encodeToString(data));
+
+        soapMessage.saveChanges();
+        SOAPMessage soapResponse = soapConnection.call(soapMessage, soapEndpointUrl);
     }
 
     private void posaljiResenje(Resenje resenje) throws SOAPException {

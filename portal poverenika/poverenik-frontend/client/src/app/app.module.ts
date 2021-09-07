@@ -24,6 +24,7 @@ import { ListaZalbaCutanjePoverenikComponent } from './zalbePoverenik/lista-zalb
 import { ListaResenjaPoverenikComponent } from './resenjaPoverenik/lista-resenja-poverenik/lista-resenja-poverenik.component';
 import { AddResenjaPoverenikComponent } from './resenjaPoverenik/add-resenja-poverenik/add-resenja-poverenik.component';
 import { ListaIzvestajaPoverenikComponent } from './izvestajiPoverenik/lista-izvestaja-poverenik/lista-izvestaja-poverenik.component';
+import { TemplejtComponent } from './templejt/templejt.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ListaIzvestajaPoverenikComponent } from './izvestajiPoverenik/lista-izv
     ListaZalbaCutanjePoverenikComponent,
     ListaResenjaPoverenikComponent,
     AddResenjaPoverenikComponent,
-    ListaIzvestajaPoverenikComponent
+    ListaIzvestajaPoverenikComponent,
+    TemplejtComponent
   ],
   imports: [
     BrowserModule,

@@ -30,115 +30,115 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link https.github_com.djordjeognjenovic97.xml_projekat.resenja.Resenje }
+     * Create an instance of {@link Resenje }
      * 
      */
-    public https.github_com.djordjeognjenovic97.xml_projekat.resenja.Resenje createResenje() {
-        return new https.github_com.djordjeognjenovic97.xml_projekat.resenja.Resenje();
+    public Resenje createResenje() {
+        return new Resenje();
     }
 
     /**
-     * Create an instance of {@link https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipPoverenik }
+     * Create an instance of {@link TipPoverenik }
      * 
      */
-    public https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipPoverenik createTipPoverenik() {
-        return new https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipPoverenik();
+    public TipPoverenik createTipPoverenik() {
+        return new TipPoverenik();
     }
 
     /**
-     * Create an instance of {@link https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipObrazlozenjaZalbe }
+     * Create an instance of {@link TipObrazlozenjaZalbe }
      * 
      */
-    public https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipObrazlozenjaZalbe createTipObrazlozenjaZalbe() {
-        return new https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipObrazlozenjaZalbe();
+    public TipObrazlozenjaZalbe createTipObrazlozenjaZalbe() {
+        return new TipObrazlozenjaZalbe();
     }
 
     /**
-     * Create an instance of {@link https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipOptuzeni }
+     * Create an instance of {@link TipOptuzeni }
      * 
      */
-    public https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipOptuzeni createTipOptuzeni() {
-        return new https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipOptuzeni();
+    public TipOptuzeni createTipOptuzeni() {
+        return new TipOptuzeni();
     }
 
     /**
-     * Create an instance of {@link https.github_com.djordjeognjenovic97.xml_projekat.resenja.Resenje.Datum }
+     * Create an instance of {@link Resenje.Datum }
      * 
      */
-    public https.github_com.djordjeognjenovic97.xml_projekat.resenja.Resenje.Datum createResenjeDatum() {
-        return new https.github_com.djordjeognjenovic97.xml_projekat.resenja.Resenje.Datum();
+    public Resenje.Datum createResenjeDatum() {
+        return new Resenje.Datum();
     }
 
     /**
-     * Create an instance of {@link https.github_com.djordjeognjenovic97.xml_projekat.resenja.Resenje.BrojResenja }
+     * Create an instance of {@link Resenje.BrojResenja }
      * 
      */
-    public https.github_com.djordjeognjenovic97.xml_projekat.resenja.Resenje.BrojResenja createResenjeBrojResenja() {
-        return new https.github_com.djordjeognjenovic97.xml_projekat.resenja.Resenje.BrojResenja();
+    public Resenje.BrojResenja createResenjeBrojResenja() {
+        return new Resenje.BrojResenja();
     }
 
     /**
-     * Create an instance of {@link https.github_com.djordjeognjenovic97.xml_projekat.resenja.Resenje.Gradjanin }
+     * Create an instance of {@link Resenje.Gradjanin }
      * 
      */
-    public https.github_com.djordjeognjenovic97.xml_projekat.resenja.Resenje.Gradjanin createResenjeGradjanin() {
-        return new https.github_com.djordjeognjenovic97.xml_projekat.resenja.Resenje.Gradjanin();
+    public Resenje.Gradjanin createResenjeGradjanin() {
+        return new Resenje.Gradjanin();
     }
 
     /**
-     * Create an instance of {@link https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipOpisZalbe }
+     * Create an instance of {@link TipOpisZalbe }
      * 
      */
-    public https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipOpisZalbe createTipOpisZalbe() {
-        return new https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipOpisZalbe();
+    public TipOpisZalbe createTipOpisZalbe() {
+        return new TipOpisZalbe();
     }
 
     /**
-     * Create an instance of {@link https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipResenjeZalbe }
+     * Create an instance of {@link TipResenjeZalbe }
      * 
      */
-    public https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipResenjeZalbe createTipResenjeZalbe() {
-        return new https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipResenjeZalbe();
+    public TipResenjeZalbe createTipResenjeZalbe() {
+        return new TipResenjeZalbe();
     }
 
     /**
-     * Create an instance of {@link https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipZakon }
+     * Create an instance of {@link TipZakon }
      * 
      */
-    public https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipZakon createTipZakon() {
-        return new https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipZakon();
+    public TipZakon createTipZakon() {
+        return new TipZakon();
     }
 
     /**
-     * Create an instance of {@link https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipPoverenik.Ime }
+     * Create an instance of {@link TipPoverenik.Ime }
      * 
      */
-    public https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipPoverenik.Ime createTipPoverenikIme() {
-        return new https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipPoverenik.Ime();
+    public TipPoverenik.Ime createTipPoverenikIme() {
+        return new TipPoverenik.Ime();
     }
 
     /**
-     * Create an instance of {@link https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipPoverenik.Prezime }
+     * Create an instance of {@link TipPoverenik.Prezime }
      * 
      */
-    public https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipPoverenik.Prezime createTipPoverenikPrezime() {
-        return new https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipPoverenik.Prezime();
+    public TipPoverenik.Prezime createTipPoverenikPrezime() {
+        return new TipPoverenik.Prezime();
     }
 
     /**
-     * Create an instance of {@link https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipObrazlozenjaZalbe.RazloziOdluke }
+     * Create an instance of {@link TipObrazlozenjaZalbe.RazloziOdluke }
      * 
      */
-    public https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipObrazlozenjaZalbe.RazloziOdluke createTipObrazlozenjaZalbeRazloziOdluke() {
-        return new https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipObrazlozenjaZalbe.RazloziOdluke();
+    public TipObrazlozenjaZalbe.RazloziOdluke createTipObrazlozenjaZalbeRazloziOdluke() {
+        return new TipObrazlozenjaZalbe.RazloziOdluke();
     }
 
     /**
-     * Create an instance of {@link https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipOptuzeni.NazivOptuzenog }
+     * Create an instance of {@link TipOptuzeni.NazivOptuzenog }
      * 
      */
-    public https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipOptuzeni.NazivOptuzenog createTipOptuzeniNazivOptuzenog() {
-        return new https.github_com.djordjeognjenovic97.xml_projekat.resenja.TipOptuzeni.NazivOptuzenog();
+    public TipOptuzeni.NazivOptuzenog createTipOptuzeniNazivOptuzenog() {
+        return new TipOptuzeni.NazivOptuzenog();
     }
 
 }

@@ -9,6 +9,7 @@ import { ListaIzvestajaPoverenikComponent } from './izvestajiPoverenik/lista-izv
 import { ListaResenjaComponent } from './resenjaGradjanin/lista-resenja/lista-resenja.component';
 import { AddResenjaPoverenikComponent } from './resenjaPoverenik/add-resenja-poverenik/add-resenja-poverenik.component';
 import { ListaResenjaPoverenikComponent } from './resenjaPoverenik/lista-resenja-poverenik/lista-resenja-poverenik.component';
+import { TemplejtComponent } from './templejt/templejt.component';
 import { AddZalbaCutanjeComponent } from './zalbeGradjanin/add-zalba-cutanje/add-zalba-cutanje.component';
 import { AddZalbaOdbijenComponent } from './zalbeGradjanin/add-zalba-odbijen/add-zalba-odbijen.component';
 import { ListaZalbaCutanjeComponent } from './zalbeGradjanin/lista-zalba-cutanje/lista-zalba-cutanje.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
     path : 'login',
     component : LoginComponent,
 		canActivate: [LoginGuard]
+  },
+  {
+    path : 'prikaz/:sta/:id',
+    component : TemplejtComponent
   },
   {
     path : 'kreirajZalbaCutanje',

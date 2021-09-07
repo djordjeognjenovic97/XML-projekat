@@ -142,5 +142,17 @@ public class ZalbanaodlukuController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+    @GetMapping(value = "/htmlOblik/{id}")
+    public ResponseEntity<Object> seeResenjaHTML(@PathVariable String id) throws Exception {
+
+        try {
+            String tekst=zalbanaodlukuService.downloadHTML(id);
+            return new ResponseEntity<Object>(tekst, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
 }

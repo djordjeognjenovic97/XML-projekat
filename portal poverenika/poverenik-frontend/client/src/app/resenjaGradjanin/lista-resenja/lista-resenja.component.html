@@ -18,7 +18,9 @@
                     <h4><b>Nema resenja</b></h4>
                   </div>
                   <tr *ngFor="let c of resenja">
-                    <td class="in_waves">{{c}}</td>
+                    <td class="in_waves">
+                      <a (click)="prikazi(c.id)" href="javascript:;">{{c.id}}</a>
+                    </td>
                     <td>
                         <button mat-raised-button color="primary"  (click)="XHTML(c.id)">XHTML</button>
                      </td>

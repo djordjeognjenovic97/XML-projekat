@@ -209,5 +209,8 @@ export class ListaZalbaOdbijenPoverenikComponent implements OnInit {
   kreirajResenje(id:String) {
       this.router.navigateByUrl('/add-resenje/'+id);
   }
+  prikazi(c:String){
+    this.router.navigate(['prikaz/zalbanaodluku/'+c]);
+ }
 
 }

@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Zahtev } from 'src/app/models/zahtev';
 import { ZahtevService } from 'src/app/services/zahtev.service';
-import {saveAs} from 'file-saver';
-import * as FileSaver from 'file-saver';
 
 declare var require: any
 
