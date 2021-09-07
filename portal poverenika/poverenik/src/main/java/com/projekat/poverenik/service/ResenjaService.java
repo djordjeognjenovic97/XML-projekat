@@ -36,6 +36,9 @@ public class ResenjaService {
     private ResenjaRepository resenjaRepository;
 
     @Autowired
+    private XSLTransformer xslTransformer;
+
+    @Autowired
     private ZalbacutanjecirRepository zalbacutanjecirRepository;
 
     @Autowired
@@ -240,5 +243,27 @@ public class ResenjaService {
         }
         System.out.println(ids + "   " + rs.size());
         return rs;
+    }
+
+    public void downloadJSON(String id) throws IOException {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("broj_resenja", id);
+        params.put("datum", "");
+        params.put("ime", "");
+        params.put("prezime", "");
+        params.put("gradjanin", "");
+        params.put("naziv_optuzenog", "");
+        FusekiReaderExample.executeQueryforJSON(params,"/resenje",id);
+    }
+
+    public String downloadHTML(String id) throws Exception {
+        Document d=resenjaRepository.findResenjeById(id);
+        return xslTransformer.convertXMLtoHTML("src/main/resources/xsl/resenje.xsl",d,"src/main/resources/html/Resenje"+id);
+    }
+
+    public void downloadPDF(String id) throws Exception {
+        String str=resenjaRepository.findResenjeByIdAndReturnString(id);
+        xslTransformer.generatePDf(str,"src/main/resources/xsl/resenje_fo.xsl","src/main/resources/pdf/Resenje"+id);
+
     }
 }

@@ -28,6 +28,9 @@ public class ZalbanaodlukuService {
     @Autowired
     private ZalbanaodlukuRepository zalbanaodlukuRepository;
 
+    @Autowired
+    private XSLTransformer xslTransformer;
+
     private JaxbParser jaxbParser;
     private MetadataExtractor metadataExtractor;
 
@@ -118,5 +121,26 @@ public class ZalbanaodlukuService {
         }
         System.out.println(ids + "   " + zos.size());
         return zos;
+    }
+
+    public void downloadJSON(String id) throws IOException {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("mesto", "");
+        params.put("broj_predmeta", id);
+        params.put("datum", "");
+        params.put("ime", "");
+        params.put("prezime", "");
+        FusekiReaderExample.executeQueryforJSON(params,"/zalbanaodluku",id);
+    }
+
+    public String downloadHTML(String id) throws Exception {
+        Document d=zalbanaodlukuRepository.findZalbanaodlukucirById(id);
+        return xslTransformer.convertXMLtoHTML("src/main/resources/xsl/zalbanaodluku.xsl",d,"src/main/resources/html/Zalbanaodluku"+id);
+    }
+
+    public void downloadPDF(String id) throws Exception {
+        String str=zalbanaodlukuRepository.findZalbanaodlukuByIdAndReturnString(id);
+        xslTransformer.generatePDf(str,"src/main/resources/xsl/zalbanaodluku_fo.xsl","src/main/resources/pdf/Zalbanaodluku"+id);
+
     }
 }

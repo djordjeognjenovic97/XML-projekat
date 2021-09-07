@@ -40,16 +40,16 @@ public odustani(id:String):Observable<any> {
       return this.http.get("http://localhost:8082/api/izjasnjenje/obustaviZalbu/"+id, {headers: this.headers, responseType: 'text'});
 }
 public skiniXHTML(id:String):Observable<any> {
-    return this.http.post<any>("http://localhost:8082/api/zalbe/skiniXHTML"+id, {headers: this.headers});
+  return this.http.get("http://localhost:8082/api/zalbenaodluku/downloadHTML/"+id, {headers: this.headers, responseType: 'arraybuffer'});
 }
 public skiniPDF(id:String):Observable<any> {
-    return this.http.post<any>("http://localhost:8082/api/zalbe/skiniPDF"+id, {headers: this.headers});
+  return this.http.get("http://localhost:8082/api/zalbenaodluku/downloadPDF/"+id, {headers: this.headers, responseType: 'arraybuffer'});
 }
 public skiniRDF(id:String):Observable<any> {
-    return this.http.post<any>("http://localhost:8082/api/zalbe/skiniRDF"+id, {headers: this.headers});
+  return this.http.get("http://localhost:8082/api/zalbenaodluku/downloadRDF/"+id, {headers: this.headers, responseType: 'arraybuffer'});
 }
 public skiniJSON(id:String):Observable<any> {
-    return this.http.post<any>("http://localhost:8082/api/zalbe/skiniJSON"+id, {headers: this.headers});
+  return this.http.get("http://localhost:8082/api/zalbenaodluku/downloadJSON/"+id, {headers: this.headers, responseType: 'arraybuffer'});
 }
 	public ZalbaOdbijenSpecification = {
 		validate: function (jsElement) {

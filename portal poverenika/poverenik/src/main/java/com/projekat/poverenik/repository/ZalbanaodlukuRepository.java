@@ -82,4 +82,10 @@ public class ZalbanaodlukuRepository {
         Zalbaodluka zalbaodluka= jaxbParser.unmarshallXMLResource(Zalbaodluka.class,xmlResource);
         return zalbaodluka;
     }
+
+    public String findZalbanaodlukuByIdAndReturnString(String id) throws Exception {
+        XMLResource xmlResource = existManager.load(collectionId, id);
+        String tekst = (String) xmlResource.getContent();
+        return tekst;
+    }
 }

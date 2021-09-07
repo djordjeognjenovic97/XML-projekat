@@ -51,20 +51,20 @@ public class ObavestenjecirController {
         return new ResponseEntity<>(document, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/html/{id}", produces = MediaType.TEXT_HTML_VALUE)
-    public ResponseEntity<String> getObavestenjeAsHTML(@PathVariable String id) throws Exception {
-        String document = obavestenjecirService.convertXMLtoHTML(id);
-        if(document == null) {
-            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(document, HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/pdf/{id}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public ResponseEntity<Object> getPdf(@PathVariable("id") String id) throws Exception {
-        Resource resource = obavestenjecirService.getPdf(id);
-        return ResponseEntity.ok().contentType(MediaType.APPLICATION_OCTET_STREAM)
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-                .body(resource);
-    }
+//    @GetMapping(value = "/html/{id}", produces = MediaType.TEXT_HTML_VALUE)
+//    public ResponseEntity<String> getObavestenjeAsHTML(@PathVariable String id) throws Exception {
+//        String document = obavestenjecirService.convertXMLtoHTML(id);
+//        if(document == null) {
+//            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<>(document, HttpStatus.OK);
+//    }
+//
+//    @GetMapping(value = "/pdf/{id}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+//    public ResponseEntity<Object> getPdf(@PathVariable("id") String id) throws Exception {
+//        Resource resource = obavestenjecirService.getPdf(id);
+//        return ResponseEntity.ok().contentType(MediaType.APPLICATION_OCTET_STREAM)
+//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+//                .body(resource);
+//    }
 }

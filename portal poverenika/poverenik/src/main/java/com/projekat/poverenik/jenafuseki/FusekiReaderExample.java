@@ -4,6 +4,8 @@ import org.apache.commons.text.StringSubstitutor;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.RDFNode;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -56,6 +58,28 @@ public class FusekiReaderExample {
         ResultSetFormatter.outputAsXML(System.out,results);
         query.close();
         return foundFakultete;
+    }
+
+    public static void executeQueryforJSON(Map<String,String> params,String metadataUri,String id) throws IOException {
+        FusekiAuthenticationUtilities.ConnectionProperties conn = FusekiAuthenticationUtilities.loadProperties(metadataUri);
+        String queryFilepath="src/main/resources/rdf/";
+        if(metadataUri.contains("zalbacutanje")) {
+            queryFilepath = queryFilepath + "sparqlZalbacutanje.rq";
+        } else if(metadataUri.contains("zalbanaodluku")) {
+            queryFilepath = queryFilepath + "sparqlZalbanaodluku.rq";
+        }
+        else if(metadataUri.contains("resenje")) {
+            queryFilepath = queryFilepath + "sparqlResenje.rq";
+        }
+        String sparqlQueryTemplate = readFile(queryFilepath, StandardCharsets.UTF_8);
+        System.out.println("Query: " + sparqlQueryTemplate);
+        String sparqlQuery = StringSubstitutor.replace(sparqlQueryTemplate,params,"{{","}}");
+        System.out.println("Query: " + sparqlQuery);
+        QueryExecution query = QueryExecutionFactory.sparqlService(conn.queryEndpoint,sparqlQuery);
+        ResultSet results = query.execSelect();
+
+        ResultSetFormatter.outputAsJSON(new FileOutputStream(new File("src/main/resources/json/"+id)),results);
+        query.close();
     }
 
     public static String readFile(String path, Charset encoding) throws IOException {

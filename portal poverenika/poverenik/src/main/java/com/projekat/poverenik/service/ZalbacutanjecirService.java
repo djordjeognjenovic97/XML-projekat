@@ -29,6 +29,9 @@ public class ZalbacutanjecirService {
     @Autowired
     private ZalbacutanjecirRepository zalbacutanjecirRepository;
 
+    @Autowired
+    private XSLTransformer xslTransformer;
+
     private JaxbParser jaxbParser;
     private MetadataExtractor metadataExtractor;
 
@@ -121,4 +124,27 @@ public class ZalbacutanjecirService {
         System.out.println(ids + "   " + zcs.size());
         return zcs;
     }
+
+    public void downloadJSON(String id) throws IOException {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("mesto", "");
+        params.put("broj_predmeta", id);
+        params.put("datum", "");
+        params.put("ime", "");
+        params.put("prezime", "");
+        FusekiReaderExample.executeQueryforJSON(params,"/zalbacutanje",id);
+    }
+
+    public String downloadHTML(String id) throws Exception {
+        Document d=zalbacutanjecirRepository.findZalbacutanjecirById(id);
+        return xslTransformer.convertXMLtoHTML("src/main/resources/xsl/zalbacutanje.xsl",d,"src/main/resources/html/Zalbacutanje"+id);
+    }
+
+    public void downloadPDF(String id) throws Exception {
+        String str=zalbacutanjecirRepository.findZalbacutanjeByIdAndReturnString(id);
+        xslTransformer.generatePDf(str,"src/main/resources/xsl/zalbacutanje_fo.xsl","src/main/resources/pdf/Zalbacutanje"+id);
+
+    }
+
+
 }

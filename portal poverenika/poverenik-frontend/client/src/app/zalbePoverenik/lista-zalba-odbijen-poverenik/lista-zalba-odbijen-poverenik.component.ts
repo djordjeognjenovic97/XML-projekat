@@ -60,12 +60,16 @@ export class ListaZalbaOdbijenPoverenikComponent implements OnInit {
       }
       );
   }
-
   XHTML(c:String) {
     this.zalbaService.skiniXHTML(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/html"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "zalbanaodluku"+c+".html";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -76,8 +80,13 @@ export class ListaZalbaOdbijenPoverenikComponent implements OnInit {
   PDF(c:String) {
     this.zalbaService.skiniPDF(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/pdf"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "zalbanaodluku"+c+".pdf";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -88,8 +97,13 @@ export class ListaZalbaOdbijenPoverenikComponent implements OnInit {
   RDF(c:String) {
     this.zalbaService.skiniRDF(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/xml"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "zalbanaodluku"+c+".xml";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -100,8 +114,13 @@ export class ListaZalbaOdbijenPoverenikComponent implements OnInit {
   JSON(c:String) {
     this.zalbaService.skiniJSON(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/json"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "zalbanaodluku"+c+".json";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);

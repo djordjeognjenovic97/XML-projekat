@@ -30,18 +30,18 @@ export class ResenjeService {
   public getSearchMetadataResenje(content:any):Observable<any> {
     return this.http.post("http://localhost:8082/api/resenja/getSearchMetadataResenje",content,{headers: this.headers, responseType: 'text'});
 }
-	public skiniXHTML(id:String):Observable<any> {
-        return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniXHTML"+id, {headers: this.headers});
-    }
-	public skiniPDF(id:String):Observable<any> {
-        return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniPDF"+id, {headers: this.headers});
-    }
-	public skiniRDF(id:String):Observable<any> {
-        return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniRDF"+id, {headers: this.headers});
-    }
-	public skiniJSON(id:String):Observable<any> {
-        return this.http.post<any>("http://localhost:8080/api/zahtevi/skiniJSON"+id, {headers: this.headers});
-    }
+public skiniXHTML(id:String):Observable<any> {
+  return this.http.get("http://localhost:8082/api/resenja/downloadHTML/"+id, {headers: this.headers, responseType: 'arraybuffer'});
+}
+public skiniPDF(id:String):Observable<any> {
+  return this.http.get("http://localhost:8082/api/resenja/downloadPDF/"+id, {headers: this.headers, responseType: 'arraybuffer'});
+}
+public skiniRDF(id:String):Observable<any> {
+  return this.http.get("http://localhost:8082/api/resenja/downloadRDF/"+id, {headers: this.headers, responseType: 'arraybuffer'});
+}
+public skiniJSON(id:String):Observable<any> {
+  return this.http.get("http://localhost:8082/api/resenja/downloadJSON/"+id, {headers: this.headers, responseType: 'arraybuffer'});
+}
     public ResenjeSpecification = {
       validate: function (jsElement) {
         let elementSpec = this.elements[jsElement.name];

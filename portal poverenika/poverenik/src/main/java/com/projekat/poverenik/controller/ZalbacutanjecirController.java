@@ -12,10 +12,13 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Document;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/zalbecutanje", produces = MediaType.APPLICATION_XML_VALUE)
+@RequestMapping(value = "api/zalbecutanje", produces = "application/xml; charset=UTF-8")
 public class ZalbacutanjecirController {
     @Autowired
     private ZalbacutanjecirService zalbacutanjecirService;
@@ -81,4 +84,66 @@ public class ZalbacutanjecirController {
         }
         return new ResponseEntity<ListaZalbacutanjeDTO>(new ListaZalbacutanjeDTO(ids), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/downloadRDF/{id}")
+    public ResponseEntity<Object> getZalbacutanjeRDF(@PathVariable String id) throws Exception {
+
+        try {
+            String fileName = "src/main/resources/rdf/zalbac"+id;
+            Path filePath = Paths.get(fileName);
+            byte[] data = Files.readAllBytes(filePath);
+            return new ResponseEntity<Object>(data, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @GetMapping(value = "/downloadJSON/{id}")
+    public ResponseEntity<Object> getZalbacutanjeJSON(@PathVariable String id) throws Exception {
+
+        try {
+            zalbacutanjecirService.downloadJSON(id);
+            String fileName = "src/main/resources/json/"+id;
+            Path filePath = Paths.get(fileName);
+            byte[] data = Files.readAllBytes(filePath);
+            return new ResponseEntity<Object>(data, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @GetMapping(value = "/downloadHTML/{id}")
+    public ResponseEntity<Object> getZalbacutanjeHTML(@PathVariable String id) throws Exception {
+
+        try {
+            zalbacutanjecirService.downloadHTML(id);
+            String fileName = "src/main/resources/html/Zalbacutanje"+id;
+            Path filePath = Paths.get(fileName);
+            byte[] data = Files.readAllBytes(filePath);
+            return new ResponseEntity<Object>(data, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    @GetMapping(value = "/downloadPDF/{id}")
+    public ResponseEntity<Object> getZalbacutanjePDF(@PathVariable String id) throws Exception {
+
+        try {
+            zalbacutanjecirService.downloadPDF(id);
+            String fileName = "src/main/resources/pdf/Zalbacutanje"+id;
+            Path filePath = Paths.get(fileName);
+            byte[] data = Files.readAllBytes(filePath);
+            return new ResponseEntity<Object>(data, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
 }

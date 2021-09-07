@@ -1,0 +1,10 @@
+{
+  "head": {
+    "vars": [ "subject" , "broj_predmeta" , "datum" , "ime" , "prezime" , "mesto" ]
+  } ,
+  "results": {
+    "bindings": [
+      
+    ]
+  }
+}

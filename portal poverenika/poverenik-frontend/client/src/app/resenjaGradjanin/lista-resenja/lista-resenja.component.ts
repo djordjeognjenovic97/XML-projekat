@@ -48,8 +48,13 @@ export class ListaResenjaComponent implements OnInit {
   XHTML(c:String) {
     this.resenjeService.skiniXHTML(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/html"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "resenje"+c+".html";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -60,8 +65,13 @@ export class ListaResenjaComponent implements OnInit {
   PDF(c:String) {
     this.resenjeService.skiniPDF(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/pdf"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "resenje"+c+".pdf";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -72,8 +82,13 @@ export class ListaResenjaComponent implements OnInit {
   RDF(c:String) {
     this.resenjeService.skiniRDF(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/xml"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "resenje"+c+".xml";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -84,8 +99,13 @@ export class ListaResenjaComponent implements OnInit {
   JSON(c:String) {
     this.resenjeService.skiniJSON(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/json"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "resenje"+c+".json";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);

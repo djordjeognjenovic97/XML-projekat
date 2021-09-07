@@ -59,22 +59,22 @@ public class ObavestenjecirService {
         return doc;
     }
 
-    public String convertXMLtoHTML(String id) throws Exception {
-        Document xml = obavestenjecirRepository.findObavestenjeById(id);
-        return xslTransformer.convertXMLtoHTML(obavestenjeXSLPath, xml);
-    }
+//    public String convertXMLtoHTML(String id) throws Exception {
+//        Document xml = obavestenjecirRepository.findObavestenjeById(id);
+//        return xslTransformer.convertXMLtoHTML(obavestenjeXSLPath, xml);
+//    }
 
-    public Resource getPdf(String id) throws Exception {
-        Document xml = obavestenjecirRepository.findObavestenjeById(id);
-
-        String xmlString = xslTransformer.XMLToString(xml);
-        ByteArrayOutputStream outputStream = xslTransformer.generatePDf(xmlString, pdfXSLPath);
-
-        Path file = Paths.get(id + ".pdf");
-        Files.write(file, outputStream.toByteArray());
-
-        return new UrlResource(file.toUri());
-    }
+//    public Resource getPdf(String id) throws Exception {
+//        Document xml = obavestenjecirRepository.findObavestenjeById(id);
+//
+//        String xmlString = xslTransformer.XMLToString(xml);
+//        ByteArrayOutputStream outputStream = xslTransformer.generatePDf(xmlString, pdfXSLPath);
+//
+//        Path file = Paths.get(id + ".pdf");
+//        Files.write(file, outputStream.toByteArray());
+//
+//        return new UrlResource(file.toUri());
+//    }
 
 
 }

@@ -1,0 +1,17 @@
+{
+  "head": {
+    "vars": [ "subject" , "broj_predmeta" , "datum" , "ime" , "prezime" , "mesto" ]
+  } ,
+  "results": {
+    "bindings": [
+      {
+        "subject": { "type": "uri" , "value": "file:///C:/Users/Win10/Documents/GitHub/XML-projekat/portal%20poverenika/poverenik/src/main/resources/rdf/zalbac1631015021568" } ,
+        "broj_predmeta": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "1631015021568" } ,
+        "datum": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "2021-09-07+02:00" } ,
+        "ime": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "mare" } ,
+        "prezime": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "mare" } ,
+        "mesto": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "namo" }
+      }
+    ]
+  }
+}

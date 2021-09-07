@@ -74,4 +74,10 @@ public class ResenjaRepository {
         }
         return rs;
     }
+
+    public String findResenjeByIdAndReturnString(String id) throws Exception {
+        XMLResource xmlResource = existManager.load(collectionId, id);
+        String tekst = (String) xmlResource.getContent();
+        return tekst;
+    }
 }
