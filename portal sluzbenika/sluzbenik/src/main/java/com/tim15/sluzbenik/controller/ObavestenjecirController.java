@@ -22,7 +22,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/obavestenja", produces = MediaType.APPLICATION_XML_VALUE)
+@RequestMapping(value = "api/obavestenja", produces={"application/xml; charset=UTF-8"})
 public class ObavestenjecirController {
     @Autowired
     private ObavestenjecirService obavestenjecirService;

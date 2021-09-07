@@ -36,6 +36,9 @@ public pogledajIzjasnjenje(id:String):Observable<any> {
 public traziIzjasnjenje(id:String):Observable<any> {
   return this.http.get("http://localhost:8082/api/izjasnjenje/traziIzjasnjenje/zo/"+id, {headers: this.headers, responseType: 'text'});
 }
+public odustani(id:String):Observable<any> {
+      return this.http.get("http://localhost:8082/api/izjasnjenje/obustaviZalbu/"+id, {headers: this.headers, responseType: 'text'});
+}
 public skiniXHTML(id:String):Observable<any> {
     return this.http.post<any>("http://localhost:8082/api/zalbe/skiniXHTML"+id, {headers: this.headers});
 }

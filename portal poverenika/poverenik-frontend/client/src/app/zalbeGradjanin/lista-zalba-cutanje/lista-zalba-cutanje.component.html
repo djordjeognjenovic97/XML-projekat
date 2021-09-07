@@ -11,7 +11,7 @@
                     <th>PDF<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
                     <th>RDF<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
                     <th>JSON<button class="btn btn-link"><span class="fa fa-sort"></span></button> </th>
-                    <th></th>
+                    <th>Odustajanje</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -34,6 +34,9 @@
                     </td>
                     <td>
                         <button mat-raised-button color="primary"  (click)="JSON(c)">JSON</button>
+                    </td>
+                    <td>
+                      <button mat-raised-button color="primary" (click)="odustani(c.id)">Odustani</button>
                     </td>
                   </tr>
                 </tbody>

@@ -116,6 +116,9 @@ public class IzjasnjenjeService {
         ArrayList<Zalbacutanje> zcs=zalbacutanjecirRepository.findAll();
         for(Zalbacutanje z:zcs){
             if(z.getBrojPredmeta().getValue().equalsIgnoreCase(id)){
+                if(z.getStanje().equalsIgnoreCase("obustavljeno")){
+                    throw new Exception();
+                }
                 z.setStanje("obustavljeno");
                 String text = jaxbParser.marshallString(Zalbacutanje.class,z);
                 zalbacutanjecirRepository.saveZalbacutanjecirFromText(text, id);
@@ -125,6 +128,9 @@ public class IzjasnjenjeService {
         ArrayList<Zalbaodluka> zos=zalbanaodlukuRepository.findAll();
         for(Zalbaodluka zo:zos){
             if(zo.getBrojPredmeta().getValue().equalsIgnoreCase(id)){
+                if(zo.getStanje().equalsIgnoreCase("obustavljeno")){
+                    throw new Exception();
+                }
                 zo.setStanje("obustavljeno");
                 String text = jaxbParser.marshallString(Zalbaodluka.class,zo);
                 zalbanaodlukuRepository.saveZalbanaodlukucirFromText(text, id);

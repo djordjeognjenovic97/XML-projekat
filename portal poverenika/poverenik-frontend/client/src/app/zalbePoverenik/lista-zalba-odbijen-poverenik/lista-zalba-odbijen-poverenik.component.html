@@ -77,14 +77,17 @@
                       <td *ngIf="c.stanje==='izjasnjeno'">
                           <button mat-raised-button color="success" (click)="pogledajIzjasnjenje(c.id)">Pogledaj izjasnjenje</button>
                       </td>
-                      <td *ngIf="c.stanje!=='reseno' && c.stanje!=='kreirano'">
+                      <td *ngIf="c.stanje!=='reseno' && c.stanje!=='obustavljeno' && c.stanje!=='kreirano'">
                           <button mat-raised-button color="danger" (click)="kreirajResenje(c.id)">Kreiraj resenje</button>
                       </td>
-                      <td *ngIf="c.stanje=='reseno' && c.stanje!=='kreirano'">
+                      <td *ngIf="c.stanje=='reseno' || c.stanje=='obustavljeno' && c.stanje!=='kreirano'">
                           /
                       </td>
                       <td *ngIf="c.stanje=='reseno'">
                           RESENO
+                      </td>
+                      <td *ngIf="c.stanje=='obustavljeno'">
+                          OBUSTAVLJENO
                       </td>
                   </tr>
               </tbody>

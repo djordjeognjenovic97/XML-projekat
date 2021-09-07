@@ -92,5 +92,16 @@ export class ListaZalbaCutanjeComponent implements OnInit {
       }
     );
   }
-
+  odustani(c:String) {
+    this.zalbaService.odustani(c).subscribe(
+      data=>{
+        this.toastr.success('Uspešno odustajanje od žalbe.');
+        this.router.navigate(['']);
+      },
+      error=>{
+        console.log(error);
+        this.toastr.error("Neuspešno odustajanje. Već ste odustali od žalbe");
+      }
+    );
+  }
 }

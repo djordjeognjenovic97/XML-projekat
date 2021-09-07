@@ -7,6 +7,7 @@ import { RoleGuard } from './guards/role.service';
 import { HomeComponent } from './home/home.component';
 import { IzjasnjenjeComponent } from './izjasnjenje/izjasnjenje.component';
 import { IzvestajComponent } from './izvestaj/izvestaj.component';
+import { ListaResenjaSluzbenikComponent } from './lista-resenja-sluzbenik/lista-resenja-sluzbenik.component';
 import { AddObavestenjaComponent } from './obavestenja/add-obavestenja/add-obavestenja.component';
 import { ListaObavestenjaSluzbenikComponent } from './obavestenja/lista-obavestenja-sluzbenik/lista-obavestenja-sluzbenik.component';
 import { ListaObavestenjaComponent } from './obavestenja/lista-obavestenja/lista-obavestenja.component';
@@ -74,6 +75,12 @@ const routes: Routes = [
     {
     path : 'izjasnjenja',
     component : IzjasnjenjeComponent,
+    canActivate: [RoleGuard],
+		data: {expectedRoles: 'ROLE_SLUZBENIK'}
+  },
+    {
+    path : 'resenja',
+    component : ListaResenjaSluzbenikComponent,
     canActivate: [RoleGuard],
 		data: {expectedRoles: 'ROLE_SLUZBENIK'}
   },

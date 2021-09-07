@@ -10,7 +10,9 @@ import com.tim15.sluzbenik.model.izvestaji.Izvestaj;
 import com.tim15.sluzbenik.model.obavestenjecir.Obavestenje;
 import com.tim15.sluzbenik.model.zahtevcir.Zahtev;
 import com.tim15.sluzbenik.repository.IzvestajRepository;
+import com.tim15.sluzbenik.repository.ResenjaRepository;
 import com.tim15.sluzbenik.repository.ZahtevicirRepository;
+import com.tim15.sluzbenik.soap.resenje.Resenje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
@@ -28,6 +30,9 @@ import java.util.*;
 public class IzvestajService {
     @Autowired
     private IzvestajRepository izvestajRepository;
+
+    @Autowired
+    private ResenjaRepository resenjeRepository;
 
     @Autowired
     private ZahtevicirRepository zahtevicirRepository;
@@ -141,14 +146,17 @@ public class IzvestajService {
     private Izvestaj izbrojZahteve(Izvestaj izvestaj) throws Exception {
         ArrayList<Zahtev> zahtevs= zahtevicirRepository.findAll();
         int a=0,b=0,c=0,d=0;
+        int year=Calendar.getInstance().get(Calendar.YEAR);
         for (Zahtev z:zahtevs){
-            a=a+1;
-            if(z.getStanje().equals("odbijen")){
-                c=c+1;
-            }else if(z.getStanje().equals("odbacen")){
-                b=b+1;
-            }else if(z.getStanje().equals("usvojen")){
-                d=d+1;
+            if(z.getDatumPodnosenjaZahteva().getValue().getYear()==year) {
+                a = a + 1;
+                if (z.getStanje().equals("odbijen")) {
+                    c = c + 1;
+                } else if (z.getStanje().equals("odbacen")) {
+                    b = b + 1;
+                } else if (z.getStanje().equals("usvojen")) {
+                    d = d + 1;
+                }
             }
         }
         Izvestaj.Zahtevi z= new Izvestaj.Zahtevi();
@@ -161,16 +169,21 @@ public class IzvestajService {
     }
     private Izvestaj izbrojZalbe(Izvestaj izvestaj) throws Exception {
         //preko soapa dobavi sve zalbe
-        ArrayList<Zahtev> zahtevs= zahtevicirRepository.findAll();
+        ArrayList<Resenje> resenjas= resenjeRepository.findAll();
         int a=0,b=0,c=0,d=0,e=0;
-        for (Zahtev z:zahtevs){
-            a=a+1;
-            if(z.getStanje().equals("odbijen")){
-                c=c+1;
-            }else if(z.getStanje().equals("odbacen")){
-                b=b+1;
-            }else if(z.getStanje().equals("usvojen")){
-                d=d+1;
+        int year=Calendar.getInstance().get(Calendar.YEAR);
+        for (Resenje r:resenjas){
+            if(r.getDatum().getValue().getYear()==year) {
+                a = a + 1;
+                if (r.getOpisZalbe().getRazlog().equals("na odluku")) {
+                    b = b + 1;
+                } else if (r.getOpisZalbe().getRazlog().equals("nije postupio")) {
+                    c = c + 1;
+                } else if (r.getOpisZalbe().getRazlog().equals("nije postupio u celosti")) {
+                    d = d + 1;
+                } else if (r.getOpisZalbe().getRazlog().equals("nije postupio u roku")) {
+                    e = e + 1;
+                }
             }
         }
         Izvestaj.Zalbe z= new Izvestaj.Zalbe();

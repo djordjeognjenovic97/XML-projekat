@@ -1,6 +1,7 @@
 package com.tim15.sluzbenik.soap;
 
 import com.tim15.sluzbenik.soap.izjasnjenje.IzjasnjenjeServiceSoapBindingImpl;
+import com.tim15.sluzbenik.soap.resenje.ResenjeServiceSoapBindingImpl;
 import com.tim15.sluzbenik.soap.zahtev.ZahtevServiceSoapBindingImpl;
 import org.apache.cxf.Bus;
 import org.apache.cxf.jaxws.EndpointImpl;
@@ -22,6 +23,9 @@ public class EndpointConfig {
     @Autowired
     IzjasnjenjeServiceSoapBindingImpl izjasnjenjeServiceSoapBindingImpl;
 
+    @Autowired
+    ResenjeServiceSoapBindingImpl resenjeServiceSoapBindingImpl;
+
     @Bean
     public Endpoint izvestajEndpoint() {
         EndpointImpl endpoint = new EndpointImpl(bus, zahtevServiceSoapBinding);
@@ -33,6 +37,13 @@ public class EndpointConfig {
     public Endpoint izjasnjenjeEndpoint() {
         EndpointImpl endpoint = new EndpointImpl(bus, izjasnjenjeServiceSoapBindingImpl);
         endpoint.publish("/izjasnjenje");
+        return endpoint;
+    }
+
+    @Bean(name = "resenjeEndpointBean")
+    public Endpoint resenjeEndpoint() {
+        EndpointImpl endpoint = new EndpointImpl(bus, resenjeServiceSoapBindingImpl);
+        endpoint.publish("/resenje");
         return endpoint;
     }
 

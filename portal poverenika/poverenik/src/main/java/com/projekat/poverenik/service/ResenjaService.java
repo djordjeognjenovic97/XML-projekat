@@ -24,6 +24,7 @@ import org.xml.sax.SAXException;
 
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.soap.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -71,6 +72,27 @@ public class ResenjaService {
         resenjaRepository.saveResenjeFromText(text, docId);
         metadataExtractor.extractMetadata(text, new FileOutputStream(new File("src/main/resources/rdf/resenje"+docId)));
         FusekiWriterExample.saveRDF("resenje" + docId, "/resenje");
+        posaljiResenje(resenje);
+    }
+
+    private void posaljiResenje(Resenje resenje) throws SOAPException {
+        String soapEndpointUrl = "http://localhost:8080/ws/resenje";
+
+        SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
+        SOAPConnection soapConnection = soapConnectionFactory.createConnection();
+        MessageFactory messageFactory = MessageFactory.newInstance();
+        SOAPMessage soapMessage = messageFactory.createMessage();
+        SOAPPart soapPart = soapMessage.getSOAPPart();
+
+        SOAPEnvelope envelope = soapPart.getEnvelope();
+        envelope.addNamespaceDeclaration("res", "https://github.com/djordjeognjenovic97/XML-projekat/resenja");
+
+        SOAPBody soapBody = envelope.getBody();
+        envelope.addNamespaceDeclaration("res", "https://github.com/djordjeognjenovic97/XML-projekat/resenja");
+        SOAPElement resElem = soapBody.addChildElement("resenje", "res");
+
+        soapMessage.saveChanges();
+        SOAPMessage soapResponse = soapConnection.call(soapMessage, soapEndpointUrl);
     }
 
     private String pronadjiEmail(String id) throws Exception {
