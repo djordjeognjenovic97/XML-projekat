@@ -66,6 +66,17 @@ export class TemplejtComponent implements OnInit {
           }
         );
       }
+      if(this.sta==="izvestaj"){
+        this.templejtService.getIzvestajHTML(this.temp).subscribe(
+          data=>{
+            this.templejt = this.domSanitizer.bypassSecurityTrustHtml(data);
+          },
+          error=>{
+            console.log(error);
+            this.toastr.error("Error");
+          }
+        );
+      }
   }
 
 }

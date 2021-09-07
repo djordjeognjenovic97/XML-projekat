@@ -55,7 +55,7 @@
                     </div>
                     <tr *ngFor="let c of resenje">
                         <td class="in_waves">
-                            <a href="http://www.google.com">{{c.id}}</a>
+                          <a (click)="prikazi(c.id)" href="javascript:;">{{c.id}}</a>
                         </td>
                         <td class="in_waves">{{c.datum.split("+")[0]}}</td>
                         <td>

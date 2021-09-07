@@ -37,9 +37,9 @@ export class ListaResenjaComponent implements OnInit {
               decodedItem.listaResenjeDTO.lista[i].brP._text));
           }
         }else{
-          this.resenja.push(new Resenje(decodedItem.listaResenjeDTO.lista[i].id._text,
-            decodedItem.listaResenjeDTO.lista[i].datum._text,decodedItem.listaResenjeDTO.lista[i].email._text,
-            decodedItem.listaResenjeDTO.lista[i].brP._text));
+          this.resenja.push(new Resenje(decodedItem.listaResenjeDTO.lista.id._text,
+            decodedItem.listaResenjeDTO.lista.datum._text,decodedItem.listaResenjeDTO.lista.email._text,
+            decodedItem.listaResenjeDTO.lista.brP._text));
         }
         console.log(this.resenja);
       }

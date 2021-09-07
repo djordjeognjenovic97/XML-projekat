@@ -1,0 +1,17 @@
+{
+  "head": {
+    "vars": [ "subject" , "broj_predmeta" , "datum" , "ime" , "prezime" , "naziv_organa" ]
+  } ,
+  "results": {
+    "bindings": [
+      {
+        "subject": { "type": "uri" , "value": "file:///C:/Users/Win10/Documents/GitHub/XML-projekat/portal%20sluzbenika/sluzbenik/src/main/resources/rdf/Obavestenje1631033626115" } ,
+        "broj_predmeta": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "1631033626115" } ,
+        "datum": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "2021-09-07+02:00" } ,
+        "ime": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "lorem ipsum" } ,
+        "prezime": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "lorem ipsum" } ,
+        "naziv_organa": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "lorem ipsum" }
+      }
+    ]
+  }
+}

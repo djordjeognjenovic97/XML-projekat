@@ -2,6 +2,7 @@ package com.projekat.poverenik.service;
 
 import com.projekat.poverenik.dto.IzvestajDTO;
 import com.projekat.poverenik.jaxb.JaxbParser;
+import com.projekat.poverenik.jenafuseki.FusekiReaderExample;
 import com.projekat.poverenik.jenafuseki.FusekiWriterExample;
 import com.projekat.poverenik.jenafuseki.MetadataExtractor;
 import com.projekat.poverenik.model.obavestenjecir.Obavestenje;
@@ -9,13 +10,16 @@ import com.projekat.poverenik.repository.IzvestajRepository;
 import com.projekat.poverenik.soap.izvestaj.Izvestaj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class IzvestajService {
@@ -66,11 +70,36 @@ public class IzvestajService {
     }
 
     public List<IzvestajDTO> getSearchIzvestaji(String content) throws Exception {
-        ArrayList<Izvestaj> izvestajs= izvestajRepository.findByContent(content);
-        List<IzvestajDTO> ids=new ArrayList<IzvestajDTO>();
-        for(Izvestaj z : izvestajs){
-            ids.add(new IzvestajDTO(z.getId().getValue(),z.getDatum().getValue().toString()));
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("id","");
+        params.put("datum", content);
+        ArrayList<String> ids= FusekiReaderExample.executeQuery(params,"/izvestaji");
+        List<IzvestajDTO> izvestaji=new ArrayList<IzvestajDTO>();
+        for(String id :ids){
+            Izvestaj z=izvestajRepository.findRealIzvestajById(id.split("\\^")[0]);
+            izvestaji.add(new IzvestajDTO(z.getId().getValue(),z.getDatum().getValue().toString()));
         }
-        return ids;
+        System.out.println(ids+"   "+izvestaji.size());
+        return izvestaji;
     }
+
+    public void skiniJSON(String id) throws IOException {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("datum", "");
+        params.put("id", id);
+        FusekiReaderExample.executeQueryforJSON(params,"/izvestaji",id);
+    }
+
+    public String skiniHTML(String id) throws Exception {
+        Document d=izvestajRepository.findIzvestajById(id);
+        return xslTransformer.convertXMLtoHTML("src/main/resources/xsl/izvestaj.xsl",d,"src/main/resources/html/"+id);
+    }
+
+    public void skiniPDF(String id) throws Exception {
+        String str=izvestajRepository.findIzvestajByIdAndReturnString(id);
+        xslTransformer.generatePDf(str,"src/main/resources/xsl/izvestaj_fo.xsl","src/main/resources/pdf/"+id);
+
+    }
+
+
 }

@@ -1,0 +1,14 @@
+{
+  "head": {
+    "vars": [ "subject" , "id" , "datum" ]
+  } ,
+  "results": {
+    "bindings": [
+      {
+        "subject": { "type": "uri" , "value": "file:///C:/Users/Win10/Documents/GitHub/XML-projekat/portal%20poverenika/poverenik/src/main/resources/rdf/1631041737999" } ,
+        "id": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "1631041737999" } ,
+        "datum": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "2021-09-07+02:00" }
+      }
+    ]
+  }
+}

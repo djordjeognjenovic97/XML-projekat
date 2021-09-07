@@ -1,1 +1,9 @@
-<p>Welcome undefined/korisnik/admin: {{role}}</p>
+<div *ngIf="role===undefined">
+  <h1>DOBRODOŠLI NA SAJT POVERENIKA</h1>
+</div>
+<div *ngIf="role==='ROLE_GRADJANIN'">
+  <h1>GRAĐANIN</h1>
+</div>
+<div *ngIf="role==='ROLE_POVERENIK'">
+  <h1>POVERENIK</h1>
+</div>

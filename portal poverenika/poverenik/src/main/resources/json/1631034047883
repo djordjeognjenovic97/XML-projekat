@@ -1,0 +1,10 @@
+{
+  "head": {
+    "vars": [ "subject" , "broj_resenja" , "datum" , "ime" , "prezime" , "gradjanin" , "naziv_optuzenog" ]
+  } ,
+  "results": {
+    "bindings": [
+      
+    ]
+  }
+}

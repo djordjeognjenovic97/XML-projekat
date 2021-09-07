@@ -19,7 +19,7 @@
                   </div>
                   <tr *ngFor="let c of resenja">
                     <td class="in_waves">
-                      <a (click)="prikazi(c.id)" href="javascript:;">{{c.id}}</a>
+                      <a (click)="prikazi(c.brP)" href="javascript:;">{{c.id}}</a>
                     </td>
                     <td>
                         <button mat-raised-button color="primary"  (click)="XHTML(c.id)">XHTML</button>
@@ -28,10 +28,10 @@
                         <button mat-raised-button color="primary"  (click)="PDF(c.id)">PDF</button>
                     </td>
                     <td>
-                        <button mat-raised-button color="primary"  (click)="RDF(c.id)">RDF</button>
+                        <button mat-raised-button color="primary"  (click)="RDF(c.brP)">RDF</button>
                     </td>
                     <td>
-                        <button mat-raised-button color="primary"  (click)="JSON(c.id)">JSON</button>
+                        <button mat-raised-button color="primary"  (click)="JSON(c.brP)">JSON</button>
                     </td>
                   </tr>
                 </tbody>

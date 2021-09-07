@@ -21,4 +21,7 @@ export class TemplejtService {
     public getResenjeHTML(id:String):Observable<any> {
         return this.http.get("http://localhost:8082/api/resenja/htmlOblik/"+id, {headers: this.headers, responseType: 'text'});
     }
+    public getIzvestajHTML(id:String):Observable<any> {
+      return this.http.get("http://localhost:8082/api/izvestaji/htmlOblik/"+id, {headers: this.headers, responseType: 'text'});
+  }
 }

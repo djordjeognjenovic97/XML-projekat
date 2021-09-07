@@ -21,16 +21,16 @@ export class IzvestajService {
     public getSearchIzvestaji(content:String):Observable<any> {
         return this.http.get("http://localhost:8082/api/izvestaji/getSearchIzvestaji/"+content, {headers: this.headers, responseType: 'text'});
     }
-    	public skiniXHTML(id:String):Observable<any> {
-        return this.http.post<any>("http://localhost:8082/api/zahtevi/skiniXHTML"+id, {headers: this.headers});
-    }
-	public skiniPDF(id:String):Observable<any> {
-        return this.http.post<any>("http://localhost:8082/api/zahtevi/skiniPDF"+id, {headers: this.headers});
-    }
-	public skiniRDF(id:String):Observable<any> {
-        return this.http.post<any>("http://localhost:8082/api/zahtevi/skiniRDF"+id, {headers: this.headers});
-    }
-	public skiniJSON(id:String):Observable<any> {
-        return this.http.post<any>("http://localhost:8082/api/zahtevi/skiniJSON"+id, {headers: this.headers});
-    }
+    public skiniXHTML(id:String):Observable<any> {
+      return this.http.get("http://localhost:8082/api/izvestaji/skiniHTML/"+id, {headers: this.headers, responseType: 'arraybuffer'});
+  }
+public skiniPDF(id:String):Observable<any> {
+      return this.http.get("http://localhost:8082/api/izvestaji/skiniPDF/"+id, {headers: this.headers, responseType: 'arraybuffer'});
+  }
+public skiniRDF(id:String):Observable<any> {
+      return this.http.get("http://localhost:8082/api/izvestaji/skiniRDF/"+id, {headers: this.headers, responseType: 'arraybuffer'});
+  }
+public skiniJSON(id:String):Observable<any> {
+      return this.http.get("http://localhost:8082/api/izvestaji/skiniJSON/"+id, {headers: this.headers, responseType: 'arraybuffer'});
+  }
 }

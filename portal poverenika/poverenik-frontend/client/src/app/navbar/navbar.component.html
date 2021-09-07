@@ -3,19 +3,30 @@
       <mat-icon>home</mat-icon>
     </button>
     <span class="lilspace"></span>
-    <span *ngIf="getRole()!==undefined">Sajt poverenika</span>
+    <span>Sajt poverenika</span>
     <div *ngIf="getRole()==='ROLE_GRADJANIN'">
+      <span class="lilspace"></span>
       <button mat-raised-button color="accent" id="chose-button" (click)="kreirajZalbaCutanje()">Kreiraj Zalbu(cutanje)</button>
+      <span class="lilspace"></span>
       <button mat-raised-button color="accent" id="choose-button" (click)="kreirajZalbaOdbijen()">Kreiraj Zalbu(odbijen)</button>
+      <span class="lilspace"></span>
       <button mat-raised-button color="accent" id="chse-button" (click)="zalbeCutanjeGradjanin()">Zalbe cutanje</button>
+      <span class="lilspace"></span>
       <button mat-raised-button color="accent" id="chose-button" (click)="zalbeOdbijeniceGradjanin()">Zalbe odbijene</button>
+      <span class="lilspace"></span>
       <button mat-raised-button color="accent" id="choose-button" (click)="resenjaGradjanin()">Resenja</button>
+      <span class="lilspace"></span>
     </div>
     <div *ngIf="getRole()==='ROLE_POVERENIK'">
+      <span class="lilspace"></span>
       <button mat-raised-button color="accent" id="chse-button" (click)="zalbeCutanjePoverenik()">Zalbe cutanje</button>
+      <span class="lilspace"></span>
       <button mat-raised-button color="accent" id="chose-button" (click)="zalbeOdbijenicePoverenik()">Zalbe odbijene</button>
+      <span class="lilspace"></span>
       <button mat-raised-button color="accent" id="choose-button" (click)="resenjaPoverenik()">Resenja</button>
+      <span class="lilspace"></span>
       <button mat-raised-button color="accent" id="choose-button" (click)="izvestajiPoverenik()">Izvestaji</button>
+      <span class="lilspace"></span>
     </div>
     <span class="bigspace"></span>
     <div *ngIf="getRole()===undefined">

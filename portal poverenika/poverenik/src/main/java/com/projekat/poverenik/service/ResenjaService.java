@@ -69,7 +69,7 @@ public class ResenjaService {
         email = pronadjiEmail(resenje.getId());
         resenje.setEmailGradjanina(email);
         System.out.println(email);
-        String docId = resenje.getId();
+        String docId = resenje.getBrojResenja().getValue();
 
         text = jaxbParser.marshallString(Resenje.class,resenje);
 
@@ -101,12 +101,12 @@ public class ResenjaService {
         naslovElem.addTextNode("Rešenje");
         SOAPElement sadrzajElem = pismoElem.addChildElement("content", "es");
         String sadr= "Vaš odgovor na žalbu je kreiran. Rešenje" +
-                "možete pogledati na preko linka: http://localhost:4201/prikaz/resenje/"+resenje.getId();
+                "možete pogledati na preko linka: http://localhost:4201/prikaz/resenje/"+resenje.getBrojResenja().getValue();
         sadrzajElem.addTextNode(sadr);
         SOAPElement prilogElem = pismoElem.addChildElement("attachment", "es");
         //OVDE UBACITI NEKAKO
-        downloadPDF(resenje.getId());
-        String fileName = "src/main/resources/pdf/Resenje"+resenje.getId();
+        downloadPDF(resenje.getBrojResenja().getValue());
+        String fileName = "src/main/resources/pdf/Resenje"+resenje.getBrojResenja().getValue();
         Path filePath = Paths.get(fileName);
         byte[] data = Files.readAllBytes(filePath);
         prilogElem.addTextNode(Base64.getEncoder().encodeToString(data));
@@ -179,7 +179,7 @@ public class ResenjaService {
         SOAPElement rtp=resZElem.addChildElement("rok_trajanja_provera","res");
         rtp.addTextNode(resenje.getResenjeZalbe().getRokTrajanjaProvera());
 
-        SOAPElement obrZElem = resElem.addChildElement("obrazlozenje_zalbe", "res");
+        SOAPElement obrZElem = resElem.addChildElement("obrazlozenja_zalbe", "res");
         SOAPElement di=obrZElem.addChildElement("datum_izjasnjenja","res");
         di.addTextNode(resenje.getObrazlozenjaZalbe().getDatumIzjasnjenja().toString());
         SOAPElement dti=obrZElem.addChildElement("datum_trazenja_informacija","res");

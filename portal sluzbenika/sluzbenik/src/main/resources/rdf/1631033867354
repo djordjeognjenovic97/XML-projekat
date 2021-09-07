@@ -1,0 +1,14 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:h="http://www.w3.org/1999/xhtml">
+<rdf:Description rdf:about="">
+<pred:id xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">1631033867354</pred:id>
+</rdf:Description>
+<rdf:Description rdf:about="">
+<pred:naziv xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">lorem ipsum</pred:naziv>
+</rdf:Description>
+<rdf:Description rdf:about="">
+<pred:mesto xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">lorem ipsum</pred:mesto>
+</rdf:Description>
+<rdf:Description rdf:about="">
+<pred:datum xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">2021-09-07</pred:datum>
+</rdf:Description>
+</rdf:RDF>

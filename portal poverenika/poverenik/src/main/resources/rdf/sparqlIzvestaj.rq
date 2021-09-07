@@ -1,0 +1,7 @@
+SELECT * FROM <http://localhost:8081/fusekiPoverenik/izvestaji/data/izvestaji> WHERE {
+ ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/id> ?id .
+  ?subject <http://www.ftn.uns.ac.rs/rdf/examples/predicate/datum> ?datum .
+  FILTER( CONTAINS(UCASE(str(?id)), UCASE("{{id}}"))
+    && CONTAINS(UCASE(str(?datum)), UCASE("{{datum}}"))
+  ) .
+}

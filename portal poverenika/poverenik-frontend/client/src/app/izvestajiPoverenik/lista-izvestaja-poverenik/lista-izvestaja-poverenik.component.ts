@@ -55,8 +55,13 @@ export class ListaIzvestajaPoverenikComponent implements OnInit {
   XHTML(c:String) {
     this.izvestajService.skiniXHTML(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/html"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "izvestaj"+c+".html";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -64,11 +69,17 @@ export class ListaIzvestajaPoverenikComponent implements OnInit {
       }
     );
   }
+
   PDF(c:String) {
     this.izvestajService.skiniPDF(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/pdf"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "izvestaj"+c+".pdf";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -79,8 +90,13 @@ export class ListaIzvestajaPoverenikComponent implements OnInit {
   RDF(c:String) {
     this.izvestajService.skiniRDF(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/xml"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "izvestaj"+c+".xml";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
@@ -91,17 +107,22 @@ export class ListaIzvestajaPoverenikComponent implements OnInit {
   JSON(c:String) {
     this.izvestajService.skiniJSON(c).subscribe(
       data=>{
+        var blob = new Blob([data], { type:"application/json"});
+        var url = window.URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = "izvestaj"+c+".json";
+        link.click();
         this.toastr.success('Uspesno preuzet dokument.');
-        this.router.navigate(['']);
       },
       error=>{
         console.log(error);
-        this.toastr.error("Neuspesno preuzet dokument.Pokusajte ponovo.");
+        this.toastr.error("Neuspešno preuzet dokument.Pokušajte ponovo.");
       }
     );
   }
 	regIn1(){
-    this.izvestajService.getSearchIzvestaji(this.regForm1.value.podatak).subscribe(
+    this.izvestajService.getSearchIzvestaji(this.regForm1.value.datum).subscribe(
       res => {
         var convert = require('xml-js');
         this.izvestaji=[];
@@ -119,4 +140,8 @@ export class ListaIzvestajaPoverenikComponent implements OnInit {
       }
       );
   }
+
+  prikazi(c:String){
+    this.router.navigate(['prikaz/izvestaj/'+c]);
+ }
 }

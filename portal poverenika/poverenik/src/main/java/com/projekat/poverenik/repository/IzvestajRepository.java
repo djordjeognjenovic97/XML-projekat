@@ -5,6 +5,7 @@ import com.projekat.poverenik.jaxb.JaxbParser;
 import com.projekat.poverenik.soap.izvestaj.Izvestaj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.w3c.dom.Document;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.ResourceIterator;
 import org.xmldb.api.base.ResourceSet;
@@ -58,5 +59,23 @@ public class IzvestajRepository {
         return lista;
     }
 
+    public String findIzvestajByIdAndReturnString(String id) throws Exception {
+        XMLResource xmlResource = existManager.load(collectionId, id);
+        String tekst = (String) xmlResource.getContent();
+        return tekst;
+    }
+
+    public Document findIzvestajById(String id) throws Exception {
+        XMLResource xmlResource = existManager.load(collectionId, id);
+        Document document = (Document) xmlResource.getContentAsDOM();
+        return document;
+    }
+
+    public Izvestaj findRealIzvestajById(String id) throws Exception {
+        XMLResource xmlResource = existManager.load(collectionId, id);
+        JaxbParser jaxbParser = new JaxbParser();
+        Izvestaj i = (Izvestaj) jaxbParser.unmarshallXMLResource(Izvestaj.class,xmlResource);
+        return i;
+    }
 }
 
