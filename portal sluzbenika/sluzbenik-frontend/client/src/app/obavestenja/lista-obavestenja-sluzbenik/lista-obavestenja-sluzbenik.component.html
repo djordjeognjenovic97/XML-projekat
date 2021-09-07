@@ -1,5 +1,5 @@
 <div class="w-100 h-100 p-3">
-    <h1 style="margin: 0 auto;text-align: center;">Obavestenja</h1>
+    <h1 style="margin: 0 auto;text-align: center;">Obaveštenja</h1>
     <form [formGroup]="regForm1" (ngSubmit)="regIn1()" class="form-inline">
         <div class="form-group mx-sm-0 mb-2">
             <input type="text" class="form-control" id="podatak" formControlName="podatak"
@@ -47,7 +47,7 @@
                 </thead>
                 <tbody>
                     <div *ngIf="obavestenja?.length === 0 || obavestenja === undefined" style="float:right;">
-                        <h4><b>Nema obavestenja</b></h4>
+                        <h4><b>Nema obaveštenja</b></h4>
                     </div>
                     <tr *ngFor="let c of obavestenja">
                         <td class="in_waves">

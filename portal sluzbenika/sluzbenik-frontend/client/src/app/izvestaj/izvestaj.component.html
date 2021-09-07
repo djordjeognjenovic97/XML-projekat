@@ -1,6 +1,6 @@
 <div class="w-100 h-100 p-3">
-    <h1 style="margin: 0 auto;text-align: center;">Извештаји</h1>
-    <button mat-raised-button color="primary" (click)="generisiIzvestaj()">Generisi izvestaj i posalji
+    <h1 style="margin: 0 auto;text-align: center;">Izveštaji</h1>
+    <button mat-raised-button color="primary" (click)="generisiIzvestaj()">Generiši izveštaj i pošalji
         povereniku</button>
     <form [formGroup]="regForm1" (ngSubmit)="regIn1()" class="form-inline">
         <div class="form-group mx-sm-0 mb-2">
@@ -25,7 +25,7 @@
                 </thead>
                 <tbody>
                     <div *ngIf="izvestaji?.length === 0 || izvestaji === undefined" style="float:right;">
-                        <h4><b>Nema izvestaja</b></h4>
+                        <h4><b>Nema izveštaja</b></h4>
                     </div>
                     <tr *ngFor="let c of izvestaji">
                         <td class="in_waves">

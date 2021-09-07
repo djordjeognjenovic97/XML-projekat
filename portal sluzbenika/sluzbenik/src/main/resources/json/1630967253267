@@ -1,0 +1,16 @@
+{
+  "head": {
+    "vars": [ "subject" , "id" , "datum" , "mesto" , "nazivOrgana" ]
+  } ,
+  "results": {
+    "bindings": [
+      {
+        "subject": { "type": "uri" , "value": "file:///C:/Users/TehnoCentar/Desktop/XML-projekat/portal%20sluzbenika/sluzbenik/src/main/resources/rdf/1630967253267" } ,
+        "id": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "1630967253267" } ,
+        "datum": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "2021-09-07" } ,
+        "mesto": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "Novi Sad" } ,
+        "nazivOrgana": { "type": "literal" , "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral" , "value": "KK Dunav" }
+      }
+    ]
+  }
+}

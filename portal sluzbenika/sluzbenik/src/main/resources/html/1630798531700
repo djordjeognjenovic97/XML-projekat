@@ -12,9 +12,9 @@
                 </style>
 </head>
 <body>
-<h1 style="text-align:center">Godišnji izveštaj</h1>
+<h1 style="text-align:center">Godišnji izveštaj za godinu 2021.</h1>
 <h2 style="text-align:center">Zahtevi</h2>
-<table style="text-align:center; border: 1px solid black;">
+<table style="text-align:center; border: 1px solid black; width:60%;margin-left: auto;margin-right: auto;">
 <tr>
 <th>Ukupan broj podnetih</th><th>Usvojeni</th><th>Odbijeni</th><th>Odbačeni</th>
 </tr>
@@ -23,7 +23,7 @@
 </tr>
 </table>
 <h2 style="text-align:center">Žalbe</h2>
-<table style="text-align:center">
+<table style="text-align:center; width:60%;margin-left: auto;margin-right: auto;">
 <tr>
 <th>Ukupan broj izjavljenih</th><th>Nije postupio</th><th>Nije postupio u celosti</th><th>Nije postupio u roku</th><th>Na odluku</th>
 </tr>
@@ -31,5 +31,8 @@
 <td>4</td><td>0</td><td>0</td><td>0</td><td>4</td>
 </tr>
 </table>
+<p style="padding-top:15px; margin-left:20%;">Datum podnošenja izveštaja:
+                    05.09.2021.
+                </p>
 </body>
 </html>

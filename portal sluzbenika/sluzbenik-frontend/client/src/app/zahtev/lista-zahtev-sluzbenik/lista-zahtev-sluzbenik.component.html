@@ -70,7 +70,7 @@
                         <td *ngIf="c.stanje!=='odbijen'&& c.stanje!=='usvojen'">
                             <button mat-raised-button color="danger" (click)="odbijZahtev(c.id)">Odbij</button>
                         </td>
-                        <td *ngIf="c.stanje==='usvojen'">PRIHVACEN</td>
+                        <td *ngIf="c.stanje==='usvojen'">PRIHVAĆEN</td>
                         <!-- <td *ngIf="c.stanje==='usvojen'">/</td> -->
                         <td *ngIf="c.stanje!=='odbacen' && c.stanje!=='podnet'">/</td>
                         <td *ngIf="c.stanje==='odbijen'">ODBIJEN</td>

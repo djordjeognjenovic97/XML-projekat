@@ -29,17 +29,17 @@ export class AddZahtevComponent implements OnInit {
   }
   send(){
     if (Xonomy.warnings.length) {
-      this.toastr.error("Podaci nisu ispravni/uneseni.Molimo vas proverite ih jos jednom.");
+      this.toastr.error("Podaci nisu ispravni/uneseni.Molimo vas proverite ih još jednom.");
       return;
     }
     let zahtev =  Xonomy.harvest();
     this.zahtevService.createZahtev(zahtev).subscribe(
       res => {
-          this.toastr.success('Uspesno ste kreirali zahtev!')
+          this.toastr.success('Uspešno ste kreirali zahtev!')
           this.router.navigate(['']);
         },
       err=> {
-          this.toastr.error('Neuspesno ste kreirali zahtev. Proverite podatke!')
+          this.toastr.error('Neuspešno ste kreirali zahtev. Proverite unesene podatke da li su ispravni!')
       });
   }
 

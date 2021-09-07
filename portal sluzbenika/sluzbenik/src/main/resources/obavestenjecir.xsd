@@ -41,10 +41,18 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="podnosilac_zahteva" type="oba:TPodnosilac_zahteva"/>
+                <xs:element name="datum_zahteva" type="xs:date"/>
                 <xs:element name="naslov" type="xs:string"/>
                 <xs:element name="uvid" type="oba:tipUvid"/>
                 <xs:element name="iznos_troskova" type="xs:double"/>
-                <xs:element name="dostavljeno" type="oba:tipDostavljeno"/>
+                <xs:element name="dostavljeno">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="imenovanom"/>
+                            <xs:enumeration value="arhivi"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -78,32 +86,6 @@
             </xs:element>
             <xs:element ref="oba:adresa"/>
             <xs:element name="broj_kancelarije" type="xs:string" nillable="true"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="tipDostavljeno">
-        <xs:sequence>
-            <xs:element name="opcija_dostave">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="izabrano">
-                            <xs:simpleType>
-                                <xs:restriction base="xs:string">
-                                    <xs:enumeration value="da"/>
-                                    <xs:enumeration value="ne"/>
-                                </xs:restriction>
-                            </xs:simpleType>
-                        </xs:element>
-                        <xs:element name="naziv">
-                            <xs:simpleType>
-                                <xs:restriction base="xs:string">
-                                    <xs:minLength value="1"/>
-                                    <xs:maxLength value="50"/>
-                                </xs:restriction>
-                            </xs:simpleType>
-                        </xs:element>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
         </xs:sequence>
     </xs:complexType>
     <xs:element name="adresa">

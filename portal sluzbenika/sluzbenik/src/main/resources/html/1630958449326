@@ -1,0 +1,108 @@
+<html xmlns:ftn="https://github.com/djordjeognjenovic97/XML-projekat/zahtev" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css"></style>
+</head>
+<body>
+<div style="width:40%; margin:0 auto; border: 2px solid black;">
+<p style="font-size:14px; text-align:center;margin: 0%; padding-top:5px;">Sud,
+                    Novi Sad</p>
+<p style="text-align:center;margin: 0%; padding-top:0px;">
+                    ...............................................................................................................
+                </p>
+<p style="font-size:14px; text-align:center;margin: 0%; ">
+                    naziv i sedište organa kome se zahtev upućuje
+                </p>
+<h1 style="text-align:center;padding-top:30px;font-weight: bold">
+                    Z A H T E V
+                </h1>
+<h2 style="font-size:16px; text-align:center">
+                    za pristup informaciji od javnog značaja
+                </h2>
+<p style="padding-top:20px;font-size:14px; text-align:justify; padding-left:15px; padding-right:15px;">
+                    Na osnovu člana 15. st. 1. Zakona o slobodnom pristupu informacijama od javnog značaja
+                    (&bdquo;Službeni glasnik RS&ldquo;, br. 120/04, 54/07, 104/09 i 36/10), od gore navedenog organa zahtevam:*
+                </p>
+<p style="font-size:14px; margin-left:40px; text-align:justify;">
+<p style="font-size:14px; margin-left:40px; text-align:justify;">
+                            obaveštenje da li poseduje traženu informaciju;
+                            <input disabled="true" type="checkbox">
+</p>
+<p style="font-size:14px; margin-left:40px; text-align:justify;">
+                            uvid u dokument koji sadrži traženu informaciju;
+                            <input disabled="true" type="checkbox">
+</p>
+<p style="font-size:14px; margin-left:40px; text-align:justify;">
+                            kopiju dokumenta koji sadrži traženu informaciju;
+                            <input disabled="true" type="checkbox">
+</p>
+<p style="font-size:14px; margin-left:40px; text-align:justify;">
+                            dostavljanje kopije dokumenta koji sadrži traženu informaciju:**
+                            <input disabled="true" checked="true" type="checkbox">
+</p>
+<p style="font-size:14px; margin-left:80px; text-align:justify;">
+<p style="font-size:14px; margin-left:80px; text-align:justify;">
+                                poštom
+                                <input disabled="true" type="checkbox">
+</p>
+<p style="font-size:14px; margin-left:80px; text-align:justify;">
+                                elektronskom poštom
+                                <input disabled="true" type="checkbox">
+</p>
+<p style="font-size:14px; margin-left:80px; text-align:justify;">
+                                faksom
+                                <input disabled="true" type="checkbox">
+</p>
+<p style="font-size:14px; margin-left:80px; text-align:justify;">
+                                na drugi način:***
+                                <input disabled="true" checked="true" type="checkbox">dobar nacin s tobom da se smuvam</p>
+</p>
+</p>
+<p style="font-size:14px; margin-left:40px; text-align:justify;">
+                    Ovaj zahtev se odnosi na sledeće informacije:
+                </p>
+<p style="font-size:14px; margin-left:40px; text-align:justify;">fdfd</p>
+<p style="font-size:10px;text-align:justify; padding-left:15px; padding-right:15px;">
+                    (navesti što precizniji opis informacije koja se traži kao i druge podatke koji olakšavaju pronalaženje tražene informacije)
+                </p>
+<div style="padding-top:10px">
+<div style="width:40%;float:left">
+<p style="font-size:14px; margin-left:40px; text-align:justify;">
+                        U Novi Sad,
+                    </p>
+<p style="font-size:14px; margin-left:40px; text-align:justify;">
+                        Dana 06.09.2021.
+                    </p>
+</div>
+<div style="width:50%;float:right">
+<p style="font-size:14px; margin-left:40px; text-align:justify;">ll&nbsp;
+                        Vucenovic</p>
+<p style="font-size:14px; margin-left:40px; text-align:justify;">Novi Sad,
+                        ll&nbsp;
+                        39</p>
+<p style="font-size:14px; margin-left:40px; text-align:justify;">39</p>
+<p style="font-size:14px; margin-left:40px; text-align:justify;">
+                        _______________________
+                    </p>
+<p style="font-size:14px; margin-left:40px; text-align:center;">
+                        Potpis
+                    </p>
+</div>
+</div>
+<div style="padding-top:50px">
+<p style="font-size:10px; padding-top:100px; padding-left:15px;">
+                    __________________________________________
+                </p>
+<p style="font-size:10px; padding-left:15px;">
+                    * U kućici označiti koja zakonska prava na pristup informacijama želite da ostvarite.
+                </p>
+<p style="font-size:10px; padding-left:15px;">
+                    ** U kućici označiti način dostavljanja kopije dokumenta.
+                </p>
+<p style="font-size:10px; padding-left:15px;">
+                    *** Kada zahtevate drugi način dostavljanja obavezno upisati koji način dostavljanja zahtevate.
+                </p>
+</div>
+</div>
+</body>
+</html>

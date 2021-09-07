@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -49,6 +50,7 @@ public class ZahtevicirService {
         DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
         XMLGregorianCalendar now = datatypeFactory.newXMLGregorianCalendar(gregorianCalendar);
         Zahtev.DatumPodnosenjaZahteva datum = zahtev.getDatumPodnosenjaZahteva();
+        now.setTimezone(DatatypeConstants.FIELD_UNDEFINED);
         datum.setValue(now);
         zahtev.setDatumPodnosenjaZahteva(datum);
         long sada=(new Date()).getTime();

@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
 		this.authenticationService.login(authXML).subscribe(
 			result => {
-        this.toastr.success('Successful login!');
+        this.toastr.success('Uspešna prijava!');
         //OVAKO DOBIJEM TOKEN
         localStorage.setItem('email',auth.username);
         var convert = require('xml-js');
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
 				this.router.navigate(['']);
 			},
 			error => {
-				this.toastr.error('Unsuccessful login! Check username and password.');
+				this.toastr.error('Neuspešna prijava! Proverite email i šifru.');
 			}
 		);
 	}

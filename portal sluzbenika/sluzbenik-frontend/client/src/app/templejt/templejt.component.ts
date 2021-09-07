@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { TemplejtService } from '../services/templejt.service';
+
+declare var require: any
 
 @Component({
   selector: 'app-templejt',
@@ -10,7 +13,7 @@ import { TemplejtService } from '../services/templejt.service';
 })
 export class TemplejtComponent implements OnInit {
 
-  templejt: "";
+  templejt:SafeHtml;
   temp:string | null;
   sta:string |null;
 
@@ -18,7 +21,8 @@ export class TemplejtComponent implements OnInit {
     private templejtService: TemplejtService,
     private toastr: ToastrService,
     private router: Router,
-    private route:ActivatedRoute) { 
+    private route:ActivatedRoute,
+    private domSanitizer: DomSanitizer) { 
       this.temp=this.route.snapshot.paramMap.get('id');
       this.sta=this.route.snapshot.paramMap.get('sta');
     }
@@ -26,7 +30,12 @@ export class TemplejtComponent implements OnInit {
       if(this.sta==="zahtev"){
         this.templejtService.getZahtevHTML(this.temp).subscribe(
           data=>{
-            this.templejt=data;
+            console.log(data);
+            var convert = require('xml-js');
+            var decodedItem1 =data.split("<body>")[1];
+            var decodedItem2 =decodedItem1.split("</body>")[0];
+            console.log(decodedItem2);
+            this.templejt = this.domSanitizer.bypassSecurityTrustHtml(data);
           },
           error=>{
             console.log(error);
@@ -38,7 +47,7 @@ export class TemplejtComponent implements OnInit {
         this.templejtService.getIzvestajHTML(this.temp).subscribe(
           data=>{
             console.log(data);
-            this.templejt=data;
+            this.templejt = this.domSanitizer.bypassSecurityTrustHtml(data);
           },
           error=>{
             console.log(error);
@@ -49,7 +58,7 @@ export class TemplejtComponent implements OnInit {
       if(this.sta==="resenje"){
         this.templejtService.getResenjeHTML(this.temp).subscribe(
           data=>{
-            this.templejt=data;
+            this.templejt = this.domSanitizer.bypassSecurityTrustHtml(data);
           },
           error=>{
             console.log(error);
@@ -60,7 +69,7 @@ export class TemplejtComponent implements OnInit {
       if(this.sta==="obavestenje"){
         this.templejtService.getObavestenjeHTML(this.temp).subscribe(
           data=>{
-            this.templejt=data;
+            this.templejt = this.domSanitizer.bypassSecurityTrustHtml(data);
           },
           error=>{
             console.log(error);

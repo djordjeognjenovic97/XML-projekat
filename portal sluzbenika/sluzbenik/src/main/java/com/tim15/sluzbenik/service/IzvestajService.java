@@ -73,6 +73,8 @@ public class IzvestajService {
         izvestaj=izbrojZalbe(izvestaj);
 
         String docId = izvestaj.getId().getValue();
+        izvestaj.getId().setProperty("pred:id");
+        izvestaj.getDatum().setProperty("pred:datum");
 
         String text = jaxbParser.marshallString(Izvestaj.class,izvestaj);
 

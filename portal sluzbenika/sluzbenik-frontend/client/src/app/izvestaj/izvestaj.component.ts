@@ -118,12 +118,13 @@ export class IzvestajComponent implements OnInit {
       },
       error=>{
         console.log(error);
-        this.toastr.error("Neuspesno preuzet dokument.Pokusajte ponovo.");
+        this.toastr.error("Neuspešno preuzet dokument.Pokušajte ponovo.");
       }
     );
   }
 	regIn1(){
-    this.izvestajService.getSearchIzvestaji(this.regForm1.value.podatak).subscribe(
+    console.log(this.regForm1.value.datum);
+    this.izvestajService.getSearchIzvestaji(this.regForm1.value.datum).subscribe(
       res => {
         var convert = require('xml-js');
         this.izvestaji=[];

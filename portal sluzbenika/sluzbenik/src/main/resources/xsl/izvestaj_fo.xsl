@@ -20,7 +20,9 @@
                 <fo:flow flow-name="xsl-region-body" font-size="12px"
                           text-align="justify">
                     <fo:block text-align="center" font-size="30px" padding="5px">
-                        Godišnji izveštaj
+                        <xsl:variable name="datum" select="/izv:izvestaj/izv:datum"/>
+                        <xsl:variable name="godina" select="substring($datum,1,4)"/>
+                        Godišnji izveštaj za godinu <xsl:value-of select="$godina"/>.
                     </fo:block>
                     <fo:block text-align="center" font-size="20px" padding="5px">
                         Zahtevi
@@ -128,6 +130,13 @@
                                 </fo:table-row>
                             </fo:table-body>
                         </fo:table>
+                        <fo:block padding-top="20px">
+                            <xsl:variable name="datum" select="/izv:izvestaj/izv:datum"/>
+                            <xsl:variable name="dan" select="substring($datum,9,2)"/>
+                            <xsl:variable name="mesec" select="substring($datum,6,2)"/>
+                            <xsl:variable name="godina" select="substring($datum,1,4)"/>
+                            Datum podnošenja izveštaja:<xsl:value-of select="$dan"/>.<xsl:value-of select="$mesec"/>.<xsl:value-of select="$godina"/>.
+                        </fo:block>
                     </fo:block>
                 </fo:flow>
             </fo:page-sequence>

@@ -61,10 +61,18 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;/complexType>
  *         &lt;/element>
  *         &lt;element name="podnosilac_zahteva" type="{https://github.com/djordjeognjenovic97/XML-projekat/obavestenjecir}TPodnosilac_zahteva"/>
+ *         &lt;element name="datum_zahteva" type="{http://www.w3.org/2001/XMLSchema}date"/>
  *         &lt;element name="naslov" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="uvid" type="{https://github.com/djordjeognjenovic97/XML-projekat/obavestenjecir}tipUvid"/>
  *         &lt;element name="iznos_troskova" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="dostavljeno" type="{https://github.com/djordjeognjenovic97/XML-projekat/obavestenjecir}tipDostavljeno"/>
+ *         &lt;element name="dostavljeno">
+ *           &lt;simpleType>
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *               &lt;enumeration value="imenovanom"/>
+ *               &lt;enumeration value="arhivi"/>
+ *             &lt;/restriction>
+ *           &lt;/simpleType>
+ *         &lt;/element>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -79,6 +87,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
         "brojPredmeta",
         "datum",
         "podnosilacZahteva",
+        "datumZahteva",
         "naslov",
         "uvid",
         "iznosTroskova",
@@ -95,6 +104,9 @@ public class Obavestenje {
     protected Obavestenje.Datum datum;
     @XmlElement(name = "podnosilac_zahteva", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/obavestenjecir", required = true)
     protected TPodnosilacZahteva podnosilacZahteva;
+    @XmlElement(name = "datum_zahteva", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/obavestenjecir", required = true)
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar datumZahteva;
     @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/obavestenjecir", required = true)
     protected String naslov;
     @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/obavestenjecir", required = true)
@@ -102,7 +114,7 @@ public class Obavestenje {
     @XmlElement(name = "iznos_troskova", namespace = "https://github.com/djordjeognjenovic97/XML-projekat/obavestenjecir")
     protected double iznosTroskova;
     @XmlElement(namespace = "https://github.com/djordjeognjenovic97/XML-projekat/obavestenjecir", required = true)
-    protected TipDostavljeno dostavljeno;
+    protected String dostavljeno;
 
     /**
      * Gets the value of the organ property.
@@ -201,6 +213,30 @@ public class Obavestenje {
     }
 
     /**
+     * Gets the value of the datumZahteva property.
+     *
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *
+     */
+    public XMLGregorianCalendar getDatumZahteva() {
+        return datumZahteva;
+    }
+
+    /**
+     * Sets the value of the datumZahteva property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *
+     */
+    public void setDatumZahteva(XMLGregorianCalendar value) {
+        this.datumZahteva = value;
+    }
+
+    /**
      * Gets the value of the naslov property.
      *
      * @return
@@ -269,10 +305,10 @@ public class Obavestenje {
      *
      * @return
      *     possible object is
-     *     {@link TipDostavljeno }
+     *     {@link String }
      *
      */
-    public TipDostavljeno getDostavljeno() {
+    public String getDostavljeno() {
         return dostavljeno;
     }
 
@@ -281,10 +317,10 @@ public class Obavestenje {
      *
      * @param value
      *     allowed object is
-     *     {@link TipDostavljeno }
+     *     {@link String }
      *
      */
-    public void setDostavljeno(TipDostavljeno value) {
+    public void setDostavljeno(String value) {
         this.dostavljeno = value;
     }
 

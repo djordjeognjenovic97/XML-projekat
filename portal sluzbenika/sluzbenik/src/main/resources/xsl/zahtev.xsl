@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
         xmlns:ftn="https://github.com/djordjeognjenovic97/XML-projekat/zahtev"
-        version="2.0">
+        version="3.0">
 
     <xsl:template match="/">
         <html>
@@ -17,7 +18,7 @@
                     <xsl:value-of select="/ftn:zahtev/ftn:organ/ftn:naziv"/>,
                     <xsl:value-of select="/ftn:zahtev/ftn:organ/ftn:sediste"/>
                 </p>
-                <p style="text-align:center;margin: 0%; padding-top:0px;">
+                <p style="text-align:center;margin: 0%;">
                     ...............................................................................................................
                 </p>
                 <p style="font-size:14px; text-align:center;margin: 0%; ">
@@ -29,12 +30,12 @@
                 <h2 style="font-size:16px; text-align:center">
                     za pristup informaciji od javnog značaja
                 </h2>
-                <p style="padding-top:20px;font-size:14px; text-align:justify; padding-left:15px; padding-right:15px;"  >
+                <p style="padding-top:20px;font-size:14px; text-align:justify; padding-left:15px; padding-right:15px; padding-bottom:5px;"  >
                     Na osnovu člana 15. st. 1. Zakona o slobodnom pristupu informacijama od javnog značaja
                     („Službeni glasnik RS“, br. 120/04, 54/07, 104/09 i 36/10), od gore navedenog organa zahtevam:*
                 </p>
-                <p style="font-size:14px; margin-left:40px; text-align:justify;" >
-                    <p style="font-size:14px; margin-left:40px; text-align:justify;" >
+                <p style="font-size:14px;margin:0%; margin-left:40px; text-align:justify;" >
+                    <p style="font-size:14px;margin:0%; margin-left:40px; text-align:justify;" >
                         <xsl:if test="/ftn:zahtev/ftn:sadrzaj/ftn:tipovi_zahteva/ftn:obavestenje_posedovanje">
                             obaveštenje da li poseduje traženu informaciju;
                             <input type="checkbox" checked="true" disabled="true">
@@ -46,7 +47,7 @@
                             </input>
                         </xsl:if>
                     </p>
-                    <p style="font-size:14px; margin-left:40px; text-align:justify;" >
+                    <p style="font-size:14px;margin:0%; margin-left:40px; text-align:justify;" >
                         <xsl:if test="/ftn:zahtev/ftn:sadrzaj/ftn:tipovi_zahteva/ftn:uvid_dokument">
                             uvid u dokument koji sadrži traženu informaciju;
                             <input type="checkbox" checked="true" disabled="true">
@@ -58,7 +59,7 @@
                             </input>
                         </xsl:if>
                     </p>
-                    <p style="font-size:14px; margin-left:40px; text-align:justify;" >
+                    <p style="font-size:14px;margin:0%; margin-left:40px; text-align:justify;" >
                         <xsl:if test="/ftn:zahtev/ftn:sadrzaj/ftn:tipovi_zahteva/ftn:kopija_dokument">
                             kopiju dokumenta koji sadrži traženu informaciju;
                             <input type="checkbox" checked="true" disabled="true">
@@ -70,7 +71,7 @@
                             </input>
                         </xsl:if>
                     </p>
-                    <p style="font-size:14px; margin-left:40px; text-align:justify;" >
+                    <p style="font-size:14px;margin:0%; margin-left:40px; text-align:justify;" >
                         <xsl:if test="/ftn:zahtev/ftn:sadrzaj/ftn:tipovi_zahteva/ftn:dostavljanje_kopije">
                             dostavljanje kopije dokumenta koji sadrži traženu informaciju:**
                             <input type="checkbox" checked="true" disabled="true">
@@ -82,8 +83,8 @@
                             </input>
                         </xsl:if>
                     </p>
-                    <p style="font-size:14px; margin-left:80px; text-align:justify;" >
-                        <p style="font-size:14px; margin-left:80px; text-align:justify;" >
+                    <p style="font-size:14px; margin:0%;margin-left:80px; text-align:justify;" >
+                        <p style="font-size:14px; margin:0%;margin-left:80px; text-align:justify;" >
                             <xsl:if test="/ftn:zahtev/ftn:sadrzaj/ftn:tipovi_zahteva/ftn:dostavljanje_kopije/ftn:posta">
                                 poštom
                                 <input type="checkbox" checked="true" disabled="true">
@@ -95,7 +96,7 @@
                                 </input>
                             </xsl:if>
                         </p>
-                        <p style="font-size:14px; margin-left:80px; text-align:justify;" >
+                        <p style="font-size:14px; margin:0%;margin-left:80px; text-align:justify;" >
                             <xsl:if test="/ftn:zahtev/ftn:sadrzaj/ftn:tipovi_zahteva/ftn:dostavljanje_kopije/ftn:elektronska_posta">
                                 elektronskom poštom
                                 <input type="checkbox" checked="true" disabled="true">
@@ -107,7 +108,7 @@
                                 </input>
                             </xsl:if>
                         </p>
-                        <p style="font-size:14px; margin-left:80px; text-align:justify;" >
+                        <p style="font-size:14px; margin:0%;margin-left:80px; text-align:justify;" >
                             <xsl:if test="/ftn:zahtev/ftn:sadrzaj/ftn:tipovi_zahteva/ftn:dostavljanje_kopije/ftn:faks">
                                 faksom
                                 <input type="checkbox" checked="true" disabled="true">
@@ -119,7 +120,7 @@
                                 </input>
                             </xsl:if>
                         </p>
-                        <p style="font-size:14px; margin-left:80px; text-align:justify;" >
+                        <p style="font-size:14px; margin:0%;margin-left:80px; text-align:justify;" >
                             <xsl:if test="/ftn:zahtev/ftn:sadrzaj/ftn:tipovi_zahteva/ftn:dostavljanje_kopije/ftn:drugi_nacin">
                                 na drugi način:***
                                 <input type="checkbox" checked="true" disabled="true">
@@ -140,7 +141,7 @@
                 <p style="font-size:14px; margin-left:40px; text-align:justify;" >
                     <xsl:value-of select="/ftn:zahtev/ftn:sadrzaj/ftn:opis_informacije"/>
                 </p>
-                <p style="font-size:10px;text-align:justify; padding-left:15px; padding-right:15px;" >
+                <p style="font-size:10px;text-align:justify; padding-left:15px; padding-right:15px; margin:0%;" >
                     (navesti što precizniji opis informacije koja se traži kao i druge podatke koji olakšavaju pronalaženje tražene informacije)
                 </p>
                 <div style="padding-top:10px">
@@ -149,7 +150,11 @@
                         U <xsl:value-of select="/ftn:zahtev/ftn:mesto_podnosenja_zahteva"/>,
                     </p>
                     <p style="font-size:14px; margin-left:40px; text-align:justify;">
-                        Dana <xsl:value-of select="/ftn:zahtev/ftn:datum_podnosenja_zahteva"/>
+                        <xsl:variable name="datum" select="/ftn:zahtev/ftn:datum_podnosenja_zahteva"/>
+                        <xsl:variable name="dan" select="substring($datum,9,2)"/>
+                        <xsl:variable name="mesec" select="substring($datum,6,2)"/>
+                        <xsl:variable name="godina" select="substring($datum,1,4)"/>
+                        Dana <xsl:value-of select="$dan"/>.<xsl:value-of select="$mesec"/>.<xsl:value-of select="$godina"/>.
                     </p>
                 </div>
                 <div style="width:50%;float:right">
@@ -168,22 +173,22 @@
                     <p style="font-size:14px; margin-left:40px; text-align:justify;">
                         _______________________
                     </p>
-                    <p style="font-size:14px; margin-left:40px; text-align:center;">
+                    <p style="font-size:14px; margin-left:40px; text-align:justify;">
                         Potpis
                     </p>
                 </div>
                 </div>
                 <div style="padding-top:50px">
-                <p style="font-size:10px; padding-top:100px; padding-left:15px;" >
+                <p style="font-size:10px; padding-top:100px; padding-left:15px; margin:0%;" >
                     __________________________________________
                 </p>
-                <p style="font-size:10px; padding-left:15px;" >
+                <p style="font-size:10px; padding-left:15px;margin:0%;" >
                     * U kućici označiti koja zakonska prava na pristup informacijama želite da ostvarite.
                 </p>
-                <p style="font-size:10px; padding-left:15px;" >
+                <p style="font-size:10px; padding-left:15px; margin:0%;" >
                     ** U kućici označiti način dostavljanja kopije dokumenta.
                 </p>
-                <p style="font-size:10px; padding-left:15px;" >
+                <p style="font-size:10px; padding-left:15px; margin:0%;" >
                     *** Kada zahtevate drugi način dostavljanja obavezno upisati koji način dostavljanja zahtevate.
                 </p>
                 </div>

@@ -4,7 +4,7 @@
 <style type="text/css"></style>
 </head>
 <body>
-<div style="width:40%; margin:0 auto; border: 2px solid black;">
+<div style="width:45%; margin:0 auto; border: 2px solid black;">
 <div style="padding-left:15px;">
 <p style="font-size:14px; margin: 0%">
 <u>Sud</u>
@@ -19,7 +19,7 @@
                         Broj predmeta:<u>1630850034097</u>
 </p>
 <p style="font-size:14px; margin: 0%">
-                        Datum: <u>2021-09-05+02:00</u>
+                        Datum: <u>05.09.2021.</u>
 </p>
 <p style="font-size:14px; padding-top:15px;  margin: 0%">
 <u>Nemanja&nbsp;
@@ -40,8 +40,8 @@
 <h2 style="font-size:16px; text-align:center">Sudjenje</h2>
 <p style="padding-top:20px;font-size:14px; text-align:justify; padding-left:15px; padding-right:15px;">
                         Na osnovu člana 16. st. 1. Zakona o slobodnom pristupu informacijama od javnog značaja
-                        postupajući po vašem zahtevu za slobodan pristup informacijama od
-                        2020-02-02 god., kojim
+                        postupajući po vašem <a href="http://localhost:4200/prikaz/zahtev/1630850034097">zahtevu</a> za slobodan pristup informacijama od
+                        05.09.2021. god., kojim
                         ste tražili uvid u dokument/e sa informacijama o / u vezi sa:
                     </p>
 <p style="font-size:14px; padding-left:15px; text-align:justify;">
@@ -51,10 +51,13 @@
                         (opis tražene informacije)
                     </p>
 <p style="padding-top:20px;font-size:14px; text-align:justify; padding-left:15px; padding-right:15px;">
-                        obaveštavamo vas da dana 2020-02-02
+                        obaveštavamo vas da dana
+                        05.09.2021.
                         , u 5 časova,
-                        odnosno u vremenu od 
-                        do  časova,
+                        odnosno u vremenu od
+                        
+                        do
+                         časova,
                         u prostorijama organa u Novi Sad
                         ul. Bul cara Lazara
                         br. 34,
@@ -98,7 +101,7 @@
                             </p>
 </div>
 </div>
-<p style="padding-top:80px;font-size:14px; text-align:justify; padding-left:15px; padding-right:15px;"></p>
+<p style="padding-top:100px;font-size:14px; text-align:justify; padding-left:15px; padding-right:15px;"></p>
 </div>
 </body>
 </html>

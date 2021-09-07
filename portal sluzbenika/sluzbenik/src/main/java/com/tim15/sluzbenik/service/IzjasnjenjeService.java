@@ -34,6 +34,9 @@ public class IzjasnjenjeService {
     }
 
     public void sacuvajIzjasnjenje(Izjasnjenje izjasnjenje) throws Exception {
+        if(izjasnjenje.getSadrzaj().equalsIgnoreCase("obustavljeno")){
+            izjasnjenje.setId("");
+        }
         String text = jaxbParser.marshallString(Izjasnjenje.class,izjasnjenje);
         String docId= izjasnjenje.getId();
         izjasnjenjeRepository.saveIzjasnjenjeFromText(text, docId);

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/zahtevi", produces = MediaType.APPLICATION_XML_VALUE)
+@RequestMapping(value = "api/zahtevi", produces={"application/xml; charset=UTF-8"})
 public class ZahtevicirController {
     @Autowired
     private ZahtevicirService zahtevicirService;

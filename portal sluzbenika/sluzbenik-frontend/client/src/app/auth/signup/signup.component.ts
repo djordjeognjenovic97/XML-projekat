@@ -54,12 +54,12 @@ export class SignupComponent implements OnInit {
       var authXML = convert.js2xml(auth, {compact: true, ignoreComment: true});
       this.authService.registerUser(authXML).subscribe(
         data=>{
-          this.toastr.success('Successful registration. You can now log in.');
+          this.toastr.success('Uspešna registracija. Sada se možete prijaviti.');
           this.regForm.reset();
           this.router.navigate(['/login']);
         },
         error=>{
-          this.toastr.error("Unsuccessful registration. Email/Username is already in use.");
+          this.toastr.error("Neuspešna registracija. Email je već u upotrebi.");
         }
       )
     }

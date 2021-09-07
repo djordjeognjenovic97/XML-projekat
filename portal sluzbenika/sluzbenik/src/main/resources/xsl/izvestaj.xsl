@@ -19,9 +19,13 @@
             </head>
 
             <body>
-                <h1 style="text-align:center">Godišnji izveštaj</h1>
+                <xsl:variable name="datum" select="/izv:izvestaj/izv:datum"/>
+                <xsl:variable name="dan" select="substring($datum,9,2)"/>
+                <xsl:variable name="mesec" select="substring($datum,6,2)"/>
+                <xsl:variable name="godina" select="substring($datum,1,4)"/>
+                <h1 style="text-align:center">Godišnji izveštaj za godinu <xsl:value-of select="$godina"/>.</h1>
                 <h2 style="text-align:center">Zahtevi</h2>
-                <table style="text-align:center; border: 1px solid black;">
+                <table style="text-align:center; border: 1px solid black; width:60%;margin-left: auto;margin-right: auto;">
                     <tr>
                         <th>Ukupan broj podnetih</th>
                         <th>Usvojeni</th>
@@ -45,7 +49,7 @@
                     </tr>
                 </table>
                 <h2 style="text-align:center">Žalbe</h2>
-                <table style="text-align:center">
+                <table style="text-align:center; width:60%;margin-left: auto;margin-right: auto;" >
                     <tr>
                         <th>Ukupan broj izjavljenih</th>
                         <th>Nije postupio</th>
@@ -72,9 +76,9 @@
                         </td>
                     </tr>
                 </table>
-<!--                <p>Датум подношења извештаја:-->
-<!--                    <xsl:value-of select="/izv:izvestaj/izv:datum" />-->
-<!--                </p>-->
+                <p style="padding-top:15px; margin-left:20%;">Datum podnošenja izveštaja:
+                    <xsl:value-of select="$dan"/>.<xsl:value-of select="$mesec"/>.<xsl:value-of select="$godina"/>.
+                </p>
             </body>
         </html>
     </xsl:template>

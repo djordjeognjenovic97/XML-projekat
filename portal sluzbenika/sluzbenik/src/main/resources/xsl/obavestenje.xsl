@@ -3,7 +3,6 @@
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         xmlns:oba="https://github.com/djordjeognjenovic97/XML-projekat/obavestenjecir"
         version="2.0">
-
     <xsl:template match="/">
         <html>
             <head>
@@ -12,7 +11,7 @@
                 </style>
             </head>
             <body>
-                <div style="width:40%; margin:0 auto; border: 2px solid black;">
+                <div style="width:45%; margin:0 auto; border: 2px solid black;">
                     <div style="padding-left:15px;">
                     <p style="font-size:14px; margin: 0%">
                         <u><xsl:value-of select="/oba:obavestenje/oba:organ/oba:naziv_organa"/></u>
@@ -27,7 +26,11 @@
                         Broj predmeta:<u><xsl:value-of select="/oba:obavestenje/oba:broj_predmeta"/></u>
                     </p>
                     <p style="font-size:14px; margin: 0%">
-                        Datum: <u><xsl:value-of select="/oba:obavestenje/oba:datum"/></u>
+                        <xsl:variable name="datum" select="/oba:obavestenje/oba:datum"/>
+                        <xsl:variable name="dan" select="substring($datum,9,2)"/>
+                        <xsl:variable name="mesec" select="substring($datum,6,2)"/>
+                        <xsl:variable name="godina" select="substring($datum,1,4)"/>
+                        Datum: <u><xsl:value-of select="$dan"/>.<xsl:value-of select="$mesec"/>.<xsl:value-of select="$godina"/>.</u>
                     </p>
                     <p style="font-size:14px; padding-top:15px;  margin: 0%">
                         <u><xsl:value-of select="/oba:obavestenje/oba:podnosilac_zahteva/oba:ime"/>&#160;
@@ -49,9 +52,14 @@
                         <xsl:value-of select="/oba:obavestenje/oba:naslov"/>
                     </h2>
                     <p style="padding-top:20px;font-size:14px; text-align:justify; padding-left:15px; padding-right:15px;"  >
+                        <xsl:variable name="id" select="/oba:obavestenje/oba:broj_predmeta"/>
                         Na osnovu člana 16. st. 1. Zakona o slobodnom pristupu informacijama od javnog značaja
-                        postupajući po vašem zahtevu za slobodan pristup informacijama od
-                        <xsl:value-of select="/oba:obavestenje/oba:uvid/oba:datum_uvida"/> god., kojim
+                        postupajući po vašem <a href="http://localhost:4200/prikaz/zahtev/{$id}">zahtevu</a> za slobodan pristup informacijama od
+                        <xsl:variable name="datum" select="/oba:obavestenje/oba:datum_zahteva"/>
+                        <xsl:variable name="dan" select="substring($datum,9,2)"/>
+                        <xsl:variable name="mesec" select="substring($datum,6,2)"/>
+                        <xsl:variable name="godina" select="substring($datum,1,4)"/>
+                        <xsl:value-of select="$dan"/>.<xsl:value-of select="$mesec"/>.<xsl:value-of select="$godina"/>. god., kojim
                         ste tražili uvid u dokument/e sa informacijama o / u vezi sa:
                     </p>
                     <p style="font-size:14px; padding-left:15px; text-align:justify;" >
@@ -61,10 +69,21 @@
                         (opis tražene informacije)
                     </p>
                     <p style="padding-top:20px;font-size:14px; text-align:justify; padding-left:15px; padding-right:15px;"  >
-                        obaveštavamo vas da dana <xsl:value-of select="/oba:obavestenje/oba:uvid/oba:datum_uvida"/>
+                        obaveštavamo vas da dana
+                        <xsl:variable name="datum" select="/oba:obavestenje/oba:datum"/>
+                        <xsl:variable name="dan" select="substring($datum,9,2)"/>
+                        <xsl:variable name="mesec" select="substring($datum,6,2)"/>
+                        <xsl:variable name="godina" select="substring($datum,1,4)"/>
+                        <xsl:value-of select="$dan"/>.<xsl:value-of select="$mesec"/>.<xsl:value-of select="$godina"/>.
                         , u <xsl:value-of select="/oba:obavestenje/oba:uvid/oba:broj_sati"/> časova,
-                        odnosno u vremenu od <xsl:value-of select="/oba:obavestenje/oba:uvid/oba:pocetak_akcije"/>
-                        do <xsl:value-of select="/oba:obavestenje/oba:uvid/oba:kraj_akcije"/> časova,
+                        odnosno u vremenu od
+                        <xsl:variable name="pasati" select="/oba:obavestenje/oba:uvid/oba:pocetak_akcije"/>
+                        <xsl:variable name="pa" select="substring($pasati,1,5)"/>
+                        <xsl:value-of select="$pa"/>
+                        do
+                        <xsl:variable name="kasati" select="/oba:obavestenje/oba:uvid/oba:kraj_akcije"/>
+                        <xsl:variable name="ka" select="substring($kasati,1,5)"/>
+                        <xsl:value-of select="$ka"/> časova,
                         u prostorijama organa u <xsl:value-of select="/oba:obavestenje/oba:uvid/oba:adresa/oba:mesto"/>
                         ul. <xsl:value-of select="/oba:obavestenje/oba:uvid/oba:adresa/oba:ulica"/>
                         br. <xsl:value-of select="/oba:obavestenje/oba:uvid/oba:adresa/oba:br_ulice"/>,
@@ -94,18 +113,18 @@
                                 Dostavljeno
                             </p>
                             <p style="font-size:14px; margin-left:40px; text-align:justify;">
-                                <xsl:if test="/oba:obavestenje/oba:dostavljeno/oba:opcija_dostave/oba:naziv='imenovanom'">
+                                <xsl:if test="/oba:obavestenje/oba:dostavljeno='imenovanom'">
                                     <u>1.   Imenovanom</u>  (M.P)
                                 </xsl:if>
-                                <xsl:if test="not(/oba:obavestenje/oba:dostavljeno/oba:opcija_dostave/oba:naziv='imenovanom')">
+                                <xsl:if test="not(/oba:obavestenje/oba:dostavljeno='imenovanom')">
                                     1.   Imenovanom      (M.P)
                                 </xsl:if>
                             </p>
                             <p style="font-size:14px; margin-left:40px; text-align:justify;">
-                                <xsl:if test="/oba:obavestenje/oba:dostavljeno/oba:opcija_dostave/oba:naziv='arhivi'">
+                                <xsl:if test="/oba:obavestenje/oba:dostavljeno='arhivi'">
                                     <u>2.   Arhivi</u>
                                 </xsl:if>
-                                <xsl:if test="not(/oba:obavestenje/oba:dostavljeno/oba:opcija_dostave/oba:naziv='arhivi')">
+                                <xsl:if test="not(/oba:obavestenje/oba:dostavljeno='arhivi')">
                                     2.   Arhivi
                                 </xsl:if>
                             </p>
@@ -119,7 +138,7 @@
                             </p>
                         </div>
                     </div>
-                    <p style="padding-top:80px;font-size:14px; text-align:justify; padding-left:15px; padding-right:15px;"  >
+                    <p style="padding-top:100px;font-size:14px; text-align:justify; padding-left:15px; padding-right:15px;"  >
                     </p>
                 </div>
             </body>

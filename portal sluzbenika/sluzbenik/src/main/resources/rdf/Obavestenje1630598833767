@@ -1,0 +1,17 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:h="http://www.w3.org/1999/xhtml">
+<rdf:Description rdf:about="">
+<pred:naziv_organa xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">dssd</pred:naziv_organa>
+</rdf:Description>
+<rdf:Description rdf:about="">
+<pred:broj_predmeta xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">1630598833767</pred:broj_predmeta>
+</rdf:Description>
+<rdf:Description rdf:about="">
+<pred:datum xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">2021-09-06+02:00</pred:datum>
+</rdf:Description>
+<rdf:Description rdf:about="">
+<pred:ime xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">fdfd</pred:ime>
+</rdf:Description>
+<rdf:Description rdf:about="">
+<pred:prezime xmlns:pred="http://www.ftn.uns.ac.rs/rdf/examples/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">fd</pred:prezime>
+</rdf:Description>
+</rdf:RDF>

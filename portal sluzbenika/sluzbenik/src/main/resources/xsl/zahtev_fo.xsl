@@ -113,10 +113,8 @@
                                     </xsl:if>
                                     <xsl:if test="/ftn:zahtev/ftn:sadrzaj/ftn:tipovi_zahteva/ftn:dostavljanje_kopije/ftn:drugi_nacin">
                                         <fo:block font-size="12px" text-decoration="underline">
-                                            na drugi način:***
+                                            na drugi način:***  <xsl:value-of select="/ftn:zahtev/ftn:sadrzaj/ftn:tipovi_zahteva/ftn:dostavljanje_kopije/ftn:drugi_nacin"/>
                                         </fo:block>
-
-                                        <xsl:value-of select="/ftn:zahtev/ftn:sadrzaj/ftn:tipovi_zahteva/ftn:dostavljanje_kopije/ftn:drugi_nacin"/>
                                     </xsl:if>
                                     <xsl:if test="not(/ftn:zahtev/ftn:sadrzaj/ftn:tipovi_zahteva/ftn:dostavljanje_kopije/ftn:drugi_nacin)">
                                         <fo:block font-size="12px">
@@ -140,7 +138,11 @@
                                     U <xsl:value-of select="/ftn:zahtev/ftn:mesto_podnosenja_zahteva"/>,
                                 </fo:block>
                                 <fo:block font-size="12px" padding-top="15px">
-                                    Dana <xsl:value-of select="/ftn:zahtev/ftn:datum_podnosenja_zahteva"/>
+                                    <xsl:variable name="datum" select="/ftn:zahtev/ftn:datum_podnosenja_zahteva"/>
+                                    <xsl:variable name="dan" select="substring($datum,9,2)"/>
+                                    <xsl:variable name="mesec" select="substring($datum,6,2)"/>
+                                    <xsl:variable name="godina" select="substring($datum,1,4)"/>
+                                    Dana <xsl:value-of select="$dan"/>.<xsl:value-of select="$mesec"/>.<xsl:value-of select="$godina"/>.
                                 </fo:block>
                             </fo:inline-container>
                             <fo:inline-container inline-progression-dimension="50%" text-align="center">

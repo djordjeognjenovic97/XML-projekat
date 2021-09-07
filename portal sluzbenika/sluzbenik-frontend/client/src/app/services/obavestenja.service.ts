@@ -79,6 +79,11 @@ export class ObavestenjaService {
 			"naziv_organa": {
 				displayName: "naziv_organa",
 				hasText: true,
+				attributes: {
+					"property": {
+						isInvisible: true,
+					},
+				},
 				validate: function (jsElement) {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
@@ -96,7 +101,7 @@ export class ObavestenjaService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti sediste organa."
+						text: "Morate uneti sedište organa."
 					  });
 					}
 				},
@@ -109,7 +114,7 @@ export class ObavestenjaService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti naslov."
+						text: "Morate uneti naslov obaveštenja/dokumenta ."
 					  });
 					}
 				},
@@ -118,6 +123,19 @@ export class ObavestenjaService {
 			"opis_trazene_informacije": {
 				displayName: "opis_trazene_informacije",
 				hasText: true,
+				asker: Xonomy.askString
+			},
+			"datum_zahteva": {
+				displayName: "datum_zahteva",
+				hasText: true,
+				validate: function (jsElement) {
+					if (jsElement.getText()===""){
+					  Xonomy.warnings.push({
+						htmlID: jsElement.htmlID,
+						text: "Morate uneti datum zahteva u formatu YYYY-MM-DD"
+					  });
+					}
+				},
 				asker: Xonomy.askString
 			},
 			"datum_uvida": {
@@ -140,7 +158,7 @@ export class ObavestenjaService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti broj sati koliko ce trajati mogucnost uvida."
+						text: "Morate uneti tačan broj sati u koliko ce se odrzati uvid."
 					  });
 					}
 				},
@@ -153,7 +171,7 @@ export class ObavestenjaService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti pocetak uvida u formatu HH:MM"
+						text: "Morate uneti početak uvida u formatu hh:mm:ss.sss"
 					  });
 					}
 				},
@@ -166,7 +184,7 @@ export class ObavestenjaService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti kraj_akcije uvida u formatu HH:MM"
+						text: "Morate uneti kraj uvida u formatu hh:mm:ss.sss"
 					  });
 					}
 				},
@@ -187,6 +205,11 @@ export class ObavestenjaService {
 			},
 			"ime": {
 				displayName: "ime",
+				attributes: {
+					"property": {
+						isInvisible: true,
+					},
+				},
 				hasText: true,
 				validate: function (jsElement) {
 					if (jsElement.getText()===""){
@@ -200,6 +223,11 @@ export class ObavestenjaService {
 			},
 			"prezime": {
 				displayName: "prezime",
+				attributes: {
+					"property": {
+						isInvisible: true,
+					},
+				},
 				hasText: true,
 				validate: function (jsElement) {
 					if (jsElement.getText()===""){
@@ -210,6 +238,9 @@ export class ObavestenjaService {
 					}
 				},
 				asker: Xonomy.askString
+			},
+			"broj_predmeta":{
+				isInvisible: true
 			},
 			"mesto": {
 				displayName: "mesto",
@@ -250,27 +281,14 @@ export class ObavestenjaService {
 				},
 				asker: Xonomy.askString
 			},
-			"izabrano": {
-				displayName: "izabrano",
+			"dostavljeno": {
+				displayName: "dostavljeno",
 				hasText: true,
 				validate: function (jsElement) {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti da/ne ako zelite/ ne zelite dostavu."
-					  });
-					}
-				},
-				asker: Xonomy.askString
-			},
-			"naziv": {
-				displayName: "naziv",
-				hasText: true,
-				validate: function (jsElement) {
-					if (jsElement.getText()===""){
-					  Xonomy.warnings.push({
-						htmlID: jsElement.htmlID,
-						text: "Morate uneti kako ce te dostavu obaviti."
+						text: "Morate uneti tip: 'imenovanom' ili 'arhivi'."
 					  });
 					}
 				},
@@ -283,7 +301,7 @@ export class ObavestenjaService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti koliko ce iznositi troskovi."
+						text: "Morate uneti koliko će iznositi troškovi pristupa traženim informacijama."
 					  });
 					}
 				},

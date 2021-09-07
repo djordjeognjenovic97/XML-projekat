@@ -34,4 +34,11 @@ public class IzjasnjenjeController {
         IzjasnjenjeDTO izjasnjenjeDTO=izjasnjenjeService.pogledajIzjasnjenje(id);
         return new ResponseEntity<IzjasnjenjeDTO>(izjasnjenjeDTO,HttpStatus.OK);
     }
+    @PreAuthorize("hasRole('ROLE_GRADJANIN')")
+    @GetMapping(value = "/obustaviZalbu/{id}",consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<?> obustaviZalbu(@PathVariable String id) throws Exception {
+        //promjeniti status zalbe i poslati preko soap zahtev za izjasnjnjem
+        izjasnjenjeService.obustaviZalbu(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

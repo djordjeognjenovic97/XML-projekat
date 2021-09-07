@@ -78,12 +78,17 @@ export class ZahtevService {
 			},
 			"naziv": {
 				displayName: "naziv",
+				attributes: {
+				"property": {
+					isInvisible: true,
+				  },
+				},
 				hasText: true,
 				validate: function (jsElement) {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti naziv."
+						text: "Morate uneti naziv organa."
 					  });
 					}
 				},
@@ -96,7 +101,7 @@ export class ZahtevService {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti sediste organa."
+						text: "Morate uneti sedište organa."
 					  });
 					}
 				},
@@ -115,7 +120,7 @@ export class ZahtevService {
 				title: 'Kliknite da dodate zahtev',
 				menu: [
 				{
-				  caption: 'obavestenje da li poseduje trazenu informaciju',
+				  caption: 'obaveštenje da li poseduje traženu informaciju',
 				  action: Xonomy.newElementChild,
 				  actionParameter: '<obavestenje_posedovanje></obavestenje_posedovanje>',
 				  hideIf: function (jsElement) {
@@ -123,7 +128,7 @@ export class ZahtevService {
 				  }
 				},
 				{
-				  caption: 'uvid u dokument koji sadrzi trazenu informaciju',
+				  caption: 'uvid u dokument koji sadrži traženu informaciju',
 				  action: Xonomy.newElementChild,
 				  actionParameter: '<uvid_dokument></uvid_dokument>',
 				  hideIf: function (jsElement) {
@@ -131,7 +136,7 @@ export class ZahtevService {
 				  }
 				},
 				{
-				  caption: 'kopiju dokumenta koji sadrzi trazenu informaciju',
+				  caption: 'kopiju dokumenta koji sadrži traženu informaciju',
 				  action: Xonomy.newElementChild,
 				  actionParameter: '<kopija_dokument></kopija_dokument>',
 				  hideIf: function (jsElement) {
@@ -139,7 +144,7 @@ export class ZahtevService {
 				  }
 				},
 				{
-				  caption: 'dostavljanje kopije dokumenta koji sadrzi trazenu informaciju',
+				  caption: 'dostavljanje kopije dokumenta koji sadrži traženu informaciju',
 				  action: Xonomy.newElementChild,
 				  actionParameter: '<dostavljanje_kopije></dostavljanje_kopije>',
 				  hideIf: function (jsElement) {
@@ -153,16 +158,16 @@ export class ZahtevService {
 				  if (jsElement.children.length == 0) {
 					Xonomy.warnings.push({
 					  htmlID: jsElement.htmlID,
-					  text: "Morate dodati nacin dostavljanja kopije"
+					  text: "Morate dodati način dostavljanja kopije"
 					}
 					);
 				  }
 				},
-				title: 'Kliknite da biste dodali nacin dostavljanja kopije',
+				title: 'Kliknite da biste dodali način dostavljanja kopije',
 				hasText: false,
 				menu: [
 				  {
-					caption: 'Dostava postom',
+					caption: 'Dostava poštom',
 					action: Xonomy.newElementChild,
 					actionParameter: '<posta></posta>',
 					hideIf: function (jsElement) { 
@@ -171,7 +176,7 @@ export class ZahtevService {
 					}
 				  },
 				  {
-					caption: 'Dostava elektronskom postom',
+					caption: 'Dostava elektronskom poštom',
 					action: Xonomy.newElementChild,
 					actionParameter: '<elektronska_posta></elektronska_posta>',
 					hideIf: function (jsElement) {
@@ -189,7 +194,7 @@ export class ZahtevService {
 					}
 				  },
 				  {
-					caption: 'Na drugi nacin',
+					caption: 'Na drugi način',
 					action: Xonomy.newElementChild,
 					actionParameter: '<drugi_nacin></drugi_nacin>',
 					hideIf: function (jsElement) {
@@ -199,14 +204,14 @@ export class ZahtevService {
 				  }
 				]
 			},
-			"drugi_nacin": {
-				displayName: "drugi_nacin",
+			"drugi_način": {
+				displayName: "drugi_način",
 				hasText: true,
 				validate: function (jsElement) {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate dodati drugi nacin dostave."
+						text: "Morate dodati drugi način dostave."
 					  });
 					}
 				},
@@ -265,15 +270,28 @@ export class ZahtevService {
 			"mesto_podnosenja_zahteva": {
 				displayName: "mesto_podnosenja_zahteva",
 				hasText: true,
+				attributes: {
+					"property": {
+						isInvisible: true,
+					},
+				},
 				validate: function (jsElement) {
 					if (jsElement.getText()===""){
 					  Xonomy.warnings.push({
 						htmlID: jsElement.htmlID,
-						text: "Morate uneti mesto podnosenja zahteva."
+						text: "Morate uneti mesto podnošenja zahteva."
 					  });
 					}
 				},
 				asker: Xonomy.askString
+			},
+			"trazilac_informacije": {
+				displayName: "trazilac_informacije",
+				attributes: {
+					"email": {
+						isInvisible: true,
+					},
+				}
 			},
 			"ulica": {
 				displayName: "ulica",

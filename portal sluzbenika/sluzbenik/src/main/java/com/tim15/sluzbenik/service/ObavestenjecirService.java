@@ -42,6 +42,9 @@ public class ObavestenjecirService {
     private ZahtevicirRepository zahtevicirRepository;
 
     @Autowired
+    private IzjasnjenjeService izjasnjenjeService;
+
+    @Autowired
     private XSLTransformer xslTransformer;
 
     private final String obavestenjeXSLPath = "src/main/resources/xsl/obavestenjecir.xsl";
@@ -78,14 +81,15 @@ public class ObavestenjecirService {
 
         String docId = obavestenje.getBrojPredmeta().getValue();
 
-//        //SLANJE OBAVESTENJA GRADJANINU NA MAIL
-//        posaljiObavestenjeMailom(obavestenje,docId,z.getTrazilacInformacije().getEmail());
-
         text = jaxbParser.marshallString(Obavestenje.class,obavestenje);
 
         obavestenjecirRepository.saveObavestenjeFromText(text, docId);
         metadataExtractor.extractMetadata(text,new FileOutputStream(new File("src/main/resources/rdf/Obavestenje"+docId)));
         FusekiWriterExample.saveRDF("Obavestenje"+docId,"/obavestenja");
+
+        //SLANJE OBAVESTENJA GRADJANINU NA MAIL
+        posaljiObavestenjeMailom(obavestenje,docId,z.getTrazilacInformacije().getEmail());
+        izjasnjenjeService.izjasniSe("obustavljeno",docId);
     }
 
     public void addObavestenjeFromFile(String path) throws Exception {
@@ -168,7 +172,7 @@ public class ObavestenjecirService {
         return obavestenja;
     }
 
-    private void posaljiObavestenjeMailom(Obavestenje o,String id,String to) throws SOAPException {
+    private void posaljiObavestenjeMailom(Obavestenje o,String id,String to) throws Exception {
 
         //TREBA UBACITI OBAVESTENJE U MAIL ATTACHMENT KAO PDF I  HTML
 
@@ -185,17 +189,22 @@ public class ObavestenjecirService {
         SOAPBody soapBody = envelope.getBody();
         envelope.addNamespaceDeclaration("es", "http://email");
         SOAPElement pismoElem = soapBody.addChildElement("email", "es");
-        pismoElem.setAttribute("attachmentType", "");
+        pismoElem.setAttribute("attachmentType", "PDF");
         SOAPElement primalacElem = pismoElem.addChildElement("to", "es");
         primalacElem.addTextNode(to);
         SOAPElement naslovElem = pismoElem.addChildElement("subject", "es");
         naslovElem.addTextNode("Usvajanje zahteva");
         SOAPElement sadrzajElem = pismoElem.addChildElement("content", "es");
-        sadrzajElem.addTextNode("Vas zahtev sa ID brojem:"+id+" je usvojen.");
-
+        String sadr= "Vas zahtev sa ID brojem:"+id+" je usvojen. Obavestenje za dati zahtev" +
+                "mozete pogledati na preko linka: http://localhost:4200/prikaz/obavestenje/"+id;
+        sadrzajElem.addTextNode(sadr);
         SOAPElement prilogElem = pismoElem.addChildElement("attachment", "es");
         //OVDE UBACITI NEKAKO
-        prilogElem.addTextNode("");
+        skiniPDF(id);
+        String fileName = "src/main/resources/pdf/Obavestenje"+id;
+        Path filePath = Paths.get(fileName);
+        byte[] data = Files.readAllBytes(filePath);
+        prilogElem.addTextNode(Base64.getEncoder().encodeToString(data));
 
         soapMessage.saveChanges();
         SOAPMessage soapResponse = soapConnection.call(soapMessage, soapEndpointUrl);

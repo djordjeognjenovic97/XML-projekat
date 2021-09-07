@@ -77,7 +77,7 @@ public class IzvestajRepository {
     public Izvestaj findRealIzvestajById(String id) throws Exception {
         XMLResource xmlResource = existManager.load(collectionId, id);
         JaxbParser jaxbParser = new JaxbParser();
-        Izvestaj i = (Izvestaj) jaxbParser.unmarshallXMLResource(Zahtev.class,xmlResource);
+        Izvestaj i = (Izvestaj) jaxbParser.unmarshallXMLResource(Izvestaj.class,xmlResource);
         return i;
     }
 }

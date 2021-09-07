@@ -52,10 +52,10 @@ public class IzjasnjenjeService {
             String text = jaxbParser.marshallString(Zalbaodluka.class,zalbaodluka);
             zalbanaodlukuRepository.saveZalbanaodlukucirFromText(text, id);
         }
-        posaljiUpitzaIzjasnjenjem(id);
+        posaljiUpitzaIzjasnjenjem(id,"");
     }
 
-    private void posaljiUpitzaIzjasnjenjem(String id) throws SOAPException {
+    private void posaljiUpitzaIzjasnjenjem(String id,String sadrzaj) throws SOAPException {
         String soapEndpointUrl = "http://localhost:8080/ws/izjasnjenje";
 
         SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
@@ -75,7 +75,7 @@ public class IzjasnjenjeService {
         izjElem.setAttribute("emailSluzbenik", "");
 
         SOAPElement sadrzajElem = izjElem.addChildElement("sadrzaj", "izj");
-        sadrzajElem.addTextNode("");
+        sadrzajElem.addTextNode(sadrzaj);
 
         soapMessage.saveChanges();
         SOAPMessage soapResponse = soapConnection.call(soapMessage, soapEndpointUrl);
@@ -84,9 +84,13 @@ public class IzjasnjenjeService {
     public void sacuvajPopunjenoIzjasnjenje(Izjasnjenje izjasnjenje) throws Exception {
         sacuvajIzjasnjenje(izjasnjenje);
         ArrayList<Zalbacutanje> zcs=zalbacutanjecirRepository.findAll();
+        String stanje="izjasnjeno";
+        if(izjasnjenje.getSadrzaj().equalsIgnoreCase("obustavljeno")){
+            stanje="obustavljeno";
+        }
         for(Zalbacutanje z:zcs){
             if(z.getBrojPredmeta().getValue().equalsIgnoreCase(izjasnjenje.getId())){
-                z.setStanje("izjasnjeno");
+                z.setStanje(stanje);
                 String text = jaxbParser.marshallString(Zalbacutanje.class,z);
                 zalbacutanjecirRepository.saveZalbacutanjecirFromText(text, izjasnjenje.getId());
                 break;
@@ -95,7 +99,7 @@ public class IzjasnjenjeService {
         ArrayList<Zalbaodluka> zos=zalbanaodlukuRepository.findAll();
         for(Zalbaodluka zo:zos){
             if(zo.getBrojPredmeta().getValue().equalsIgnoreCase(izjasnjenje.getId())){
-                zo.setStanje("izjasnjeno");
+                zo.setStanje(stanje);
                 String text = jaxbParser.marshallString(Zalbaodluka.class,zo);
                 zalbanaodlukuRepository.saveZalbanaodlukucirFromText(text, izjasnjenje.getId());
                 break;
@@ -106,5 +110,27 @@ public class IzjasnjenjeService {
     public IzjasnjenjeDTO pogledajIzjasnjenje(String id) throws Exception {
         Izjasnjenje izjasnjenje = izjasnjenjeRepository.findRealIzjasnjenjeById(id);
         return new IzjasnjenjeDTO(izjasnjenje.getId(), izjasnjenje.getSadrzaj());
+    }
+
+    public void obustaviZalbu(String id) throws Exception {
+        ArrayList<Zalbacutanje> zcs=zalbacutanjecirRepository.findAll();
+        for(Zalbacutanje z:zcs){
+            if(z.getBrojPredmeta().getValue().equalsIgnoreCase(id)){
+                z.setStanje("obustavljeno");
+                String text = jaxbParser.marshallString(Zalbacutanje.class,z);
+                zalbacutanjecirRepository.saveZalbacutanjecirFromText(text, id);
+                break;
+            }
+        }
+        ArrayList<Zalbaodluka> zos=zalbanaodlukuRepository.findAll();
+        for(Zalbaodluka zo:zos){
+            if(zo.getBrojPredmeta().getValue().equalsIgnoreCase(id)){
+                zo.setStanje("obustavljeno");
+                String text = jaxbParser.marshallString(Zalbaodluka.class,zo);
+                zalbanaodlukuRepository.saveZalbanaodlukucirFromText(text, id);
+                break;
+            }
+        }
+        posaljiUpitzaIzjasnjenjem(id,"obustavljeno");
     }
 }

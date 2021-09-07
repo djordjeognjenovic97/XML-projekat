@@ -38,14 +38,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TipDostavljeno }
-     *
-     */
-    public TipDostavljeno createTipDostavljeno() {
-        return new TipDostavljeno();
-    }
-
-    /**
      * Create an instance of {@link TPodnosilacZahteva }
      *
      */
@@ -91,14 +83,6 @@ public class ObjectFactory {
      */
     public Adresa createAdresa() {
         return new Adresa();
-    }
-
-    /**
-     * Create an instance of {@link TipDostavljeno.OpcijaDostave }
-     *
-     */
-    public TipDostavljeno.OpcijaDostave createTipDostavljenoOpcijaDostave() {
-        return new TipDostavljeno.OpcijaDostave();
     }
 
     /**
